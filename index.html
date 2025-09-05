@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Life English - Aprende Inglés de Forma Natural</title>
+    <title>Daily Life English - Próximamente</title>
     <link rel="icon" type="image/x-icon" href="icono.jpeg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
@@ -121,7 +121,6 @@
             background-color: #5a6268;
         }
 
-
         /* Header y navegación */
         header {
             background-color: var(--header-bg);
@@ -154,7 +153,7 @@
             margin-right: 0.5rem;
             font-size: 2rem;
         }
-
+        
         .nav-menu {
             display: flex;
             list-style: none;
@@ -162,31 +161,13 @@
 
         .nav-menu li {
             margin-left: 2rem;
-            position: relative;
         }
 
         .nav-menu a {
             color: var(--text-color);
             text-decoration: none;
             font-weight: 600;
-            transition: var(--transition);
             padding: 0.5rem 0;
-            position: relative;
-        }
-
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary-color);
-            transition: var(--transition);
-        }
-
-        .nav-menu a:hover::after {
-            width: 100%;
         }
 
         .nav-menu a:hover {
@@ -230,26 +211,12 @@
             background-color: var(--text-color);
             border-radius: 5px;
             transition: var(--transition);
-            position: relative;
-            transform-origin: center;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -6px);
         }
 
         /* Banner Carrusel */
         .banner {
             height: 100vh;
-            margin-top: 70px;
+            margin-top: 70px; /* Ajustado para la altura del header */
             position: relative;
             overflow: hidden;
         }
@@ -336,18 +303,9 @@
         }
 
         @keyframes pulse {
-            0% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7);
-            }
-            70% {
-                transform: scale(1.05);
-                box-shadow: 0 0 0 10px rgba(37, 99, 235, 0);
-            }
-            100% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
-            }
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(37, 99, 235, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
         }
 
         .carousel-dots {
@@ -390,468 +348,60 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: var(--transition);
         }
 
-        .carousel-btn:hover {
-            background: rgba(255,255,255,0.3);
-        }
-
-        .carousel-btn.prev {
-            left: 20px;
-        }
-
-        .carousel-btn.next {
-            right: 20px;
-        }
-
-        /* Sección de información */
-        .info-section {
+        .carousel-btn.prev { left: 20px; }
+        .carousel-btn.next { right: 20px; }
+        
+        /* NUEVOS ESTILOS: Sección de Construcción y Tabla */
+        .construction-section {
             text-align: center;
-        }
-
-        .info-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .info-card {
             background-color: var(--card-bg);
-            border-radius: var(--border-radius);
-            padding: 2.5rem;
-            box-shadow: var(--shadow);
-            flex: 1 1 300px;
-            max-width: 350px;
-            transition: var(--transition);
         }
-
-        .info-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .info-card i {
-            font-size: 3.5rem;
+        
+        .construction-section .fa-cogs {
+            font-size: 5rem;
             color: var(--primary-color);
             margin-bottom: 1.5rem;
+            animation: spin 8s linear infinite;
         }
 
-        /* Sección de niveles */
-        .levels {
-            background-color: var(--card-bg);
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
         }
-
-        .levels-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: center;
+        
+        .sessions-table {
+            width: 100%;
             margin-top: 2rem;
-        }
-
-        .level-card {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            border-radius: var(--border-radius);
-            padding: 2.5rem;
-            width: 300px;
-            text-align: center;
+            border-collapse: collapse;
             box-shadow: var(--shadow);
-            transition: var(--transition);
+            border-radius: var(--border-radius);
+            overflow: hidden;
         }
 
-        .level-card:hover {
-            transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .level-card h3 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+        .sessions-table thead {
+            background-color: var(--primary-color);
             color: white;
         }
 
-        .level-card h4 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: white;
-        }
-
-        .level-card ul {
+        .sessions-table th, .sessions-table td {
+            padding: 1rem 1.2rem;
             text-align: left;
-            margin-bottom: 2rem;
-            list-style-type: none;
         }
 
-        .level-card li {
-            margin-bottom: 0.8rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .level-card li:before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #bbf7d0;
-        }
-
-        /* Carrusel de cursos */
-        .courses {
-            padding: 5rem 0;
-        }
-
-        .carousel {
-            position: relative;
-            overflow: hidden;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            margin: 2rem auto;
-            max-width: 1000px;
-        }
-
-        .carousel-container {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-
-        .carousel-item {
-            min-width: 100%;
-            position: relative;
-        }
-
-        .carousel-item img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .carousel-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 1.5rem;
-        }
-
-        /* Sección de profesores */
-        .teachers {
-            text-align: center;
+        .sessions-table tbody tr {
             background-color: var(--card-bg);
+            border-bottom: 1px solid var(--input-bg);
         }
 
-        .teachers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+        .sessions-table tbody tr:last-child {
+            border-bottom: none;
         }
 
-        .teacher-card {
-            background-color: var(--card-bg);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .teacher-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .teacher-card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .teacher-card:hover img {
-            transform: scale(1.1);
-        }
-
-        .teacher-info {
-            padding: 1.5rem;
-        }
-
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            padding: 1rem;
-        }
-
-        .modal.visible {
-            display: flex;
-            opacity: 1;
-        }
-
-        .modal-content {
-            background-color: var(--card-bg);
-            border-radius: var(--border-radius);
-            max-width: 700px;
-            width: 95%;
-            padding: 2.5rem;
-            position: relative;
-            transform: translateY(-50px);
-            transition: transform 0.3s ease;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-
-        .modal.visible .modal-content {
-            transform: translateY(0);
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            font-size: 1.8rem;
-            cursor: pointer;
-            color: var(--text-color);
-            transition: var(--transition);
-        }
-
-        .close-modal:hover {
-            color: var(--primary-color);
-            transform: rotate(90deg);
-        }
-
-        .modal-body {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-        
-        .modal-body h2 {
-            margin-top: 0;
-        }
-        
-        .modal-body p {
-            margin-bottom: 1rem;
-        }
-
-        .modal-teacher-img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            border-radius: var(--border-radius);
-        }
-
-        /* Sección de contacto */
-        .contact {
-            padding-bottom: 2.5rem; /* Reduced padding */
-        }
-
-        .contact-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 3rem;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .contact-info {
-            flex: 1 1 300px;
-            text-align: center;
-        }
-
-        .contact-info i {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .contact-qr {
-            flex: 1 1 300px;
-            text-align: center;
-        }
-
-        .qr-code {
-            max-width: 200px;
-            margin: 0 auto;
-            padding: 1rem;
-            background: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-        }
-
-        .qr-code img {
-            width: 100%;
-        }
-        
-        /* Formulario de Contacto */
-        .contact-form-section {
-            background-color: var(--card-bg);
-            padding-top: 2.5rem; /* Reduced padding */
-        }
-
-        .form-container {
-            max-width: 800px;
-            margin: 2rem auto 0;
-            background: var(--bg-color);
-            padding: 2.5rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--text-color);
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            border-radius: 8px;
-            border: 1px solid transparent;
+        .sessions-table tbody tr:hover {
             background-color: var(--input-bg);
-            color: var(--text-color);
-            font-family: 'Open Sans', sans-serif;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
-        
-        #contact-form-status {
-            text-align: center;
-            margin-top: 1rem;
-            font-weight: 600;
-        }
-
-        /* Sección de Comentarios */
-        .comments-section {
-            padding: 5rem 0;
-        }
-        
-        .comments-title-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .comments-container {
-            max-width: 800px;
-            margin: 2rem auto 0;
-        }
-
-        .comment-form-container {
-            background-color: var(--card-bg);
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            margin-bottom: 2rem;
-        }
-
-        .comments-list {
-            margin-top: 2rem;
-        }
-
-        .comment-card {
-            background-color: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            margin-bottom: 1.5rem;
-            border-left: 5px solid var(--primary-color);
-        }
-
-        .comment-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 0.5rem;
-        }
-        
-        .comment-header i {
-            margin-right: 0.8rem;
-            font-size: 1.5rem;
-            color: var(--secondary-color);
-        }
-
-        .comment-author {
-            font-weight: 700;
-            font-family: 'Montserrat', sans-serif;
-            color: var(--primary-color);
-        }
-        
-        .comment-text {
-            color: var(--text-color);
-        }
-        
-        #no-comments {
-            text-align: center;
-            font-style: italic;
-            padding: 2rem;
-            background: var(--card-bg);
-            border-radius: var(--border-radius);
-        }
-
-
-        /* Términos y privacidad */
-        .legal {
-            text-align: center;
-            padding: 3rem 0;
-            background-color: var(--card-bg);
-        }
-
-        .legal-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 1rem;
-        }
-
-        .legal-links a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .legal-links a:hover {
-            text-decoration: underline;
         }
 
         /* Botón flotante de WhatsApp */
@@ -891,86 +441,23 @@
             transform: scale(1.1);
         }
 
+
         /* Footer */
         footer {
             background-color: var(--footer-bg);
             color: var(--footer-text);
-            padding: 3rem 0 1rem;
-        }
-
-        .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-
-        .copyright {
-            flex: 1 1 300px;
+            padding: 2rem 0;
             text-align: center;
-            margin-bottom: 1rem;
-        }
-
-        .social-icons {
-            flex: 1 1 300px;
-            text-align: center;
-        }
-
-        .social-icons a {
-            color: var(--footer-text);
-            font-size: 1.5rem;
-            margin: 0 0.5rem;
-            transition: var(--transition);
-            display: inline-block;
-        }
-
-        .social-icons a:hover {
-            color: var(--accent-color);
-            transform: translateY(-5px);
         }
 
         /* Responsive */
-        @media (max-width: 968px) {
-            .banner-slide h1 {
-                font-size: 2.8rem;
-            }
-            
-            .banner-slide p {
-                font-size: 1.3rem;
-            }
-            
-            .level-card {
-                width: 100%;
-                max-width: 400px;
-            }
-        }
-
         @media (max-width: 768px) {
             .hamburger {
                 display: flex;
             }
 
             .nav-menu {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                background-color: var(--header-bg);
-                width: 70%;
-                height: 100vh;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                transition: right 0.3s ease;
-                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-            }
-
-            .nav-menu.active {
-                right: 0;
-            }
-
-            .nav-menu li {
-                margin: 1.5rem 0;
+                display: none; /* Oculto por defecto en la versión de construcción */
             }
 
             .banner-slide h1 {
@@ -981,61 +468,44 @@
                 font-size: 1.1rem;
             }
             
-            .carousel-item img {
-                height: 300px;
-            }
-            
-            .carousel-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .banner-slide h1 {
-                font-size: 1.8rem;
+            /* ESTILOS RESPONSIVE PARA LA TABLA */
+            .sessions-table thead {
+                display: none; /* Ocultar encabezados en móvil */
             }
 
-            .banner-slide p {
-                font-size: 1rem;
+            .sessions-table tr {
+                display: block;
+                margin-bottom: 1rem;
+                border-radius: var(--border-radius);
+                box-shadow: var(--shadow);
+                overflow: hidden;
             }
             
-            .level-tag {
-                font-size: 1rem;
-                padding: 6px 15px;
+            .sessions-table td {
+                display: block;
+                text-align: right;
+                position: relative;
+                padding-left: 50%;
+                border-bottom: 1px solid var(--input-bg);
             }
             
-            .carousel-item img {
-                height: 250px;
+            .sessions-table td:last-child {
+                border-bottom: none;
+            }
+
+            .sessions-table td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 1rem;
+                font-weight: bold;
+                text-align: left;
+                color: var(--primary-color);
             }
             
-            .teachers-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .contact-container {
-                flex-direction: column;
-            }
-            
-            .legal-links {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .carousel-btn {
-                width: 35px;
-                height: 35px;
-                font-size: 1rem;
-            }
-            
-            .carousel-btn.prev {
-                left: 10px;
-            }
-            
-            .carousel-btn.next {
-                right: 10px;
-            }
+             .sessions-table td .btn {
+                 width: 100%;
+                 text-align: center;
+             }
         }
     </style>
 </head>
@@ -1047,22 +517,8 @@
                 <span>Daily Life English</span>
             </a>
             
-            <button class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            
             <ul class="nav-menu" id="navMenu">
-                <li><a href="#home">Inicio</a></li>
-                <li><a href="#about">Nosotros</a></li>
-                <li><a href="#levels">Niveles</a></li>
-                <li><a href="#courses">Cursos</a></li>
-                <li><a href="#teachers">Profesores</a></li>
-                <li><a href="#contact-form">Enviar mensaje</a></li>
-                <li><a href="#comments">Dejar comentarios</a></li>
-                <li><a href="#contact">Contacto</a></li>
-            </ul>
+                </ul>
             
             <button class="theme-toggle" id="themeToggle">
                 <i class="fas fa-moon"></i>
@@ -1072,12 +528,11 @@
 
     <section class="banner" id="home">
         <div class="banner-carousel">
-            <div class="banner-slide active" style="background-image: url('fondo banner.jpeg');">
+            <div class="banner-slide active" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1771&q=80');">
                 <div class="slide-content">
                     <span class="level-tag">Nivel A1</span>
                     <h1>Inglés Principiante</h1>
                     <p>Comienza tu viaje en el aprendizaje del inglés con nuestras clases básicas diseñadas para hispanohablantes</p>
-                    <a href="#levels" class="btn">Descubre Más</a>
                 </div>
             </div>
             
@@ -1086,7 +541,6 @@
                     <span class="level-tag">Nivel A2</span>
                     <h1>Inglés Elemental</h1>
                     <p>Mejora tus habilidades de comunicación en situaciones cotidianas y expande tu vocabulario</p>
-                    <a href="#levels" class="btn">Descubre Más</a>
                 </div>
             </div>
             
@@ -1095,7 +549,6 @@
                     <span class="level-tag">Nivel B1</span>
                     <h1>Inglés Intermedio</h1>
                     <p>Desarrolla fluidez en conversaciones y adquiere confianza para interactuar en diversos contextos</p>
-                    <a href="#levels" class="btn">Descubre Más</a>
                 </div>
             </div>
         </div>
@@ -1110,238 +563,54 @@
         </button>
     </section>
 
-    <section class="info-section" id="about">
+    <section class="construction-section" id="construction">
         <div class="container">
-            <h2>¿Por qué elegirnos?</h2>
-            <div class="info-content">
-                <div class="info-card">
-                    <i class="fas fa-chalkboard-teacher"></i>
-                    <h3>Profesores Calificados</h3>
-                    <p>Nuestro equipo de profesores cuenta con certificación internacional y amplia experiencia en la enseñanza del inglés.</p>
-                </div>
-                <div class="info-card">
-                    <i class="fas fa-book-open"></i>
-                    <h3>Método Práctico</h3>
-                    <p>Enfocamos nuestro enseñanza en situaciones de la vida real para que puedas usar el inglés desde el primer día.</p>
-                </div>
-                <div class="info-card">
-                    <i class="fas fa-users"></i>
-                    <h3>Grupos Reducidos</h3>
-                    <p>Mantenemos grupos pequeños para garantizar una atención personalizada y maximizar el aprendizaje.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="levels" id="levels">
-        <div class="container">
-            <h2>Nuestros Niveles de Inglés</h2>
-            <div class="levels-container">
-                <div class="level-card">
-                    <h3>A1</h3>
-                    <h4>Principiante</h4>
-                    <ul>
-                        <li>Saludos y presentaciones básicas</li>
-                        <li>Vocabulario esencial (números, colores, familia)</li>
-                        <li>Estructuras gramaticales simples</li>
-                        <li>Comprensión de frases cotidianas</li>
-                        <li>Interacción simple con hablantes lentos</li>
-                    </ul>
-                    <a href="#contact" class="btn">Inscribirse</a>
-                </div>
-                
-                <div class="level-card">
-                    <h3>A2</h3>
-                    <h4>Elemental</h4>
-                    <ul>
-                        <li>Descripción de personas y lugares</li>
-                        <li>Conversaciones sobre temas familiares</li>
-                        <li>Comprensión de textos cortos y simples</li>
-                        <li>Expresión de necesidades inmediatas</li>
-                        <li>Uso de tiempos verbales básicos</li>
-                    </ul>
-                    <a href="#contact" class="btn">Inscribirse</a>
-                </div>
-                
-                <div class="level-card">
-                    <h3>B1</h3>
-                    <h4>Intermedio</h4>
-                    <ul>
-                        <li>Manejo de situaciones al viajar</li>
-                        <li>Descripción de experiencias y eventos</li>
-                        <li>Expresión de opiniones y planes</li>
-                        <li>Comprensión de textos más complejos</li>
-                        <li>Conversaciones fluidas sobre temas diversos</li>
-                    </ul>
-                    <a href="#contact" class="btn">Inscribirse</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="courses" id="courses">
-        <div class="container">
-            <h2>Nuestros Cursos</h2>
-            <div class="carousel">
-                <div class="carousel-container">
-                    <div class="carousel-item">
-                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Curso Básico">
-                        <div class="carousel-caption">
-                            <h3>Inglés Básico</h3>
-                            <p>Comienza desde cero y adquiere las bases del idioma para comunicarte en situaciones simples.</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Curso Intermedio">
-                        <div class="carousel-caption">
-                            <h3>Inglés Intermedio</h3>
-                            <p>Mejora tu fluidez y amplía tu vocabulario para conversaciones más complejas.</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Curso Avanzado">
-                        <div class="carousel-caption">
-                            <h3>Inglés Avanzado</h3>
-                            <p>Perfecciona tu dominio del idioma hasta alcanzar un nivel cercano al nativo.</p>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
-                <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
-            </div>
-        </div>
-    </section>
-
-    <section class="teachers" id="teachers">
-        <div class="container">
-            <h2>Nuestro Equipo de Profesores</h2>
-            <div class="teachers-grid">
-                <div class="teacher-card" data-teacher="1">
-                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Profesor 1">
-                    <div class="teacher-info">
-                        <h3>Robert Johnson</h3>
-                        <p>Especialista en Inglés Conversacional</p>
-                    </div>
-                </div>
-                <div class="teacher-card" data-teacher="2">
-                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Profesora 2">
-                    <div class="teacher-info">
-                        <h3>Sarah Williams</h3>
-                        <p>Especialista en Preparación para Exámenes Internacionales</p>
-                    </div>
-                </div>
-                <div class="teacher-card" data-teacher="3">
-                    <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Profesor 3">
-                    <div class="teacher-info">
-                        <h3>Michael Brown</h3>
-                        <p>Especialista en Inglés de Negocios</p>
-                    </div>
-                </div>
-                <div class="teacher-card" data-teacher="4">
-                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Profesora 4">
-                    <div class="teacher-info">
-                        <h3>Emily Davis</h3>
-                        <p>Especialista en Pronunciación y Fonética</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="modal" id="teacherModal">
-        <div class="modal-content">
-            <button class="close-modal" id="closeTeacherModal">&times;</button>
-            <div class="modal-body" id="teacherModalBody">
-                </div>
-        </div>
-    </div>
-    
-    <div class="modal" id="legalModal">
-        <div class="modal-content">
-            <button class="close-modal" id="closeLegalModal">&times;</button>
-            <div class="modal-body" id="legalModalBody">
-                </div>
-        </div>
-    </div>
-
-    <section class="contact-form-section" id="contact-form">
-        <div class="container">
-            <h2>Envíanos un Mensaje</h2>
-            <div class="form-container">
-                <form id="contactForm" action="https://formspree.io/f/xvgbbnvj" method="POST">
-                    <div class="form-group">
-                        <label for="name">Nombre</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Correo Electrónico</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Mensaje</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-                    <button type="submit" class="btn">Enviar Mensaje</button>
-                </form>
-                <p id="contact-form-status"></p>
-            </div>
-        </div>
-    </section>
-    
-    <section class="comments-section" id="comments">
-        <div class="container">
-            <div class="comments-title-container">
-                <h2>Deja tu Comentario</h2>
-             <!--   <button id="restoreCommentsBtn" class="btn btn-secondary">Restaurar Comentarios</button>-->
-            </div>
-            <p style="text-align: center;">¡Nos encantaría saber tu opinión sobre nuestros cursos!</p>
-            <div class="comments-container">
-                <div class="comment-form-container">
-                    <form id="commentForm">
-                         <div class="form-group">
-                            <label for="comment-author">Tu Nombre</label>
-                            <input type="text" id="comment-author" placeholder="Escribe tu nombre" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="comment-text">Tu Comentario</label>
-                            <textarea id="comment-text" placeholder="Escribe tu comentario aquí..." required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Publicar Comentario</button>
-                    </form>
-                </div>
-                <div class="comments-list" id="commentsList">
-                   </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="contact" id="contact">
-        <div class="container">
-            <h2>Contáctanos</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <h3>Visítanos en</h3>
-                    <p>Chone - Manabí - Ecuador</p>
-                    <p><i class="fas fa-phone"></i> +593 98 864 2647</p>
-                </div>
-                <div class="contact-qr">
-                    <h3>Escanea para contactarnos por WhatsApp</h3>
-                    <div class="qr-code">
-                        <img src="QR_ingles.png" alt="QR de WhatsApp">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section class="legal">
-        <div class="container">
-            <h2>Información Legal</h2>
-            <div class="legal-links">
-                <a id="termsLink">Términos y Condiciones</a>
-                <a id="privacyLink">Política de Privacidad</a>
-            </div>
+            <i class="fas fa-cogs"></i>
+            <h2>¡Nuestro Sitio Web Está en Construcción!</h2>
+            <p>Estamos trabajando arduamente para traerte una experiencia de aprendizaje de inglés increíble. Mientras tanto, puedes unirte a nuestras sesiones en vivo a través de Google Meet.</p>
+            
+            <h2>Próxima Sesión en Vivo</h2>
+            
+            <table class="sessions-table">
+                <thead>
+                    <tr>
+                        <th>Tema de la Clase</th>
+                        <th>Nivel</th>
+                        <th>Fecha</th>
+                        <th>Hora (Ecuador)</th>
+                        <th>Enlace a la Sesión</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Tema">Live English class</td>
+                        <td data-label="Nivel">A2 </td>
+                        <td data-label="Fecha">6 de Septiembre, 2025</td>
+                        <td data-label="Hora">09:00</td>
+                        <td data-label="Enlace">
+                            <a href="https://meet.google.com/bsp-rpdc-eow" target="_blank" class="btn btn-secondary">Unirse a la Clase</a>
+                        </td>
+                    </tr>
+                   <!--<tr>
+                        <td data-label="Tema">Conversación Cotidiana</td>
+                        <td data-label="Nivel">A2 (Elemental)</td>
+                        <td data-label="Fecha">11 de Septiembre, 2025</td>
+                        <td data-label="Hora">19:00</td>
+                        <td data-label="Enlace">
+                           <a href="https://meet.google.com/" target="_blank" class="btn btn-secondary">Unirse a la Clase</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="Tema">Planeando un Viaje</td>
+                        <td data-label="Nivel">B1 (Intermedio)</td>
+                        <td data-label="Fecha">12 de Septiembre, 2025</td>
+                        <td data-label="Hora">20:00</td>
+                        <td data-label="Enlace">
+                           <a href="https://meet.google.com/" target="_blank" class="btn btn-secondary">Unirse a la Clase</a>
+                        </td>
+                    </tr>--> 
+                </tbody>
+            </table>
         </div>
     </section>
 
@@ -1351,92 +620,11 @@
 
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="copyright">
-                    <p>&copy; 2025 Daily Life English. Todos los derechos reservados.</p>
-                </div>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-tiktok"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
+            <p>&copy; 2025 Daily Life English. Todos los derechos reservados. Sitio en construcción.</p>
         </div>
     </footer>
 
     <script>
-        // Datos de los profesores
-        const teachers = {
-            1: {
-                name: "Robert Johnson",
-                specialty: "Especialista en Inglés Conversacional",
-                experience: "10 años de experiencia enseñando inglés a estudiantes de todos los niveles. Certificado CELTA y TEFL.",
-                education: "MA in English Language Teaching, University of Cambridge",
-                photo: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                quote: "Aprender un idioma es conocer una nueva forma de ver el mundo."
-            },
-            2: {
-                name: "Sarah Williams",
-                specialty: "Especialista en Preparación para Exámenes Internacionales",
-                experience: "8 años preparando estudiantes para exámenes TOEFL, IELTS y Cambridge. Tasa de aprobación del 95%.",
-                education: "BA in Linguistics, Oxford University",
-                photo: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                quote: "La clave para el éxito en los exámenes es la práctica constante y la confianza en uno mismo."
-            },
-            3: {
-                name: "Michael Brown",
-                specialty: "Especialista en Inglés de Negocios",
-                experience: "12 años enseñando inglés corporativo a ejecutivos de multinacionales. Experiencia en consultoría lingüística.",
-                education: "MBA, Harvard Business School",
-                photo: "https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                quote: "El inglés de negocios abre puertas a oportunidades globales."
-            },
-            4: {
-                name: "Emily Davis",
-                specialty: "Especialista en Pronunciación y Fonética",
-                experience: "6 años ayudando a estudiantes a mejorar su acento y comprensión auditiva. Fonética aplicada con métodos innovadores.",
-                education: "PhD in Phonetics, University of Edinburgh",
-                photo: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                quote: "Una buena pronunciación es la llave para una comunicación efectiva."
-            }
-        };
-        
-        // Contenido para el modal legal
-        const legalContent = {
-            terms: `
-                <h2>Términos y Condiciones</h2>
-                <p>Bienvenido a Daily Life English. Al inscribirte en nuestros cursos, aceptas los siguientes términos y condiciones. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <p><strong>1. Inscripciones:</strong> Las inscripciones se realizan a través de nuestro formulario de contacto o WhatsApp. El pago debe completarse antes del inicio del curso.</p>
-                <p><strong>2. Cancelaciones:</strong> Las cancelaciones deben realizarse con al menos 72 horas de antelación para obtener un reembolso completo. Pasado este plazo, no se realizarán devoluciones.</p>
-                <p><strong>3. Propiedad Intelectual:</strong> Todo el material proporcionado durante los cursos es propiedad de Daily Life English y no puede ser distribuido sin autorización.</p>
-            `,
-            privacy: `
-                <h2>Política de Privacidad</h2>
-                <p>En Daily Life English, respetamos tu privacidad y nos comprometemos a proteger tus datos personales. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <p><strong>1. Recopilación de datos:</strong> Recopilamos la información que nos proporcionas al inscribirte, como tu nombre, correo electrónico y número de teléfono.</p>
-                <p><strong>2. Uso de la información:</strong> Utilizamos tus datos para gestionar tu inscripción, comunicarnos contigo sobre los cursos y enviar información relevante. No compartimos tus datos con terceros.</p>
-                <p><strong>3. Seguridad:</strong> Implementamos medidas de seguridad para proteger tu información personal contra el acceso no autorizado.</p>
-            `
-        };
-
-        // Funcionalidad para el menú hamburguesa
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('navMenu');
-        
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-
-        // Cerrar menú al hacer clic en un enlace
-        document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-            });
-        });
-
         // Funcionalidad para el modo oscuro
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = themeToggle.querySelector('i');
@@ -1519,108 +707,6 @@
         // Iniciar intervalo
         slideInterval = setInterval(nextSlide, 5000);
 
-        // Funcionalidad para el carrusel de cursos
-        const carousel = document.querySelector('.courses .carousel-container');
-        const items = document.querySelectorAll('.courses .carousel-item');
-        const carouselPrevBtn = document.querySelector('.courses .prev');
-        const carouselNextBtn = document.querySelector('.courses .next');
-        let currentIndex = 0;
-
-        function updateCarousel() {
-            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
-        }
-
-        carouselNextBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % items.length;
-            updateCarousel();
-        });
-
-        carouselPrevBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + items.length) % items.length;
-            updateCarousel();
-        });
-
-        // Auto avanzar el carrusel de cursos cada 5 segundos
-        setInterval(() => {
-            currentIndex = (currentIndex + 1) % items.length;
-            updateCarousel();
-        }, 5000);
-
-        // Funcionalidad para el modal de profesores
-        const teacherCards = document.querySelectorAll('.teacher-card');
-        const teacherModal = document.getElementById('teacherModal');
-        const teacherModalBody = document.getElementById('teacherModalBody');
-        const closeTeacherModal = document.getElementById('closeTeacherModal');
-
-        teacherCards.forEach(card => {
-            card.addEventListener('click', () => {
-                const teacherId = card.getAttribute('data-teacher');
-                const teacher = teachers[teacherId];
-                
-                teacherModalBody.innerHTML = `
-                    <img src="${teacher.photo}" alt="${teacher.name}" class="modal-teacher-img">
-                    <div>
-                        <h2>${teacher.name}</h2>
-                        <h3>${teacher.specialty}</h3>
-                        <p><strong>Experiencia:</strong> ${teacher.experience}</p>
-                        <p><strong>Educación:</strong> ${teacher.education}</p>
-                        <p><em>"${teacher.quote}"</em></p>
-                    </div>
-                `;
-                
-                teacherModal.classList.add('visible');
-                document.body.style.overflow = 'hidden';
-            });
-        });
-
-        closeTeacherModal.addEventListener('click', () => {
-            teacherModal.classList.remove('visible');
-            document.body.style.overflow = 'auto';
-        });
-        
-        teacherModal.addEventListener('click', (e) => {
-            if (e.target === teacherModal) {
-                teacherModal.classList.remove('visible');
-                document.body.style.overflow = 'auto';
-            }
-        });
-        
-        // Funcionalidad para el modal legal
-        const termsLink = document.getElementById('termsLink');
-        const privacyLink = document.getElementById('privacyLink');
-        const legalModal = document.getElementById('legalModal');
-        const legalModalBody = document.getElementById('legalModalBody');
-        const closeLegalModal = document.getElementById('closeLegalModal');
-
-        function openLegalModal(content) {
-            legalModalBody.innerHTML = content;
-            legalModal.classList.add('visible');
-            document.body.style.overflow = 'hidden';
-        }
-
-        termsLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            openLegalModal(legalContent.terms);
-        });
-
-        privacyLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            openLegalModal(legalContent.privacy);
-        });
-
-        closeLegalModal.addEventListener('click', () => {
-            legalModal.classList.remove('visible');
-            document.body.style.overflow = 'auto';
-        });
-        
-        legalModal.addEventListener('click', (e) => {
-            if (e.target === legalModal) {
-                legalModal.classList.remove('visible');
-                document.body.style.overflow = 'auto';
-            }
-        });
-
-
         // Animación de aparición de secciones al hacer scroll
         const sections = document.querySelectorAll('section');
         
@@ -1637,110 +723,6 @@
         sections.forEach(section => {
             observer.observe(section);
         });
-        
-        // Script para el formulario de contacto (Formspree)
-        const contactForm = document.getElementById('contactForm');
-        const formStatus = document.getElementById('contact-form-status');
-
-        async function handleFormSubmit(event) {
-            event.preventDefault();
-            const form = event.target;
-            const data = new FormData(form);
-            
-            try {
-                const response = await fetch(form.action, {
-                    method: form.method,
-                    body: data,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-
-                if (response.ok) {
-                    formStatus.textContent = "¡Gracias por tu mensaje! Ha sido enviado.";
-                    formStatus.style.color = 'green';
-                    form.reset();
-                } else {
-                    response.json().then(data => {
-                        if (Object.hasOwn(data, 'errors')) {
-                            formStatus.textContent = data["errors"].map(error => error["message"]).join(", ")
-                        } else {
-                            formStatus.textContent = "Oops! Hubo un problema al enviar tu formulario.";
-                        }
-                        formStatus.style.color = 'red';
-                    })
-                }
-            } catch (error) {
-                formStatus.textContent = "Oops! Hubo un problema al enviar tu formulario.";
-                formStatus.style.color = 'red';
-            }
-        }
-        contactForm.addEventListener("submit", handleFormSubmit);
-
-        // Script para la sección de comentarios
-        const commentForm = document.getElementById('commentForm');
-        const commentsList = document.getElementById('commentsList');
-        const commentAuthorInput = document.getElementById('comment-author');
-        const commentTextInput = document.getElementById('comment-text');
-        const restoreCommentsBtn = document.getElementById('restoreCommentsBtn');
-        
-        // Cargar comentarios desde localStorage
-        function loadComments() {
-            const comments = JSON.parse(localStorage.getItem('dailyLifeEnglishComments')) || [];
-            commentsList.innerHTML = ''; // Limpiar la lista antes de agregar
-            
-            if(comments.length === 0) {
-                 commentsList.innerHTML = `<p id="no-comments">Aún no hay comentarios. ¡Sé el primero en dejar uno!</p>`;
-                 return;
-            }
-
-            comments.forEach(comment => {
-                const commentElement = document.createElement('div');
-                commentElement.classList.add('comment-card');
-                commentElement.innerHTML = `
-                    <div class="comment-header">
-                        <i class="fas fa-user-circle"></i>
-                        <span class="comment-author">${comment.author}</span>
-                    </div>
-                    <p class="comment-text">${comment.text}</p>
-                `;
-                commentsList.appendChild(commentElement);
-            });
-        }
-        
-        // Guardar un nuevo comentario
-        commentForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const author = commentAuthorInput.value.trim();
-            const text = commentTextInput.value.trim();
-            
-            if(author && text) {
-                 const comments = JSON.parse(localStorage.getItem('dailyLifeEnglishComments')) || [];
-                 
-                 const newComment = { author, text };
-                 comments.unshift(newComment); // Añadir al principio
-                 
-                 localStorage.setItem('dailyLifeEnglishComments', JSON.stringify(comments));
-                 
-                 loadComments(); // Recargar la lista de comentarios
-                 
-                 // Limpiar el formulario
-                 commentAuthorInput.value = '';
-                 commentTextInput.value = '';
-            }
-        });
-        
-        // Restaurar (eliminar) todos los comentarios
-        restoreCommentsBtn.addEventListener('click', function() {
-            if (confirm('¿Estás seguro de que deseas eliminar todos los comentarios? Esta acción no se puede deshacer.')) {
-                localStorage.removeItem('dailyLifeEnglishComments');
-                loadComments(); // Recargar la lista para mostrarla vacía
-            }
-        });
-        
-        // Cargar los comentarios cuando la página se carga
-        document.addEventListener('DOMContentLoaded', loadComments);
 
     </script>
 </body>
