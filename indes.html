@@ -18,7 +18,7 @@
             --card-bg: #ffffff;
             --header-bg: #ffffff;
             --footer-bg: #1e293b;
-            --footer-text: #f1f5f9;
+            --footer-text: #f1f5e9;
             --input-bg: #f3f4f6;
             --transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
             --shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
@@ -454,20 +454,20 @@
         
         /* Título de la sección de niveles */
         .levels h2 {
-            color: var(--level-secondary-color); /* Título en amarillo */
+            color: var(--primary-color); /* Título en el color principal */
         }
 
         .levels-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 2rem;
             justify-content: center;
+            gap: 2rem;
             margin-top: 2rem;
         }
 
         .level-card {
             background: linear-gradient(135deg, var(--level-primary-color), var(--level-secondary-color)); /* Degradado amarillo */
-            color: white;
+            color: var(--text-color); /* MODIFICADO */
             border-radius: var(--border-radius);
             padding: 0; /* Ajustado para la imagen */
             width: 300px;
@@ -497,19 +497,20 @@
         .level-card h3 {
             font-size: 2.5rem;
             margin-bottom: 0.5rem;
-            color: white;
+            color: var(--text-color); /* MODIFICADO */
         }
 
         .level-card h4 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: white;
+            color: var(--text-color); /* MODIFICADO */
         }
 
         .level-card p {
              margin-bottom: 0;
              font-weight: 600;
              font-size: 0.9rem;
+             color: var(--text-color); /* MODIFICADO */
         }
 
         /* Carrusel de cursos */
@@ -747,7 +748,7 @@
             background: var(--bg-color);
             padding: 2.5rem;
             border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
+            box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3); /* Reflejo amarillo */
         }
 
         .form-group {
@@ -761,16 +762,18 @@
             color: var(--text-color);
         }
 
+        /* MODIFICADO: LÍNEAS DE RECUADROS TOTALMENTE BLANCAS */
         .form-group input,
         .form-group textarea {
             width: 100%;
             padding: 0.8rem 1rem;
             border-radius: 8px;
-            border: 1px solid transparent;
-            background-color: var(--input-bg);
-            color: var(--text-color);
+            border: 1px solid #ffffff; /* Borde totalmente blanco */
+            background-color: #ffffff;
+            color: #1f2937;
             font-family: 'Open Sans', sans-serif;
             font-size: 1rem;
+            font-weight: 500;
             transition: border-color 0.3s ease;
         }
 
@@ -778,6 +781,12 @@
         .form-group textarea:focus {
             outline: none;
             border-color: var(--primary-color);
+        }
+        
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #4b5563; /* Color de placeholder para contraste */
+            opacity: 1; 
         }
 
         .form-group textarea {
@@ -813,7 +822,7 @@
             background-color: var(--card-bg);
             padding: 2rem;
             border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
+            box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3); /* Reflejo amarillo */
             margin-bottom: 2rem;
         }
 
@@ -1105,37 +1114,37 @@
 
     <section class="banner" id="home">
         <div class="banner-carousel">
-            <div class="banner-slide active" style="background-image: url('1.jpeg');">
+            <div class="banner-slide active" style="background-image: url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&auto=format&fit=crop&w=1280&q=80');">
                 <div class="slide-content">
                     <span class="level-tag">Nivel A1</span>
                     <h1>Inglés Principiante</h1>
-                    <p>Comienza tu viaje en el aprendizaje del inglés con nuestras clases básicas diseñadas para hispanohablantes</p>
+                    <p>Comienza tu viaje en el aprendizaje del inglés con nuestras clases básicas diseñadas para hispanohablantes.</p>
                     <a href="#levels" class="btn">Descubre Más</a>
                 </div>
             </div>
             
-            <div class="banner-slide" style="background-image: url('2.jpeg');">
+            <div class="banner-slide" style="background-image: url('https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&auto=format&fit=crop&w=1280&q=80');">
                 <div class="slide-content">
                     <span class="level-tag">Nivel A2</span>
                     <h1>Inglés Elemental</h1>
-                    <p>Mejora tus habilidades de comunicación en situaciones cotidianas y expande tu vocabulario</p>
+                    <p>Mejora tus habilidades de comunicación en situaciones cotidianas y expande tu vocabulario.</p>
                     <a href="#levels" class="btn">Descubre Más</a>
                 </div>
             </div>
             
-            <div class="banner-slide" style="background-image: url('3.jpeg');">
+            <div class="banner-slide" style="background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1280&q=80');">
                 <div class="slide-content">
                     <span class="level-tag">Nivel B1</span>
                     <h1>Inglés Intermedio</h1>
-                    <p>Desarrolla fluidez en conversaciones y adquiere confianza para interactuar en diversos contextos</p>
+                    <p>Desarrolla fluidez en conversaciones y adquiere confianza para interactuar en diversos contextos.</p>
                     <a href="#levels" class="btn">Descubre Más</a>
                 </div>
             </div>
-              <div class="banner-slide" style="background-image: url('4.jpeg');">
+              <div class="banner-slide" style="background-image: url('https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1280&q=80');">
                 <div class="slide-content">
                     <span class="level-tag">Nivel B2</span>
                     <h1>Inglés Intermedio Alto</h1>
-                    <p>Desarrolla fluidez en conversaciones y adquiere confianza para interactuar en diversos contextos</p>
+                    <p>Perfecciona tu inglés para una comunicación efectiva en entornos académicos y profesionales.</p>
                     <a href="#levels" class="btn">Descubre Más</a>
                 </div>
             </div>
@@ -1163,7 +1172,7 @@
                 <div class="info-card">
                     <i class="fas fa-book-open"></i>
                     <h3>Método Práctico</h3>
-                    <p>Enfocamos nuestro enseñanza en situaciones de la vida real para que puedas usar el inglés desde el primer día.</p>
+                    <p>Enfocamos nuestra enseñanza en situaciones de la vida real para que puedas usar el inglés desde el primer día.</p>
                 </div>
                 <div class="info-card">
                     <i class="fas fa-users"></i>
@@ -1183,7 +1192,7 @@
                      data-title="Principiante"
                      data-modal-image="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                      data-features='["Saludos y presentaciones básicas", "Vocabulario esencial (números, colores, familia)", "Estructuras gramaticales simples", "Comprensión de frases cotidianas", "Interacción simple con hablantes lentos"]'>
-                    <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60" alt="Nivel A1" class="level-card-img">
+                    <img src="principiante.jpeg" alt="Nivel A1" class="level-card-img">
                     <div class="level-card-content">
                         <h3>A1</h3>
                         <h4>Principiante</h4>
@@ -1196,7 +1205,7 @@
                      data-title="Elemental"
                      data-modal-image="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                      data-features='["Descripción de personas y lugares", "Conversaciones sobre temas familiares", "Comprensión de textos cortos y simples", "Expresión de necesidades inmediatas", "Uso de tiempos verbales básicos"]'>
-                     <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60" alt="Nivel A2" class="level-card-img">
+                     <img src="elemental.jpeg" alt="Nivel A2" class="level-card-img">
                      <div class="level-card-content">
                         <h3>A2</h3>
                         <h4>Elemental</h4>
@@ -1209,10 +1218,23 @@
                      data-title="Intermedio"
                      data-modal-image="https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                      data-features='["Manejo de situaciones al viajar", "Descripción de experiencias y eventos", "Expresión de opiniones y planes", "Comprensión de textos más complejos", "Conversaciones fluidas sobre temas diversos"]'>
-                     <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60" alt="Nivel B1" class="level-card-img">
+                     <img src="intermedio.jpeg" alt="Nivel B1" class="level-card-img">
                      <div class="level-card-content">
                         <h3>B1</h3>
                         <h4>Intermedio</h4>
+                        <p>Ver más detalles</p>
+                    </div>
+                </div>
+
+                <div class="level-card"
+                     data-level="B2"
+                     data-title="Intermedio Alto"
+                     data-modal-image="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                     data-features='["Comprensión de ideas principales en textos complejos", "Interacción con hablantes nativos con fluidez", "Producción de textos claros y detallados", "Defensa de un punto de vista sobre temas generales", "Uso de un amplio rango de vocabulario y estructuras"]'>
+                     <img src="intermedio alto.jpeg" alt="Nivel B2" class="level-card-img">
+                     <div class="level-card-content">
+                        <h3>B2</h3>
+                        <h4>Intermedio Alto</h4>
                         <p>Ver más detalles</p>
                     </div>
                 </div>
@@ -1255,7 +1277,7 @@
 
     <section class="teachers" id="teachers">
         <div class="container">
-            <h2>Nuestro Equipo de Profesores</h2>
+            <h2>Nuestro Portafolio de Servicios</h2>
             <div class="teachers-grid">
                 <div class="teacher-card" data-teacher="1">
                     <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Profesor 1">
@@ -1367,8 +1389,7 @@
                 <div class="contact-info"> 
                     <i class="fas fa-map-marker-alt"></i>
                     <h3>Contacto directo</h3>
-                   <!-- <p>Chone - Manabí - Ecuador</p>-->
-                    <p><i class="fas fa-phone"></i> +593 98 864 2647</p>
+                   <p><i class="fas fa-phone"></i> +593 98 864 2647</p>
                 </div>
                 <div class="contact-qr">
                     <h3>Escanea para contactarnos por WhatsApp</h3>
