@@ -6,7 +6,7 @@
     <title>Daily Life English - Aprende Inglés de Forma Natural</title>
     <link rel="icon" type="image/x-icon" href="icono.jpeg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght=300;400;600&display=swap" rel="stylesheet">
     <style>
         /* Variables CSS para modo claro y oscuro */
         :root {
@@ -554,20 +554,20 @@
             padding: 1.5rem;
         }
 
-        /* Sección de profesores */
-        .teachers {
+        /* Sección de Servicios (antes profesores) */
+        .services { /* CAMBIADO: Antes .teachers */
             text-align: center;
             background-color: var(--card-bg);
         }
 
-        .teachers-grid {
+        .services-grid { /* CAMBIADO: Antes .teachers-grid */
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
 
-        .teacher-card {
+        .service-card { /* CAMBIADO: Antes .teacher-card */
             background-color: var(--card-bg);
             border-radius: var(--border-radius);
             overflow: hidden;
@@ -576,25 +576,75 @@
             transition: var(--transition);
         }
 
-        .teacher-card:hover {
+        .service-card:hover { /* CAMBIADO: Antes .teacher-card:hover */
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
 
-        .teacher-card img {
+        .service-card img { /* CAMBIADO: Antes .teacher-card img */
             width: 100%;
             height: 250px;
             object-fit: cover;
             transition: var(--transition);
         }
 
-        .teacher-card:hover img {
+        .service-card:hover img { /* CAMBIADO: Antes .teacher-card:hover img */
             transform: scale(1.1);
         }
 
-        .teacher-info {
+        .service-info { /* CAMBIADO: Antes .teacher-info */
             padding: 1.5rem;
         }
+        
+        /* Estilos adicionales para la tabla de MEET y FORO */
+        .meet-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .meet-table th, .meet-table td {
+            border: 1px solid var(--text-color);
+            padding: 10px;
+            text-align: left;
+        }
+        
+        .meet-table th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 700;
+        }
+        
+        .meet-table tr:nth-child(even) {
+            background-color: var(--bg-color);
+        }
+        
+        .meet-table a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Estilos adicionales para redes sociales en el modal */
+        .modal-social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .modal-social-icons a {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        .modal-social-icons a:hover {
+            color: var(--level-secondary-color);
+            transform: scale(1.1);
+        }
+
 
         /* Modal */
         .modal {
@@ -1052,7 +1102,7 @@
                 height: 250px;
             }
             
-            .teachers-grid {
+            .services-grid { /* CAMBIADO: Antes .teachers-grid */
                 grid-template-columns: 1fr;
             }
             
@@ -1100,7 +1150,7 @@
                 <li><a href="#about">Nosotros</a></li>
                 <li><a href="#levels">Niveles</a></li>
                 <li><a href="#courses">Cursos</a></li>
-                <li><a href="#teachers">Profesores</a></li>
+                <li><a href="#services">Servicios</a></li>
                 <li><a href="#contact-form">Enviar mensaje</a></li>
                 <li><a href="#comments">Dejar comentarios</a></li>
                 <li><a href="#contact">Contacto</a></li>
@@ -1275,46 +1325,47 @@
         </div>
     </section>
 
-    <section class="teachers" id="teachers">
+    <section class="services" id="services">
         <div class="container">
             <h2>Nuestro Portafolio de Servicios</h2>
-            <div class="teachers-grid">
-                <div class="teacher-card" data-teacher="1">
-                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Profesor 1">
-                    <div class="teacher-info">
-                        <h3>Robert Johnson</h3>
-                        <p>Especialista en Inglés Conversacional</p>
+            <div class="services-grid">
+                
+                <div class="service-card" data-service-id="1">
+                    <img src="examen.jpeg" alt="Examen de Diagnóstico">
+                    <div class="service-info">
+                        <h3>Examen de Diagnóstico</h3>
+                        <p>Evalúa tu nivel de inglés de forma gratuita y al instante.</p>
                     </div>
                 </div>
-                <div class="teacher-card" data-teacher="2">
-                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Profesora 2">
-                    <div class="teacher-info">
-                        <h3>Sarah Williams</h3>
-                        <p>Especialista en Preparación para Exámenes Internacionales</p>
+                
+                <div class="service-card" data-service-id="2">
+                    <img src="blog.jpeg" alt="Invitación a nuestro Blog">
+                    <div class="service-info">
+                        <h3>Visita nuestro Blog</h3>
+                        <p>Contenido educativo, consejos de estudio y recursos gratuitos.</p>
                     </div>
                 </div>
-                <div class="teacher-card" data-teacher="3">
-                    <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Profesor 3">
-                    <div class="teacher-info">
-                        <h3>Michael Brown</h3>
-                        <p>Especialista en Inglés de Negocios</p>
+                
+                <div class="service-card" data-service-id="3">
+                    <img src="sesion.jpeg" alt="Sesión de Clases por Meet">
+                    <div class="service-info">
+                        <h3>Sesiones de Clases</h3>
+                        <p>Horarios de conexión a nuestras clases virtuales por Google Meet.</p>
                     </div>
                 </div>
-                <div class="teacher-card" data-teacher="4">
-                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Profesora 4">
-                    <div class="teacher-info">
-                        <h3>Emily Davis</h3>
-                        <p>Especialista en Pronunciación y Fonética</p>
-                    </div>
+                
+                <div class="service-card" data-service-id="4">
+                    <img src="foro.jpeg" alt="Invitación a nuestro Foro"> <div class="service-info">
+                        <h3>Foro de Conversación</h3> <p>Practica inglés con la comunidad en tiempo real y sin costo.</p> </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="modal" id="teacherModal">
+    <div class="modal" id="serviceModal">
         <div class="modal-content">
-            <button class="close-modal" id="closeTeacherModal">&times;</button>
-            <div class="modal-body" id="teacherModalBody"></div>
+            <button class="close-modal" id="closeServiceModal">&times;</button>
+            <div class="modal-body" id="serviceModalBody"></div>
         </div>
     </div>
     
@@ -1432,39 +1483,93 @@
     </footer>
 
     <script>
-        // Datos de los profesores
-        const teachers = {
+        // Datos de los Servicios (Reemplaza a los profesores)
+        const services = {
             1: {
-                name: "Robert Johnson",
-                specialty: "Especialista en Inglés Conversacional",
-                experience: "10 años de experiencia enseñando inglés a estudiantes de todos los niveles. Certificado CELTA y TEFL.",
-                education: "MA in English Language Teaching, University of Cambridge",
-                photo: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                quote: "Aprender un idioma es conocer una nueva forma de ver el mundo."
+                title: "Examen de Diagnóstico Gratuito",
+                description: "Mide tus conocimientos actuales de inglés y descubre cuál es tu nivel según el Marco Común Europeo de Referencia (MCER). ¡Recibe resultados al instante!",
+                image: "https://images.pexels.com/photos/4099479/pexels-photo-4099479.jpeg?auto=compress&cs=tinysrgb&w=800", // Imagen de examen (simulada)
+                link: "URL_DEL_EXAMEN_DE_DIAGNOSTICO", // **REEMPLAZA CON TU URL REAL**
+                buttonText: "¡Rendir la Prueba Ahora!",
+                type: "link"
             },
             2: {
-                name: "Sarah Williams",
-                specialty: "Especialista en Preparación para Exámenes Internacionales",
-                experience: "8 años preparando estudiantes para exámenes TOEFL, IELTS y Cambridge. Tasa de aprobación del 95%.",
-                education: "BA in Linguistics, Oxford University",
-                photo: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                quote: "La clave para el éxito en los exámenes es la práctica constante y la confianza en uno mismo."
+                title: "¡Visita Nuestro Blog!",
+                description: "Sumérgete en artículos, guías de gramática, tips de pronunciación y recursos para practicar inglés en tu día a día. ¡Aprende de forma divertida y gratuita!",
+                image: "https://images.pexels.com/photos/5638732/pexels-photo-5638732.jpeg?auto=compress&cs=tinysrgb&w=800", // Imagen de blog/lectura (simulada)
+                link: "URL_DEL_BLOG", // **REEMPLAZA CON TU URL REAL**
+                buttonText: "Ir al Blog Educativo",
+                type: "link"
             },
             3: {
-                name: "Michael Brown",
-                specialty: "Especialista en Inglés de Negocios",
-                experience: "12 años enseñando inglés corporativo a ejecutivos de multinacionales. Experiencia en consultoría lingüística.",
-                education: "MBA, Harvard Business School",
-                photo: "https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                quote: "El inglés de negocios abre puertas a oportunidades globales."
+                title: "Sesiones de Clases Virtuales (Meet)",
+                description: "Únete a nuestras sesiones de práctica y clases modelo. Aquí encontrarás los enlaces y horarios para conectarte directamente con nuestros profesores.",
+                image: "https://images.pexels.com/photos/5997230/pexels-photo-5997230.jpeg?auto=compress&cs=tinysrgb&w=800", // Imagen de clase virtual (simulada)
+                table: `
+                    <table class="meet-table">
+                        <thead>
+                            <tr>
+                                <th>Día</th>
+                                <th>Hora (Zona Horaria Local)</th>
+                                <th>Clase/Nivel</th>
+                                <th>Enlace de Meet</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Lunes</td>
+                                <td>19:00 - 20:00</td>
+                                <td>Conversación Básico</td>
+                                <td><a href="#" target="_blank">Unirse a la Clase</a></td> </tr>
+                            <tr>
+                                <td>Miércoles</td>
+                                <td>18:00 - 19:00</td>
+                                <td>Gramática Intermedia</td>
+                                <td><a href="#" target="_blank">Unirse a la Clase</a></td> </tr>
+                            <tr>
+                                <td>Viernes</td>
+                                <td>17:00 - 18:00</td>
+                                <td>Club de Lectura B2</td>
+                                <td><a href="#" target="_blank">Unirse a la Clase</a></td> </tr>
+                        </tbody>
+                    </table>
+                `,
+                type: "table"
             },
-            4: {
-                name: "Emily Davis",
-                specialty: "Especialista en Pronunciación y Fonética",
-                experience: "6 años ayudando a estudiantes a mejorar su acento y comprensión auditiva. Fonética aplicada con métodos innovadores.",
-                education: "PhD in Phonetics, University of Edinburgh",
-                photo: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                quote: "Una buena pronunciación es la llave para una comunicación efectiva."
+            4: { // **SERVICIO 4 ACTUALIZADO: FORO DE CONVERSACIÓN**
+                title: "Invitación a Nuestro Foro de Conversación",
+                description: "El mejor lugar para practicar tu fluidez sin presión. Únete a debates, haz preguntas y chatea en inglés con estudiantes de todo el mundo. ¡Totalmente gratis!",
+                image: "https://images.pexels.com/photos/6238805/pexels-photo-6238805.jpeg?auto=compress&cs=tinysrgb&w=800", // Imagen de foro/debate (simulada)
+                table: `
+                    <table class="meet-table">
+                        <thead>
+                            <tr>
+                                <th>Tema del Foro</th>
+                                <th>Día de Apertura</th>
+                                <th>Moderador</th>
+                                <th>Enlace al Foro</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Hobbies y Viajes</td>
+                                <td>Todos los días</td>
+                                <td>Comunidad</td>
+                                <td><a href="URL_DEL_FORO_PRINCIPAL" target="_blank">Acceder al Foro</a></td> </tr>
+                            <tr>
+                                <td>Cultura Pop y Series</td>
+                                <td>Martes</td>
+                                <td>Profe. Ana</td>
+                                <td><a href="URL_DEL_SUBFORO_MARTES" target="_blank">Sub-Foro Temático</a></td> </tr>
+                            <tr>
+                                <td>Desafíos de Gramática B1+</td>
+                                <td>Jueves</td>
+                                <td>Profe. Luis</td>
+                                <td><a href="URL_DEL_SUBFORO_JUEVES" target="_blank">Sub-Foro Temático</a></td> </tr>
+                        </tbody>
+                    </table>
+                `,
+                type: "table"
             }
         };
         
@@ -1612,41 +1717,55 @@
             updateCarousel();
         }, 5000);
 
-        // Funcionalidad para el modal de profesores
-        const teacherCards = document.querySelectorAll('.teacher-card');
-        const teacherModal = document.getElementById('teacherModal');
-        const teacherModalBody = document.getElementById('teacherModalBody');
-        const closeTeacherModal = document.getElementById('closeTeacherModal');
+        // Funcionalidad para el modal de SERVICIOS (Antes profesores)
+        const serviceCards = document.querySelectorAll('.service-card'); // CAMBIADO
+        const serviceModal = document.getElementById('serviceModal'); // CAMBIADO
+        const serviceModalBody = document.getElementById('serviceModalBody'); // CAMBIADO
+        const closeServiceModal = document.getElementById('closeServiceModal'); // CAMBIADO
 
-        teacherCards.forEach(card => {
+        serviceCards.forEach(card => {
             card.addEventListener('click', () => {
-                const teacherId = card.getAttribute('data-teacher');
-                const teacher = teachers[teacherId];
+                const serviceId = card.getAttribute('data-service-id'); // CAMBIADO
+                const service = services[serviceId];
                 
-                teacherModalBody.innerHTML = `
-                    <img src="${teacher.photo}" alt="${teacher.name}" class="modal-img">
+                let modalContentHTML = `
+                    <img src="${service.image}" alt="${service.title}" class="modal-img">
                     <div>
-                        <h2>${teacher.name}</h2>
-                        <h3>${teacher.specialty}</h3>
-                        <p><strong>Experiencia:</strong> ${teacher.experience}</p>
-                        <p><strong>Educación:</strong> ${teacher.education}</p>
-                        <p><em>"${teacher.quote}"</em></p>
-                    </div>
+                        <h2>${service.title}</h2>
+                        <p>${service.description}</p>
                 `;
+
+                if (service.type === "link") {
+                    modalContentHTML += `
+                        <a href="${service.link}" target="_blank" class="btn">${service.buttonText}</a>
+                    `;
+                } else if (service.type === "table") {
+                    modalContentHTML += service.table;
+                    modalContentHTML += `
+                        <p style="margin-top: 1rem;">Para más detalles, contáctanos por WhatsApp.</p>
+                        <a href="#contact" class="btn">Más Información</a>
+                    `;
+                } else if (service.type === "social") {
+                     // El tipo 'social' original ha sido reemplazado por 'table' en el servicio 4
+                }
                 
-                teacherModal.classList.add('visible');
+                modalContentHTML += `</div>`;
+                
+                serviceModalBody.innerHTML = modalContentHTML; // CAMBIADO
+                
+                serviceModal.classList.add('visible'); // CAMBIADO
                 document.body.style.overflow = 'hidden';
             });
         });
 
-        closeTeacherModal.addEventListener('click', () => {
-            teacherModal.classList.remove('visible');
+        closeServiceModal.addEventListener('click', () => { // CAMBIADO
+            serviceModal.classList.remove('visible'); // CAMBIADO
             document.body.style.overflow = 'auto';
         });
         
-        teacherModal.addEventListener('click', (e) => {
-            if (e.target === teacherModal) {
-                teacherModal.classList.remove('visible');
+        serviceModal.addEventListener('click', (e) => { // CAMBIADO
+            if (e.target === serviceModal) { // CAMBIADO
+                serviceModal.classList.remove('visible'); // CAMBIADO
                 document.body.style.overflow = 'auto';
             }
         });
