@@ -8,44 +8,54 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* Variables CSS para modo claro y oscuro */
+        /* ===== INICIO DE LA MODIFICACIÓN: AJUSTE DE COLORES ===== */
         :root {
             --primary-color: #2563eb;
             --secondary-color: #3b82f6;
             --accent-color: #60a5fa;
-            --text-color: #1f2937;
-            --bg-color: #f8fafc;
-            --card-bg: #ffffff;
+            --text-color: #1f2937; /* Texto oscuro */
+            --bg-color: #f8fafc; /* Fondo general claro */
+            --card-bg: #ffffff; /* Fondo de tarjetas blanco */
             --header-bg: #ffffff;
-            --footer-bg: #1e293b;
-            --footer-text: #f1f5e9;
+            
+            /* Footer y sección legal con fondo blanco por defecto */
+            --footer-bg: #ffffff; 
+            --footer-text: #1e293b; /* Texto oscuro para el footer */
+
             --input-bg: #f3f4f6;
+            --input-border: #d1d5db;
+            --placeholder-text: #6b7280;
             --transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
             --shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             --border-radius: 12px;
 
-            /* Nuevas variables para el color amarillo de los niveles */
-            --level-primary-color: #fcd34d; /* Amarillo suave */
-            --level-secondary-color: #f59e0b; /* Amarillo un poco más oscuro */
-        }
-
-        .dark-mode {
-            --primary-color: #3b82f6;
-            --secondary-color: #60a5fa;
-            --accent-color: #93c5fd;
-            --text-color: #e5e7eb;
-            --bg-color: #111827;
-            --card-bg: #1e293b;
-            --header-bg: #1a2332;
-            --footer-bg: #0f172a;
-            --footer-text: #cbd5e1;
-            --input-bg: #374151;
-            --shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-
-            /* Ajuste para el modo oscuro para los niveles */
             --level-primary-color: #fcd34d;
             --level-secondary-color: #f59e0b;
         }
+
+        .dark-mode {
+            /* Colores invertidos para el modo oscuro */
+            --primary-color: #3b82f6;
+            --secondary-color: #60a5fa;
+            --accent-color: #93c5fd;
+            --text-color: #e5e7eb; /* Texto claro */
+            --bg-color: #111827; /* Fondo general oscuro */
+            --card-bg: #1e293b; /* Fondo de tarjetas oscuro */
+            --header-bg: #1a2332;
+
+            /* Footer y sección legal con fondo oscuro en modo oscuro */
+            --footer-bg: #111827;
+            --footer-text: #cbd5e1; /* Texto claro para el footer */
+            
+            --input-bg: #374151;
+            --input-border: #4b5563;
+            --placeholder-text: #9ca3af;
+            --shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+
+            --level-primary-color: #fcd34d;
+            --level-secondary-color: #f59e0b;
+        }
+        /* ===== FIN DE LA MODIFICACIÓN ===== */
 
         /* Estilos para la barra de carga */
         #loading-overlay {
@@ -54,13 +64,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: var(--bg-color); /* Usar color de fondo de la página */
+            background-color: var(--bg-color);
             color: var(--text-color);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            z-index: 3000; /* Asegurar que esté por encima de todo */
+            z-index: 3000;
             transition: opacity 0.5s ease, visibility 0.5s ease;
         }
 
@@ -242,6 +252,14 @@
             transition: var(--transition);
             padding: 0.5rem 0;
             position: relative;
+            display: flex; /* Para alinear el icono con el texto */
+            align-items: center;
+        }
+        
+        /* Estilo para los iconos dentro del menú */
+        .nav-menu a i {
+            margin-right: 0.5rem;
+            font-size: 1rem;
         }
 
         .nav-menu a::after {
@@ -514,9 +532,8 @@
             background-color: var(--card-bg);
         }
         
-        /* Título de la sección de niveles */
         .levels h2 {
-            color: var(--primary-color); /* Título en el color principal */
+            color: var(--primary-color);
         }
 
         .levels-container {
@@ -528,16 +545,16 @@
         }
 
         .level-card {
-            background: linear-gradient(135deg, var(--level-primary-color), var(--level-secondary-color)); /* Degradado amarillo */
-            color: var(--text-color); /* MODIFICADO */
+            background: linear-gradient(135deg, var(--level-primary-color), var(--level-secondary-color));
+            color: #1f2937;
             border-radius: var(--border-radius);
-            padding: 0; /* Ajustado para la imagen */
+            padding: 0;
             width: 300px;
             text-align: center;
             box-shadow: var(--shadow);
             transition: var(--transition);
             cursor: pointer;
-            overflow: hidden; /* Para contener la imagen */
+            overflow: hidden;
         }
         
         .level-card-img {
@@ -559,20 +576,20 @@
         .level-card h3 {
             font-size: 2.5rem;
             margin-bottom: 0.5rem;
-            color: var(--text-color); /* MODIFICADO */
+            color: #1f2937; 
         }
 
         .level-card h4 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: var(--text-color); /* MODIFICADO */
+            color: #1f2937;
         }
 
         .level-card p {
              margin-bottom: 0;
              font-weight: 600;
              font-size: 0.9rem;
-             color: var(--text-color); /* MODIFICADO */
+             color: #1f2937;
         }
 
         /* Carrusel de cursos */
@@ -599,21 +616,17 @@
             position: relative;
         }
         
-        /* ESTILO CLAVE PARA RESPONSIVE EN CARRUSEL DE CURSOS */
         .carousel-item img {
-            width: 100%; /* Asegura que la imagen ocupe todo el ancho del contenedor */
-            height: 400px; /* Altura fija en desktop, ajustada en responsive */
-            object-fit: cover; /* Recorta y cubre el área sin distorsionar */
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
             display: block;
-            /* Transición para efectos de hover */
             transition: transform 0.5s ease; 
         }
 
-        /* Opcional: un ligero zoom al pasar el ratón */
         .carousel-item:hover img {
             transform: scale(1.02);
         }
-        /* FIN DE ESTILO CLAVE */
 
         .carousel-caption {
             position: absolute;
@@ -625,21 +638,21 @@
             padding: 1.5rem;
         }
 
-        /* Sección de Servicios (antes profesores) */
-        .services { /* CAMBIADO: Antes .teachers */
+        /* Sección de Servicios */
+        .services {
             text-align: center;
             background-color: var(--card-bg);
         }
 
-        .services-grid { /* CAMBIADO: Antes .teachers-grid */
+        .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
 
-        .service-card { /* CAMBIADO: Antes .teacher-card */
-            background-color: var(--card-bg);
+        .service-card {
+            background-color: var(--bg-color);
             border-radius: var(--border-radius);
             overflow: hidden;
             box-shadow: var(--shadow);
@@ -647,27 +660,26 @@
             transition: var(--transition);
         }
 
-        .service-card:hover { /* CAMBIADO: Antes .teacher-card:hover */
+        .service-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
 
-        .service-card img { /* CAMBIADO: Antes .teacher-card img */
+        .service-card img {
             width: 100%;
             height: 250px;
             object-fit: cover;
             transition: var(--transition);
         }
 
-        .service-card:hover img { /* CAMBIADO: Antes .teacher-card:hover img */
+        .service-card:hover img {
             transform: scale(1.1);
         }
 
-        .service-info { /* CAMBIADO: Antes .teacher-info */
+        .service-info {
             padding: 1.5rem;
         }
         
-        /* Estilos adicionales para la tabla de MEET y FORO */
         .meet-table {
             width: 100%;
             border-collapse: collapse;
@@ -676,7 +688,7 @@
         }
         
         .meet-table th, .meet-table td {
-            border: 1px solid var(--text-color);
+            border: 1px solid var(--input-border);
             padding: 10px;
             text-align: left;
         }
@@ -697,7 +709,6 @@
             font-weight: 600;
         }
 
-        /* Estilos adicionales para redes sociales en el modal */
         .modal-social-icons {
             display: flex;
             justify-content: center;
@@ -716,7 +727,6 @@
             transform: scale(1.1);
         }
 
-        /* Estilos para los botones de Speaking Club */
         .speaking-club-buttons {
             display: flex;
             justify-content: center;
@@ -812,7 +822,7 @@
             content: '✓';
             position: absolute;
             left: 0;
-            color: var(--level-secondary-color); /* Color amarillo para los checkmarks del modal de niveles */
+            color: var(--level-secondary-color);
         }
 
         .modal-img {
@@ -824,7 +834,7 @@
 
         /* Sección de contacto */
         .contact {
-            padding-bottom: 2.5rem; /* Reduced padding */
+            padding-bottom: 2.5rem;
         }
 
         .contact-container {
@@ -867,7 +877,7 @@
         /* Formulario de Contacto */
         .contact-form-section {
             background-color: var(--card-bg);
-            padding-top: 2.5rem; /* Reduced padding */
+            padding-top: 2.5rem;
         }
 
         .form-container {
@@ -876,7 +886,7 @@
             background: var(--bg-color);
             padding: 2.5rem;
             border-radius: var(--border-radius);
-            box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3); /* Reflejo amarillo */
+            box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
         }
 
         .form-group {
@@ -890,15 +900,14 @@
             color: var(--text-color);
         }
 
-        /* MODIFICADO: LÍNEAS DE RECUADROS TOTALMENTE BLANCAS */
         .form-group input,
         .form-group textarea {
             width: 100%;
             padding: 0.8rem 1rem;
             border-radius: 8px;
-            border: 1px solid #ffffff; /* Borde totalmente blanco */
-            background-color: #ffffff;
-            color: #1f2937;
+            border: 1px solid var(--input-border);
+            background-color: var(--input-bg);
+            color: var(--text-color);
             font-family: 'Open Sans', sans-serif;
             font-size: 1rem;
             font-weight: 500;
@@ -913,10 +922,10 @@
         
         .form-group input::placeholder,
         .form-group textarea::placeholder {
-            color: #4b5563; /* Color de placeholder para contraste */
+            color: var(--placeholder-text);
             opacity: 1; 
         }
-
+        
         .form-group textarea {
             resize: vertical;
             min-height: 150px;
@@ -928,7 +937,6 @@
             font-weight: 600;
         }
 
-        /* Sección de Comentarios */
         .comments-section {
             padding: 5rem 0;
         }
@@ -950,7 +958,7 @@
             background-color: var(--card-bg);
             padding: 2rem;
             border-radius: var(--border-radius);
-            box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3); /* Reflejo amarillo */
+            box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
             margin-bottom: 2rem;
         }
 
@@ -997,37 +1005,40 @@
             border-radius: var(--border-radius);
         }
 
-
-        /* Términos y privacidad - DISEÑO MEJORADO */
+        /* ===== INICIO DE LA MODIFICACIÓN: SECCIÓN LEGAL Y FOOTER CON NUEVOS FONDOS ===== */
         .legal {
             text-align: center;
             padding: 5rem 0;
-            background-color: var(--footer-bg); /* Nuevo color de fondo */
-            color: var(--footer-text);
+            background-color: var(--footer-bg); /* Fondo dinámico */
+            color: var(--footer-text); /* Texto dinámico */
+            border-top: 1px solid var(--input-border); /* Borde sutil para separar */
         }
         
         .legal h2 {
-            color: var(--footer-text); /* Color blanco/claro para el título */
+            color: var(--primary-color); /* El título principal mantiene el color primario */
+        }
+        
+        .legal p {
+            color: var(--footer-text); /* El párrafo usa el color de texto del footer */
         }
 
-        .legal-card-container { /* Nuevo contenedor para la "tarjeta" */
+        .legal-card-container {
             max-width: 600px;
             margin: 2rem auto;
-            background-color: var(--card-bg);
+            background-color: var(--card-bg); /* La "tarjeta" interna usa el fondo de tarjeta estándar */
             padding: 3rem;
             border-radius: var(--border-radius);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            box-shadow: var(--shadow);
         }
         
         .legal-links {
             display: flex;
-            flex-direction: row; /* Cambio a fila para escritorio */
+            flex-direction: row;
             justify-content: center;
             gap: 2rem;
             margin-top: 1rem;
         }
 
-        /* Nuevo estilo para los enlaces/botones legales */
         .legal-links a {
             display: flex;
             align-items: center;
@@ -1040,7 +1051,7 @@
             font-weight: 600;
             transition: var(--transition);
             cursor: pointer;
-            flex: 1; /* Para que ocupen espacio similar */
+            flex: 1;
             max-width: 250px;
         }
 
@@ -1098,7 +1109,9 @@
             background-color: var(--footer-bg);
             color: var(--footer-text);
             padding: 3rem 0 1rem;
+            border-top: 1px solid var(--input-border); /* Borde sutil para separar */
         }
+        /* ===== FIN DE LA MODIFICACIÓN ===== */
 
         .footer-content {
             display: flex;
@@ -1114,7 +1127,6 @@
             margin-bottom: 1rem;
         }
 
-        /* Estilos generales para los iconos sociales en el footer */
         .social-icons {
             flex: 1 1 300px;
             text-align: center;
@@ -1131,22 +1143,18 @@
             transform: translateY(-5px);
         }
         
-        /* AÑADIDO: COLORES ESPECÍFICOS DE REDES SOCIALES */
-
-        /* TikTok - Negro, con sombra turquesa y roja en hover */
         .social-icons .fa-tiktok {
-            color: #000; /* Ícono negro */
-            background-color: white; /* Fondo blanco para que resalte en el footer oscuro */
+            color: #000;
+            background-color: white;
             border-radius: 50%;
             padding: 0.15em;
         }
         .social-icons a:hover .fa-tiktok {
             color: #000;
-            text-shadow: 0 0 8px #00f7ef, 0 0 10px #fe2c55; /* Sombra de colores TikTok */
+            text-shadow: 0 0 8px #00f7ef, 0 0 10px #fe2c55;
             background-color: #ffffff;
         }
 
-        /* YouTube - Rojo */
         .social-icons .fa-youtube {
             color: #FF0000;
         }
@@ -1155,7 +1163,6 @@
             text-shadow: 0 0 10px #FF0000;
         }
 
-        /* Facebook - Azul */
         .social-icons .fa-facebook {
             color: #1877F2;
         }
@@ -1164,25 +1171,20 @@
             text-shadow: 0 0 10px #1877F2;
         }
 
-        /* Instagram - Gradiente de colores */
         .social-icons .fa-instagram {
-            /* Aplica el gradiente como fondo del texto y lo recorta */
             background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-            -webkit-background-clip: text; /* Para navegadores basados en WebKit */
-            -webkit-text-fill-color: transparent; /* Hace transparente el color del texto */
-            background-clip: text; /* Estándar */
-            text-fill-color: transparent; /* Estándar */
-            font-size: 1.7rem; /* Un poco más grande para notar el gradiente */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            font-size: 1.7rem;
             display: inline-block;
         }
 
         .social-icons a:hover .fa-instagram {
-            /* Mantener el gradiente y aplicar una sombra que lo resalte en hover */
             text-shadow: 0 0 5px #fdf497, 0 0 10px #d6249f;
         }
         
-        /* FIN DE AÑADIDO */
-
         /* Responsive */
         @media (max-width: 968px) {
             .banner-slide h1 {
@@ -1234,7 +1236,6 @@
                 font-size: 1.1rem;
             }
             
-            /* REDUCIR ALTURA DEL CARRUSEL EN TABLET */
             .carousel-item img {
                 height: 300px; 
             }
@@ -1245,7 +1246,7 @@
                 font-size: 1.2rem;
             }
             
-            .legal-links { /* En móvil, poner los botones uno encima del otro */
+            .legal-links {
                 flex-direction: column; 
             }
             
@@ -1272,12 +1273,11 @@
                 padding: 6px 15px;
             }
             
-            /* REDUCIR MÁS LA ALTURA DEL CARRUSEL EN MÓVIL */
             .carousel-item img {
                 height: 250px; 
             }
             
-            .services-grid { /* CAMBIADO: Antes .teachers-grid */
+            .services-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -1330,13 +1330,13 @@
             </button>
             
             <ul class="nav-menu" id="navMenu">
-                <li><a href="#home">Inicio</a></li>
-                <li><a href="#about">Nosotros</a></li>
-                <li><a href="#levels">Niveles</a></li>
-                <li><a href="#courses">Cursos</a></li>
-                <li><a href="#services">Servicios</a></li>
-                <li><a href="#contact-form">Enviar mensaje</a></li>
-                <li><a href="#contact">Contacto</a></li>
+                <li><a href="#home"><i class="fas fa-home"></i>Inicio</a></li>
+                <li><a href="#about"><i class="fas fa-info-circle"></i>Nosotros</a></li>
+                <li><a href="#levels"><i class="fas fa-layer-group"></i>Niveles</a></li>
+                <li><a href="#courses"><i class="fas fa-graduation-cap"></i>Cursos</a></li>
+                <li><a href="#services"><i class="fas fa-briefcase"></i>Servicios</a></li>
+                <li><a href="#contact-form"><i class="fas fa-envelope"></i>Enviar mensaje</a></li>
+                <li><a href="#contact"><i class="fas fa-phone-alt"></i>Contacto</a></li>
             </ul>
             
             <button class="theme-toggle" id="themeToggle">
@@ -1655,22 +1655,21 @@
                     <a href="#"><i class="fab fa-youtube"></i></a>
                     <a href="#"><i class="fab fa-facebook"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#home"><i class="fas fa-home"></i></a>
                 </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // INICIO - SCRIPT PARA LA PANTALLA DE CARGA (PRELOADER)
-        document.body.style.overflow = 'hidden'; // Evita el scroll mientras carga
+        document.body.style.overflow = 'hidden';
         const loadingOverlay = document.getElementById('loading-overlay');
         const loadingBar = document.getElementById('loadingBar');
         let progress = 0;
 
-        // Simular el progreso de la carga
         function updateProgress() {
             if (progress < 90) {
-                progress += Math.floor(Math.random() * 10) + 1; // Incremento aleatorio
+                progress += Math.floor(Math.random() * 10) + 1;
                 if (progress > 90) progress = 90;
                 loadingBar.style.width = progress + '%';
                 setTimeout(updateProgress, 100);
@@ -1678,46 +1677,39 @@
         }
         updateProgress();
 
-        // Ocultar la pantalla de carga cuando la página esté lista
         window.addEventListener('load', () => {
-            // Asegurar que la barra de progreso llegue al 100%
             loadingBar.style.width = '100%'; 
             
-            // Retraso para que el usuario vea la barra completa antes de desaparecer
             setTimeout(() => {
                 loadingOverlay.style.opacity = '0';
-                // Ocultar completamente y restaurar el scroll
                 setTimeout(() => {
                     loadingOverlay.style.visibility = 'hidden';
                     document.body.style.overflow = 'auto'; 
                 }, 500); 
             }, 500); 
         });
-        // FIN - SCRIPT PARA LA PANTALLA DE CARGA (PRELOADER)
 
-        // Datos de los Servicios (Reemplaza a los profesores)
         const services = {
             1: {
                 title: "Examen de Diagnóstico Gratuito",
                 description: "Mide tus conocimientos actuales de inglés y descubre cuál es tu nivel según el Marco Común Europeo de Referencia (MCER). ¡Recibe resultados al instante!",
-                // MODIFICADO: Solo se usa una imagen, se utiliza la URL que antes era "internalImage"
                 image: "https://images.pexels.com/photos/3184454/pexels-photo-3184454.jpeg?auto=compress&cs=tinysrgb&w=800",
-                link: "URL_DEL_EXAMEN_DE_DIAGNOSTICO", // **REEMPLAZA CON TU URL REAL**
+                link: "URL_DEL_EXAMEN_DE_DIAGNOSTICO",
                 buttonText: "¡Rendir la Prueba Ahora!",
                 type: "link"
             },
             2: {
                 title: "¡Visita Nuestro Blog!",
                 description: "Sumérgete en artículos, guías de gramática, tips de pronunciación y recursos para practicar inglés en tu día a día. ¡Aprende de forma divertida y gratuita!",
-                image: "https://images.pexels.com/photos/5638732/pexels-photo-5638732.jpeg?auto=compress&cs=tinysrgb&w=800", // Imagen de blog/lectura
-                link: "URL_DEL_BLOG", // **REEMPLAZA CON TU URL REAL**
+                image: "https://images.pexels.com/photos/5638732/pexels-photo-5638732.jpeg?auto=compress&cs=tinysrgb&w=800",
+                link: "URL_DEL_BLOG",
                 buttonText: "Ir al Blog Educativo",
                 type: "link"
             },
             3: {
                 title: "Sesiones de Clases Virtuales (Meet)",
                 description: "Únete a nuestras sesiones de práctica y clases modelo. Aquí encontrarás los enlaces y horarios para conectarte directamente con nuestros profesores.",
-                image: "https://images.pexels.com/photos/5997230/pexels-photo-5997230.jpeg?auto=compress&cs=tinysrgb&w=800", // Imagen de clase virtual
+                image: "https://images.pexels.com/photos/5997230/pexels-photo-5997230.jpeg?auto=compress&cs=tinysrgb&w=800",
                 table: `
                     <table class="meet-table">
                         <thead>
@@ -1751,16 +1743,14 @@
             },
             4: { 
                 title: "Speaking Club",
-                description: "Perfecciona tu pronunciación, entonación y comprensión auditiva en nuestro club semanal. ¡Únete a conversaciones dinámicas y mejora tu fluidez! El Speaking Club ofrece sesiones enfocadas:", // MODIFICADO: Nueva descripción
-                // MODIFICADO: Solo se usa una imagen, se utiliza la URL que antes era "internalImage"
+                description: "Perfecciona tu pronunciación, entonación y comprensión auditiva en nuestro club semanal. ¡Únete a conversaciones dinámicas y mejora tu fluidez! El Speaking Club ofrece sesiones enfocadas:",
                 image: "https://images.pexels.com/photos/3862601/pexels-photo-3862601.jpeg?auto=compress&cs=tinysrgb&w=800", 
-                linkSpeaking: "URL_DEL_SPEAKING_CLUB_MEET", // **REEMPLAZA CON TU URL REAL**
+                linkSpeaking: "URL_DEL_SPEAKING_CLUB_MEET",
                 buttonTextSpeaking: "Unirme al Speaking Club",
                 type: "speakingClub"
             }
         };
         
-        // Contenido para el modal legal
         const legalContent = {
             terms: `
                 <h2>Términos y Condiciones</h2>
@@ -1778,7 +1768,6 @@
             `
         };
 
-        // Funcionalidad para el menú hamburguesa
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('navMenu');
         
@@ -1787,7 +1776,6 @@
             navMenu.classList.toggle('active');
         });
 
-        // Cerrar menú al hacer clic en un enlace
         document.querySelectorAll('.nav-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 hamburger.classList.remove('active');
@@ -1795,7 +1783,6 @@
             });
         });
 
-        // Funcionalidad para el modo oscuro
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = themeToggle.querySelector('i');
         
@@ -1812,14 +1799,12 @@
             }
         });
 
-        // Comprobar tema guardado
         if (localStorage.getItem('theme') === 'dark') {
             document.body.classList.add('dark-mode');
             themeIcon.classList.remove('fa-moon');
             themeIcon.classList.add('fa-sun');
         }
 
-        // Funcionalidad para el carrusel del banner
         const bannerSlides = document.querySelectorAll('.banner-slide');
         const dotsContainer = document.querySelector('.carousel-dots');
         const prevBtn = document.querySelector('.banner .prev');
@@ -1827,7 +1812,6 @@
         let currentSlide = 0;
         let slideInterval;
 
-        // Crear dots para el banner
         bannerSlides.forEach((_, i) => {
             const dot = document.createElement('div');
             dot.classList.add('dot');
@@ -1844,9 +1828,7 @@
         function goToSlide(index) {
             bannerSlides[currentSlide].classList.remove('active');
             dots[currentSlide].classList.remove('active');
-            
             currentSlide = (index + bannerSlides.length) % bannerSlides.length;
-            
             bannerSlides[currentSlide].classList.add('active');
             dots[currentSlide].classList.add('active');
         }
@@ -1874,10 +1856,8 @@
             resetInterval();
         });
 
-        // Iniciar intervalo
         slideInterval = setInterval(nextSlide, 5000);
 
-        // Funcionalidad para el carrusel de cursos
         const carousel = document.querySelector('.courses .carousel-container');
         const items = document.querySelectorAll('.courses .carousel-item');
         const carouselPrevBtn = document.querySelector('.courses .prev');
@@ -1898,13 +1878,11 @@
             updateCarousel();
         });
 
-        // Auto avanzar el carrusel de cursos cada 5 segundos
         setInterval(() => {
             currentIndex = (currentIndex + 1) % items.length;
             updateCarousel();
         }, 5000);
 
-        // Funcionalidad para el modal de SERVICIOS (Antes profesores)
         const serviceCards = document.querySelectorAll('.service-card');
         const serviceModal = document.getElementById('serviceModal');
         const serviceModalBody = document.getElementById('serviceModalBody');
@@ -1915,7 +1893,6 @@
                 const serviceId = card.getAttribute('data-service-id');
                 const service = services[serviceId];
                 
-                // --- MODIFICADO: Muestra una única imagen usando service.image ---
                 let modalContentHTML = `<img src="${service.image}" alt="${service.title}" class="modal-img" style="margin-bottom: 1rem;">`;
 
                 modalContentHTML += `
@@ -1923,25 +1900,18 @@
                         <h2 style="margin-top: 1.5rem;">${service.title}</h2>
                         <p>${service.description}</p>
                 `;
-                // --- FIN DE LA MODIFICACIÓN ---
 
                 if (service.type === "link") {
-                    modalContentHTML += `
-                        <a href="${service.link}" target="_blank" class="btn">${service.buttonText}</a>
-                    `;
+                    modalContentHTML += `<a href="${service.link}" target="_blank" class="btn">${service.buttonText}</a>`;
                 } else if (service.type === "table") {
                     modalContentHTML += service.table;
-                    modalContentHTML += `
-                        <p style="margin-top: 1rem;">Para más detalles, contáctanos por WhatsApp.</p>
-                        <a href="#contact" class="btn">Más Información</a>
-                    `;
-                } else if (service.type === "speakingClub") { // Nuevo tipo para Speaking Club
+                    modalContentHTML += `<p style="margin-top: 1rem;">Para más detalles, contáctanos por WhatsApp.</p><a href="#contact" class="btn">Más Información</a>`;
+                } else if (service.type === "speakingClub") {
                     modalContentHTML += `
                         <div class="speaking-club-buttons">
                             <a href="${service.linkSpeaking}" target="_blank" class="btn">${service.buttonTextSpeaking}</a>
                         </div>
-                        <p style="margin-top: 2rem;">¡No pierdas la oportunidad de practicar con hablantes de todo el mundo!</p>
-                    `;
+                        <p style="margin-top: 2rem;">¡No pierdas la oportunidad de practicar con hablantes de todo el mundo!</p>`;
                 }
                 
                 modalContentHTML += `</div>`;
@@ -1964,7 +1934,6 @@
             }
         });
         
-        // Funcionalidad para el modal de niveles
         const levelCards = document.querySelectorAll('.level-card');
         const levelModal = document.getElementById('levelModal');
         const levelModalBody = document.getElementById('levelModalBody');
@@ -1974,7 +1943,7 @@
             card.addEventListener('click', () => {
                 const level = card.dataset.level;
                 const title = card.dataset.title;
-                const modalImage = card.dataset.modalImage; // Coge la imagen para el modal
+                const modalImage = card.dataset.modalImage;
                 const features = JSON.parse(card.dataset.features);
 
                 let featuresHTML = '<ul>';
@@ -1992,7 +1961,6 @@
                     </div>
                 `;
                 
-                // Cierra el modal de niveles si se hace clic en el botón de inscribirse
                 levelModalBody.querySelector('.btn').addEventListener('click', () => {
                     levelModal.classList.remove('visible');
                     document.body.style.overflow = 'auto';
@@ -2015,7 +1983,6 @@
             }
         });
         
-        // Funcionalidad para el modal legal
         const termsLink = document.getElementById('termsLink');
         const privacyLink = document.getElementById('privacyLink');
         const legalModal = document.getElementById('legalModal');
@@ -2050,8 +2017,6 @@
             }
         });
 
-
-        // Animación de aparición de secciones al hacer scroll
         const sections = document.querySelectorAll('section');
         
         const observer = new IntersectionObserver((entries) => {
@@ -2068,7 +2033,6 @@
             observer.observe(section);
         });
         
-        // Script para el formulario de contacto (Formspree)
         const contactForm = document.getElementById('contactForm');
         const formStatus = document.getElementById('contact-form-status');
 
@@ -2107,9 +2071,6 @@
         }
         contactForm.addEventListener("submit", handleFormSubmit);
 
-        // Script para la sección de comentarios (El HTML para esta sección no fue proveído en el prompt original)
-        // Si tienes un formulario y una lista de comentarios, este script funcionaría.
-        // Por ahora, se mantendrá aquí para integridad lógica.
         const commentForm = document.getElementById('commentForm');
         const commentsList = document.getElementById('commentsList');
         
@@ -2117,7 +2078,6 @@
             const commentAuthorInput = document.getElementById('comment-author');
             const commentTextInput = document.getElementById('comment-text');
             
-            // Cargar comentarios desde localStorage
             function loadComments() {
                 const comments = JSON.parse(localStorage.getItem('dailyLifeEnglishComments')) || [];
                 if (!commentsList) return;
