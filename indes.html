@@ -47,6 +47,55 @@
             --level-secondary-color: #f59e0b;
         }
 
+        /* Estilos para la barra de carga */
+        #loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-color); /* Usar color de fondo de la página */
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 3000; /* Asegurar que esté por encima de todo */
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .loading-content {
+            text-align: center;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow);
+        }
+
+        .loading-logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            object-fit: cover;
+        }
+
+        .loading-bar-container {
+            width: 200px;
+            height: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+
+        .loading-bar {
+            width: 0%;
+            height: 100%;
+            background-color: var(--primary-color);
+            transition: width 0.3s linear;
+        }
+
         /* Estilos generales */
         * {
             margin: 0;
@@ -949,30 +998,62 @@
         }
 
 
-        /* Términos y privacidad */
+        /* Términos y privacidad - DISEÑO MEJORADO */
         .legal {
             text-align: center;
-            padding: 3rem 0;
-            background-color: var(--card-bg);
+            padding: 5rem 0;
+            background-color: var(--footer-bg); /* Nuevo color de fondo */
+            color: var(--footer-text);
+        }
+        
+        .legal h2 {
+            color: var(--footer-text); /* Color blanco/claro para el título */
         }
 
+        .legal-card-container { /* Nuevo contenedor para la "tarjeta" */
+            max-width: 600px;
+            margin: 2rem auto;
+            background-color: var(--card-bg);
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
         .legal-links {
             display: flex;
+            flex-direction: row; /* Cambio a fila para escritorio */
             justify-content: center;
             gap: 2rem;
             margin-top: 1rem;
         }
 
+        /* Nuevo estilo para los enlaces/botones legales */
         .legal-links a {
-            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
             transition: var(--transition);
             cursor: pointer;
+            flex: 1; /* Para que ocupen espacio similar */
+            max-width: 250px;
         }
 
         .legal-links a:hover {
-            text-decoration: underline;
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .legal-links a i {
+            margin-right: 10px;
+            font-size: 1.1rem;
+            color: white;
         }
 
         /* Botón flotante de WhatsApp */
@@ -1033,23 +1114,74 @@
             margin-bottom: 1rem;
         }
 
+        /* Estilos generales para los iconos sociales en el footer */
         .social-icons {
             flex: 1 1 300px;
             text-align: center;
         }
 
         .social-icons a {
-            color: var(--footer-text);
             font-size: 1.5rem;
-            margin: 0 0.5rem;
+            margin: 0 0.7rem;
             transition: var(--transition);
             display: inline-block;
         }
 
         .social-icons a:hover {
-            color: var(--accent-color);
             transform: translateY(-5px);
         }
+        
+        /* AÑADIDO: COLORES ESPECÍFICOS DE REDES SOCIALES */
+
+        /* TikTok - Negro, con sombra turquesa y roja en hover */
+        .social-icons .fa-tiktok {
+            color: #000; /* Ícono negro */
+            background-color: white; /* Fondo blanco para que resalte en el footer oscuro */
+            border-radius: 50%;
+            padding: 0.15em;
+        }
+        .social-icons a:hover .fa-tiktok {
+            color: #000;
+            text-shadow: 0 0 8px #00f7ef, 0 0 10px #fe2c55; /* Sombra de colores TikTok */
+            background-color: #ffffff;
+        }
+
+        /* YouTube - Rojo */
+        .social-icons .fa-youtube {
+            color: #FF0000;
+        }
+        .social-icons a:hover .fa-youtube {
+            color: #FF0000;
+            text-shadow: 0 0 10px #FF0000;
+        }
+
+        /* Facebook - Azul */
+        .social-icons .fa-facebook {
+            color: #1877F2;
+        }
+        .social-icons a:hover .fa-facebook {
+            color: #1877F2;
+            text-shadow: 0 0 10px #1877F2;
+        }
+
+        /* Instagram - Gradiente de colores */
+        .social-icons .fa-instagram {
+            /* Aplica el gradiente como fondo del texto y lo recorta */
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+            -webkit-background-clip: text; /* Para navegadores basados en WebKit */
+            -webkit-text-fill-color: transparent; /* Hace transparente el color del texto */
+            background-clip: text; /* Estándar */
+            text-fill-color: transparent; /* Estándar */
+            font-size: 1.7rem; /* Un poco más grande para notar el gradiente */
+            display: inline-block;
+        }
+
+        .social-icons a:hover .fa-instagram {
+            /* Mantener el gradiente y aplicar una sombra que lo resalte en hover */
+            text-shadow: 0 0 5px #fdf497, 0 0 10px #d6249f;
+        }
+        
+        /* FIN DE AÑADIDO */
 
         /* Responsive */
         @media (max-width: 968px) {
@@ -1112,6 +1244,18 @@
                 height: 40px;
                 font-size: 1.2rem;
             }
+            
+            .legal-links { /* En móvil, poner los botones uno encima del otro */
+                flex-direction: column; 
+            }
+            
+            .legal-card-container {
+                padding: 2rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1163,6 +1307,15 @@
     </style>
 </head>
 <body>
+    <div id="loading-overlay">
+        <div class="loading-content">
+            <img src="icono.jpeg" alt="Logo de la Institución" class="loading-logo">
+            <p>Cargando...</p>
+            <div class="loading-bar-container">
+                <div class="loading-bar" id="loadingBar"></div>
+            </div>
+        </div>
+    </div>
     <header>
         <div class="container nav-container">
             <a href="#" class="logo">
@@ -1472,13 +1625,21 @@
     <section class="legal">
         <div class="container">
             <h2>Información Legal</h2>
-            <div class="legal-links">
-                <a id="termsLink">Términos y Condiciones</a>
-                <a id="privacyLink">Política de Privacidad</a>
+            <p>Consulta nuestros documentos oficiales antes de la inscripción.</p>
+            <div class="legal-card-container">
+                <div class="legal-links">
+                    <a id="termsLink">
+                        <i class="fas fa-file-contract"></i>
+                        Términos y Condiciones
+                    </a>
+                    <a id="privacyLink">
+                        <i class="fas fa-user-lock"></i>
+                        Política de Privacidad
+                    </a>
+                </div>
             </div>
         </div>
     </section>
-
     <a href="https://wa.me/+593988642647" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
@@ -1500,6 +1661,40 @@
     </footer>
 
     <script>
+        // INICIO - SCRIPT PARA LA PANTALLA DE CARGA (PRELOADER)
+        document.body.style.overflow = 'hidden'; // Evita el scroll mientras carga
+        const loadingOverlay = document.getElementById('loading-overlay');
+        const loadingBar = document.getElementById('loadingBar');
+        let progress = 0;
+
+        // Simular el progreso de la carga
+        function updateProgress() {
+            if (progress < 90) {
+                progress += Math.floor(Math.random() * 10) + 1; // Incremento aleatorio
+                if (progress > 90) progress = 90;
+                loadingBar.style.width = progress + '%';
+                setTimeout(updateProgress, 100);
+            }
+        }
+        updateProgress();
+
+        // Ocultar la pantalla de carga cuando la página esté lista
+        window.addEventListener('load', () => {
+            // Asegurar que la barra de progreso llegue al 100%
+            loadingBar.style.width = '100%'; 
+            
+            // Retraso para que el usuario vea la barra completa antes de desaparecer
+            setTimeout(() => {
+                loadingOverlay.style.opacity = '0';
+                // Ocultar completamente y restaurar el scroll
+                setTimeout(() => {
+                    loadingOverlay.style.visibility = 'hidden';
+                    document.body.style.overflow = 'auto'; 
+                }, 500); 
+            }, 500); 
+        });
+        // FIN - SCRIPT PARA LA PANTALLA DE CARGA (PRELOADER)
+
         // Datos de los Servicios (Reemplaza a los profesores)
         const services = {
             1: {
@@ -1556,13 +1751,11 @@
             },
             4: { 
                 title: "Speaking Club",
-                description: "Perfecciona tu pronunciación, entonación y comprensión auditiva en nuestro club semanal. ¡Únete a conversaciones dinámicas y mejora tu fluidez!",
+                description: "Perfecciona tu pronunciación, entonación y comprensión auditiva en nuestro club semanal. ¡Únete a conversaciones dinámicas y mejora tu fluidez! El Speaking Club ofrece sesiones enfocadas:", // MODIFICADO: Nueva descripción
                 // MODIFICADO: Solo se usa una imagen, se utiliza la URL que antes era "internalImage"
                 image: "https://images.pexels.com/photos/3862601/pexels-photo-3862601.jpeg?auto=compress&cs=tinysrgb&w=800", 
                 linkSpeaking: "URL_DEL_SPEAKING_CLUB_MEET", // **REEMPLAZA CON TU URL REAL**
                 buttonTextSpeaking: "Unirme al Speaking Club",
-                linkListening: "URL_DEL_LISTENING_PRACTICE", // **REEMPLAZA CON TU URL REAL**
-                buttonTextListening: "Sesión de Listening",
                 type: "speakingClub"
             }
         };
@@ -1744,10 +1937,8 @@
                     `;
                 } else if (service.type === "speakingClub") { // Nuevo tipo para Speaking Club
                     modalContentHTML += `
-                        <p>El Speaking & Listening Club ofrece sesiones enfocadas:</p>
                         <div class="speaking-club-buttons">
-                            <a href="${service.linkSpeaking}" target="_blank" class="btn-secondary">${service.buttonTextSpeaking}</a>
-                            <a href="${service.linkListening}" target="_blank" class="btn-secondary">${service.buttonTextListening}</a>
+                            <a href="${service.linkSpeaking}" target="_blank" class="btn">${service.buttonTextSpeaking}</a>
                         </div>
                         <p style="margin-top: 2rem;">¡No pierdas la oportunidad de practicar con hablantes de todo el mundo!</p>
                     `;
