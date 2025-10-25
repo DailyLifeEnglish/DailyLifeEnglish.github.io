@@ -671,6 +671,20 @@
             object-fit: cover;
             transition: var(--transition);
         }
+        
+        /* ===== INICIO DE LA MODIFICACIÓN: IMAGEN DE LOGO RESPONSIVE (TARJETA) ===== */
+        .service-card img.service-logo-image {
+            height: 250px; /* Mantiene la altura del grid para consistencia */
+            object-fit: contain; /* Asegura que el logo se vea completo */
+            padding: 1rem; /* Añade espacio alrededor del logo */
+            background-color: var(--card-bg); /* Fondo para que el logo resalte, especialmente en modo oscuro */
+        }
+        
+        .service-card:hover img.service-logo-image {
+            transform: scale(1.05); /* Ajusta el zoom del hover para que no sea tan agresivo */
+        }
+        /* ===== FIN DE LA MODIFICACIÓN ===== */
+
 
         .service-card:hover img {
             transform: scale(1.1);
@@ -831,6 +845,19 @@
             object-fit: cover;
             border-radius: var(--border-radius);
         }
+
+        /* ===== INICIO DE LA MODIFICACIÓN: IMAGEN DE LOGO RESPONSIVE (MODAL) ===== */
+        .modal-img.modal-logo-image {
+            height: auto; /* Altura automática para mantener proporción */
+            max-height: 250px; /* Altura máxima para que no sea muy grande */
+            width: auto; /* Ancho automático */
+            max-width: 100%; /* Límite de ancho */
+            object-fit: contain; /* Asegura que se vea completo */
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        /* ===== FIN DE LA MODIFICACIÓN ===== */
 
         /* Sección de contacto */
         .contact {
@@ -1525,13 +1552,12 @@
             <div class="services-grid">
                 
                 <div class="service-card" data-service-id="1">
-                    <img src="examenexterna.jpeg" alt="Examen de Diagnóstico">
+                    <img src="dk-efe-logo-hi.png" alt="Audio de clases" class="service-logo-image">
                     <div class="service-info">
-                        <h3>Examen de Diagnóstico</h3>
-                        <p>Evalúa tu nivel de inglés de forma gratuita y al instante.</p>
+                        <h3>Audio de clases</h3>
+                        <p>Accede a las grabaciones de nuestras clases.</p>
                     </div>
                 </div>
-                
                 <div class="service-card" data-service-id="2">
                     <img src="https://images.pexels.com/photos/5638732/pexels-photo-5638732.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Invitación a nuestro Blog">
                     <div class="service-info">
@@ -1689,14 +1715,14 @@
             }, 500); 
         });
 
+        // ===== INICIO DE LA MODIFICACIÓN JS (OBJETO DE SERVICIOS) =====
         const services = {
             1: {
-                title: "Examen de Diagnóstico Gratuito",
-                description: "Mide tus conocimientos actuales de inglés y descubre cuál es tu nivel según el Marco Común Europeo de Referencia (MCER). ¡Recibe resultados al instante!",
-                image: "https://images.pexels.com/photos/3184454/pexels-photo-3184454.jpeg?auto=compress&cs=tinysrgb&w=800",
-                link: "URL_DEL_EXAMEN_DE_DIAGNOSTICO",
-                buttonText: "¡Rendir la Prueba Ahora!",
-                type: "link"
+                title: "Audio de clases",
+                description: "Ingresa tu código de estudiante para acceder a las grabaciones de las clases.",
+                image: "dk-efe-logo-hi.png",
+                type: "authLink",
+                imageClass: "modal-logo-image" // Clase especial para la imagen del modal
             },
             2: {
                 title: "¡Visita Nuestro Blog!",
@@ -1750,6 +1776,7 @@
                 type: "speakingClub"
             }
         };
+        // ===== FIN DE LA MODIFICACIÓN JS (OBJETO DE SERVICIOS) =====
         
         const legalContent = {
             terms: `
@@ -1893,7 +1920,10 @@
                 const serviceId = card.getAttribute('data-service-id');
                 const service = services[serviceId];
                 
-                let modalContentHTML = `<img src="${service.image}" alt="${service.title}" class="modal-img" style="margin-bottom: 1rem;">`;
+                // ===== INICIO DE LA MODIFICACIÓN: CLASE DE IMAGEN DINÁMICA =====
+                const imgClass = service.imageClass || ''; // Obtiene la clase especial si existe
+                let modalContentHTML = `<img src="${service.image}" alt="${service.title}" class="modal-img ${imgClass}" style="margin-bottom: 1rem;">`;
+                // ===== FIN DE LA MODIFICACIÓN =====
 
                 modalContentHTML += `
                     <div>
@@ -1901,11 +1931,26 @@
                         <p>${service.description}</p>
                 `;
 
+                // ===== INICIO DE LA MODIFICACIÓN JS (LÓGICA DEL MODAL) =====
                 if (service.type === "link") {
                     modalContentHTML += `<a href="${service.link}" target="_blank" class="btn">${service.buttonText}</a>`;
+                
+                } else if (service.type === "authLink") {
+                    // Añadimos el formulario de autenticación
+                    modalContentHTML += `
+                        <div class="form-group" style="margin-top: 1.5rem;">
+                            <label for="authCode" style="text-align: left;">Código de Verificación</label>
+                            <input type="text" id="authCode" name="authCode" placeholder="Escribe tu código DLE..." style="width: 100%;"
+                                   oninput="document.getElementById('authError').style.display = 'none';">
+                            <p id="authError" style="color: red; font-size: 0.9rem; margin-top: 0.5rem; display: none; text-align: left;"></p>
+                        </div>
+                        <button id="validateAuthBtn" class="btn">Acceder</button>
+                    `;
+                
                 } else if (service.type === "table") {
                     modalContentHTML += service.table;
                     modalContentHTML += `<p style="margin-top: 1rem;">Para más detalles, contáctanos por WhatsApp.</p><a href="#contact" class="btn">Más Información</a>`;
+                
                 } else if (service.type === "speakingClub") {
                     modalContentHTML += `
                         <div class="speaking-club-buttons">
@@ -1917,6 +1962,29 @@
                 modalContentHTML += `</div>`;
                 
                 serviceModalBody.innerHTML = modalContentHTML;
+                
+                // Añadimos el listener para el botón de validación SI EXISTE
+                if (service.type === "authLink") {
+                    const validateBtn = document.getElementById('validateAuthBtn');
+                    validateBtn.addEventListener('click', () => {
+                        const codeInput = document.getElementById('authCode');
+                        const errorEl = document.getElementById('authError');
+                        const codeValue = codeInput.value.trim().toUpperCase(); // Convertimos a mayúsculas para ser flexible
+                        
+                        const validCodes = ["DLE001", "DLE002", "DLE003", "DLE004", "DLE005", "DLE006"];
+                        
+                        if (validCodes.includes(codeValue)) {
+                            // Código válido, redirigir
+                            window.open('https://www.dkefe.com/es', '_blank');
+                        } else {
+                            // Código inválido, mostrar error
+                            errorEl.textContent = 'Código incorrecto. Por favor, inténtalo de nuevo.';
+                            errorEl.style.display = 'block';
+                        }
+                    });
+                }
+                // ===== FIN DE LA MODIFICACIÓN JS (LÓGICA DEL MODAL) =====
+                
                 serviceModal.classList.add('visible');
                 document.body.style.overflow = 'hidden';
             });
