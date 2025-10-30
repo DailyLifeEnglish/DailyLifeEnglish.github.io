@@ -1147,21 +1147,8 @@
             text-decoration: none;
             font-size: 2rem;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            z-index: 100;
+            z-index: 900;
             transition: var(--transition);
-            animation: pulse-green 2s infinite;
-        }
-
-        @keyframes pulse-green {
-            0% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
-            }
-            70% {
-                box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-            }
         }
 
         .whatsapp-float:hover {
@@ -1257,95 +1244,71 @@
             .banner-slide h1 {
                 font-size: 2.8rem;
             }
+
             .banner-slide p {
                 font-size: 1.3rem;
             }
-            .level-card {
-                width: 100%;
-                max-width: 400px;
-            }
-        }
 
-        @media (max-width: 768px) {
-            .hamburger {
-                display: flex;
+            .level-card h3 {
+                font-size: 2rem;
             }
+
+            .level-card h4 {
+                font-size: 1.2rem;
+            }
+
             .nav-menu {
                 position: fixed;
                 top: 0;
                 right: -100%;
-                background-color: var(--header-bg);
                 width: 70%;
                 height: 100vh;
+                background-color: var(--header-bg);
                 flex-direction: column;
-                align-items: center;
                 justify-content: center;
-                transition: right 0.3s ease;
+                align-items: center;
+                padding-top: 5rem;
+                transition: right 0.3s ease-in-out;
                 box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
             }
+
             .nav-menu.active {
                 right: 0;
             }
+
             .nav-menu li {
                 margin: 1.5rem 0;
             }
-            .banner-slide h1 {
-                font-size: 2.2rem;
-            }
-            .banner-slide p {
-                font-size: 1.1rem;
-            }
-            .carousel-item img {
-                height: 300px;
-            }
-            .carousel-btn {
-                width: 40px;
-                height: 40px;
+
+            .nav-menu a {
                 font-size: 1.2rem;
+                color: var(--text-color);
             }
-            .legal-links {
-                flex-direction: column;
+
+            .hamburger {
+                display: flex;
             }
-            .legal-card-container {
-                padding: 2rem;
-            }
+
             .footer-content {
                 flex-direction: column;
             }
-        }
 
-        @media (max-width: 480px) {
-            .banner-slide h1 {
-                font-size: 1.8rem;
-            }
-            .banner-slide p {
-                font-size: 1rem;
-            }
-            .level-tag {
-                font-size: 1rem;
-                padding: 6px 15px;
-            }
-            .carousel-item img {
-                height: 250px;
-            }
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            .contact-container {
-                flex-direction: column;
-            }
             .legal-links {
                 flex-direction: column;
                 gap: 1rem;
             }
+
             .carousel-btn {
                 width: 35px;
                 height: 35px;
                 font-size: 1rem;
             }
+
             .carousel-btn.prev {
                 left: 10px;
             }
+
             .carousel-btn.next {
                 right: 10px;
             }
@@ -1353,6 +1316,7 @@
     </style>
 </head>
 <body>
+    <button id="addToHomeScreenButton">Instalar Aplicación</button>
     <div id="loading-overlay">
         <div class="loading-content">
             <img src="icono.jpeg" alt="Logo de la Institución" class="loading-logo">
@@ -1423,38 +1387,36 @@
             </div>
         </div>
         <div class="carousel-dots"></div>
-        <button class="carousel-btn prev">
-            <i class="fas fa-chevron-left"></i>
-        </button>
-        <button class="carousel-btn next">
-            <i class="fas fa-chevron-right"></i>
-        </button>
+        <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+        <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
     </section>
     <section class="info-section" id="about">
         <div class="container">
-            <h2>¿Por qué elegirnos?</h2>
+            <h2>¿Por Qué Elegir Daily Life English?</h2>
+            <p>Nos enfocamos en un aprendizaje práctico y real, preparándote para la vida diaria y profesional.</p>
             <div class="info-content">
                 <div class="info-card">
-                    <i class="fas fa-chalkboard-teacher"></i>
-                    <h3>Profesores Calificados</h3>
-                    <p>Nuestro equipo de profesores cuenta con certificación internacional y amplia experiencia en la enseñanza del inglés.</p>
-                </div>
-                <div class="info-card">
-                    <i class="fas fa-book-open"></i>
-                    <h3>Método Práctico</h3>
-                    <p>Enfocamos nuestra enseñanza en situaciones de la vida real para que puedas usar el inglés desde el primer día.</p>
-                </div>
-                <div class="info-card">
                     <i class="fas fa-users"></i>
-                    <h3>Grupos Reducidos</h3>
-                    <p>Mantenemos grupos pequeños para garantizar una atención personalizada y maximizar el aprendizaje.</p>
+                    <h3>Clases en Vivo y Grupos Reducidos</h3>
+                    <p>Interacción constante para un aprendizaje más efectivo y personalizado. Máximo 8 estudiantes por aula virtual.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-globe"></i>
+                    <h3>Enfoque Comunicativo</h3>
+                    <p>Priorizamos la fluidez y la pronunciación para que puedas comunicarte desde la primera clase.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-lock"></i>
+                    <h3>Material 100% Exclusivo y Seguro</h3>
+                    <p>Contenido creado por expertos, protegido con sistemas que evitan la copia y distribución no autorizada.</p>
                 </div>
             </div>
         </div>
     </section>
     <section class="levels" id="levels">
         <div class="container">
-            <h2>Nuestros Niveles de Inglés</h2>
+            <h2>Explora Nuestros Niveles</h2>
+            <p>Nuestros programas se alinean con el Marco Común Europeo de Referencia para las Lenguas (MCER).</p>
             <div class="levels-container">
                 <div class="level-card" data-level="A1" data-title="Principiante" data-modal-image="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-features='["Saludos y presentaciones básicas", "Vocabulario esencial (números, colores, familia)", "Estructuras gramaticales simples", "Comprensión de frases cotidianas", "Interacción simple con hablantes lentos"]'>
                     <img src="principiante.jpeg" alt="Nivel A1" class="level-card-img">
@@ -1497,31 +1459,27 @@
             <div class="carousel">
                 <div class="carousel-container">
                     <div class="carousel-item">
-                        <img src="pasarela1.jpeg" alt="Curso Básico - A1/A2">
+                        <img src="course1.jpeg" alt="Curso de inglés para negocios">
                         <div class="carousel-caption">
-                            <h3>Inglés Básico</h3>
-                            <p>Comienza desde cero y adquiere las bases del idioma para comunicarte en situaciones simples.</p>
+                            <h3>Inglés para Negocios y Finanzas</h3>
+                            <p>Desarrolla el vocabulario y las habilidades comunicativas esenciales para el mundo corporativo.</p>
+                            <a href="#contact-form" class="btn-secondary">Solicitar Info</a>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="portafilio 2.jpeg" alt="Curso Intermedio - B1">
+                        <img src="course2.jpeg" alt="Curso de preparación para exámenes">
                         <div class="carousel-caption">
-                            <h3>Inglés Intermedio</h3>
-                            <p>Mejora tu fluidez y amplía tu vocabulario para conversaciones más complejas.</p>
+                            <h3>Curso Intensivo TOEFL/IELTS</h3>
+                            <p>Preparación específica y simulacros para obtener la puntuación que necesitas en tu certificación.</p>
+                            <a href="#services" class="btn-secondary">Ver Simulacros</a>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="portafolio3.jpeg" alt="Curso Avanzado - B2">
+                        <img src="course3.jpeg" alt="Curso de conversación avanzada">
                         <div class="carousel-caption">
-                            <h3>Inglés Avanzado</h3>
-                            <p>Perfecciona tu dominio del idioma hasta alcanzar un nivel conversacional avanzado.</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://DailyLifeEnglish.github.io/pasarela 4.jpeg" alt="Curso Avanzado Alto - C1/C2">
-                        <div class="carousel-caption">
-                            <h3>Inglés Avanzado Alto</h3>
-                            <p>Perfecciona tu dominio del idioma hasta alcanzar un nivel cercano al nativo (C1/C2).</p>
+                            <h3>Conversación Avanzada y Debate</h3>
+                            <p>Clases enfocadas 100% en la fluidez, discusión de temas de actualidad y mejora de la expresión oral.</p>
+                            <a href="#services" class="btn-secondary">Ver Speaking Club</a>
                         </div>
                     </div>
                 </div>
@@ -1532,17 +1490,18 @@
     </section>
     <section class="services" id="services">
         <div class="container">
-            <h2>Nuestro Portafolio de Servicios</h2>
+            <h2>Servicios Complementarios</h2>
+            <p>Potencia tu aprendizaje con estas herramientas adicionales que ofrecemos a nuestros estudiantes.</p>
             <div class="services-grid">
                 <div class="service-card" data-service-id="1">
-                    <img src="dk-efe-logo-hi.png" alt="Audio de clases" class="service-logo-image">
+                    <img src="dk-efe-logo-hi.png" alt="Grabaciones y Audios de Clases" class="service-logo-image">
                     <div class="service-info">
-                        <h3>Audio de clases</h3>
-                        <p>Accede a audios y grabaciones de nuestras clases.</p>
+                        <h3>Grabaciones y Audios</h3>
+                        <p>Acceso 24/7 a todas las clases grabadas para repasar el contenido o recuperar una sesión.</p>
                     </div>
                 </div>
                 <div class="service-card" data-service-id="2">
-                    <img src="blog.jpeg" alt="Invitación a nuestro Blog">
+                    <img src="blog.jpeg" alt="Ir a nuestro Blog">
                     <div class="service-info">
                         <h3>Visita nuestro Blog</h3>
                         <p>Contenido educativo, consejos de estudio y recursos gratuitos.</p>
@@ -1592,7 +1551,33 @@
             </div>
         </div>
     </section>
-   
+    <section class="comments-section" id="comments">
+        <div class="container">
+            <div class="comments-title-container">
+                <h2 style="color: var(--primary-color);">Comentarios de Nuestros Estudiantes</h2>
+                <i class="fas fa-comments" style="font-size: 2rem; color: var(--level-secondary-color);"></i>
+            </div>
+            <div class="comments-container">
+                <div class="comment-form-container">
+                    <h3 style="margin-top: 0;">Deja tu Comentario</h3>
+                    <form id="commentForm">
+                        <div class="form-group">
+                            <label for="commentAuthor">Tu Nombre</label>
+                            <input type="text" id="commentAuthor" name="commentAuthor" placeholder="Tu nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="commentText">Tu Comentario</label>
+                            <textarea id="commentText" name="commentText" placeholder="Escribe tu opinión sobre nuestros cursos..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Publicar Comentario</button>
+                    </form>
+                </div>
+                <div class="comments-list" id="commentsList">
+                    <p id="no-comments" style="display: none;">Aún no hay comentarios. ¡Sé el primero en opinar!</p>
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="contact" id="contact">
         <div class="container">
             <h2>Nuestra Información de Contacto</h2>
@@ -1622,86 +1607,145 @@
             <div class="legal-card-container">
                 <p>Tu privacidad y seguridad son nuestra prioridad. Consulta nuestros términos y políticas:</p>
                 <div class="legal-links">
-                    <a href="terminos.html" target="_blank"><i class="fas fa-file-contract"></i>Términos y Condiciones</a>
-                    <a href="politica.html" target="_blank"><i class="fas fa-user-lock"></i>Política de Privacidad</a>
+                    <a href="#" data-modal-id="terms" class="btn-secondary"><i class="fas fa-file-contract"></i>Términos y Condiciones</a>
+                    <a href="#" data-modal-id="privacy" class="btn-secondary"><i class="fas fa-shield-alt"></i>Política de Privacidad</a>
                 </div>
             </div>
         </div>
     </section>
-    
-    <button id="addToHomeScreenButton">
-        ➕ Crear Acceso Directo en tu Pantalla
-    </button>
-    <a href="https://wa.me/593961177824" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="copyright">
-                    <p>&copy; 2024 Daily Life English. Todos los derechos reservados.</p>
+                    <p>&copy; 2025 Daily Life English. Todos los derechos reservados.</p>
                 </div>
                 <div class="social-icons">
-                    <a href="https://www.tiktok.com/@dailylifeenglish" target="_blank"><i class="fab fa-tiktok"></i></a>
-                    <a href="https://www.youtube.com/@DailyLifeEnglish" target="_blank"><i class="fab fa-youtube"></i></a>
-                    <a href="https://www.facebook.com/DailyLifeEnglish" target="_blank"><i class="fab fa-facebook"></i></a>
-                    <a href="https://www.instagram.com/dailylifeenglish" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@daily_life_english" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.youtube.com/@Daily_Life_English" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.facebook.com/DailyLifeEnglish" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/daily_life_english_/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
         </div>
     </footer>
+    
+    <a href="https://wa.me/593961177824" class="whatsapp-float" target="_blank" title="Contáctanos por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
-    <div id="levelModal" class="modal">
+    <div class="modal" id="levelModal">
         <div class="modal-content">
             <button class="close-modal">&times;</button>
             <div class="modal-body">
-                <img id="modal-image" class="modal-img" alt="Imagen del Nivel">
+                <img id="modal-level-image" src="" alt="Imagen del Nivel" class="modal-img">
                 <h2 id="modal-level-title"></h2>
-                <p id="modal-level-description"></p>
-                <h3>Características Clave:</h3>
+                <h3 id="modal-level-description" style="color: var(--text-color);"></h3>
+                <h3 style="color: var(--level-secondary-color); text-align: left; margin-top: 1rem;">Logros del Nivel:</h3>
                 <ul id="modal-features-list"></ul>
-                <a href="#contact-form" class="btn" onclick="closeModal()">¡Inscríbete Hoy!</a>
+                <a href="#contact-form" class="btn" onclick="closeModal()">¡Inscribirme Ahora!</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="serviceModal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <div class="modal-body">
+                <img id="service-modal-image" src="" alt="Imagen del Servicio" class="modal-img modal-logo-image">
+                <h2 id="service-modal-title"></h2>
+                <p id="service-modal-description"></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="termsModal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <div class="modal-body">
+                <h2 style="color: var(--primary-color);">Términos y Condiciones de Uso</h2>
+                <p><strong>Última Actualización: Octubre de 2025</strong></p>
+                
+                <h3 style="color: var(--secondary-color);">1. Aceptación de los Términos</h3>
+                <p>Al acceder y utilizar los servicios de Daily Life English (DLE), usted acepta estar sujeto a estos Términos y Condiciones de Uso. Si no está de acuerdo, no debe usar la plataforma.</p>
+                
+                <h3 style="color: var(--secondary-color);">2. Descripción del Servicio</h3>
+                <p>DLE proporciona clases de inglés online, acceso a materiales de estudio, Speaking Clubs, simulacros de examen y contenido educativo a través de nuestro Blog. El acceso a ciertos servicios (como clases en vivo o simulacros) puede requerir el pago de una tarifa, según se especifique.</p>
+
+                <h3 style="color: var(--secondary-color);">3. Propiedad Intelectual y Restricciones</h3>
+                <p>Todo el contenido de la plataforma (textos, imágenes, código fuente, grabaciones de clases) es propiedad de DLE. Se prohíbe estrictamente la copia, reproducción, distribución o captura no autorizada de dicho contenido.</p>
+                <ul>
+                    <li style="list-style-type: disc;">El código de la plataforma incluye medidas de seguridad para **restringir la selección de texto, el clic derecho y el acceso a herramientas de desarrollador**.</li>
+                    <li style="list-style-type: disc;">Los usuarios no deben intentar eludir estas medidas de seguridad.</li>
+                </ul>
+
+                <h3 style="color: var(--secondary-color);">4. Conducta del Usuario</h3>
+                <p>El usuario se compromete a utilizar la plataforma de manera responsable. Las interacciones en el formulario de contacto y la sección de comentarios deben ser respetuosas y pertinentes al tema.</p>
+                
+                <h3 style="color: var(--secondary-color);">5. Modificaciones</h3>
+                <p>DLE se reserva el derecho de modificar estos Términos en cualquier momento. La continuación del uso de la plataforma después de dichas modificaciones constituye la aceptación de los nuevos términos.</p>
             </div>
         </div>
     </div>
     
-    <div id="serviceModal" class="modal">
+    <div class="modal" id="privacyModal">
         <div class="modal-content">
             <button class="close-modal">&times;</button>
             <div class="modal-body">
-                <img id="service-modal-image" class="modal-img modal-logo-image" alt="Logo del Servicio">
-                <h2 id="service-modal-title"></h2>
-                <p id="service-modal-description"></p>
-                </div>
+                <h2 style="color: var(--primary-color);">Política de Privacidad</h2>
+                <p><strong>Última Actualización: Octubre de 2025</strong></p>
+                
+                <h3 style="color: var(--secondary-color);">1. Recolección de Información</h3>
+                <p>Recopilamos información proporcionada directamente por usted al utilizar nuestros servicios:</p>
+                <ul>
+                    <li style="list-style-type: disc;">**Formulario de Contacto:** Recopilamos su nombre, correo electrónico, asunto y mensaje.</li>
+                    <li style="list-style-type: disc;">**Comentarios:** Recopilamos el nombre y el texto del comentario para mostrarlo públicamente en la sección de comentarios.</li>
+                </ul>
+
+                <h3 style="color: var(--secondary-color);">2. Uso de la Información</h3>
+                <p>La información recopilada se utiliza exclusivamente para:</p>
+                <ul>
+                    <li style="list-style-type: disc;">Responder a sus consultas y proporcionar soporte.</li>
+                    <li style="list-style-type: disc;">Mejorar nuestros servicios y la experiencia del usuario.</li>
+                    <li style="list-style-type: disc;">Moderar y publicar los comentarios en el sitio web.</li>
+                </ul>
+
+                <h3 style="color: var(--secondary-color);">3. Almacenamiento Local (Local Storage/Cookies)</h3>
+                <p>El sitio web utiliza el almacenamiento local de su navegador para la funcionalidad esencial:</p>
+                <ul>
+                    <li style="list-style-type: disc;">**Modo Oscuro:** Almacenamos su preferencia de tema para recordarla en futuras visitas.</li>
+                    <li style="list-style-type: disc;">**Comentarios:** Los comentarios son almacenados en su navegador (Local Storage) antes de ser publicados.</li>
+                    <li style="list-style-type: disc;">**No utilizamos cookies de seguimiento de terceros** para publicidad.</li>
+                </ul>
+                
+                <h3 style="color: var(--secondary-color);">4. Seguridad de los Datos</h3>
+                <p>Implementamos medidas de seguridad (como las restricciones de copia y captura) para proteger la integridad de la plataforma y el material educativo, pero no podemos garantizar la seguridad absoluta de la información transmitida por Internet.</p>
+                
+                <h3 style="color: var(--secondary-color);">5. Enlaces a Terceros</h3>
+                <p>Nuestro sitio incluye enlaces a plataformas de redes sociales (TikTok, YouTube, etc.) y nuestro Blog externo. Estas plataformas tienen sus propias políticas de privacidad que debe revisar.</p>
+            </div>
         </div>
     </div>
-    
-
     <script>
+        // INICIO DE CÓDIGO AÑADIDO: SEGURIDAD Y DETECCIÓN MÓVIL //
         // =========================================================
-        // INICIO DE CÓDIGO AÑADIDO: SEGURIDAD Y DETECCIÓN MÓVIL
-        // =========================================================
-
         let deferredPrompt;
         const a2hsButton = document.getElementById('addToHomeScreenButton');
-
+        
         // BLOQUEO A: Bloquear Clic Derecho (Menú Contextual)
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
             console.log('Seguridad: Clic derecho/Menú contextual bloqueado.');
         });
-
+        
         // BLOQUEO B: Bloquear Teclas de Función (F1 a F12) y PrintScreen
         document.addEventListener('keydown', function(e) {
             const keyCode = e.keyCode;
-            
             // Key codes para F1 a F12 son 112 a 123
             if (keyCode >= 112 && keyCode <= 123) {
                 e.preventDefault();
                 console.log(`Seguridad: Tecla F${keyCode - 111} bloqueada.`);
                 return false;
             }
-            
             // Bloquear PrintScreen (Tecla 44) en la medida de lo posible
             if (keyCode === 44) { 
                 // Esto bloquea la acción de la tecla, pero el OS puede tener shortcuts propios
@@ -1709,58 +1753,55 @@
                 console.log('Seguridad: Intento de PrintScreen detectado y bloqueado (parcialmente).');
                 return false;
             }
-            
             // Bloquear combinaciones comunes para abrir Dev Tools (Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U)
-            if ((e.ctrlKey || e.metaKey) && (keyCode === 73 || keyCode === 74 || keyCode === 85)) { 
+            if ((e.ctrlKey || e.metaKey) && (keyCode === 73 || keyCode === 74 || keyCode === 85)) {
                 e.preventDefault();
                 console.log('Seguridad: Intento de abrir herramientas de desarrollador bloqueado.');
                 return false;
             }
         });
-        
+
         // Función para detectar si es un dispositivo móvil (smartphone o tablet)
         function isMobileDevice() {
             const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            
             // Criterios comunes de detección móvil
             if (/android|iphone|ipad|ipod|blackberry|windows phone/i.test(userAgent)) {
                 return true;
             }
-
             // Detección táctil y tamaño de pantalla pequeño (complementario, para tablets)
             if ('maxTouchPoints' in navigator && navigator.maxTouchPoints > 0 && Math.min(window.screen.width, window.screen.height) < 1024) {
                 return true;
             }
-            
             return false;
         }
 
-
         // Solo ejecutar la lógica A2HS si se detecta un dispositivo móvil
         if (isMobileDevice()) {
-            
             console.log('Dispositivo móvil detectado. Activando lógica A2HS.');
             
             // A2HS: Captura el evento del navegador que permite mostrar el prompt de instalación.
             window.addEventListener('beforeinstallprompt', (e) => {
                 // Previene que el navegador muestre el prompt automáticamente (para usar nuestro botón)
                 e.preventDefault();
-                // Guarda el evento para poder dispararlo después al hacer clic en el botón
+                // Guarda el evento para poder dispararlo más tarde
                 deferredPrompt = e;
-                // Muestra el botón personalizado
-                a2hsButton.style.display = 'block'; 
-                console.log('Evento beforeinstallprompt capturado. Botón de acceso directo visible.');
+                // Muestra nuestro propio botón para instalar
+                a2hsButton.style.display = 'block';
+                console.log('Evento beforeinstallprompt capturado. Botón A2HS visible.');
             });
 
-            // A2HS: Maneja el clic en el botón personalizado
+            // Lógica para el clic de nuestro botón de instalación
             a2hsButton.addEventListener('click', async () => {
+                a2hsButton.style.display = 'none'; // Oculta el botón inmediatamente
+                
                 if (deferredPrompt) {
-                    // Oculta el botón
-                    a2hsButton.style.display = 'none';
-                    // Muestra el diálogo de instalación nativo del navegador/sistema
+                    console.log('Disparando el prompt de instalación...');
+                    // Muestra el prompt de instalación del navegador
                     deferredPrompt.prompt();
-                    // Espera a la respuesta del usuario al prompt
+                    
+                    // Espera la respuesta del usuario al prompt
                     const { outcome } = await deferredPrompt.userChoice;
+                    
                     console.log(`Respuesta del usuario al prompt: ${outcome}`);
                     
                     // Si el usuario instaló, el deferredPrompt ya no es necesario
@@ -1777,26 +1818,22 @@
                     alert('Para crear el acceso directo, por favor usa la opción "Añadir a la pantalla de inicio" del menú de su navegador si está disponible.');
                 }
             });
-            
+
             // Opcional: Ocultar el botón si la app ya está instalada
             window.addEventListener('appinstalled', () => {
                 a2hsButton.style.display = 'none';
                 console.log('La aplicación fue instalada, ocultando botón A2HS.');
             });
-            
+
         } else {
             console.log('Dispositivo de escritorio detectado. Lógica A2HS y botón no se mostrarán.');
         }
-
         // =========================================================
-        // FIN DE CÓDIGO AÑADIDO: SEGURIDAD Y DETECCIÓN MÓVIL
+        // FIN DE CÓDIGO AÑADIDO: SEGURIDAD Y DETECCIÓN MÓVIL //
         // =========================================================
 
-        
-        
+
         // CÓDIGO JS ORIGINAL DEL ARCHIVO DEL USUARIO (EMPIEZA AQUÍ)
-        
-        
         // Lógica de la barra de carga
         const loadingOverlay = document.getElementById('loading-overlay');
         const loadingBar = document.getElementById('loadingBar');
@@ -1815,7 +1852,7 @@
                 }, 500);
             }
         }
-
+        
         // Simula la carga
         const loadingInterval = setInterval(updateLoadingBar, 250);
         document.body.style.overflow = 'hidden'; // Bloquear scroll durante la carga
@@ -1823,7 +1860,6 @@
         // Alternar modo oscuro
         const themeToggle = document.getElementById('themeToggle');
         const body = document.body;
-
         themeToggle.addEventListener('click', () => {
             body.classList.toggle('dark-mode');
             const isDarkMode = body.classList.contains('dark-mode');
@@ -1840,7 +1876,6 @@
         // Hamburguesa y menú de navegación
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('navMenu');
-
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
@@ -1849,14 +1884,14 @@
         // Cerrar menú al hacer clic en un enlace (en móvil)
         document.querySelectorAll('#navMenu a').forEach(link => {
             link.addEventListener('click', () => {
-                if (window.innerWidth <= 768) {
+                if (window.innerWidth <= 968) {
                     hamburger.classList.remove('active');
                     navMenu.classList.remove('active');
                 }
             });
         });
 
-        // Carrusel Banner
+        // Carrusel Banner Principal
         const slides = document.querySelectorAll('.banner-slide');
         const dotsContainer = document.querySelector('.carousel-dots');
         const prevButton = document.querySelector('.carousel-btn.prev');
@@ -1881,7 +1916,7 @@
         function showSlide(index) {
             slides.forEach(slide => slide.classList.remove('active'));
             dots.forEach(dot => dot.classList.remove('active'));
-
+            
             slides[index].classList.add('active');
             dots[index].classList.add('active');
             currentSlide = index;
@@ -1918,10 +1953,8 @@
 
         startInterval();
 
-
         // Observador de Intersección para animaciones de secciones
         const sections = document.querySelectorAll('section');
-
         const observerOptions = {
             root: null,
             rootMargin: '0px',
@@ -1940,7 +1973,6 @@
         sections.forEach(section => {
             observer.observe(section);
         });
-
 
         // Carrusel Cursos
         const courseCarousel = document.querySelector('.courses .carousel');
@@ -1972,7 +2004,7 @@
             }
             updateCourseCarousel();
         });
-        
+
         // Lógica de Modales (Niveles)
         const levelCards = document.querySelectorAll('.level-card');
         const modal = document.getElementById('levelModal');
@@ -1980,21 +2012,21 @@
         const modalTitle = document.getElementById('modal-level-title');
         const modalDescription = document.getElementById('modal-level-description');
         const modalFeaturesList = document.getElementById('modal-features-list');
-        const modalImage = document.getElementById('modal-image');
+        const modalImage = document.getElementById('modal-level-image');
 
-        function openModal(level, title, image, features) {
-            modalTitle.textContent = `Nivel ${level}: ${title}`;
-            // Puedes personalizar la descripción aquí o dejarla genérica.
-            modalDescription.textContent = `Detalles del nivel ${title} (${level}) en nuestro programa Daily Life English.`;
+        function openModal(level, title, image, featuresJson) {
+            modalTitle.textContent = `${level} - ${title}`;
+            modalDescription.textContent = `En este nivel alcanzarás la capacidad de...`; // Descripción genérica para el modal
             modalImage.src = image;
             
             modalFeaturesList.innerHTML = '';
-            JSON.parse(features).forEach(feature => {
+            const features = JSON.parse(featuresJson);
+            features.forEach(feature => {
                 const li = document.createElement('li');
                 li.textContent = feature;
                 modalFeaturesList.appendChild(li);
             });
-
+            
             modal.classList.add('visible');
             document.body.style.overflow = 'hidden';
         }
@@ -2015,12 +2047,13 @@
         });
 
         closeModalBtn.addEventListener('click', closeModal);
+
         window.addEventListener('click', (event) => {
             if (event.target === modal) {
                 closeModal();
             }
         });
-        
+
         // Lógica de Modales (Servicios)
         const serviceCards = document.querySelectorAll('.service-card');
         const serviceModal = document.getElementById('serviceModal');
@@ -2034,7 +2067,7 @@
             // Limpiar contenido previo específico
             const existingSpecificContent = serviceModalBody.querySelectorAll('.specific-content');
             existingSpecificContent.forEach(el => el.remove());
-            
+
             let title, description, image, specificContentHTML = '';
 
             // Definir el contenido de cada servicio
@@ -2050,7 +2083,7 @@
                                 <li>Audios y transcripciones para práctica auditiva.</li>
                                 <li>Disponible 24/7 en nuestra plataforma.</li>
                             </ul>
-                            <a href="#contact-form" class="btn" onclick="closeModal()">Solicitar Acceso</a>
+                            <a href="#contact-form" class="btn" onclick="closeServiceModal()">Solicitar Acceso</a>
                         </div>
                     `;
                     break;
@@ -2071,29 +2104,26 @@
                     image = 'speaking club.jpeg';
                     specificContentHTML = `
                         <div class="specific-content">
-                            <p style="font-weight: 600;">Horarios disponibles para estudiantes activos:</p>
                             <table class="meet-table">
                                 <thead>
                                     <tr>
                                         <th>Día</th>
                                         <th>Hora (GMT-5)</th>
-                                        <th>Link</th>
+                                        <th>Plataforma</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>Miércoles</td>
-                                        <td>18:00 - 19:00</td>
-                                        <td><a href="URL_DEL_MEET_MIERCOLES" target="_blank">Unirse (Zoom/Meet)</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Viernes</td>
                                         <td>19:00 - 20:00</td>
-                                        <td><a href="URL_DEL_MEET_VIERNES" target="_blank">Unirse (Zoom/Meet)</a></td>
+                                        <td>Google Meet</td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <p style="margin-top: 1rem; font-style: italic;">*Acceso exclusivo para alumnos matriculados.</p>
+                            <div class="speaking-club-buttons">
+                                <a href="https://meet.google.com/xyz-abcd-efg" target="_blank" class="btn" style="background-color: #34A853;">Unirse a Meet</a>
+                                <a href="https://t.me/DailyLifeEnglish" target="_blank" class="btn-secondary" style="background-color: #2AABEE;">Unirse a Telegram</a>
+                            </div>
                         </div>
                     `;
                     break;
@@ -2102,7 +2132,7 @@
                     description = 'Prepara tu examen TOEFL, IELTS o cualquier otra certificación con simulacros completos que replican las condiciones reales de la prueba, enfocados en mejorar tus puntos débiles.';
                     image = 'simulacro.jpeg';
                     specificContentHTML = `
-                         <div class="specific-content">
+                        <div class="specific-content">
                             <ul style="list-style-type: disc; padding-left: 20px; text-align: left;">
                                 <li>Evaluación de las 4 habilidades (Reading, Writing, Listening, Speaking).</li>
                                 <li>Reporte de puntaje detallado por sección.</li>
@@ -2122,7 +2152,7 @@
             serviceModalDescription.textContent = description;
             serviceModalImage.src = image;
             serviceModalBody.insertAdjacentHTML('beforeend', specificContentHTML);
-
+            
             serviceModal.classList.add('visible');
             document.body.style.overflow = 'hidden';
         }
@@ -2140,51 +2170,45 @@
         });
 
         closeServiceModalBtn.addEventListener('click', closeServiceModal);
+
         window.addEventListener('click', (event) => {
             if (event.target === serviceModal) {
                 closeServiceModal();
             }
         });
 
-        // Lógica de Formulario de Contacto (Simulada)
+        // Lógica de Formularios de Contacto
         const contactForm = document.getElementById('contactForm');
         const contactFormStatus = document.getElementById('contact-form-status');
 
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            const name = document.getElementById('name').value;
-            
-            // Simulación de envío exitoso
             contactFormStatus.style.display = 'block';
-            contactFormStatus.style.color = 'var(--primary-color)';
-            contactFormStatus.textContent = `¡Gracias, ${name}! Tu mensaje ha sido enviado. Te contactaremos pronto.`;
+            contactFormStatus.textContent = 'Enviando mensaje...';
+            contactFormStatus.style.color = 'var(--text-color)';
             
-            contactForm.reset();
-            
-            // Ocultar el estado después de 5 segundos
+            // Simulación de envío de datos (en un entorno real aquí iría la llamada a un servidor)
             setTimeout(() => {
-                contactFormStatus.style.display = 'none';
-            }, 5000);
+                // Simulación de éxito
+                contactFormStatus.textContent = '✅ ¡Mensaje enviado con éxito! Nos pondremos en contacto contigo pronto.';
+                contactFormStatus.style.color = '#10B981'; // Color verde
+                contactForm.reset();
+            }, 2000); 
         });
 
-        // Lógica de Comentarios
-        if (typeof localStorage !== 'undefined') {
-            const commentForm = document.getElementById('commentForm');
-            const commentAuthorInput = document.getElementById('comment-author');
-            const commentTextInput = document.getElementById('comment-text');
-            const commentsList = document.getElementById('comments-list');
-            const noCommentsMessage = document.getElementById('no-comments');
-            
+        // Lógica de Comentarios (Local Storage)
+        const commentForm = document.getElementById('commentForm');
+        const commentAuthorInput = document.getElementById('commentAuthor');
+        const commentTextInput = document.getElementById('commentText');
+        const commentsList = document.getElementById('commentsList');
+        const noComments = document.getElementById('no-comments');
+
+        if (commentForm) {
             function loadComments() {
-                commentsList.innerHTML = '';
                 const comments = JSON.parse(localStorage.getItem('dailyLifeEnglishComments')) || [];
-                
-                if (comments.length === 0) {
-                    noCommentsMessage.style.display = 'block';
-                } else {
-                    noCommentsMessage.style.display = 'none';
-                }
-                
+                commentsList.innerHTML = ''; // Limpiar lista actual
+                noComments.style.display = comments.length === 0 ? 'block' : 'none';
+
                 comments.forEach(comment => {
                     const commentElement = document.createElement('div');
                     commentElement.classList.add('comment-card');
@@ -2216,6 +2240,52 @@
             document.addEventListener('DOMContentLoaded', loadComments);
         }
 
+        // INICIO DE CÓDIGO AÑADIDO: LÓGICA PARA MODALES LEGALES
+        // =========================================================
+        const legalLinks = document.querySelectorAll('.legal-links a');
+        const termsModal = document.getElementById('termsModal');
+        const privacyModal = document.getElementById('privacyModal');
+
+        function openLegalModal(modalElement) {
+            modalElement.classList.add('visible');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLegalModal(modalElement) {
+            modalElement.classList.remove('visible');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Configurar el cierre con el botón (X) y el clic fuera
+        [termsModal, privacyModal].forEach(modal => {
+            if (modal) {
+                // Cierre con el botón (X)
+                modal.querySelector('.close-modal').addEventListener('click', () => closeLegalModal(modal));
+                
+                // Cierre haciendo clic fuera del modal
+                window.addEventListener('click', (event) => {
+                    if (event.target === modal) {
+                        closeLegalModal(modal);
+                    }
+                });
+            }
+        });
+
+        // Configurar los enlaces para abrir el modal correspondiente
+        legalLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const modalId = link.getAttribute('data-modal-id');
+                if (modalId === 'terms') {
+                    openLegalModal(termsModal);
+                } else if (modalId === 'privacy') {
+                    openLegalModal(privacyModal);
+                }
+            });
+        });
+        // =========================================================
+        // FIN DE CÓDIGO AÑADIDO: LÓGICA PARA MODALES LEGALES
+        
     </script>
 </body>
 </html>
