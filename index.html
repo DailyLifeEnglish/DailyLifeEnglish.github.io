@@ -672,7 +672,7 @@
             transition: var(--transition);
         }
         
-        /* ===== INICIO DE LA MODIFICACIÓN: IMAGEN DE LOGO RESPONSIVE (TARJETA) ===== */
+        /* ===== IMAGEN DE LOGO RESPONSIVE (TARJETA) ===== */
         .service-card img.service-logo-image {
             height: 250px; /* Mantiene la altura del grid para consistencia */
             object-fit: contain; /* Asegura que el logo se vea completo */
@@ -846,7 +846,7 @@
             border-radius: var(--border-radius);
         }
 
-        /* ===== INICIO DE LA MODIFICACIÓN: IMAGEN DE LOGO RESPONSIVE (MODAL) ===== */
+        /* ===== IMAGEN DE LOGO RESPONSIVE (MODAL) ===== */
         .modal-img.modal-logo-image {
             height: auto; /* Altura automática para mantener proporción */
             max-height: 250px; /* Altura máxima para que no sea muy grande */
@@ -1032,7 +1032,7 @@
             border-radius: var(--border-radius);
         }
 
-        /* ===== INICIO DE LA MODIFICACIÓN: SECCIÓN LEGAL Y FOOTER CON NUEVOS FONDOS ===== */
+        /* ===== SECCIÓN LEGAL Y FOOTER CON NUEVOS FONDOS ===== */
         .legal {
             text-align: center;
             padding: 5rem 0;
@@ -1126,56 +1126,87 @@
                 box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
             }
         }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1);
+        
+        /* ===== INICIO DE LA MODIFICACIÓN: MARCA DE CLASES EN VIVO (ROJO) Y ANIMACIÓN DE MOVIMIENTO ===== */
+        .live-tag {
+            display: inline-block;
+            background-color: #dc3545; /* Rojo de Bootstrap */
+            color: white;
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            animation: pulse-live 1.8s infinite alternate; /* Animación de movimiento y brillo */
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
+
+        @keyframes pulse-live {
+            0% {
+                opacity: 0.8;
+                transform: scale(1) translateX(-2px); /* Ligeramente a la izquierda */
+                box-shadow: 0 0 5px #dc3545;
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.03) translateX(2px); /* Se agranda y va a la derecha */
+                box-shadow: 0 0 15px rgba(220, 53, 69, 0.8); /* Efecto de brillo más fuerte */
+            }
+            100% {
+                opacity: 0.8;
+                transform: scale(1) translateX(-2px); /* Vuelve y se encoje un poco */
+                box-shadow: 0 0 5px #dc3545;
+            }
+        }
+        /* ===== FIN DE LA MODIFICACIÓN: MARCA DE CLASES EN VIVO (ROJO) Y ANIMACIÓN DE MOVIMIENTO ===== */
+
 
         /* Footer */
         footer {
             background-color: var(--footer-bg);
             color: var(--footer-text);
-            padding: 3rem 0 1rem;
-            border-top: 1px solid var(--input-border); /* Borde sutil para separar */
+            padding: 1.5rem 0;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--input-border);
         }
-        /* ===== FIN DE LA MODIFICACIÓN ===== */
 
         .footer-content {
             display: flex;
-            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 2rem;
-        }
-
-        .copyright {
-            flex: 1 1 300px;
-            text-align: center;
-            margin-bottom: 1rem;
+            flex-wrap: wrap;
         }
 
         .social-icons {
-            flex: 1 1 300px;
-            text-align: center;
+            display: flex;
+            gap: 1.5rem;
         }
 
         .social-icons a {
+            color: var(--footer-text);
             font-size: 1.5rem;
-            margin: 0 0.7rem;
             transition: var(--transition);
-            display: inline-block;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .social-icons a:hover {
-            transform: translateY(-5px);
+            transform: scale(1.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
-        
+
         .social-icons .fa-tiktok {
             color: #000;
-            background-color: white;
-            border-radius: 50%;
-            padding: 0.15em;
         }
+
         .social-icons a:hover .fa-tiktok {
             color: #000;
             text-shadow: 0 0 8px #00f7ef, 0 0 10px #fe2c55;
@@ -1185,6 +1216,7 @@
         .social-icons .fa-youtube {
             color: #FF0000;
         }
+
         .social-icons a:hover .fa-youtube {
             color: #FF0000;
             text-shadow: 0 0 10px #FF0000;
@@ -1193,6 +1225,7 @@
         .social-icons .fa-facebook {
             color: #1877F2;
         }
+
         .social-icons a:hover .fa-facebook {
             color: #1877F2;
             text-shadow: 0 0 10px #1877F2;
@@ -1211,17 +1244,15 @@
         .social-icons a:hover .fa-instagram {
             text-shadow: 0 0 5px #fdf497, 0 0 10px #d6249f;
         }
-        
+
         /* Responsive */
         @media (max-width: 968px) {
             .banner-slide h1 {
                 font-size: 2.8rem;
             }
-            
             .banner-slide p {
                 font-size: 1.3rem;
             }
-            
             .level-card {
                 width: 100%;
                 max-width: 400px;
@@ -1232,7 +1263,6 @@
             .hamburger {
                 display: flex;
             }
-
             .nav-menu {
                 position: fixed;
                 top: 0;
@@ -1246,41 +1276,32 @@
                 transition: right 0.3s ease;
                 box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
             }
-
             .nav-menu.active {
                 right: 0;
             }
-
             .nav-menu li {
                 margin: 1.5rem 0;
             }
-
             .banner-slide h1 {
                 font-size: 2.2rem;
             }
-
             .banner-slide p {
                 font-size: 1.1rem;
             }
-            
             .carousel-item img {
-                height: 300px; 
+                height: 300px;
             }
-            
             .carousel-btn {
                 width: 40px;
                 height: 40px;
                 font-size: 1.2rem;
             }
-            
             .legal-links {
-                flex-direction: column; 
+                flex-direction: column;
             }
-            
             .legal-card-container {
                 padding: 2rem;
             }
-            
             .footer-content {
                 flex-direction: column;
             }
@@ -1290,82 +1311,61 @@
             .banner-slide h1 {
                 font-size: 1.8rem;
             }
-
             .banner-slide p {
                 font-size: 1rem;
             }
-            
             .level-tag {
                 font-size: 1rem;
                 padding: 6px 15px;
             }
-            
-            .carousel-item img {
-                height: 250px; 
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+                bottom: 1rem;
+                right: 1rem;
             }
-            
-            .services-grid {
-                grid-template-columns: 1fr;
+            .modal-content {
+                padding: 1.5rem;
             }
-            
-            .contact-container {
-                flex-direction: column;
-            }
-            
-            .legal-links {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .carousel-btn {
-                width: 35px;
-                height: 35px;
-                font-size: 1rem;
-            }
-            
-            .carousel-btn.prev {
-                left: 10px;
-            }
-            
-            .carousel-btn.next {
-                right: 10px;
+            .footer-content .copyright {
+                margin-bottom: 1rem;
             }
         }
     </style>
 </head>
 <body>
+    
     <div id="loading-overlay">
         <div class="loading-content">
-            <img src="icono.jpeg" alt="Logo de la Institución" class="loading-logo">
-            <p>Cargando...</p>
+            <img src="icono.jpeg" alt="Logo Daily Life English" class="loading-logo">
+            <h2>Cargando Daily Life English...</h2>
+            <p>La inmersión comienza ahora.</p>
             <div class="loading-bar-container">
                 <div class="loading-bar" id="loadingBar"></div>
             </div>
         </div>
     </div>
+
     <header>
         <div class="container nav-container">
-            <a href="#" class="logo">
-                <i class="fas fa-language"></i>
-                <span>Daily Life English</span>
+            <a href="#home" class="logo">
+                <i class="fas fa-globe-americas"></i>
+                Daily Life English
             </a>
-            
             <button class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-            
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#home"><i class="fas fa-home"></i>Inicio</a></li>
                 <li><a href="#about"><i class="fas fa-info-circle"></i>Nosotros</a></li>
-                <li><a href="#levels"><i class="fas fa-layer-group"></i>Niveles</a></li>
-                <li><a href="#courses"><i class="fas fa-graduation-cap"></i>Cursos</a></li>
+                <li><a href="#levels"><i class="fas fa-graduation-cap"></i>Niveles</a></li>
                 <li><a href="#services"><i class="fas fa-briefcase"></i>Servicios</a></li>
                 <li><a href="#contact-form"><i class="fas fa-envelope"></i>Enviar mensaje</a></li>
                 <li><a href="#contact"><i class="fas fa-phone-alt"></i>Contacto</a></li>
             </ul>
-            
             <button class="theme-toggle" id="themeToggle">
                 <i class="fas fa-moon"></i>
             </button>
@@ -1382,7 +1382,6 @@
                     <a href="#levels" class="btn">Descubre Más</a>
                 </div>
             </div>
-            
             <div class="banner-slide" style="background-image: url('2.jpeg');">
                 <div class="slide-content">
                     <span class="level-tag">Nivel A2</span>
@@ -1391,7 +1390,6 @@
                     <a href="#levels" class="btn">Descubre Más</a>
                 </div>
             </div>
-            
             <div class="banner-slide" style="background-image: url('3.jpeg');">
                 <div class="slide-content">
                     <span class="level-tag">Nivel B1</span>
@@ -1400,7 +1398,7 @@
                     <a href="#levels" class="btn">Descubre Más</a>
                 </div>
             </div>
-              <div class="banner-slide" style="background-image: url('4.jpeg');">
+            <div class="banner-slide" style="background-image: url('4.jpeg');">
                 <div class="slide-content">
                     <span class="level-tag">Nivel B2</span>
                     <h1>Inglés Intermedio Alto</h1>
@@ -1409,9 +1407,7 @@
                 </div>
             </div>
         </div>
-        
         <div class="carousel-dots"></div>
-        
         <button class="carousel-btn prev">
             <i class="fas fa-chevron-left"></i>
         </button>
@@ -1448,10 +1444,10 @@
             <h2>Nuestros Niveles de Inglés</h2>
             <div class="levels-container">
                 <div class="level-card" 
-                     data-level="A1"
-                     data-title="Principiante"
+                     data-level="A1" 
+                     data-title="Principiante" 
                      data-modal-image="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                     data-features='["Saludos y presentaciones básicas", "Vocabulario esencial (números, colores, familia)", "Estructuras gramaticales simples", "Comprensión de frases cotidianas", "Interacción simple con hablantes lentos"]'>
+                     data-features='["Introducción al alfabeto y fonética", "Vocabulario básico de la vida cotidiana", "Construcción de frases sencillas", "Presentación personal y saludos"]'>
                     <img src="principiante.jpeg" alt="Nivel A1" class="level-card-img">
                     <div class="level-card-content">
                         <h3>A1</h3>
@@ -1459,40 +1455,37 @@
                         <p>Ver más detalles</p>
                     </div>
                 </div>
-                
-                <div class="level-card"
-                     data-level="A2"
-                     data-title="Elemental"
-                     data-modal-image="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                     data-features='["Descripción de personas y lugares", "Conversaciones sobre temas familiares", "Comprensión de textos cortos y simples", "Expresión de necesidades inmediatas", "Uso de tiempos verbales básicos"]'>
-                     <img src="elemental.jpeg" alt="Nivel A2" class="level-card-img">
-                     <div class="level-card-content">
+                <div class="level-card" 
+                     data-level="A2" 
+                     data-title="Elemental" 
+                     data-modal-image="https://images.unsplash.com/photo-1546410531-bb4f3c73950d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                     data-features='["Descripción de rutinas y experiencias pasadas", "Intercambio de información sobre temas familiares", "Uso de estructuras gramaticales comunes", "Comunicación en viajes y compras"]'>
+                    <img src="elemental.jpeg" alt="Nivel A2" class="level-card-img">
+                    <div class="level-card-content">
                         <h3>A2</h3>
                         <h4>Elemental</h4>
                         <p>Ver más detalles</p>
                     </div>
                 </div>
-                
-                <div class="level-card"
-                     data-level="B1"
-                     data-title="Intermedio"
-                     data-modal-image="https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                     data-features='["Manejo de situaciones al viajar", "Descripción de experiencias y eventos", "Expresión de opiniones y planes", "Comprensión de textos más complejos", "Conversaciones fluidas sobre temas diversos"]'>
-                     <img src="intermedio.jpeg" alt="Nivel B1" class="level-card-img">
-                     <div class="level-card-content">
+                <div class="level-card" 
+                     data-level="B1" 
+                     data-title="Intermedio" 
+                     data-modal-image="https://images.unsplash.com/photo-1552581234-26160f608093?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                     data-features='["Redacción de textos personales y cartas", "Comprensión de noticias y temas de interés general", "Participación en debates y discusiones", "Expresión de opiniones y deseos con claridad", "Manejo de tiempos verbales más complejos", "Conversaciones fluidas sobre temas diversos"]'>
+                    <img src="intermedio.jpeg" alt="Nivel B1" class="level-card-img">
+                    <div class="level-card-content">
                         <h3>B1</h3>
                         <h4>Intermedio</h4>
                         <p>Ver más detalles</p>
                     </div>
                 </div>
-
-                <div class="level-card"
-                     data-level="B2"
-                     data-title="Intermedio Alto"
+                <div class="level-card" 
+                     data-level="B2" 
+                     data-title="Intermedio Alto" 
                      data-modal-image="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                      data-features='["Comprensión de ideas principales en textos complejos", "Interacción con hablantes nativos con fluidez", "Producción de textos claros y detallados", "Defensa de un punto de vista sobre temas generales", "Uso de un amplio rango de vocabulario y estructuras"]'>
-                     <img src="intermedio alto.jpeg" alt="Nivel B2" class="level-card-img">
-                     <div class="level-card-content">
+                    <img src="intermedio alto.jpeg" alt="Nivel B2" class="level-card-img">
+                    <div class="level-card-content">
                         <h3>B2</h3>
                         <h4>Intermedio Alto</h4>
                         <p>Ver más detalles</p>
@@ -1507,7 +1500,6 @@
             <h2>Nuestros Cursos</h2>
             <div class="carousel">
                 <div class="carousel-container">
-                    
                     <div class="carousel-item">
                         <img src="pasarela1.jpeg" alt="Curso Básico - A1/A2">
                         <div class="carousel-caption">
@@ -1515,7 +1507,6 @@
                             <p>Comienza desde cero y adquiere las bases del idioma para comunicarte en situaciones simples.</p>
                         </div>
                     </div>
-                    
                     <div class="carousel-item">
                         <img src="portafilio 2.jpeg" alt="Curso Intermedio - B1">
                         <div class="carousel-caption">
@@ -1523,7 +1514,6 @@
                             <p>Mejora tu fluidez y amplía tu vocabulario para conversaciones más complejas.</p>
                         </div>
                     </div>
-                    
                     <div class="carousel-item">
                         <img src="portafolio3.jpeg" alt="Curso Avanzado - B2">
                         <div class="carousel-caption">
@@ -1531,7 +1521,6 @@
                             <p>Perfecciona tu dominio del idioma hasta alcanzar un nivel conversacional avanzado.</p>
                         </div>
                     </div>
-                    
                     <div class="carousel-item">
                         <img src="https://DailyLifeEnglish.github.io/pasarela 4.jpeg" alt="Curso Avanzado Alto - C1/C2">
                         <div class="carousel-caption">
@@ -1544,62 +1533,62 @@
                 <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
-    </section> 
+    </section>
 
     <section class="services" id="services">
         <div class="container">
             <h2>Nuestro Portafolio de Servicios</h2>
             <div class="services-grid">
-                
                 <div class="service-card" data-service-id="1">
-                    <img src="dk-efe-logo-hi.png" alt="Audio de clases" class="service-logo-image">
+                    <img src="dk-efe-logo.png" alt="Certificado Dk-efe" class="service-logo-image">
                     <div class="service-info">
-                        <h3>Audio de clases</h3>
-                        <p>Accede a audios y grabaciones de nuestras clases.</p>
+                        <h3>Certificado Internacional Dk-efe</h3>
+                        <p>Ver detalles del certificado y validación.</p>
                     </div>
                 </div>
                 <div class="service-card" data-service-id="2">
-                    <img src="blog.jpeg" alt="Invitación a nuestro Blog">
+                    <img src="blog.jpeg" alt="Blog Educativo" class="service-image">
                     <div class="service-info">
-                        <h3>Visita nuestro Blog</h3>
-                        <p>Contenido educativo, consejos de estudio y recursos gratuitos.</p>
+                        <h3>Acceso al Blog Educativo</h3>
+                        <p>Material de estudio y consejos exclusivos.</p>
                     </div>
                 </div>
-                
                 <div class="service-card" data-service-id="3">
-                    <img src="curso extermo.jpeg" alt="Sesión de Clases por Meet">
+                    <img src="curso extermo.jpeg" alt="Clases Online (Meet)" class="service-image">
                     <div class="service-info">
-                        <h3>Clases Online</h3>
-                        <p>Horarios de conexión a nuestras clases virtuales por Google Meet.</p>
+                        <h3>Clases Online (Meet)</h3>
+                        <span class="live-tag">🔴 CLASES EN VIVO</span>
+                        <p>Horarios y enlaces de nuestras clases virtuales.</p>
                     </div>
                 </div>
-                
                 <div class="service-card" data-service-id="4">
-                    <img src="Speaking Club.jpeg" alt="Speaking Club">
+                    <img src="speaking club.jpeg" alt="Speaking Club" class="service-image">
                     <div class="service-info">
                         <h3>Speaking Club</h3>
-                        <p>Mejora tu fluidez oral y auditiva en nuestras sesiones de práctica.</p>
+                        <p>Sesiones de conversación para mejorar tu fluidez.</p>
                     </div>
                 </div>
-                </div>
+            </div>
         </div>
     </section>
 
-    <div class="modal" id="serviceModal">
-        <div class="modal-content">
-            <button class="close-modal" id="closeServiceModal">&times;</button>
-            <div class="modal-body" id="serviceModalBody"></div>
-        </div>
-    </div>
-    
-    <div class="modal" id="levelModal">
+    <div id="levelModal" class="modal">
         <div class="modal-content">
             <button class="close-modal" id="closeLevelModal">&times;</button>
-            <div class="modal-body" id="levelModalBody"></div>
+            <div class="modal-body" id="levelModalBody">
+                </div>
+        </div>
+    </div>
+
+    <div id="serviceModal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeServiceModal">&times;</button>
+            <div class="modal-body" id="serviceModalBody">
+                </div>
         </div>
     </div>
     
-    <div class="modal" id="legalModal">
+    <div id="legalModal" class="modal">
         <div class="modal-content">
             <button class="close-modal" id="closeLegalModal">&times;</button>
             <div class="modal-body" id="legalModalBody"></div>
@@ -1629,14 +1618,15 @@
             </div>
         </div>
     </section>
+
     <section class="contact" id="contact">
         <div class="container">
             <h2>Contáctanos</h2>
             <div class="contact-container">
-                <div class="contact-info"> 
+                <div class="contact-info">
                     <i class="fas fa-map-marker-alt"></i>
                     <h3>Contacto directo</h3>
-                   <p><i class="fas fa-phone"></i> +593 98 864 2647</p>
+                    <p><i class="fas fa-phone"></i> +593 98 864 2647</p>
                 </div>
                 <div class="contact-qr">
                     <h3>Escanea para contactarnos por WhatsApp</h3>
@@ -1647,7 +1637,7 @@
             </div>
         </div>
     </section>
-    
+
     <section class="legal">
         <div class="container">
             <h2>Información Legal</h2>
@@ -1666,6 +1656,7 @@
             </div>
         </div>
     </section>
+
     <a href="https://wa.me/+593988642647" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
@@ -1689,86 +1680,59 @@
 
     <script>
         document.body.style.overflow = 'hidden';
-        const loadingOverlay = document.getElementById('loading-overlay');
+        let loadProgress = 0;
         const loadingBar = document.getElementById('loadingBar');
-        let progress = 0;
 
-        function updateProgress() {
-            if (progress < 90) {
-                progress += Math.floor(Math.random() * 10) + 1;
-                if (progress > 90) progress = 90;
-                loadingBar.style.width = progress + '%';
-                setTimeout(updateProgress, 100);
+        function updateLoadingBar() {
+            if (loadProgress < 100) {
+                loadProgress += 10;
+                loadingBar.style.width = loadProgress + '%';
+                setTimeout(updateLoadingBar, 100);
+            } else {
+                document.getElementById('loading-overlay').style.opacity = '0';
+                document.getElementById('loading-overlay').style.visibility = 'hidden';
+                document.body.style.overflow = 'auto';
             }
         }
-        updateProgress();
 
         window.addEventListener('load', () => {
-            loadingBar.style.width = '100%'; 
-            
-            setTimeout(() => {
-                loadingOverlay.style.opacity = '0';
-                setTimeout(() => {
-                    loadingOverlay.style.visibility = 'hidden';
-                    document.body.style.overflow = 'auto'; 
-                }, 500); 
-            }, 500); 
+            updateLoadingBar();
         });
 
-        // ===== INICIO DE LA MODIFICACIÓN JS (OBJETO DE SERVICIOS) =====
+        // ===== OBJETO DE SERVICIOS =====
         const services = {
-            1: {
-                title: "Audio de clases",
-                description: "Ingresa tu código de estudiante para acceder a las grabaciones de las clases.",
-                image: "dk-efe-logo-hi.png",
-                type: "authLink",
-                imageClass: "modal-logo-image" // Clase especial para la imagen del modal
+            1: { title: "Certificado Internacional Dk-efe", description: "El certificado internacional Dk-efe es reconocido por instituciones educativas a nivel global, avalando tu nivel de inglés según el Marco Común Europeo de Referencia (MCER).", image: "dk-efe-logo.png", imageClass: "modal-logo-image", type: "authLink" },
+            2: { title: "Acceso al Blog Educativo", description: "Accede a contenido exclusivo, ejercicios interactivos, consejos de estudio y material de práctica para reforzar tu aprendizaje fuera del aula.", image: "blog.jpeg", link: "https://DailyLifeEnglish.github.io/blog-ingles/", buttonText: "Ir al Blog Educativo", type: "link" },
+            3: { 
+                title: "Clases Online (Meet)", 
+                description: "Únete a nuestras sesiones de práctica y clases modelo. Aquí encontrarás los enlaces y horarios para conectarte directamente con nuestros profesores.", 
+                image: "curso extermo.jpeg", 
+                table: ` 
+                    <table class="meet-table"> 
+                        <thead> 
+                            <tr> 
+                                <th>Día - Fecha</th> 
+                                <th>Hora (Zona Horaria Local)</th> 
+                                <th>Clase/Nivel</th> 
+                                <th>Enlace de Meet</th> 
+                            </tr> 
+                        </thead> 
+                        <tbody> 
+                            <tr> 
+                                <td>Sabado, 29 de noviembre</td> 
+                                <td>9:00 - 11:00</td> 
+                                <td>Daily Life English - Classes</td> 
+                                <td><a href="https://meet.google.com/pzz-rczd-mtg" target="_blank">Unirse a la Clase</a></td> 
+                            </tr> 
+                        </tbody> 
+                    </table> `, 
+                type: "table",
+                isLive: true
             },
-            2: {
-                title: "¡Visita Nuestro Blog!",
-                description: "Sumérgete en artículos, guías de gramática, tips de pronunciación y recursos para practicar inglés en tu día a día. ¡Aprende de forma divertida y gratuita!",
-                image: "blog.jpeg",
-                link: "https://dailylifeenglishblog.blogspot.com/",
-                buttonText: "Ir al Blog Educativo",
-                type: "link"
-            },
-            3: {
-                title: "Clases Online (Meet)",
-                description: "Únete a nuestras sesiones de práctica y clases modelo. Aquí encontrarás los enlaces y horarios para conectarte directamente con nuestros profesores.",
-                image: "curso extermo.jpeg",
-                table: `
-                    <table class="meet-table">
-                        <thead>
-                            <tr>
-                                <th>Día - Fecha</th>
-                                <th>Hora (Zona Horaria Local)</th>
-                                <th>Clase/Nivel</th>
-                                <th>Enlace de Meet</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Sabado, 29 de noviembre</td>
-                                <td>9:00 - 11:00</td>
-                                <td>Daily Life English - Classes</td>
-                                <td><a href="https://meet.google.com/pzz-rczd-mtg" target="_blank">Unirse a la Clase</a></td> </tr>
-                            
-                        </tbody>
-                    </table>
-                `,
-                type: "table"
-            },
-            4: { 
-                title: "Speaking Club",
-                description: "Perfecciona tu pronunciación, entonación y comprensión auditiva en nuestro club semanal. ¡Únete a conversaciones dinámicas y mejora tu fluidez! El Speaking Club ofrece sesiones enfocadas:",
-                image: "https://images.pexels.com/photos/3862601/pexels-photo-3862601.jpeg?auto=compress&cs=tinysrgb&w=800", 
-                linkSpeaking: "URL_DEL_SPEAKING_CLUB_MEET",
-                buttonTextSpeaking: "Unirme al Speaking Club",
-                type: "speakingClub"
-            }
+            4: { title: "Speaking Club", description: "Perfecciona tu pronunciación, entonación y comprensión auditiva en nuestro club semanal. ¡Únete a conversaciones dinámicas y mejora tu fluidez! El Speaking Club ofrece sesiones enfocadas:", image: "https://images.pexels.com/photos/3862601/pexels-photo-3862601.jpeg?auto=compress&cs=tinysrgb&w=800", linkSpeaking: "URL_DEL_SPEAKING_CLUB_MEET", buttonTextSpeaking: "Unirme al Speaking Club", type: "speakingClub" }
         };
-        // ===== FIN DE LA MODIFICACIÓN JS (OBJETO DE SERVICIOS) =====
-        
+        // ===== FIN DE OBJETO DE SERVICIOS =====
+
         const legalContent = {
             terms: `
                 <h2>Términos y Condiciones</h2>
@@ -1788,7 +1752,7 @@
 
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('navMenu');
-        
+
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
@@ -1803,7 +1767,7 @@
 
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = themeToggle.querySelector('i');
-        
+
         themeToggle.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
             if (document.body.classList.contains('dark-mode')) {
@@ -1901,6 +1865,7 @@
             updateCarousel();
         }, 5000);
 
+
         const serviceCards = document.querySelectorAll('.service-card');
         const serviceModal = document.getElementById('serviceModal');
         const serviceModalBody = document.getElementById('serviceModalBody');
@@ -1910,38 +1875,33 @@
             card.addEventListener('click', () => {
                 const serviceId = card.getAttribute('data-service-id');
                 const service = services[serviceId];
+
+                const imgClass = service.imageClass || ''; 
                 
-                // ===== INICIO DE LA MODIFICACIÓN: CLASE DE IMAGEN DINÁMICA =====
-                const imgClass = service.imageClass || ''; // Obtiene la clase especial si existe
-                let modalContentHTML = `<img src="${service.image}" alt="${service.title}" class="modal-img ${imgClass}" style="margin-bottom: 1rem;">`;
-                // ===== FIN DE LA MODIFICACIÓN =====
+                // MARCA DE CLASES EN VIVO (MODAL)
+                const liveMark = (service.isLive) ? '<span class="live-tag">🔴 CLASES EN VIVO</span>' : '';
 
-                modalContentHTML += `
-                    <div>
-                        <h2 style="margin-top: 1.5rem;">${service.title}</h2>
-                        <p>${service.description}</p>
-                `;
+                let modalContentHTML = `<img src="${service.image}" alt="${service.title}" class="modal-img ${imgClass}">
+                <h2>${service.title}</h2>
+                ${liveMark}
+                <p>${service.description}</p>`;
 
-                // ===== INICIO DE LA MODIFICACIÓN JS (LÓGICA DEL MODAL) =====
+
                 if (service.type === "link") {
-                    modalContentHTML += `<a href="${service.link}" target="_blank" class="btn">${service.buttonText}</a>`;
-                
+                    modalContentHTML += `<a href="${service.link}" target="_blank" class="btn">${service.buttonText} <i class="fas fa-external-link-alt" style="margin-left: 10px;"></i></a>`;
                 } else if (service.type === "authLink") {
-                    // Añadimos el formulario de autenticación
                     modalContentHTML += `
-                        <div class="form-group" style="margin-top: 1.5rem;">
+                        <p style="text-align: left; margin-top: 1rem; border-top: 1px solid var(--input-border); padding-top: 1rem;">Si eres estudiante o egresado, introduce el código de verificación proporcionado para ver los detalles de validación.</p>
+                        <div class="form-group" style="text-align: left;">
                             <label for="authCode" style="text-align: left;">Código de Verificación</label>
-                            <input type="text" id="authCode" name="authCode" placeholder="Escribe tu código DLE..." style="width: 100%;"
-                                   oninput="document.getElementById('authError').style.display = 'none';">
+                            <input type="text" id="authCode" name="authCode" placeholder="Escribe tu código DLE..." style="width: 100%;" oninput="document.getElementById('authError').style.display = 'none';">
                             <p id="authError" style="color: red; font-size: 0.9rem; margin-top: 0.5rem; display: none; text-align: left;"></p>
                         </div>
                         <button id="validateAuthBtn" class="btn">Acceder</button>
                     `;
-                
                 } else if (service.type === "table") {
                     modalContentHTML += service.table;
                     modalContentHTML += `<p style="margin-top: 1rem;">Para más detalles, contáctanos por WhatsApp.</p><a href="#contact" class="btn">Más Información</a>`;
-                
                 } else if (service.type === "speakingClub") {
                     modalContentHTML += `
                         <div class="speaking-club-buttons">
@@ -1949,11 +1909,10 @@
                         </div>
                         <p style="margin-top: 2rem;">¡No pierdas la oportunidad de practicar con hablantes de todo el mundo!</p>`;
                 }
-                
+
                 modalContentHTML += `</div>`;
-                
                 serviceModalBody.innerHTML = modalContentHTML;
-                
+
                 // Añadimos el listener para el botón de validación SI EXISTE
                 if (service.type === "authLink") {
                     const validateBtn = document.getElementById('validateAuthBtn');
@@ -1961,9 +1920,8 @@
                         const codeInput = document.getElementById('authCode');
                         const errorEl = document.getElementById('authError');
                         const codeValue = codeInput.value.trim().toUpperCase(); // Convertimos a mayúsculas para ser flexible
-                        
                         const validCodes = ["DLE001", "DLE002", "DLE003", "DLE004", "DLE005", "DLE006"];
-                        
+
                         if (validCodes.includes(codeValue)) {
                             // Código válido, redirigir
                             window.open('https://www.dkefe.com/es', '_blank');
@@ -1974,8 +1932,7 @@
                         }
                     });
                 }
-                // ===== FIN DE LA MODIFICACIÓN JS (LÓGICA DEL MODAL) =====
-                
+
                 serviceModal.classList.add('visible');
                 document.body.style.overflow = 'hidden';
             });
@@ -1985,14 +1942,15 @@
             serviceModal.classList.remove('visible');
             document.body.style.overflow = 'auto';
         });
-        
+
         serviceModal.addEventListener('click', (e) => {
             if (e.target === serviceModal) {
                 serviceModal.classList.remove('visible');
                 document.body.style.overflow = 'auto';
             }
         });
-        
+
+
         const levelCards = document.querySelectorAll('.level-card');
         const levelModal = document.getElementById('levelModal');
         const levelModalBody = document.getElementById('levelModalBody');
@@ -2013,18 +1971,12 @@
 
                 levelModalBody.innerHTML = `
                     <img src="${modalImage}" alt="Nivel ${level}" class="modal-img">
-                    <div>
-                        <h2>Nivel ${level} - ${title}</h2>
-                        ${featuresHTML}
-                        <a href="#contact" class="btn">Inscribirse Ahora</a>
-                    </div>
+                    <h2>Nivel ${level}: ${title}</h2>
+                    <p>En este nivel, podrás:</p>
+                    ${featuresHTML}
+                    <a href="#contact-form" class="btn">¡Inscríbete Ahora!</a>
                 `;
-                
-                levelModalBody.querySelector('.btn').addEventListener('click', () => {
-                    levelModal.classList.remove('visible');
-                    document.body.style.overflow = 'auto';
-                });
-                
+
                 levelModal.classList.add('visible');
                 document.body.style.overflow = 'hidden';
             });
@@ -2034,19 +1986,20 @@
             levelModal.classList.remove('visible');
             document.body.style.overflow = 'auto';
         });
-        
+
         levelModal.addEventListener('click', (e) => {
             if (e.target === levelModal) {
                 levelModal.classList.remove('visible');
                 document.body.style.overflow = 'auto';
             }
         });
-        
-        const termsLink = document.getElementById('termsLink');
-        const privacyLink = document.getElementById('privacyLink');
+
+        // Lógica de Modales Legales
         const legalModal = document.getElementById('legalModal');
         const legalModalBody = document.getElementById('legalModalBody');
         const closeLegalModal = document.getElementById('closeLegalModal');
+        const termsLink = document.getElementById('termsLink');
+        const privacyLink = document.getElementById('privacyLink');
 
         function openLegalModal(content) {
             legalModalBody.innerHTML = content;
@@ -2068,7 +2021,7 @@
             legalModal.classList.remove('visible');
             document.body.style.overflow = 'auto';
         });
-        
+
         legalModal.addEventListener('click', (e) => {
             if (e.target === legalModal) {
                 legalModal.classList.remove('visible');
@@ -2076,22 +2029,23 @@
             }
         });
 
+
+        // Lógica de Animación de Scroll
         const sections = document.querySelectorAll('section');
-        
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                 }
             });
-        }, {
-            threshold: 0.1
-        });
+        }, { threshold: 0.1 });
 
         sections.forEach(section => {
             observer.observe(section);
         });
-        
+
+        // Lógica de Formulario de Contacto
         const contactForm = document.getElementById('contactForm');
         const formStatus = document.getElementById('contact-form-status');
 
@@ -2110,41 +2064,42 @@
                 });
 
                 if (response.ok) {
-                    formStatus.textContent = "¡Gracias por tu mensaje! Ha sido enviado.";
-                    formStatus.style.color = 'green';
+                    formStatus.textContent = "¡Gracias por tu mensaje! Ha sido enviado con éxito.";
+                    formStatus.style.color = "var(--primary-color)";
                     form.reset();
                 } else {
-                    response.json().then(data => {
-                        if (Object.hasOwn(data, 'errors')) {
-                            formStatus.textContent = data["errors"].map(error => error["message"]).join(", ")
-                        } else {
-                            formStatus.textContent = "Oops! Hubo un problema al enviar tu formulario.";
-                        }
-                        formStatus.style.color = 'red';
-                    })
+                    const errorData = await response.json();
+                    if (errorData.errors) {
+                        formStatus.textContent = errorData.errors.map(error => error.message).join(", ");
+                    } else {
+                        formStatus.textContent = "¡Ups! Ocurrió un error al enviar el mensaje.";
+                    }
+                    formStatus.style.color = "#dc3545"; // Red
                 }
             } catch (error) {
-                formStatus.textContent = "Oops! Hubo un problema al enviar tu formulario.";
-                formStatus.style.color = 'red';
+                formStatus.textContent = "Error de red. Por favor, inténtalo de nuevo más tarde.";
+                formStatus.style.color = "#dc3545"; // Red
             }
         }
-        contactForm.addEventListener("submit", handleFormSubmit);
 
+        contactForm.addEventListener('submit', handleFormSubmit);
+
+        // Lógica de Comentarios (Si se desea implementar)
+        /*
         const commentForm = document.getElementById('commentForm');
+        const commentAuthorInput = document.getElementById('commentAuthor');
+        const commentTextInput = document.getElementById('commentText');
         const commentsList = document.getElementById('commentsList');
-        
-        if (commentForm) {
-            const commentAuthorInput = document.getElementById('comment-author');
-            const commentTextInput = document.getElementById('comment-text');
-            
+        const noComments = document.getElementById('no-comments');
+
+        if(commentForm) {
             function loadComments() {
                 const comments = JSON.parse(localStorage.getItem('dailyLifeEnglishComments')) || [];
-                if (!commentsList) return;
-                commentsList.innerHTML = '';
-                
-                if(comments.length === 0) {
-                     commentsList.innerHTML = `<p id="no-comments">Aún no hay comentarios. ¡Sé el primero en dejar uno!</p>`;
-                     return;
+                commentsList.innerHTML = ''; // Limpiar lista
+                if (comments.length === 0) {
+                    noComments.style.display = 'block';
+                } else {
+                    noComments.style.display = 'none';
                 }
 
                 comments.forEach(comment => {
@@ -2177,6 +2132,7 @@
             
             document.addEventListener('DOMContentLoaded', loadComments);
         }
+        */
 
     </script>
 </body>
