@@ -1539,11 +1539,11 @@
         <div class="container">
             <h2>Nuestro Portafolio de Servicios</h2>
             <div class="services-grid">
-                <div class="service-card" data-service-id="1">
-                    <img src="dk-efe-logo.png" alt="Certificado Dk-efe" class="service-logo-image">
+                 <div class="service-card" data-service-id="1">
+                    <img src="dk-efe-logo-hi.png" alt="Audio de clases" class="service-logo-image">
                     <div class="service-info">
-                        <h3>Certificado Internacional Dk-efe</h3>
-                        <p>Ver detalles del certificado y validación.</p>
+                        <h3>Audio de clases</h3>
+                        <p>Accede a audios y grabaciones de nuestras clases.</p>
                     </div>
                 </div>
                 <div class="service-card" data-service-id="2">
@@ -1701,7 +1701,13 @@
 
         // ===== OBJETO DE SERVICIOS =====
         const services = {
-            1: { title: "Certificado Internacional Dk-efe", description: "El certificado internacional Dk-efe es reconocido por instituciones educativas a nivel global, avalando tu nivel de inglés según el Marco Común Europeo de Referencia (MCER).", image: "dk-efe-logo.png", imageClass: "modal-logo-image", type: "authLink" },
+            1: { 
+             title: "Audio de clases",
+                description: "Ingresa tu código de estudiante para acceder a las grabaciones de las clases.",
+                image: "dk-efe-logo-hi.png",
+                type: "authLink",
+                imageClass: "modal-logo-image" // Clase especial para la imagen del modal    
+            },
             2: { title: "Acceso al Blog Educativo", description: "Accede a contenido exclusivo, ejercicios interactivos, consejos de estudio y material de práctica para reforzar tu aprendizaje fuera del aula.", image: "blog.jpeg", link: "https://DailyLifeEnglish.github.io/blog-ingles/", buttonText: "Ir al Blog Educativo", type: "link" },
             3: { 
                 title: "Clases Online (Meet)", 
