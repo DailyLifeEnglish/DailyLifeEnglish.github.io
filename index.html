@@ -1557,7 +1557,7 @@
                     <img src="curso extermo.jpeg" alt="Clases Online (Meet)" class="service-image">
                     <div class="service-info">
                         <h3>Clases Online (Meet)</h3>
-                        <span class="live-tag"> <marquee behavior="" direction=""> 🔴 CLASES EN VIVO</marquee></span>
+                       <!--<span class="live-tag"> <marquee behavior="" direction=""> 🔴 CLASES EN VIVO</marquee></span>--> 
                         <p>Horarios y enlaces de nuestras clases virtuales.</p>
                     </div>
                 </div>
@@ -1665,7 +1665,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="copyright">
-                    <p>&copy; 2025 Daily Life English. Todos los derechos reservados.</p>
+                    <p>&copy; 2025 Daily Life English. Todos los derechos reservados - <strong> Ing. Teddy Valencia.</strong></p>
                 </div>
                 <div class="social-icons">
                     <a href="#"><i class="fab fa-tiktok"></i></a>
@@ -1708,7 +1708,13 @@
                 type: "authLink",
                 imageClass: "modal-logo-image" // Clase especial para la imagen del modal    
             },
-            2: { title: "Acceso al Blog Educativo", description: "Accede a contenido exclusivo, ejercicios interactivos, consejos de estudio y material de práctica para reforzar tu aprendizaje fuera del aula.", image: "blog.jpeg", link: "https://DailyLifeEnglish.github.io/blog-ingles/", buttonText: "Ir al Blog Educativo", type: "link" },
+            2: {
+                title: "Acceso al Blog Educativo",
+                description: "Accede a contenido exclusivo, ejercicios interactivos, consejos de estudio y material de práctica para reforzar tu aprendizaje fuera del aula.",
+                image: "blog.jpeg",
+                link: "https://DailyLifeEnglish.github.io/blog-ingles/",
+                buttonText: "Ir al Blog Educativo",
+                type: "link" },
             3: { 
                 title: "Clases Online (Meet)", 
                 description: "Únete a nuestras sesiones de práctica y clases modelo. Aquí encontrarás los enlaces y horarios para conectarte directamente con nuestros profesores.", 
@@ -1725,17 +1731,23 @@
                         </thead> 
                         <tbody> 
                             <tr> 
-                                <td>Sabado, 29 de noviembre</td> 
-                                <td>9:00 - 11:00</td> 
-                                <td>Daily Life English - Classes</td> 
-                                <td><a href="https://meet.google.com/pzz-rczd-mtg" target="_blank">Unirse a la Clase</a></td> 
+                                <td>Sin datos</td> 
+                                <td>Sin datos</td> 
+                                <td>Daily Life English</td> 
+                                <td><a href="#" target="_blank">Unirse a la Clase</a></td> 
                             </tr> 
                         </tbody> 
                     </table> `, 
                 type: "table",
                 isLive: true
             },
-            4: { title: "Speaking Club", description: "Perfecciona tu pronunciación, entonación y comprensión auditiva en nuestro club semanal. ¡Únete a conversaciones dinámicas y mejora tu fluidez! El Speaking Club ofrece sesiones enfocadas:", image: "https://images.pexels.com/photos/3862601/pexels-photo-3862601.jpeg?auto=compress&cs=tinysrgb&w=800", linkSpeaking: "URL_DEL_SPEAKING_CLUB_MEET", buttonTextSpeaking: "Unirme al Speaking Club", type: "speakingClub" }
+            4: { title: "Speaking Club",
+            description: "Perfecciona tu pronunciación, entonación y comprensión auditiva en nuestro club semanal. ¡Únete a conversaciones dinámicas y mejora tu fluidez! El Speaking Club ofrece sesiones enfocadas:",
+            image: "https://images.pexels.com/photos/3862601/pexels-photo-3862601.jpeg?auto=compress&cs=tinysrgb&w=800",
+            linkSpeaking: "https://dailylifeenglish.github.io/#",
+            buttonTextSpeaking: "Unirme al Speaking Club",
+            type: "speakingClub"
+        }
         };
         // ===== FIN DE OBJETO DE SERVICIOS =====
 
@@ -1885,7 +1897,7 @@
                 const imgClass = service.imageClass || ''; 
                 
                 // MARCA DE CLASES EN VIVO (MODAL)
-                const liveMark = (service.isLive) ? '<span class="live-tag">🔴 CLASES EN VIVO</span>' : '';
+                const liveMark = (service.isLive) ? '' : '';
 
                 let modalContentHTML = `<img src="${service.image}" alt="${service.title}" class="modal-img ${imgClass}">
                 <h2>${service.title}</h2>
