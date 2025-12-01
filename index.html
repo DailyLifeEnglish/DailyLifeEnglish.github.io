@@ -22,10 +22,8 @@
             --card-bg: #FFFFFF; /* Fondo de tarjetas blanco */
             --header-bg: #FFFFFF;
             
-            /* --- INICIO DE CAMBIO DE FOOTER --- */
-            --footer-bg: #FFFFFF; /* Fondo de footer BLANCO */
-            --footer-text: var(--text-color); /* Texto oscuro para el footer */
-            /* --- FIN DE CAMBIO DE FOOTER --- */
+            --footer-bg: #C0392B; /* Fondo de footer rojo */
+            --footer-text: #F5F5F5; /* Texto blanco para el footer */
 
             --input-bg: #ECF0F1;
             --input-border: #BDC3C7;
@@ -55,10 +53,8 @@
             --card-bg: #34495E; /* Fondo de tarjetas gris azulado */
             --header-bg: #34495E;
 
-            /* --- INICIO DE CAMBIO DE FOOTER EN DARK MODE --- */
-            --footer-bg: #34495E; /* Fondo de footer Gris Azulado (Cambia con el modo oscuro) */
+            --footer-bg: #E74C3C; /* Fondo de footer rojo */
             --footer-text: #ECF0F1; /* Texto claro para el footer */
-            /* --- FIN DE CAMBIO DE FOOTER EN DARK MODE --- */
             
             --input-bg: #3B536B;
             --input-border: #5D7A94;
@@ -1337,8 +1333,8 @@
 
         /* Footer */
         footer {
-            background-color: var(--footer-bg); /* Fondo usa la variable modificada */
-            color: var(--footer-text); /* Color del texto usa la variable modificada */
+            background-color: var(--footer-bg); /* Fondo rojo/verde oscuro */
+            color: var(--footer-text);
             padding: 1.5rem 0;
             font-size: 0.9rem;
             border-top: 1px solid var(--input-border);
@@ -1418,12 +1414,6 @@
         .social-icons a:hover .fa-instagram {
             text-shadow: 0 0 5px #fdf497, 0 0 10px #d6249f;
         }
-        
-        /* Ajuste de color del copyright para modo claro */
-        footer .copyright p {
-            color: var(--footer-text) !important; 
-        }
-
 
         /* Responsive */
         @media (max-width: 968px) {
@@ -1847,7 +1837,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="copyright">
-                    <p style="color: var(--footer-text);">&copy; 2025 Daily Life English. Todos los derechos reservados. Power by <strong> Ing. Teddy Valencia.</strong></p>
+                    <p style="color: #1f2937;">&copy; 2025 Daily Life English. Todos los derechos reservados. Power by <strong> Ing. Teddy Valencia.</strong></p>
                 </div>
                 <div class="social-icons">
                     <a href="#"><i class="fab fa-tiktok"></i></a>
