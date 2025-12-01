@@ -201,6 +201,21 @@
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
         }
 
+        /* Estilo para el contenedor de botones en el modal de servicio */
+        .service-modal-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        .service-modal-buttons .btn {
+            /* Asegura que los botones tengan un ancho flexible */
+            flex-shrink: 0;
+            min-width: 200px;
+        }
+
 
         /* Header y navegación */
         header {
@@ -1557,8 +1572,7 @@
                     <img src="curso extermo.jpeg" alt="Clases Online (Meet)" class="service-image">
                     <div class="service-info">
                         <h3>Clases Online (Meet)</h3>
-                       <!--<span class="live-tag"> <marquee behavior="" direction=""> 🔴 CLASES EN VIVO</marquee></span>--> 
-                        <p>Horarios y enlaces de nuestras clases virtuales.</p>
+                       <p>Horarios y enlaces de nuestras clases virtuales.</p>
                     </div>
                 </div>
                 <div class="service-card" data-service-id="4">
@@ -1627,6 +1641,7 @@
                     <i class="fas fa-map-marker-alt"></i>
                     <h3>Contacto directo</h3>
                     <p><i class="fas fa-phone"></i> +593 98 864 2647</p>
+                    <p><i class="fas fa-phone"></i> +593 96 787 9068</p>
                 </div>
                 <div class="contact-qr">
                     <h3>Escanea para contactarnos por WhatsApp</h3>
@@ -1672,7 +1687,7 @@
                     <a href="#"><i class="fab fa-youtube"></i></a>
                     <a href="#"><i class="fab fa-facebook"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#home"><i class="fas fa-home"></i></a>
+                    <a href="#"><i class="fas fa-home"></i></a>
                 </div>
             </div>
         </div>
@@ -1699,7 +1714,7 @@
             updateLoadingBar();
         });
 
-        // ===== OBJETO DE SERVICIOS =====
+        // ===== OBJETO DE SERVICIOS - MODIFICADO =====
         const services = {
             1: { 
              title: "Audio de clases",
@@ -1712,9 +1727,12 @@
                 title: "Acceso al Blog Educativo",
                 description: "Accede a contenido exclusivo, ejercicios interactivos, consejos de estudio y material de práctica para reforzar tu aprendizaje fuera del aula.",
                 image: "blog.jpeg",
-                link: "https://DailyLifeEnglish.github.io/blog-ingles/",
+                link: "https://dailylifeenglishblog.blogspot.com/2025/09/1-1-1-1-microsoftinternetexplorer4-0-2.html",
                 buttonText: "Ir al Blog Educativo",
-                type: "link" },
+                // NUEVA PROPIEDAD AGREGADA
+                youtubeLink: "https://www.youtube.com/channel/UC64r3px5iCyeBKi0O9zkxdQ",
+                type: "link" 
+            },
             3: { 
                 title: "Clases Online (Meet)", 
                 description: "Únete a nuestras sesiones de práctica y clases modelo. Aquí encontrarás los enlaces y horarios para conectarte directamente con nuestros profesores.", 
@@ -1749,7 +1767,7 @@
             type: "speakingClub"
         }
         };
-        // ===== FIN DE OBJETO DE SERVICIOS =====
+        // ===== FIN DE OBJETO DE SERVICIOS - MODIFICADO =====
 
         const legalContent = {
             terms: `
@@ -1906,7 +1924,19 @@
 
 
                 if (service.type === "link") {
+                    // MODIFICACIÓN: Crear un contenedor para los dos botones
+                    modalContentHTML += `<div class="service-modal-buttons">`;
+                    
+                    // Botón original del Blog
                     modalContentHTML += `<a href="${service.link}" target="_blank" class="btn">${service.buttonText} <i class="fas fa-external-link-alt" style="margin-left: 10px;"></i></a>`;
+                    
+                    // NUEVO BOTÓN AGREGADO: Enlace al canal de YouTube
+                    if (service.youtubeLink) {
+                        modalContentHTML += `<a href="${service.youtubeLink}" target="_blank" class="btn" style="background-color: #FF0000;">Ir al Canal de YouTube <i class="fab fa-youtube" style="margin-left: 10px;"></i></a>`;
+                    }
+                    
+                    modalContentHTML += `</div>`; // Cerrar contenedor de botones
+
                 } else if (service.type === "authLink") {
                     modalContentHTML += `
                         <p style="text-align: left; margin-top: 1rem; border-top: 1px solid var(--input-border); padding-top: 1rem;">Si eres estudiante o egresado, introduce el código de verificación proporcionado para ver los detalles de validación.</p>
