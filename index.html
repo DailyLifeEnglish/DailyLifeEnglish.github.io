@@ -6,56 +6,154 @@
     <title>Daily Life English - Aprende Inglés de Forma Natural</title>
     <link rel="icon" type="image/x-icon" href="icono.jpeg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght[300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* ===== INICIO DE LA MODIFICACIÓN: AJUSTE DE COLORES ===== */
+        /* ========================================================= */
+        /* ===== INICIO DE LA MODIFICACIÓN: AJUSTE DE COLORES NAVIDEÑOS Y LUCES ===== */
+        /* ========================================================= */
         :root {
-            --primary-color: #2563eb;
-            --secondary-color: #3b82f6;
-            --accent-color: #60a5fa;
-            --text-color: #1f2937; /* Texto oscuro */
-            --bg-color: #f8fafc; /* Fondo general claro */
-            --card-bg: #ffffff; /* Fondo de tarjetas blanco */
-            --header-bg: #ffffff;
+            /* Paleta Navideña: Rojo/Cranberry, Verde Abeto, Dorado */
+            --primary-color: #C0392B; /* Rojo intenso/Cranberry */
+            --secondary-color: #27AE60; /* Verde abeto */
+            --accent-color: #F1C40F; /* Dorado/Amarillo brillante */
             
-            /* Footer y sección legal con fondo blanco por defecto */
-            --footer-bg: #ffffff; 
-            --footer-text: #1e293b; /* Texto oscuro para el footer */
+            --text-color: #2C3E50; /* Texto oscuro */
+            --bg-color: #F5F5F5; /* Fondo general muy claro/Nieve */
+            --card-bg: #FFFFFF; /* Fondo de tarjetas blanco */
+            --header-bg: #FFFFFF;
+            
+            /* --- INICIO DE CAMBIO DE FOOTER --- */
+            --footer-bg: #FFFFFF; /* Fondo de footer BLANCO */
+            --footer-text: var(--text-color); /* Texto oscuro para el footer */
+            /* --- FIN DE CAMBIO DE FOOTER --- */
 
-            --input-bg: #f3f4f6;
-            --input-border: #d1d5db;
-            --placeholder-text: #6b7280;
+            --input-bg: #ECF0F1;
+            --input-border: #BDC3C7;
+            --placeholder-text: #95A5A6;
             --transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-            --shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             --border-radius: 12px;
 
-            --level-primary-color: #fcd34d;
-            --level-secondary-color: #f59e0b;
+            --level-primary-color: #F1C40F; /* Dorado */
+            --level-secondary-color: #E67E22; /* Naranja/Cobre */
+
+            /* Colores de las Luces */
+            --light-red: #ff4d4d;
+            --light-green: #39e75f;
+            --light-blue: #4d94ff;
+            --light-gold: #ffd700;
         }
 
         .dark-mode {
-            /* Colores invertidos para el modo oscuro */
-            --primary-color: #3b82f6;
-            --secondary-color: #60a5fa;
-            --accent-color: #93c5fd;
-            --text-color: #e5e7eb; /* Texto claro */
-            --bg-color: #111827; /* Fondo general oscuro */
-            --card-bg: #1e293b; /* Fondo de tarjetas oscuro */
-            --header-bg: #1a2332;
-
-            /* Footer y sección legal con fondo oscuro en modo oscuro */
-            --footer-bg: #111827;
-            --footer-text: #cbd5e1; /* Texto claro para el footer */
+            /* Colores Navideños Oscuros */
+            --primary-color: #E74C3C; /* Rojo brillante */
+            --secondary-color: #2ECC71; /* Verde esmeralda */
+            --accent-color: #F39C12; /* Dorado Oscuro */
             
-            --input-bg: #374151;
-            --input-border: #4b5563;
-            --placeholder-text: #9ca3af;
-            --shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            --text-color: #ECF0F1; /* Texto claro */
+            --bg-color: #2C3E50; /* Fondo general azul oscuro (noche de invierno) */
+            --card-bg: #34495E; /* Fondo de tarjetas gris azulado */
+            --header-bg: #34495E;
 
-            --level-primary-color: #fcd34d;
-            --level-secondary-color: #f59e0b;
+            /* --- INICIO DE CAMBIO DE FOOTER EN DARK MODE --- */
+            --footer-bg: #34495E; /* Fondo de footer Gris Azulado (Cambia con el modo oscuro) */
+            --footer-text: #ECF0F1; /* Texto claro para el footer */
+            /* --- FIN DE CAMBIO DE FOOTER EN DARK MODE --- */
+            
+            --input-bg: #3B536B;
+            --input-border: #5D7A94;
+            --placeholder-text: #9BB0C4;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+
+            --level-primary-color: #F39C12;
+            --level-secondary-color: #D35400;
+
+            /* Colores de las Luces */
+            --light-red: #ff6b6b;
+            --light-green: #6bc97a;
+            --light-blue: #6b9cff;
+            --light-gold: #ffeb3b;
         }
-        /* ===== FIN DE LA MODIFICACIÓN ===== */
+
+        /* ===== CSS PARA LA NEVADA (MEJORADO) ===== */
+        .snow-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2500;
+            overflow: hidden;
+        }
+
+        .snowflake {
+            color: #fff;
+            font-size: 1.5em; /* Tamaño inicial más grande */
+            font-family: Arial, sans-serif;
+            /* Sombra/Glow más pronunciado */
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.3);
+            position: absolute;
+            animation-name: fall;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+        
+        .dark-mode .snowflake {
+             color: #ECF0F1; 
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0.5;
+            }
+        }
+        
+        /* ===== CSS PARA LAS LUCES DE NAVIDAD EN SECCIONES (MEJORADO) ===== */
+        .christmas-lights-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 15px; /* Más alto para luces más grandes */
+            z-index: 10;
+            overflow: hidden; 
+            pointer-events: none;
+        }
+        
+        header, section {
+             position: relative; 
+        }
+
+        .nav-container {
+            position: relative;
+        }
+        
+        .light {
+            position: absolute;
+            width: 12px; /* Más grande */
+            height: 12px; /* Más grande */
+            border-radius: 50%;
+            /* Box-shadow más fuerte para un mejor efecto de brillo */
+            box-shadow: 0 0 8px 4px var(--light-color), 0 0 15px 5px rgba(255, 255, 255, 0.5); 
+            opacity: 0;
+            animation-name: blink-lights;
+            animation-iteration-count: infinite;
+        }
+        
+        @keyframes blink-lights {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+        /* ========================================================= */
+        /* ===== FIN DE LA MODIFICACIÓN: AJUSTE DE COLORES NAVIDEÑOS Y LUCES ===== */
+        /* ========================================================= */
+
 
         /* Estilos para la barra de carga */
         #loading-overlay {
@@ -88,12 +186,14 @@
             border-radius: 50%;
             margin-bottom: 1rem;
             object-fit: cover;
+            /* Estilo navideño para el logo en carga */
+            border: 4px solid var(--primary-color); 
         }
 
         .loading-bar-container {
             width: 200px;
             height: 10px;
-            background-color: #e0e0e0;
+            background-color: var(--input-border);
             border-radius: 5px;
             overflow: hidden;
             margin-top: 1rem;
@@ -102,7 +202,7 @@
         .loading-bar {
             width: 0%;
             height: 100%;
-            background-color: var(--primary-color);
+            background-color: var(--secondary-color); /* Usamos verde para la barra */
             transition: width 0.3s linear;
         }
 
@@ -120,6 +220,14 @@
             color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden;
+            /* Fondo sutil navideño */
+            background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('https://i.imgur.com/k9b6M2b.png');
+            background-size: 150px;
+            background-repeat: repeat;
+        }
+
+        .dark-mode body {
+            background-image: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.9)), url('https://i.imgur.com/k9b6M2b.png');
         }
 
         h1, h2, h3, h4 {
@@ -166,21 +274,22 @@
             border: none;
             cursor: pointer;
             transition: var(--transition);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            /* Sombra con toque navideño */
+            box-shadow: 0 4px 10px rgba(192, 57, 43, 0.4); 
             text-transform: uppercase;
             letter-spacing: 1px;
             font-size: 0.9rem;
         }
 
         .btn:hover {
-            background-color: var(--secondary-color);
+            background-color: var(--secondary-color); /* Hover a color verde */
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 20px rgba(39, 174, 96, 0.5); /* Sombra verde/dorada */
         }
         
         .btn-secondary {
             display: inline-block;
-            background-color: #6c757d;
+            background-color: var(--secondary-color); /* Botón secundario en verde */
             color: white;
             padding: 8px 16px;
             border-radius: 50px;
@@ -196,7 +305,7 @@
         }
 
         .btn-secondary:hover {
-            background-color: #5a6268;
+            background-color: var(--primary-color); /* Hover a color rojo */
             transform: translateY(-3px);
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
         }
@@ -211,7 +320,6 @@
         }
         
         .service-modal-buttons .btn {
-            /* Asegura que los botones tengan un ancho flexible */
             flex-shrink: 0;
             min-width: 200px;
         }
@@ -226,9 +334,13 @@
             top: 0;
             z-index: 1000;
             padding: 0.5rem 0;
+            /* Borde inferior decorativo */
+            border-bottom: 3px solid var(--primary-color); 
         }
 
+        /* Ajuste: el nav-container es el padre de posicionamiento de las luces del header */
         .nav-container {
+            position: relative; 
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -248,6 +360,7 @@
         .logo i {
             margin-right: 0.5rem;
             font-size: 2rem;
+            color: var(--secondary-color); /* Icono del logo en verde */
         }
 
         .nav-menu {
@@ -267,7 +380,7 @@
             transition: var(--transition);
             padding: 0.5rem 0;
             position: relative;
-            display: flex; /* Para alinear el icono con el texto */
+            display: flex;
             align-items: center;
         }
         
@@ -284,7 +397,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background-color: var(--primary-color);
+            background-color: var(--secondary-color); /* Subrayado en verde */
             transition: var(--transition);
         }
 
@@ -293,7 +406,7 @@
         }
 
         .nav-menu a:hover {
-            color: var(--primary-color);
+            color: var(--secondary-color);
         }
 
         .theme-toggle {
@@ -353,7 +466,7 @@
         .banner {
             height: 100vh;
             margin-top: 70px;
-            position: relative;
+            position: relative; /* Asegura el contexto para las luces */
             overflow: hidden;
         }
 
@@ -392,7 +505,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+            /* Oscurecimiento sutil para el fondo navideño */
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6));
         }
 
         .slide-content {
@@ -415,7 +529,8 @@
             font-size: 3.5rem;
             margin-bottom: 1.5rem;
             color: white;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            /* Efecto de texto dorado/brillante */
+            text-shadow: 0 0 10px var(--accent-color), 0 0 5px rgba(255,255,255,0.8);
         }
 
         .banner-slide p {
@@ -426,30 +541,31 @@
 
         .level-tag {
             display: inline-block;
-            background: var(--primary-color);
-            color: white;
+            background: var(--primary-color); /* Fondo rojo para el tag */
+            color: var(--accent-color); /* Texto dorado */
             padding: 8px 20px;
             border-radius: 30px;
-            font-weight: 600;
+            font-weight: 700; /* Más grueso */
             margin-bottom: 20px;
             font-size: 1.2rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            animation: pulse 2s infinite;
+            animation: pulse-xmas 2s infinite; /* Nueva animación de pulso navideño */
+            border: 2px solid var(--accent-color); /* Borde dorado */
         }
 
-        @keyframes pulse {
+        @keyframes pulse-xmas {
             0% {
                 transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7);
+                box-shadow: 0 0 0 0 rgba(192, 57, 43, 0.7); /* Sombra roja */
             }
             70% {
                 transform: scale(1.05);
-                box-shadow: 0 0 0 10px rgba(37, 99, 235, 0);
+                box-shadow: 0 0 0 10px rgba(39, 174, 96, 0); /* Pulso transparente */
             }
             100% {
                 transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
+                box-shadow: 0 0 0 0 rgba(192, 57, 43, 0);
             }
         }
 
@@ -473,7 +589,7 @@
         }
 
         .dot.active {
-            background: white;
+            background: var(--accent-color); /* Punto activo dorado */
             transform: scale(1.3);
         }
 
@@ -497,7 +613,8 @@
         }
 
         .carousel-btn:hover {
-            background: rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.4);
+            color: var(--accent-color); /* Flecha dorada al pasar el ratón */
         }
 
         .carousel-btn.prev {
@@ -511,6 +628,7 @@
         /* Sección de información */
         .info-section {
             text-align: center;
+            position: relative; /* Asegura el contexto para las luces */
         }
 
         .info-content {
@@ -529,22 +647,31 @@
             flex: 1 1 300px;
             max-width: 350px;
             transition: var(--transition);
+            /* Borde sutil navideño en rojo */
+            border: 1px solid var(--primary-color);
         }
 
         .info-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 15px 30px rgba(192, 57, 43, 0.3);
         }
 
         .info-card i {
             font-size: 3.5rem;
-            color: var(--primary-color);
+            color: var(--secondary-color); /* Iconos en verde */
             margin-bottom: 1.5rem;
+            /* Animación de giro sutil */
+            transition: transform 0.5s ease;
+        }
+
+        .info-card:hover i {
+            transform: rotate(5deg);
         }
 
         /* Sección de niveles */
         .levels {
-            background-color: var(--card-bg);
+            background-color: var(--bg-color); /* Cambiado de card-bg a bg-color para contraste */
+            position: relative; /* Asegura el contexto para las luces */
         }
         
         .levels h2 {
@@ -560,7 +687,8 @@
         }
 
         .level-card {
-            background: linear-gradient(135deg, var(--level-primary-color), var(--level-secondary-color));
+            /* Degradado de dorado a cobre */
+            background: linear-gradient(135deg, var(--level-primary-color), var(--level-secondary-color)); 
             color: #1f2937;
             border-radius: var(--border-radius);
             padding: 0;
@@ -570,6 +698,8 @@
             transition: var(--transition);
             cursor: pointer;
             overflow: hidden;
+            /* Borde festivo */
+            border: 4px solid var(--primary-color); 
         }
         
         .level-card-img {
@@ -581,35 +711,39 @@
         
         .level-card-content {
             padding: 1.5rem;
+            /* Fondo claro para el texto */
+            background-color: var(--card-bg); 
         }
 
         .level-card:hover {
             transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
         }
 
         .level-card h3 {
             font-size: 2.5rem;
             margin-bottom: 0.5rem;
-            color: #1f2937; 
+            color: var(--secondary-color); /* Verde para el nivel */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         .level-card h4 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: #1f2937;
+            color: var(--primary-color); /* Rojo para el título */
         }
 
         .level-card p {
              margin-bottom: 0;
              font-weight: 600;
              font-size: 0.9rem;
-             color: #1f2937;
+             color: var(--text-color);
         }
 
         /* Carrusel de cursos */
         .courses {
             padding: 5rem 0;
+            position: relative; /* Asegura el contexto para las luces */
         }
 
         .carousel {
@@ -619,6 +753,8 @@
             box-shadow: var(--shadow);
             margin: 2rem auto;
             max-width: 1000px;
+            /* Borde navideño para el carrusel */
+            border: 5px solid var(--accent-color); 
         }
 
         .carousel-container {
@@ -648,15 +784,17 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.75); /* Fondo más oscuro para buen contraste */
             color: white;
             padding: 1.5rem;
+            border-top: 3px solid var(--secondary-color); /* Línea verde */
         }
 
         /* Sección de Servicios */
         .services {
             text-align: center;
             background-color: var(--card-bg);
+            position: relative; /* Asegura el contexto para las luces */
         }
 
         .services-grid {
@@ -673,11 +811,13 @@
             box-shadow: var(--shadow);
             cursor: pointer;
             transition: var(--transition);
+            /* Borde verde */
+            border: 1px solid var(--secondary-color); 
         }
 
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 15px 30px rgba(39, 174, 96, 0.3);
         }
 
         .service-card img {
@@ -689,14 +829,14 @@
         
         /* ===== IMAGEN DE LOGO RESPONSIVE (TARJETA) ===== */
         .service-card img.service-logo-image {
-            height: 250px; /* Mantiene la altura del grid para consistencia */
-            object-fit: contain; /* Asegura que el logo se vea completo */
-            padding: 1rem; /* Añade espacio alrededor del logo */
-            background-color: var(--card-bg); /* Fondo para que el logo resalte, especialmente en modo oscuro */
+            height: 250px;
+            object-fit: contain;
+            padding: 1rem;
+            background-color: var(--card-bg);
         }
         
         .service-card:hover img.service-logo-image {
-            transform: scale(1.05); /* Ajusta el zoom del hover para que no sea tan agresivo */
+            transform: scale(1.05);
         }
         /* ===== FIN DE LA MODIFICACIÓN ===== */
 
@@ -707,6 +847,8 @@
 
         .service-info {
             padding: 1.5rem;
+            /* Fondo de información más claro */
+            background-color: var(--card-bg); 
         }
         
         .meet-table {
@@ -723,17 +865,17 @@
         }
         
         .meet-table th {
-            background-color: var(--primary-color);
+            background-color: var(--primary-color); /* Cabecera de tabla en rojo */
             color: white;
             font-weight: 700;
         }
         
-        .meet-table tr:nth-child(even) {
+.meet-table tr:nth-child(even) {
             background-color: var(--bg-color);
         }
         
         .meet-table a {
-            color: var(--secondary-color);
+            color: var(--secondary-color); /* Enlace en verde */
             text-decoration: none;
             font-weight: 600;
         }
@@ -752,7 +894,7 @@
         }
         
         .modal-social-icons a:hover {
-            color: var(--level-secondary-color);
+            color: var(--secondary-color);
             transform: scale(1.1);
         }
 
@@ -771,7 +913,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0.85); /* Fondo de modal más oscuro */
             z-index: 2000;
             align-items: center;
             justify-content: center;
@@ -794,9 +936,11 @@
             position: relative;
             transform: translateY(-50px);
             transition: transform 0.3s ease;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
             max-height: 90vh;
             overflow-y: auto;
+            /* Borde rojo festivo para el modal */
+            border: 5px solid var(--primary-color);
         }
 
         .modal.visible .modal-content {
@@ -811,12 +955,12 @@
             border: none;
             font-size: 1.8rem;
             cursor: pointer;
-            color: var(--text-color);
+            color: var(--primary-color); /* Botón de cierre en rojo */
             transition: var(--transition);
         }
 
         .close-modal:hover {
-            color: var(--primary-color);
+            color: var(--secondary-color); /* Hover en verde */
             transform: rotate(90deg);
         }
 
@@ -848,10 +992,10 @@
         }
 
         .modal-body li:before {
-            content: '✓';
+            content: '🎄'; /* Icono de árbol navideño */
             position: absolute;
             left: 0;
-            color: var(--level-secondary-color);
+            color: var(--secondary-color);
         }
 
         .modal-img {
@@ -863,11 +1007,11 @@
 
         /* ===== IMAGEN DE LOGO RESPONSIVE (MODAL) ===== */
         .modal-img.modal-logo-image {
-            height: auto; /* Altura automática para mantener proporción */
-            max-height: 250px; /* Altura máxima para que no sea muy grande */
-            width: auto; /* Ancho automático */
-            max-width: 100%; /* Límite de ancho */
-            object-fit: contain; /* Asegura que se vea completo */
+            height: auto;
+            max-height: 250px;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
             display: block;
             margin-left: auto;
             margin-right: auto;
@@ -877,6 +1021,7 @@
         /* Sección de contacto */
         .contact {
             padding-bottom: 2.5rem;
+            position: relative; /* Asegura el contexto para las luces */
         }
 
         .contact-container {
@@ -890,6 +1035,11 @@
         .contact-info {
             flex: 1 1 300px;
             text-align: center;
+            padding: 1.5rem;
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border-top: 5px solid var(--secondary-color); /* Borde superior verde */
         }
 
         .contact-info i {
@@ -910,6 +1060,7 @@
             background: white;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
+            border: 5px solid var(--primary-color); /* Borde rojo festivo */
         }
 
         .qr-code img {
@@ -920,6 +1071,7 @@
         .contact-form-section {
             background-color: var(--card-bg);
             padding-top: 2.5rem;
+            position: relative; /* Asegura el contexto para las luces */
         }
 
         .form-container {
@@ -928,7 +1080,8 @@
             background: var(--bg-color);
             padding: 2.5rem;
             border-radius: var(--border-radius);
-            box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
+            /* Sombra con toque navideño (dorado/verde) */
+            box-shadow: 0 10px 20px rgba(39, 174, 96, 0.3); 
         }
 
         .form-group {
@@ -939,7 +1092,7 @@
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 600;
-            color: var(--text-color);
+            color: var(--primary-color); /* Etiquetas en rojo */
         }
 
         .form-group input,
@@ -959,7 +1112,7 @@
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--primary-color);
+            border-color: var(--secondary-color); /* Foco en verde */
         }
         
         .form-group input::placeholder,
@@ -1000,7 +1153,7 @@
             background-color: var(--card-bg);
             padding: 2rem;
             border-radius: var(--border-radius);
-            box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
+            box-shadow: 0 10px 20px rgba(192, 57, 43, 0.3); /* Sombra roja */
             margin-bottom: 2rem;
         }
 
@@ -1014,7 +1167,7 @@
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
             margin-bottom: 1.5rem;
-            border-left: 5px solid var(--primary-color);
+            border-left: 5px solid var(--primary-color); /* Borde de comentario en rojo */
         }
 
         .comment-header {
@@ -1051,26 +1204,29 @@
         .legal {
             text-align: center;
             padding: 5rem 0;
-            background-color: var(--footer-bg); /* Fondo dinámico */
-            color: var(--footer-text); /* Texto dinámico */
-            border-top: 1px solid var(--input-border); /* Borde sutil para separar */
+            background-color: var(--bg-color); 
+            color: var(--text-color); 
+            border-top: 1px solid var(--input-border);
+            position: relative; /* Asegura el contexto para las luces */
         }
         
         .legal h2 {
-            color: var(--primary-color); /* El título principal mantiene el color primario */
+            color: var(--primary-color);
         }
         
         .legal p {
-            color: var(--footer-text); /* El párrafo usa el color de texto del footer */
+            color: var(--text-color);
         }
 
         .legal-card-container {
             max-width: 600px;
             margin: 2rem auto;
-            background-color: var(--card-bg); /* La "tarjeta" interna usa el fondo de tarjeta estándar */
+            background-color: var(--card-bg);
             padding: 3rem;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
+            /* Borde verde */
+            border: 3px solid var(--secondary-color);
         }
         
         .legal-links {
@@ -1085,7 +1241,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: var(--secondary-color);
+            background-color: var(--secondary-color); /* Enlaces en verde */
             color: white;
             padding: 12px 20px;
             border-radius: 8px;
@@ -1098,7 +1254,7 @@
         }
 
         .legal-links a:hover {
-            background-color: var(--primary-color);
+            background-color: var(--primary-color); /* Hover en rojo */
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
@@ -1142,37 +1298,38 @@
             }
         }
         
-        /* ===== INICIO DE LA MODIFICACIÓN: MARCA DE CLASES EN VIVO (ROJO) Y ANIMACIÓN DE MOVIMIENTO ===== */
+        /* ===== MARCA DE CLASES EN VIVO (ROJO) Y ANIMACIÓN DE MOVIMIENTO ===== */
         .live-tag {
             display: inline-block;
-            background-color: #dc3545; /* Rojo de Bootstrap */
-            color: white;
+            background-color: var(--primary-color); /* Usamos el rojo primario */
+            color: var(--accent-color); /* Texto dorado */
             padding: 5px 15px;
             border-radius: 5px;
             font-weight: 700;
             font-size: 0.9rem;
             margin-bottom: 1rem;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            animation: pulse-live 1.8s infinite alternate; /* Animación de movimiento y brillo */
+            animation: pulse-live 1.8s infinite alternate; 
             text-transform: uppercase;
             letter-spacing: 1px;
+            border: 1px solid var(--accent-color); /* Borde dorado */
         }
 
         @keyframes pulse-live {
             0% {
                 opacity: 0.8;
-                transform: scale(1) translateX(-2px); /* Ligeramente a la izquierda */
-                box-shadow: 0 0 5px #dc3545;
+                transform: scale(1) translateX(-2px);
+                box-shadow: 0 0 5px var(--primary-color);
             }
             50% {
                 opacity: 1;
-                transform: scale(1.03) translateX(2px); /* Se agranda y va a la derecha */
-                box-shadow: 0 0 15px rgba(220, 53, 69, 0.8); /* Efecto de brillo más fuerte */
+                transform: scale(1.03) translateX(2px);
+                box-shadow: 0 0 15px rgba(231, 76, 60, 0.8); /* Brillo más fuerte */
             }
             100% {
                 opacity: 0.8;
-                transform: scale(1) translateX(-2px); /* Vuelve y se encoje un poco */
-                box-shadow: 0 0 5px #dc3545;
+                transform: scale(1) translateX(-2px);
+                box-shadow: 0 0 5px var(--primary-color);
             }
         }
         /* ===== FIN DE LA MODIFICACIÓN: MARCA DE CLASES EN VIVO (ROJO) Y ANIMACIÓN DE MOVIMIENTO ===== */
@@ -1180,11 +1337,13 @@
 
         /* Footer */
         footer {
-            background-color: var(--footer-bg);
-            color: var(--footer-text);
+            background-color: var(--footer-bg); /* Fondo usa la variable modificada */
+            color: var(--footer-text); /* Color del texto usa la variable modificada */
             padding: 1.5rem 0;
             font-size: 0.9rem;
             border-top: 1px solid var(--input-border);
+            /* Borde superior con acento verde/dorado */
+            border-top: 5px solid var(--secondary-color); 
         }
 
         .footer-content {
@@ -1215,7 +1374,7 @@
 
         .social-icons a:hover {
             transform: scale(1.1);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
 
         .social-icons .fa-tiktok {
@@ -1259,6 +1418,12 @@
         .social-icons a:hover .fa-instagram {
             text-shadow: 0 0 5px #fdf497, 0 0 10px #d6249f;
         }
+        
+        /* Ajuste de color del copyright para modo claro */
+        footer .copyright p {
+            color: var(--footer-text) !important; 
+        }
+
 
         /* Responsive */
         @media (max-width: 968px) {
@@ -1351,6 +1516,8 @@
 </head>
 <body>
     
+    <div class="snow-container" id="snowContainer"></div>
+
     <div id="loading-overlay">
         <div class="loading-content">
             <img src="icono.jpeg" alt="Logo Daily Life English" class="loading-logo">
@@ -1680,7 +1847,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="copyright">
-                    <p>&copy; 2025 Daily Life English. Todos los derechos reservados - <strong> Ing. Teddy Valencia.</strong></p>
+                    <p style="color: var(--footer-text);">&copy; 2025 Daily Life English. Todos los derechos reservados. Power by <strong> Ing. Teddy Valencia.</strong></p>
                 </div>
                 <div class="social-icons">
                     <a href="#"><i class="fab fa-tiktok"></i></a>
@@ -1712,16 +1879,105 @@
 
         window.addEventListener('load', () => {
             updateLoadingBar();
+            createChristmasLights();
+            createSnowfall(); 
         });
 
-        // ===== OBJETO DE SERVICIOS - MODIFICADO =====
+        // ===== FUNCIÓN PARA CREAR LA NEVADA (MEJORADA) =====
+        function createSnowfall() {
+            const snowContainer = document.getElementById('snowContainer');
+            const numFlakes = 75; // Aumento la densidad de nieve
+
+            for (let i = 0; i < numFlakes; i++) {
+                const flake = document.createElement('div');
+                flake.classList.add('snowflake');
+                flake.innerHTML = '❅'; 
+                
+                flake.style.left = `${Math.random() * 100}vw`; 
+                
+                // Tamaño aleatorio (1.0em a 3.0em)
+                const size = 1 + Math.random() * 2; 
+                flake.style.fontSize = `${size}em`;
+                
+                // Duración de la caída aleatoria
+                const duration = 15 + Math.random() * 15; 
+                flake.style.animationDuration = `${duration}s`;
+                
+                // Retraso de inicio aleatorio
+                const delay = Math.random() * 30; 
+                flake.style.animationDelay = `${delay}s`;
+                
+                snowContainer.appendChild(flake);
+            }
+        }
+        // ===== FIN DE FUNCIÓN PARA CREAR LA NEVADA (MEJORADA) =====
+
+        // ===== FUNCIÓN PARA CREAR LAS LUCES DE NAVIDAD CON PARPADEO ALEATORIO (MEJORADA) =====
+        function createChristmasLights() {
+            // Target elements: el contenedor de navegación del header y todas las secciones con ID
+            const targets = [
+                document.querySelector('header .nav-container'), 
+                document.getElementById('home'),
+                document.getElementById('about'),
+                document.getElementById('levels'),
+                document.getElementById('courses'),
+                document.getElementById('services'),
+                document.getElementById('contact-form'),
+                document.getElementById('contact'),
+                document.getElementById('legal'),
+            ].filter(el => el !== null);
+
+            const lightColors = [
+                'var(--light-red)',
+                'var(--light-green)',
+                'var(--light-blue)',
+                'var(--light-gold)'
+            ];
+
+            targets.forEach(target => {
+                // Crear el contenedor de luces para la sección/header
+                const container = document.createElement('div');
+                container.classList.add('christmas-lights-container');
+                target.prepend(container); // Insertar al inicio del elemento
+                
+                const numLights = 25; // 25 luces por sección
+
+                for (let i = 0; i < numLights; i++) {
+                    const light = document.createElement('div');
+                    light.classList.add('light');
+                    
+                    const basePosition = (i / numLights) * 100;
+                    const offset = (Math.random() * 2) - 1; // Offset entre -1% y 1%
+                    light.style.left = `${basePosition + offset}%`;
+                    light.style.top = `${Math.random() * 5}px`; // Pequeña variación vertical
+
+                    // Asignar color aleatorio
+                    const colorIndex = Math.floor(Math.random() * lightColors.length);
+                    const lightColor = lightColors[colorIndex];
+                    light.style.backgroundColor = lightColor;
+                    light.style.setProperty('--light-color', lightColor);
+
+                    // Crear duración y retraso de animación aleatoria
+                    const duration = 2.5 + Math.random() * 2; 
+                    const delay = Math.random() * duration; 
+                    
+                    light.style.animationDuration = `${duration}s`; 
+                    light.style.animationDelay = `${delay}s`; 
+                    
+                    container.appendChild(light);
+                }
+            });
+        }
+        // ===== FIN DE FUNCIÓN PARA CREAR LAS LUCES DE NAVIDAD (MEJORADA) =====
+
+
         const services = {
             1: { 
              title: "Audio de clases",
                 description: "Ingresa tu código de estudiante para acceder a las grabaciones de las clases.",
                 image: "dk-efe-logo-hi.png",
                 type: "authLink",
-                imageClass: "modal-logo-image" // Clase especial para la imagen del modal    
+                imageClass: "modal-logo-image" 
             },
             2: {
                 title: "Acceso al Blog Educativo",
@@ -1729,7 +1985,6 @@
                 image: "blog.jpeg",
                 link: "https://dailylifeenglishblog.blogspot.com/2025/09/1-1-1-1-microsoftinternetexplorer4-0-2.html",
                 buttonText: "Ir al Blog Educativo",
-                // NUEVA PROPIEDAD AGREGADA
                 youtubeLink: "https://www.youtube.com/channel/UC64r3px5iCyeBKi0O9zkxdQ",
                 type: "link" 
             },
@@ -1767,7 +2022,6 @@
             type: "speakingClub"
         }
         };
-        // ===== FIN DE OBJETO DE SERVICIOS - MODIFICADO =====
 
         const legalContent = {
             terms: `
@@ -1915,7 +2169,7 @@
                 const imgClass = service.imageClass || ''; 
                 
                 // MARCA DE CLASES EN VIVO (MODAL)
-                const liveMark = (service.isLive) ? '' : '';
+                const liveMark = (service.isLive) ? '<span class="live-tag"><i class="fas fa-broadcast-tower"></i> CLASES EN VIVO</span>' : '';
 
                 let modalContentHTML = `<img src="${service.image}" alt="${service.title}" class="modal-img ${imgClass}">
                 <h2>${service.title}</h2>
