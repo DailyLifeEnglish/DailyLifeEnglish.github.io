@@ -1712,7 +1712,7 @@
                 title: "Acceso al Blog Educativo",
                 description: "Accede a contenido exclusivo, ejercicios interactivos, consejos de estudio y material de práctica para reforzar tu aprendizaje fuera del aula.",
                 image: "blog.jpeg",
-                link: "https://DailyLifeEnglish.github.io/blog-ingles/",
+                link: "https://dailylifeenglishblog.blogspot.com/2025/09/1-1-1-1-microsoftinternetexplorer4-0-2.html",
                 buttonText: "Ir al Blog Educativo",
                 type: "link" },
             3: { 
@@ -1906,7 +1906,15 @@
 
 
                 if (service.type === "link") {
-                    modalContentHTML += `<a href="${service.link}" target="_blank" class="btn">${service.buttonText} <i class="fas fa-external-link-alt" style="margin-left: 10px;"></i></a>`;
+                    // LÓGICA MODIFICADA PARA EL BOTÓN DE YOUTUBE
+                    modalContentHTML += `
+                        <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 2rem;">
+                            <a href="${service.link}" target="_blank" class="btn">${service.buttonText} <i class="fas fa-external-link-alt" style="margin-left: 10px;"></i></a>
+                            <a href="https://www.youtube.com/channel/UC64r3px5iCyeBKi0O9zkxdQ" target="_blank" class="btn-secondary" style="margin-left: 0; display: flex; align-items: center;">
+                                <i class="fab fa-youtube" style="margin-right: 5px; font-size: 1rem;"></i> Canal de YouTube
+                            </a>
+                        </div>
+                    `;
                 } else if (service.type === "authLink") {
                     modalContentHTML += `
                         <p style="text-align: left; margin-top: 1rem; border-top: 1px solid var(--input-border); padding-top: 1rem;">Si eres estudiante o egresado, introduce el código de verificación proporcionado para ver los detalles de validación.</p>
