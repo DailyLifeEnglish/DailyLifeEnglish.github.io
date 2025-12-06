@@ -6,57 +6,60 @@
     <title>Daily Life English - Stream - Plataforma de Cursos</title>
     <link rel="icon" type="image/x-icon" href="icono.jpeg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CV086J7sY25wF073kQ1J/oW7I0R+iM8f9g9S+i2dFwK4rE7+Jp6z1tW9/3/8a6P2t2B0q5+Lw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Variables de color con paleta más fresca */
         :root {
-            --primary: #1a73e8;
-            --secondary: #0d47a1;
-            --accent: #ff5722;
-            --light: #f8f9fa;
-            --dark: #202124;
+            --primary: #4A90E2; /* Azul vibrante */
+            --secondary: #1976D2; /* Azul oscuro */
+            --accent: #FF5722;
+            --light: #f5f7fa; /* Fondo más suave */
+            --dark: #121212;
             --text-light: #f8f9fa;
-            --text-dark: #202124;
+            --text-dark: #333333;
             --card-bg: #ffffff;
             --sidebar-bg: #ffffff;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --radius: 8px;
+            --shadow: 0 6px 15px rgba(0, 0, 0, 0.08); /* Sombra mejorada */
+            --radius: 12px; /* Bordes más redondeados */
         }
 
-        /* Modo oscuro */
+        /* Modo oscuro mejorado */
         .dark-mode {
-            --primary: #8ab4f8;
-            --secondary: #5f7b9c;
-            --light: #202124;
+            --primary: #66b3ff;
+            --secondary: #2C3E50;
+            --light: #1e1e1e;
             --dark: #f8f9fa;
             --text-light: #202124;
-            --text-dark: #f8f9fa;
-            --card-bg: #303134;
-            --sidebar-bg: #303134;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            --text-dark: #e0e0e0;
+            --card-bg: #2C2C2C;
+            --sidebar-bg: #2C2C2C;
+            --shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
         }
 
+        /* Configuración global */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            transition: background-color 0.3s, color 0.3s;
+            font-family: 'Poppins', sans-serif;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
         }
 
         body {
             background-color: var(--light);
             color: var(--text-dark);
             line-height: 1.6;
-            min-height: 100vh; /* Asegura que el cuerpo ocupe al menos la altura de la ventana */
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
 
         /* Header */
         header {
-            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            background: var(--secondary);
             color: white;
             padding: 1rem 2rem;
-            box-shadow: var(--shadow);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -73,91 +76,101 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            text-decoration: none;
+            color: white;
         }
 
         .logo i {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
+            color: var(--primary);
         }
 
         .logo h1 {
-            font-size: 1.8rem;
-            font-weight: 700;
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        /* Ajuste para que el h1 del logo no sea afectado por el color del a en hover si es un link */
+        .logo:hover h1 {
+            color: white; 
         }
 
         .header-controls {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
         }
 
         .theme-toggle {
+            /* Estilo del toggle switch más moderno */
             background: rgba(255, 255, 255, 0.2);
             border: none;
-            width: 50px;
-            height: 26px;
-            border-radius: 13px;
+            width: 55px; /* Más ancho */
+            height: 30px; /* Más alto */
+            border-radius: 15px;
             position: relative;
             cursor: pointer;
             display: flex;
             align-items: center;
-            padding: 0 3px;
+            justify-content: space-between;
+            padding: 0 4px;
+            outline: none;
         }
 
         .theme-toggle::after {
             content: '';
             position: absolute;
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
             border-radius: 50%;
             background: white;
-            transition: transform 0.3s;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
         }
 
         .dark-mode .theme-toggle::after {
-            transform: translateX(24px);
+            transform: translateX(25px);
         }
 
         .theme-toggle i {
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: white;
-            position: absolute;
             z-index: 1;
-        }
-
-        .theme-toggle .fa-sun {
-            left: 5px;
-        }
-
-        .theme-toggle .fa-moon {
-            right: 5px;
         }
 
         .search-container {
             flex-grow: 1;
-            max-width: 500px;
-            margin: 0 20px;
+            max-width: 450px;
+            margin: 0 30px;
         }
 
         .search-box {
             width: 100%;
-            padding: 10px 15px;
+            padding: 10px 20px;
             border-radius: 30px;
             border: none;
             font-size: 1rem;
-            background-color: rgba(255, 255, 255, 0.9);
-            color: #333;
+            background-color: white;
+            color: var(--text-dark);
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dark-mode .search-box {
+            background-color: #444;
+            color: var(--text-dark);
         }
 
-        .user-menu {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
 
         .user-menu i {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .user-menu i:hover {
+            color: var(--primary);
         }
 
         /* Main Layout */
@@ -165,27 +178,29 @@
             display: flex;
             max-width: 1400px;
             margin: 0 auto;
-            padding: 20px;
-            flex: 1; /* Permite que el contenedor principal crezca para llenar el espacio */
+            padding: 30px 20px;
+            flex: 1;
+            gap: 30px;
         }
 
         /* Sidebar */
         .sidebar {
-            width: 250px;
+            width: 280px; /* Un poco más ancho */
             background-color: var(--sidebar-bg);
             border-radius: var(--radius);
             box-shadow: var(--shadow);
-            padding: 20px;
-            margin-right: 20px;
+            padding: 25px;
             height: fit-content;
-            flex-shrink: 0; /* Evita que la barra lateral se encoja */
+            flex-shrink: 0;
         }
 
         .sidebar h3 {
             color: var(--primary);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             padding-bottom: 10px;
             border-bottom: 2px solid var(--primary);
+            font-size: 1.4rem;
+            font-weight: 600;
         }
 
         .categories {
@@ -193,27 +208,42 @@
         }
 
         .category-item {
-            padding: 12px 15px;
-            margin-bottom: 8px;
-            border-radius: var(--radius);
+            padding: 15px 18px;
+            margin-bottom: 10px;
+            border-radius: 10px;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 10px;
-            transition: all 0.3s ease;
+            gap: 15px;
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            transition: background-color 0.2s ease, transform 0.1s;
         }
 
         .category-item:hover {
-            background-color: rgba(26, 115, 232, 0.1);
+            background-color: rgba(74, 144, 226, 0.1); /* Sombra clara de primary */
+            transform: translateX(3px);
         }
+        
+        .dark-mode .category-item:hover {
+            background-color: rgba(102, 179, 255, 0.1);
+        }
+
 
         .category-item.active {
             background-color: var(--primary);
             color: white;
+            box-shadow: 0 4px 8px rgba(74, 144, 226, 0.3);
+        }
+        
+        .category-item.active:hover {
+             background-color: var(--primary); /* Evitar cambio en hover si ya está activo */
+             transform: none;
         }
 
         .category-item i {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
         }
 
         /* Main Content */
@@ -225,18 +255,30 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
         .category-header h2 {
+            color: var(--secondary);
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+        
+        .dark-mode .category-header h2 {
             color: var(--primary);
-            font-size: 1.8rem;
+        }
+
+        .course-count {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            opacity: 0.8;
+            font-weight: 600;
         }
 
         .courses-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
             margin-bottom: 40px;
         }
 
@@ -246,20 +288,49 @@
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer; /* Añadido para mejor UX */
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
         }
 
         .course-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .dark-mode .course-card:hover {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
         }
 
         .course-thumbnail {
             width: 100%;
-            height: 180px;
+            height: 200px;
             overflow: hidden;
             position: relative;
         }
+        
+        /* Icono de Play sobre el thumbnail */
+        .course-thumbnail::after {
+            content: '\f144'; /* Código de ícono de play de Font Awesome */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3.5rem;
+            color: white;
+            opacity: 0.8;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 50%;
+            padding: 10px 15px;
+            transition: opacity 0.3s;
+        }
+        
+        .course-card:hover .course-thumbnail::after {
+            opacity: 1;
+        }
+
 
         .course-thumbnail img {
             width: 100%;
@@ -269,23 +340,28 @@
         }
 
         .course-card:hover .course-thumbnail img {
-            transform: scale(1.05);
+            transform: scale(1.08);
+            filter: brightness(0.8);
         }
 
         .course-info {
             padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .course-info h3 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
+            font-size: 1.4rem;
+            margin-bottom: 8px;
             color: var(--text-dark);
+            font-weight: 600;
         }
 
         .course-info p {
             color: var(--text-dark);
-            opacity: 0.8;
-            font-size: 0.9rem;
+            opacity: 0.7;
+            font-size: 0.95rem;
             margin-bottom: 15px;
             display: -webkit-box;
             -webkit-line-clamp: 2;
@@ -294,15 +370,32 @@
         }
 
         .course-meta {
+            margin-top: auto;
             display: flex;
             justify-content: space-between;
-            align-items: center; /* Alineación vertical */
-            color: var(--text-dark);
-            opacity: 0.7;
-            font-size: 0.85rem;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid var(--light);
+        }
+        
+        .dark-mode .course-meta {
+            border-top: 1px solid #444;
         }
 
-        /* Video Player Modal */
+        .course-meta span {
+            color: var(--text-dark);
+            opacity: 0.8;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .course-meta .fa-play-circle {
+            color: var(--primary);
+        }
+
+        /* Video Player Modal - Rediseñado */
         .video-modal {
             display: none;
             position: fixed;
@@ -310,43 +403,26 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(0, 0, 0, 0.95);
             z-index: 2000;
             justify-content: center;
             align-items: center;
             padding: 20px;
-            overflow-y: auto; /* Para asegurar el scroll en caso de contenido largo */
+            overflow-y: auto;
         }
 
         .video-container {
             width: 100%;
-            max-width: 900px;
-            background-color: #111;
+            max-width: 1000px; /* Un poco más grande */
+            background-color: var(--card-bg); 
             border-radius: var(--radius);
-            overflow: hidden;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
             position: relative;
+            animation: fadeIn 0.3s ease;
         }
-
-        .video-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-            background-color: #222;
-            color: white;
-        }
-
-        .close-modal {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.8rem;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .close-modal:hover {
-            color: var(--accent);
+        
+        .dark-mode .video-container {
+            background-color: #1e1e1e;
         }
 
         .video-wrapper {
@@ -354,6 +430,33 @@
             padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
             height: 0;
             overflow: hidden;
+            background-color: #000; /* Fondo negro para el video */
+            border-top-left-radius: var(--radius);
+            border-top-right-radius: var(--radius);
+        }
+        
+        /* Botón de cierre flotante */
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 2010; /* Asegurar que esté sobre el iframe */
+            transition: background 0.3s, transform 0.2s;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        .close-modal:hover {
+            background: var(--accent);
+            transform: scale(1.05);
         }
 
         .video-player {
@@ -366,18 +469,39 @@
         }
 
         .video-info {
-            padding: 20px;
-            color: white;
+            padding: 25px;
+            color: var(--text-dark);
+        }
+        
+        .dark-mode .video-info {
+            color: var(--text-dark);
         }
 
         .video-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            font-weight: 700;
+            color: var(--primary);
         }
 
         .video-info p {
-            color: #ccc;
-            font-size: 1rem;
+            color: var(--text-dark);
+            opacity: 0.8;
+            font-size: 1.05rem;
+            margin-top: 15px;
+        }
+        
+        .dark-mode .video-info p {
+            color: var(--text-dark);
+        }
+        
+        .video-source-container {
+            font-size: 0.95rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
         }
 
         /* Footer */
@@ -385,20 +509,19 @@
             background-color: var(--secondary);
             color: white;
             padding: 40px 20px;
-            margin-top: auto; /* Empuja el footer hacia la parte inferior */
+            margin-top: auto;
         }
 
         .footer-container {
             max-width: 1400px;
             margin: 0 auto;
-            /* Mejora: Se usa grid-template-columns y gap para mejor adaptabilidad */
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Ajustado a 200px para móviles */
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
         }
 
         .footer-section h3 {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             margin-bottom: 20px;
             color: var(--primary);
         }
@@ -409,6 +532,7 @@
             display: block;
             text-decoration: none;
             transition: color 0.3s;
+            font-size: 0.95rem;
         }
 
         .footer-section a:hover {
@@ -424,10 +548,48 @@
             font-size: 0.9rem;
         }
 
+        /* Video Source Badge - Colores más definidos */
+        .video-source {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 0;
+            vertical-align: middle;
+            text-transform: uppercase;
+        }
+
+        .source-googledrive {
+            background-color: #34a853;
+            color: white;
+        }
+        
+        .source-youtube {
+            background-color: #ff0000;
+            color: white;
+        }
+        
+        /* Mensaje de no cursos */
+        .no-courses {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px;
+            color: var(--text-dark);
+            opacity: 0.6;
+            font-size: 1.2rem;
+        }
+        
+        .no-courses i {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
         /* Responsive Design */
         @media (max-width: 1024px) {
             .container {
                 flex-direction: column;
+                padding: 20px;
             }
             
             .sidebar {
@@ -444,25 +606,43 @@
             
             .category-item {
                 flex: 1;
-                min-width: 150px;
+                min-width: 120px;
                 justify-content: center;
+                padding: 10px 15px;
+            }
+            
+            .category-item span {
+                 display: none; /* Ocultar el texto para ahorrar espacio */
             }
         }
 
         @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+            
             .header-container {
                 flex-wrap: wrap;
+                gap: 15px;
             }
             
             .search-container {
                 order: 3;
-                margin: 15px 0 0 0;
+                margin: 0;
                 max-width: 100%;
             }
             
+            .logo {
+                flex-grow: 1;
+            }
+            
+            .header-controls {
+                 gap: 15px;
+            }
+            
             .courses-container {
-                /* Reduce el minmax para permitir 2 columnas si es posible */
                 grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+                gap: 20px;
             }
             
             .category-header {
@@ -470,111 +650,95 @@
                 align-items: flex-start;
                 gap: 10px;
             }
+            
+            .category-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .category-item span {
+                 display: block; /* Volver a mostrar en tabletas */
+            }
         }
 
         @media (max-width: 480px) {
-            .header-container {
-                justify-content: center;
-                padding: 1rem;
-            }
-
-            .logo, .header-controls {
-                flex-basis: 100%;
-                justify-content: space-between;
-            }
-
-            .logo {
-                margin-bottom: 10px;
-            }
-            
             .logo h1 {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
             }
             
-            .user-menu {
-                /* Se mantiene visible para esta versión, pero se puede ocultar si es necesario */
-                display: flex; 
+            .logo i {
+                font-size: 2rem;
+            }
+            
+            .user-menu i {
+                font-size: 1.4rem;
+            }
+            
+            .categories {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                padding-bottom: 5px;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .category-item {
+                 min-width: 100px;
+                 flex-shrink: 0;
+            }
+            
+            .category-item span {
+                 display: none; 
             }
             
             .courses-container {
-                /* Una sola columna en pantallas muy pequeñas */
                 grid-template-columns: 1fr;
             }
             
             .video-info h3 {
+                font-size: 1.4rem;
+            }
+            
+            .video-info p {
+                font-size: 0.95rem;
+            }
+            
+            .close-modal {
+                top: 10px;
+                right: 10px;
+                width: 35px;
+                height: 35px;
                 font-size: 1.2rem;
             }
 
-            /* Footer: Se asegura que se apilen correctamente */
             .footer-container {
                 grid-template-columns: 1fr;
                 gap: 20px;
-            }
-
-            .copyright {
-                font-size: 0.8rem;
-            }
-
-            .category-item {
-                 min-width: 100px;
             }
         }
 
         /* Animations */
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .fade-in {
             animation: fadeIn 0.5s ease;
         }
 
-        /* Video Source Badge */
-        .video-source {
-            display: inline-block;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 0.7rem;
-            font-weight: bold;
-            margin-left: 10px;
-            vertical-align: middle;
-        }
-
-        .source-googledrive {
-            background-color: #34a853;
-            color: white;
-        }
-        
-        /* Nuevo estilo para la fuente YouTube */
-        .source-youtube {
-            background-color: #ff0000;
-            color: white;
-        }
-
-        /* Google Drive Embed Fix (No es necesario el contenedor extra si se usa la URL correcta) */
-        /* .drive-embed-container {
-            width: 100%;
-            height: 100%;
-        } */
-
-        /* No courses message */
-        .no-courses {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 40px;
-            color: var(--text-dark);
-            opacity: 0.7;
-        }
     </style>
 </head>
 <body>
     <header>
         <div class="header-container">
-            <div class="logo">
+            <a href="#" class="logo">
                 <i class="fas fa-graduation-cap"></i>
                 <h1>Daily Life English - Stream</h1>
-            </div>
+            </a>
             
             <div class="search-container">
                 <input type="text" class="search-box" placeholder="Buscar cursos, videos, temas...">
@@ -628,20 +792,20 @@
 
     <div class="video-modal" id="video-modal">
         <div class="video-container">
-            <div class="video-header">
-                <h3 id="video-title">Título del video</h3>
-                <button class="close-modal" id="close-modal">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
+            <button class="close-modal" id="close-modal" title="Cerrar">
+                <i class="fas fa-times"></i>
+            </button>
             
             <div class="video-wrapper">
                 <iframe class="video-player" id="video-player" src="" allow="autoplay; encrypted-media" frameborder="0" allowfullscreen></iframe>
             </div>
             
             <div class="video-info">
-                <p id="video-description">Descripción del video seleccionado.</p>
-                <p><strong>Fuente:</strong> <span id="video-source">Google Drive</span></p>
+                <h3 id="video-title">Título del video</h3>
+                <div class="video-source-container">
+                    Fuente: <span id="video-source">Google Drive</span>
+                </div>
+                 <p id="video-description">Descripción del video seleccionado.</p>
             </div>
         </div>
     </div>
@@ -671,29 +835,41 @@
         const allCourses = [
             {
                     id: 1,
-                    title: "Primera Clase Virtual",
-                    description: "Conceptos fundamentales.",
+                    title: "Primera Clase Virtual - Matemática",
+                        description: "Explicación detallada de ejercicios planteados.",
                     category: "fisica-matematicas",
                     thumbnail: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
                     video: {
-                        title: "Primera Clase Virtual",
-                        description: "Explicación de ejercicios.",
+                        title: "Primera Clase Virtual - Matemática",
+                        description: "Explicación detallada de ejercicios planteados.",
                         source: "YouTube",
                         url: "https://youtu.be/y0rcSk7CcDU"
                     }
                 },
                 {
                     id: 2,
-                    title: "Primera Clase Virtual - Ingles",
-                    description: "Curso de inglés.",
+                    title: "Primera clase virtual - inglés",
+                    description: "Vocabulario esencial para hablar de tu rutina diaria en inglés de forma fluida y natural.",
                     category: "ingles",
-                    thumbnail: "https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    thumbnail: "https://images.unsplash.com/photo-1510519138101-570d1dca3d66?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
                     video: {
-                       title: "Primera Clase Virtual - Ingles",
-                    description: "Curso de inglés.",
-                        // Corregido "YouTubr" a "YouTube"
+                       title: "Vocabulary",
+                        description: "Lista de verbos y frases comunes para describir actividades diarias.",
                         source: "YouTube", 
                         url: "https://www.youtube.com/watch?v=jH0wGRG1flE"
+                    }
+                },
+                {
+                    id: 3,
+                    title: "Segunda clase virtual - inglés",
+                    description: "Vocabulario esencial para hablar de tu rutina diaria en inglés de forma fluida y natural.",
+                    category: "ingles",
+                    thumbnail: "https://images.unsplash.com/photo-1510519138101-570d1dca3d66?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    video: {
+                       title: "Vocabulary: My Day-to-Day Life",
+                        description: "Lista de verbos y frases comunes para describir actividades diarias.",
+                        source: "YouTube", 
+                        url: "https://www.youtube.com/watch?v=VRapPyZQ7Pw"
                     }
                 }
         ];
@@ -807,7 +983,8 @@
 
             // Cerrar modal haciendo clic fuera del video
             videoModal.addEventListener('click', (e) => {
-                if (e.target === videoModal) {
+                // Asegurarse de que el clic es en el fondo del modal, no en el contenido
+                if (e.target.id === 'video-modal') { 
                     closeVideoModal();
                 }
             });
@@ -862,7 +1039,7 @@
             // Actualizar la fuente del badge
             const sourceName = getSourceName(videoData.source);
             videoSource.textContent = sourceName;
-            videoSource.className = getSourceClass(videoData.source);
+            videoSource.className = `video-source ${getSourceClass(videoData.source)}`;
             
             let finalUrl = '';
             const sourceLower = videoData.source.toLowerCase();
@@ -874,11 +1051,12 @@
                     finalUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
                 } else {
                     console.error("URL de YouTube no válida:", videoData.url);
-                    // Opcional: mostrar un mensaje de error en el modal
+                    alert("Error: URL de YouTube no válida.");
                     return;
                 }
             } else if (sourceLower.includes('googledrive')) {
                 // Asumiendo que se usa el formato de URL de "vista previa/embed" de Google Drive
+                // Se debe asegurar que la URL sea para embeber, ej: https://drive.google.com/file/d/FILE_ID/preview
                 finalUrl = videoData.url;
             } else {
                 // Fuente genérica/directa
@@ -901,7 +1079,7 @@
             coursesContainer.innerHTML = '';
             
             if (!courses || courses.length === 0) {
-                coursesContainer.innerHTML = '<div class="no-courses fade-in"><i class="fas fa-video-slash fa-3x"></i><h3>No hay cursos disponibles en esta categoría</h3></div>';
+                coursesContainer.innerHTML = '<div class="no-courses fade-in"><i class="fas fa-video-slash fa-3x"></i><h3>No hay cursos disponibles en esta categoría</h3><p>Intenta con otra categoría o ajusta tu búsqueda.</p></div>';
                 courseCountElement.textContent = '0';
                 return;
             }
@@ -953,7 +1131,7 @@
                 const term = searchTerm.toLowerCase();
                 return course.title.toLowerCase().includes(term) || 
                        course.description.toLowerCase().includes(term) ||
-                       course.category.toLowerCase().includes(term); // También buscar por categoría
+                       course.category.toLowerCase().includes(term); 
             });
             
             displayCourses(filteredCourses);
