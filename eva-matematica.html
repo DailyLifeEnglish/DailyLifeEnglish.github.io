@@ -10,23 +10,18 @@
     <style>
         /* --- DESIGN SYSTEM & VARIABLES --- */
         :root {
-            /* Colores Base (Modo Oscuro - Default) */
             --bg-body: #0f172a;
-            --bg-card: rgba(30, 41, 59, 0.7); /* Glass effect */
+            --bg-card: rgba(30, 41, 59, 0.7);
             --bg-input: rgba(15, 23, 42, 0.6);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --border-color: rgba(255, 255, 255, 0.1);
-            
-            /* Colores de Acento */
             --primary: #3b82f6;
             --primary-hover: #2563eb;
-            --secondary: #10b981; /* Success Green */
-            --accent: #8b5cf6; /* Purple */
+            --secondary: #10b981;
+            --accent: #8b5cf6;
             --danger: #ef4444;
             --warning: #f59e0b;
-            
-            /* Efectos */
             --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
             --glow: 0 0 15px rgba(59, 130, 246, 0.3);
             --backdrop: blur(12px);
@@ -34,7 +29,6 @@
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Variables para Modo Claro */
         body.light-mode {
             --bg-body: #f1f5f9;
             --bg-card: rgba(255, 255, 255, 0.85);
@@ -46,13 +40,7 @@
             --glow: 0 4px 6px rgba(59, 130, 246, 0.15);
         }
 
-        /* --- RESET & BASE --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
         body {
             background-color: var(--bg-body);
@@ -65,591 +53,89 @@
             background-attachment: fixed;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
 
         /* --- HEADER --- */
         header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 30px;
-            background: var(--bg-card);
-            backdrop-filter: var(--backdrop);
-            border-radius: var(--radius);
-            margin-bottom: 40px;
-            border: 1px solid var(--border-color);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 30px; background: var(--bg-card); backdrop-filter: var(--backdrop);
+            border-radius: var(--radius); margin-bottom: 40px; border: 1px solid var(--border-color);
             box-shadow: var(--shadow);
         }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
+        .logo { display: flex; align-items: center; gap: 15px; }
         .logo i {
-            font-size: 2rem;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 2px 4px rgba(59, 130, 246, 0.3));
+            font-size: 2rem; background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
-
-        .logo-text h1 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: linear-gradient(to right, var(--text-main), var(--text-muted));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .logo-text p {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-        }
+        .logo-text h1 { font-size: 1.5rem; font-weight: 700; color: var(--text-main); }
+        .logo-text p { color: var(--text-muted); font-size: 0.85rem; }
 
         .theme-toggle {
-            background: var(--bg-input);
-            border: 1px solid var(--border-color);
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            cursor: pointer;
-            color: var(--warning);
-            font-size: 1.2rem;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: var(--bg-input); border: 1px solid var(--border-color);
+            width: 45px; height: 45px; border-radius: 50%; cursor: pointer;
+            color: var(--warning); display: flex; align-items: center; justify-content: center;
         }
 
-        .theme-toggle:hover {
-            transform: rotate(15deg) scale(1.1);
-            background: var(--bg-card);
-            box-shadow: 0 0 10px var(--warning);
-        }
-
-        /* --- LOGIN SCREEN --- */
-        .login-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 70vh;
-            animation: fadeIn 0.8s ease-out;
-        }
-
+        /* --- LOGIN --- */
+        .login-container { display: flex; justify-content: center; align-items: center; min-height: 70vh; }
         .login-box {
-            background: var(--bg-card);
-            backdrop-filter: var(--backdrop);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            padding: 50px 40px;
-            width: 100%;
-            max-width: 420px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+            background: var(--bg-card); backdrop-filter: var(--backdrop);
+            border: 1px solid var(--border-color); border-radius: var(--radius);
+            padding: 40px; width: 100%; max-width: 420px; text-align: center;
+        }
+        .user-type-selector { display: flex; margin-bottom: 30px; background: var(--bg-input); padding: 5px; border-radius: 12px; }
+        .user-type { flex: 1; padding: 10px; border: none; cursor: pointer; color: var(--text-muted); background: transparent; font-weight: 600; border-radius: 8px; }
+        .user-type.active { color: #fff; background: var(--primary); }
+
+        .form-group { margin-bottom: 20px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 8px; color: var(--text-muted); font-size: 0.9rem; }
+        .form-group input, .form-group textarea {
+            width: 100%; padding: 12px; background: var(--bg-input); border: 1px solid var(--border-color);
+            border-radius: 10px; color: var(--text-main); font-size: 1rem;
         }
 
-        .login-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-        }
-
-        .login-box h2 {
-            margin-bottom: 30px;
-            font-weight: 600;
-            color: var(--text-main);
-        }
-
-        .user-type-selector {
-            display: flex;
-            margin-bottom: 30px;
-            background: var(--bg-input);
-            padding: 5px;
-            border-radius: 12px;
-            position: relative;
-        }
-
-        .user-type {
-            flex: 1;
-            padding: 10px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            font-weight: 600;
-            color: var(--text-muted);
-            border-radius: 8px;
-            transition: var(--transition);
-            z-index: 2;
-        }
-
-        .user-type.active {
-            color: #fff;
-            background: var(--primary);
-            box-shadow: 0 2px 10px rgba(59, 130, 246, 0.4);
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-            text-align: left;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--text-muted);
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 14px 16px;
-            background-color: var(--bg-input);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            color: var(--text-main);
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-            background-color: var(--bg-card);
-        }
-
-        .login-btn {
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-hover));
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            box-shadow: var(--glow);
-        }
-
-        .login-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(59, 130, 246, 0.4);
-        }
+        .login-btn { width: 100%; padding: 15px; background: var(--primary); color: white; border: none; border-radius: 10px; cursor: pointer; font-weight: 600; transition: var(--transition); }
+        .login-btn:hover { background: var(--primary-hover); transform: translateY(-2px); }
 
         /* --- DASHBOARD --- */
-        .dashboard {
-            display: none;
-            animation: slideUp 0.6s ease-out;
-        }
-
+        .dashboard { display: none; animation: fadeIn 0.5s ease; }
         .dashboard-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            padding: 20px;
-            background: var(--bg-card);
-            border-radius: var(--radius);
-            border: 1px solid var(--border-color);
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 30px; padding: 20px; background: var(--bg-card);
+            border-radius: var(--radius); border: 1px solid var(--border-color);
         }
+        .user-avatar { width: 50px; height: 50px; border-radius: 50%; background: var(--primary); display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        
+        .logout-btn { padding: 8px 15px; background: rgba(239, 68, 68, 0.1); color: var(--danger); border: 1px solid var(--danger); border-radius: 8px; cursor: pointer; }
 
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
+        .dashboard-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; }
+        .card { background: var(--bg-card); padding: 25px; border-radius: var(--radius); border: 1px solid var(--border-color); display: flex; flex-direction: column; }
+        .card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid var(--border-color); }
+        .card-header i { color: var(--primary); }
 
-        .user-avatar {
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent), var(--primary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            font-weight: bold;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-
-        .user-info h2 {
-            font-size: 1.3rem;
-            color: var(--text-main);
-        }
-
-        .user-info p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        .logout-btn {
-            padding: 10px 20px;
-            background: rgba(239, 68, 68, 0.1);
-            color: var(--danger);
-            border: 1px solid rgba(239, 68, 68, 0.2);
-            border-radius: 10px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .logout-btn:hover {
-            background: var(--danger);
-            color: white;
-        }
-
-        .dashboard-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-        }
-
-        .card {
-            background: var(--bg-card);
-            backdrop-filter: var(--backdrop);
-            border-radius: var(--radius);
-            border: 1px solid var(--border-color);
-            padding: 30px;
-            transition: var(--transition);
-            box-shadow: var(--shadow);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(59, 130, 246, 0.3);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .card-header i {
-            font-size: 1.5rem;
-            color: var(--primary);
-            background: rgba(59, 130, 246, 0.1);
-            padding: 10px;
-            border-radius: 10px;
-        }
-
-        .card-header h3 {
-            font-size: 1.25rem;
-            color: var(--text-main);
-        }
-
-        .card p {
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
-
-        .drive-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            width: 100%;
-            padding: 12px;
-            background-color: rgba(16, 185, 129, 0.1);
-            color: var(--secondary);
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: 600;
-            transition: var(--transition);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-
-        .drive-link:hover {
-            background-color: var(--secondary);
-            color: white;
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
-        }
-
-        /* --- TASK LIST --- */
-        .task-list {
-            list-style: none;
-        }
-
-        .task-item {
-            padding: 20px;
-            background: var(--bg-input);
-            border-radius: 12px;
-            margin-bottom: 15px;
-            border-left: 4px solid var(--primary);
-            transition: var(--transition);
-        }
-
-        .task-item:hover {
-            transform: translateX(5px);
-            background: rgba(59, 130, 246, 0.05);
-        }
-
-        .task-title {
-            font-weight: 700;
-            font-size: 1.05rem;
-            margin-bottom: 8px;
-            color: var(--text-main);
-        }
-
-        .task-dates {
-            display: flex;
-            justify-content: space-between;
-            color: var(--primary);
-            font-size: 0.85rem;
-            margin-bottom: 12px;
-            font-weight: 500;
-            background: rgba(59, 130, 246, 0.1);
-            padding: 5px 10px;
-            border-radius: 6px;
-        }
-
-        .task-description {
-            color: var(--text-muted);
-            line-height: 1.5;
-            font-size: 0.95rem;
-        }
-
-        .no-task {
-            text-align: center;
-            color: var(--text-muted);
-            font-style: italic;
-            padding: 20px;
-            border: 2px dashed var(--border-color);
-            border-radius: 12px;
-        }
-
-        /* --- BUTTONS --- */
-        .btn {
-            padding: 12px 24px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            font-size: 0.95rem;
-            width: 100%;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-            box-shadow: var(--glow);
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-hover);
-            transform: translateY(-2px);
-        }
-
-        .btn-success {
-            background: var(--secondary);
-            color: white;
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
-        }
-
-        .btn-success:hover {
-            background-color: #059669;
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            background: var(--bg-input);
-            color: var(--text-muted);
-            border: 1px solid var(--border-color);
-        }
-
-        .btn-secondary:hover {
-            background: var(--bg-card);
-            color: var(--text-main);
-            border-color: var(--text-muted);
-        }
+        /* --- TABLES --- */
+        .data-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        .data-table th { text-align: left; color: var(--text-muted); font-size: 0.75rem; padding: 10px; border-bottom: 1px solid var(--border-color); text-transform: uppercase; }
+        .data-table td { padding: 12px 10px; font-size: 0.85rem; border-bottom: 1px solid var(--border-color); vertical-align: middle; }
+        
+        .action-btn { padding: 6px 12px; background: var(--secondary); color: white; text-decoration: none; border-radius: 6px; font-size: 0.75rem; display: inline-flex; align-items: center; gap: 5px; font-weight: 600; transition: 0.2s; }
+        .action-btn:hover { opacity: 0.9; transform: scale(1.05); }
+        .action-btn.blue { background: var(--primary); }
 
         /* --- MODAL --- */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(5px);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
+        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); z-index: 100; justify-content: center; align-items: center; }
+        .modal-content { background: #1e293b; padding: 30px; border-radius: var(--radius); width: 90%; max-width: 500px; border: 1px solid var(--border-color); }
+        body.light-mode .modal-content { background: white; }
 
-        .modal.show {
-            opacity: 1;
-        }
-
-        .modal-content {
-            background-color: #1e293b; /* Solid dark color for modal to prevent too much transparency overlap */
-            color: var(--text-main);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius);
-            width: 90%;
-            max-width: 500px;
-            padding: 30px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            transform: scale(0.9);
-            transition: transform 0.3s ease;
-        }
+        /* --- UTILS --- */
+        .drive-link { display: flex; align-items: center; justify-content: center; gap: 10px; background: rgba(16, 185, 129, 0.1); color: var(--secondary); padding: 12px; border-radius: 10px; text-decoration: none; font-weight: 600; border: 1px solid var(--secondary); margin-top: 10px; }
+        .notification { position: fixed; bottom: 20px; right: 20px; padding: 15px 25px; border-radius: 10px; color: white; display: none; z-index: 1000; animation: slideUp 0.3s ease; }
         
-        body.light-mode .modal-content {
-            background-color: #ffffff;
-        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translateY(20px); } to { transform: translateY(0); } }
 
-        .modal.show .modal-content {
-            transform: scale(1);
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .modal-header h3 {
-            color: var(--primary);
-            font-size: 1.4rem;
-        }
-
-        .close-modal {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--text-muted);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .close-modal:hover {
-            color: var(--danger);
-            transform: rotate(90deg);
-        }
-
-        .modal-footer {
-            display: flex;
-            justify-content: flex-end;
-            gap: 15px;
-            margin-top: 25px;
-        }
-        
-        textarea {
-            width: 100%;
-            padding: 14px 16px;
-            background-color: var(--bg-input);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            color: var(--text-main);
-            font-size: 1rem;
-            resize: vertical;
-        }
-        
-        textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-
-        /* --- NOTIFICATIONS --- */
-        .notification {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            padding: 16px 24px;
-            border-radius: 12px;
-            color: white;
-            font-weight: 500;
-            z-index: 1001;
-            display: none;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transform: translateX(100%);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .notification.show {
-            transform: translateX(0);
-        }
-
-        .notification.success {
-            background: linear-gradient(135deg, #10b981, #059669);
-        }
-
-        .notification.error {
-            background: linear-gradient(135deg, #ef4444, #dc2626);
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            margin-top: 60px;
-            text-align: center;
-            padding: 30px 0;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        /* --- ANIMATIONS --- */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- RESPONSIVE --- */
-        @media (max-width: 768px) {
-            .login-box { padding: 30px 20px; }
-            .dashboard-header { flex-direction: column; gap: 20px; align-items: flex-start; }
-            .user-info { width: 100%; }
-            .logout-btn { width: 100%; justify-content: center; }
-            .dashboard-content { grid-template-columns: 1fr; }
-            .modal-footer { flex-direction: column; }
-        }
+        @media (max-width: 768px) { .dashboard-content { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -662,455 +148,277 @@
                     <p>Lcda. Samanta | Aula Virtual</p>
                 </div>
             </div>
-            <button class="theme-toggle" id="themeToggle" title="Cambiar Tema">
-                <i class="fas fa-sun"></i>
-            </button>
+            <button class="theme-toggle" id="themeToggle"><i class="fas fa-sun"></i></button>
         </header>
 
         <div class="login-container" id="loginScreen">
             <div class="login-box">
                 <h2>Bienvenido</h2>
-                
                 <div class="user-type-selector">
                     <button class="user-type active" id="teacherBtn">Docente</button>
                     <button class="user-type" id="studentBtn">Estudiante</button>
                 </div>
-                
                 <form id="loginForm">
-                    <div class="form-group">
-                        <label for="username">Usuario</label>
-                        <input type="text" id="username" placeholder="Usuario (Samanta)" required autocomplete="off">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="password">Contraseña</label>
-                        <input type="password" id="password" placeholder="••••••••" required>
-                    </div>
-                    
-                    <button type="submit" class="login-btn" id="loginButton">
-                        Iniciar Sesión
-                    </button>
+                    <div class="form-group"><label>Usuario</label><input type="text" id="username" placeholder="Samanta" required></div>
+                    <div class="form-group"><label>Contraseña</label><input type="password" id="password" placeholder="••••••••" required></div>
+                    <button type="submit" class="login-btn">Iniciar Sesión</button>
                 </form>
             </div>
         </div>
 
         <div class="dashboard" id="teacherDashboard">
             <div class="dashboard-header">
-                <div class="user-info">
+                <div style="display: flex; align-items: center; gap: 15px;">
                     <div class="user-avatar">S</div>
-                    <div>
-                        <h2>Lcda. Samanta</h2>
-                        <p>Panel de Control Docente</p>
-                    </div>
+                    <div><h2>Lcda. Samanta</h2><p>Panel de Control Docente</p></div>
                 </div>
-                <button class="logout-btn" id="logoutTeacher">
-                    <i class="fas fa-power-off"></i> Cerrar Sesión
-                </button>
+                <button class="logout-btn" onclick="logout()"><i class="fas fa-power-off"></i> Salir</button>
             </div>
             
             <div class="dashboard-content">
-                <div class="card">
-                    <div class="card-header">
-                        <i class="fas fa-cloud-upload-alt"></i>
-                        <h3>Material Educativo</h3>
-                    </div>
-                    <p>Gestione los archivos de clase, guías de ejercicios y recursos multimedia en la nube.</p>
-                    
-                    <div style="margin-top: auto;">
-                        <a href="https://drive.google.com/drive/folders/1IdOxJ2I9VcpoIAOdPTTJ7WL5i9CFADJi?usp=drive_link" target="_blank" class="drive-link">
-                            <i class="fab fa-google-drive"></i> Acceder a Drive
-                        </a>
-                        <div style="margin-top: 15px;">
-                            <button class="btn btn-primary" id="notifyTaskBtn">
-                                <i class="fab fa-whatsapp"></i> Asignar Nueva Tarea
-                            </button>
-                        </div>
+                <div class="card" style="grid-column: span 2;">
+                    <div class="card-header"><i class="fas fa-inbox"></i><h3>Tareas Recibidas (Entregas de Gino)</h3></div>
+                    <div style="overflow-x: auto;">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Nombre de la Tarea</th>
+                                    <th>Fecha de Subida</th>
+                                    <th>Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody id="receivedTasksTableBody">
+                                <tr>
+                                    <td colspan="3" style="text-align: center; color: var(--text-muted); padding: 30px;">
+                                        <i class="fas fa-folder-open" style="font-size: 2rem; display: block; margin-bottom: 10px;"></i>
+                                        Sin entregas pendientes por revisar.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                
+
                 <div class="card">
-                    <div class="card-header">
-                        <i class="fas fa-clipboard-list"></i>
-                        <h3>Historial de Tareas</h3>
-                    </div>
-                    <ul class="task-list" id="teacherTaskList">
-                        </ul>
+                    <div class="card-header"><i class="fas fa-video"></i><h3>Programación de Meet</h3></div>
+                    <table class="data-table">
+                        <thead><tr><th>Fecha/Hora</th><th>Descripción</th><th>Link</th></tr></thead>
+                        <tbody>
+                            <tr>
+                                <td>Martes, 09:00 AM - 11:00 AM</td>
+                                <td>Clases Online de Matemática</td>
+                                <td><a href="https://meet.google.com/mto-zikw-joi" target="_blank" class="action-btn"><i class="fas fa-video"></i> Unirse</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card">
+                    <div class="card-header"><i class="fas fa-plus-circle"></i><h3>Nueva Asignación</h3></div>
+                    <p style="font-size: 0.9rem;">Cree una nueva tarea para enviar la notificación inmediata por WhatsApp.</p>
+                    <button class="login-btn" onclick="openModal()"><i class="fas fa-pencil-alt"></i> Crear Tarea</button>
+                    <a href="https://drive.google.com/drive/folders/1IdOxJ2I9VcpoIAOdPTTJ7WL5i9CFADJi" target="_blank" class="drive-link"><i class="fab fa-google-drive"></i> Repositorio General</a>
                 </div>
             </div>
         </div>
 
         <div class="dashboard" id="studentDashboard">
             <div class="dashboard-header">
-                <div class="user-info">
-                    <div class="user-avatar">G</div>
-                    <div>
-                        <h2>Gino</h2>
-                        <p>Panel del Estudiante</p>
-                    </div>
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <div class="user-avatar" style="background: var(--accent);">G</div>
+                    <div><h2>Gino</h2><p>Panel del Estudiante</p></div>
                 </div>
-                <button class="logout-btn" id="logoutStudent">
-                    <i class="fas fa-power-off"></i> Cerrar Sesión
-                </button>
+                <button class="logout-btn" onclick="logout()"><i class="fas fa-power-off"></i> Salir</button>
             </div>
             
             <div class="dashboard-content">
                 <div class="card">
-                    <div class="card-header">
-                        <i class="fas fa-bell"></i>
-                        <h3>Tarea Pendiente</h3>
-                    </div>
-                    <div id="currentTask" style="flex-grow: 1;">
-                        <p class="no-task">¡Todo al día! No tienes tareas pendientes.</p>
+                    <div class="card-header"><i class="fas fa-laptop-house"></i><h3>Clases en Vivo</h3></div>
+                    <table class="data-table">
+                        <thead><tr><th>Fecha/Hora</th><th>Clase</th><th>Acción</th></tr></thead>
+                        <tbody>
+                            <tr>
+                                <td>Martes, 09:00 AM - 11:00 AM</td>
+                                <td>Clases Online de Matemática</td>
+                                <td><a href="https://meet.google.com/mto-zikw-joi" target="_blank" class="action-btn"><i class="fas fa-video"></i> Unirse</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card">
+                    <div class="card-header"><i class="fas fa-calendar-check"></i><h3>Tarea Asignada</h3></div>
+                    <div id="studentTaskDisplay">
+                        <p style="text-align: center; color: var(--text-muted); padding: 20px;">No hay tareas activas actualmente.</p>
                     </div>
                 </div>
-                
+
                 <div class="card">
-                    <div class="card-header">
-                        <i class="fas fa-paper-plane"></i>
-                        <h3>Entrega de Actividades</h3>
-                    </div>
-                    <p>Sube tus ejercicios resueltos a la carpeta personal. Recuerda notificar una vez subido el archivo.</p>
-                    
-                    <div style="margin-top: auto;">
-                        <a href="https://drive.google.com/drive/folders/1fB8KXQ8gPRFJiVYhFtME3J0e5Vvau8XS?usp=drive_link" target="_blank" class="drive-link">
-                            <i class="fab fa-google-drive"></i> Subir Archivo a Drive
-                        </a>
-                        
-                        <div style="margin-top: 15px;">
-                            <button class="btn btn-success" id="notifySubmissionBtn">
-                                <i class="fab fa-whatsapp"></i> Notificar Entrega
-                            </button>
-                        </div>
-                    </div>
+                    <div class="card-header"><i class="fas fa-cloud-upload-alt"></i><h3>Entrega de Tarea</h3></div>
+                    <p style="font-size: 0.85rem; margin-bottom: 15px;">1. Sube tu archivo a tu carpeta de Google Drive.<br>2. Haz clic en el botón verde para notificar a la Lcda. Samanta.</p>
+                    <a href="https://drive.google.com/drive/folders/1fB8KXQ8gPRFJiVYhFtME3J0e5Vvau8XS" target="_blank" class="drive-link" style="color: var(--primary); border-color: var(--primary); background: rgba(59, 130, 246, 0.1);">
+                        <i class="fab fa-google-drive"></i> Abrir Mi Carpeta
+                    </a>
+                    <button class="login-btn" style="background: var(--secondary); margin-top: 15px;" onclick="submitTask()">
+                        <i class="fab fa-whatsapp"></i> Notificar Entrega
+                    </button>
                 </div>
             </div>
         </div>
 
         <div class="modal" id="taskModal">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h3>Nueva Asignación</h3>
-                    <button class="close-modal" id="closeTaskModal">&times;</button>
-                </div>
-                
+                <h3 style="margin-bottom: 20px; color: var(--primary);">Publicar Tarea</h3>
                 <form id="taskForm">
-                    <div class="form-group">
-                        <label for="documentName">Título del Documento / Tema</label>
-                        <input type="text" id="documentName" placeholder="Ej: Polinomios y Factorización" required>
-                    </div>
-                    
-                    <div style="display: flex; gap: 15px;">
-                        <div class="form-group" style="flex: 1;">
-                            <label for="startDate">Inicio</label>
-                            <input type="date" id="startDate" required>
-                        </div>
-                        <div class="form-group" style="flex: 1;">
-                            <label for="endDate">Vencimiento</label>
-                            <input type="date" id="endDate" required>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="taskInfo">Instrucciones Detalladas</label>
-                        <textarea id="taskInfo" rows="4" placeholder="Describa los ejercicios a realizar..." required></textarea>
-                    </div>
-                    
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" id="cancelTaskBtn">Cancelar</button>
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fab fa-whatsapp"></i> Publicar y Notificar
-                        </button>
+                    <div class="form-group"><label>Título del Tema</label><input type="text" id="taskTitle" required></div>
+                    <div class="form-group"><label>Fecha Límite</label><input type="date" id="taskDeadline" required></div>
+                    <div class="form-group"><label>Instrucciones</label><textarea id="taskDesc" rows="3" required></textarea></div>
+                    <div style="display: flex; gap: 10px; margin-top: 20px;">
+                        <button type="button" class="login-btn" style="background: var(--bg-input); color: var(--text-main);" onclick="closeModal()">Cancelar</button>
+                        <button type="submit" class="login-btn">Asignar</button>
                     </div>
                 </form>
             </div>
         </div>
 
-        <div class="notification" id="notification">
-            <i class="fas fa-info-circle"></i>
-            <span id="notificationText">Mensaje</span>
-        </div>
+        <div class="notification" id="notification"></div>
+        <footer style="text-align: center; margin-top: 50px; color: var(--text-muted); font-size: 0.8rem; padding-bottom: 20px;">
+            EVA Matemática &copy; 2026 | Daily Life English
+        </footer>
     </div>
 
-    <footer>
-        <p>EVA Matemática &copy; 2026 | Desarrollado por Daily Life English</p>
-    </footer>
-
     <script>
-        // --- DATA & STATE ---
-        const credentials = {
-            docente: { nombre: "Lcda. Samanta", usuario: "Samanta", password: "Samanta2026" },
-            estudiante: { nombre: "Gino", usuario: "Gino", password: "Gino2026" }
-        };
-
-        // Estado inicial de tareas
+        // --- ESTADO ---
         let tasks = [];
-        
-        // Variables globales
-        let isDarkMode = true; // Por defecto TRUE según requerimiento
-        let isTeacherLogin = true;
-        let currentUser = null;
+        let submissions = [];
+        let userRole = 'teacher';
+        let isDarkMode = true;
 
-        // --- DOM ELEMENTS ---
-        const themeToggle = document.getElementById('themeToggle');
-        const loginScreen = document.getElementById('loginScreen');
-        const teacherDashboard = document.getElementById('teacherDashboard');
-        const studentDashboard = document.getElementById('studentDashboard');
-        const notification = document.getElementById('notification');
-        const notificationText = document.getElementById('notificationText');
-        const taskModal = document.getElementById('taskModal');
-
-        // --- INITIALIZATION ---
-        function initApp() {
-            // Configurar fechas por defecto
-            setDefaultDates();
-            
-            // Renderizar estado inicial
-            renderTasks();
-            
-            // Verificar si hay preferencias guardadas (opcional, aquí forzamos default dark)
-            // Si quisieras persistencia: localStorage.getItem('theme') ...
-        }
-
-        function setDefaultDates() {
-            const today = new Date();
-            const tomorrow = new Date(today);
-            tomorrow.setDate(tomorrow.getDate() + 1);
-            document.getElementById('startDate').valueAsDate = today;
-            document.getElementById('endDate').valueAsDate = tomorrow;
-        }
-
-        // --- THEME HANDLING ---
-        themeToggle.addEventListener('click', () => {
+        // --- THEME ---
+        document.getElementById('themeToggle').addEventListener('click', () => {
             isDarkMode = !isDarkMode;
-            const icon = themeToggle.querySelector('i');
-            
-            if (isDarkMode) {
-                document.body.classList.remove('light-mode');
-                icon.className = 'fas fa-sun'; // Icono para cambiar a claro
-                showNotification('Modo Oscuro Activado', 'success');
-            } else {
-                document.body.classList.add('light-mode');
-                icon.className = 'fas fa-moon'; // Icono para cambiar a oscuro
-                showNotification('Modo Claro Activado', 'success');
-            }
+            document.body.classList.toggle('light-mode');
+            document.getElementById('themeToggle').innerHTML = isDarkMode ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
         });
 
-        // --- LOGIN LOGIC ---
+        // --- AUTH ---
         document.getElementById('teacherBtn').addEventListener('click', () => {
-            isTeacherLogin = true;
-            toggleUserTypeUI('teacherBtn', 'studentBtn', 'Iniciar Sesión', 'Usuario (Samanta)');
+            userRole = 'teacher';
+            document.getElementById('teacherBtn').classList.add('active');
+            document.getElementById('studentBtn').classList.remove('active');
+            document.getElementById('username').placeholder = "Samanta";
         });
 
         document.getElementById('studentBtn').addEventListener('click', () => {
-            isTeacherLogin = false;
-            toggleUserTypeUI('studentBtn', 'teacherBtn', 'Entrar como Estudiante', 'Usuario (Gino)');
+            userRole = 'student';
+            document.getElementById('studentBtn').classList.add('active');
+            document.getElementById('teacherBtn').classList.remove('active');
+            document.getElementById('username').placeholder = "Gino";
         });
-
-        function toggleUserTypeUI(activeId, inactiveId, btnText, placeholder) {
-            document.getElementById(activeId).classList.add('active');
-            document.getElementById(inactiveId).classList.remove('active');
-            document.getElementById('loginButton').textContent = btnText;
-            document.getElementById('username').placeholder = placeholder;
-        }
 
         document.getElementById('loginForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            const u = document.getElementById('username').value.trim();
-            const p = document.getElementById('password').value.trim();
-            
-            const targetUser = isTeacherLogin ? credentials.docente : credentials.estudiante;
-            
-            if (u === targetUser.usuario && p === targetUser.password) {
-                currentUser = targetUser;
-                loginScreen.style.display = 'none';
-                
-                if (isTeacherLogin) {
-                    teacherDashboard.style.display = 'block';
-                    loadTeacherTasks();
-                } else {
-                    studentDashboard.style.display = 'block';
-                    loadStudentTask();
-                }
-                showNotification(`¡Hola de nuevo, ${currentUser.nombre}!`, 'success');
+            const u = document.getElementById('username').value;
+            const p = document.getElementById('password').value;
+
+            if (userRole === 'teacher' && u === "Samanta" && p === "Samanta2026") {
+                login('teacherDashboard');
+            } else if (userRole === 'student' && u === "Gino" && p === "Gino2026") {
+                login('studentDashboard');
             } else {
-                showNotification('Credenciales incorrectas', 'error');
-                // Efecto de vibración en el formulario
-                document.querySelector('.login-box').style.animation = 'shake 0.5s';
-                setTimeout(() => document.querySelector('.login-box').style.animation = '', 500);
+                showNotify("Acceso denegado", "danger");
             }
         });
 
-        // --- LOGOUT ---
-        const handleLogout = () => {
-            teacherDashboard.style.display = 'none';
-            studentDashboard.style.display = 'none';
-            loginScreen.style.display = 'flex';
-            document.getElementById('loginForm').reset();
-            currentUser = null;
-        };
+        function login(dashboardId) {
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById(dashboardId).style.display = 'block';
+            updateUI();
+        }
 
-        document.getElementById('logoutTeacher').addEventListener('click', handleLogout);
-        document.getElementById('logoutStudent').addEventListener('click', handleLogout);
+        function logout() { location.reload(); }
 
-        // --- TASK MANAGEMENT ---
-        document.getElementById('notifyTaskBtn').addEventListener('click', () => {
-            taskModal.style.display = 'flex';
-            setTimeout(() => taskModal.classList.add('show'), 10);
-        });
-
-        const closeModal = () => {
-            taskModal.classList.remove('show');
-            setTimeout(() => taskModal.style.display = 'none', 300);
-        };
-
-        document.getElementById('closeTaskModal').addEventListener('click', closeModal);
-        document.getElementById('cancelTaskBtn').addEventListener('click', closeModal);
+        // --- TAREAS ---
+        function openModal() { document.getElementById('taskModal').style.display = 'flex'; }
+        function closeModal() { document.getElementById('taskModal').style.display = 'none'; }
 
         document.getElementById('taskForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            
-            const title = document.getElementById('documentName').value;
-            const start = document.getElementById('startDate').value;
-            const end = document.getElementById('endDate').value;
-            const desc = document.getElementById('taskInfo').value;
-            
             const newTask = {
                 id: Date.now(),
-                title: title,
-                startDate: start,
-                endDate: end,
-                description: desc,
-                forStudent: "Gino"
+                title: document.getElementById('taskTitle').value,
+                deadline: document.getElementById('taskDeadline').value,
+                desc: document.getElementById('taskDesc').value
             };
-            
             tasks.push(newTask);
             
-            // Format dates for WhatsApp
-            const sDate = new Date(start).toLocaleDateString('es-ES');
-            const eDate = new Date(end).toLocaleDateString('es-ES');
-            
-            // WhatsApp Link
-            const message = `📚 *Nueva Tarea Asignada - EVA Matemática*%0A%0A📌 *Tema:* ${title}%0A📅 *Inicio:* ${sDate}%0A⚠️ *Entrega:* ${eDate}%0A%0A📝 *Instrucciones:*%0A${desc}`;
-            window.open(`https://wa.me/+593967879068?text=${message}`, '_blank');
+            // Notificar por WhatsApp
+            const msg = `📚 *NUEVA TAREA: ${newTask.title}*%0A📅 Entrega: ${newTask.deadline}%0A📝 Instrucciones: ${newTask.desc}`;
+            window.open(`https://wa.me/+593967879068?text=${msg}`, '_blank');
             
             closeModal();
-            document.getElementById('taskForm').reset();
-            setDefaultDates();
-            renderTasks();
-            showNotification('Tarea publicada y notificada', 'success');
+            updateUI();
+            showNotify("Tarea enviada correctamente", "success");
         });
 
-        document.getElementById('notifySubmissionBtn').addEventListener('click', () => {
-            const activeTask = tasks.find(t => t.forStudent === "Gino"); // Simple logic: last task
-            if (activeTask || tasks.length > 0) {
-                 // Si hay tareas en el array, asumimos que notifica la última
-                const taskTitle = activeTask ? activeTask.title : tasks[tasks.length-1].title;
-                const message = `✅ *Entrega de Tarea*%0A%0AHola Lcda. Samanta, he subido mi tarea a Drive.%0A%0A📂 *Tema:* ${taskTitle}%0A👤 *Estudiante:* Gino%0A📅 *Fecha:* ${new Date().toLocaleDateString('es-ES')}`;
-                window.open(`https://wa.me/+593967879068?text=${message}`, '_blank');
-                showNotification('Confirmación enviada por WhatsApp', 'success');
-            } else {
-                showNotification('No tienes tareas pendientes para entregar', 'error');
-            }
-        });
-
-        // --- RENDERING ---
-        function renderTasks() {
-            if (currentUser && currentUser.usuario === 'Samanta') loadTeacherTasks();
-            if (currentUser && currentUser.usuario === 'Gino') loadStudentTask();
-        }
-
-        function loadTeacherTasks() {
-            const list = document.getElementById('teacherTaskList');
-            list.innerHTML = '';
-            
+        function submitTask() {
             if (tasks.length === 0) {
-                list.innerHTML = '<p class="no-task">No hay tareas activas en el sistema.</p>';
+                showNotify("No hay tareas para entregar", "danger");
                 return;
             }
-            
-            // Mostrar las más recientes primero
-            tasks.slice().reverse().forEach(task => {
-                const sDate = new Date(task.startDate).toLocaleDateString('es-ES');
-                const eDate = new Date(task.endDate).toLocaleDateString('es-ES');
-                
-                const li = document.createElement('li');
-                li.className = 'task-item';
-                li.innerHTML = `
-                    <div class="task-title">${task.title}</div>
-                    <div class="task-dates">
-                        <span><i class="far fa-calendar-alt"></i> ${sDate}</span>
-                        <span><i class="far fa-flag"></i> ${eDate}</span>
-                    </div>
-                    <div class="task-description">${task.description}</div>
-                `;
-                list.appendChild(li);
+            const current = tasks[tasks.length - 1];
+            submissions.push({
+                taskName: current.title,
+                date: new Date().toLocaleString(),
+                link: "https://drive.google.com/drive/folders/1fB8KXQ8gPRFJiVYhFtME3J0e5Vvau8XS"
             });
+
+            const msg = `✅ *ENTREGA DE TAREA*%0A👤 Estudiante: Gino%0A📂 Tema: ${current.title}`;
+            window.open(`https://wa.me/+593967879068?text=${msg}`, '_blank');
+            
+            updateUI();
+            showNotify("Entrega registrada", "success");
         }
 
-        function loadStudentTask() {
-            const container = document.getElementById('currentTask');
-            // Buscar tarea para Gino (en este demo simple, tomamos la última agregada)
-            const myTask = tasks.length > 0 ? tasks[tasks.length - 1] : null;
-            
-            if (myTask) {
-                const sDate = new Date(myTask.startDate).toLocaleDateString('es-ES');
-                const eDate = new Date(myTask.endDate).toLocaleDateString('es-ES');
-                
-                container.innerHTML = `
-                    <div class="task-item" style="border-left-color: var(--secondary);">
-                        <div class="task-title" style="color: var(--secondary);">${myTask.title}</div>
-                        <div class="task-dates" style="background: rgba(16, 185, 129, 0.1); color: var(--secondary);">
-                            <span>Asignado: ${sDate}</span>
-                            <span>Vence: ${eDate}</span>
-                        </div>
-                        <div class="task-description">${myTask.description}</div>
-                        <div style="margin-top: 15px; padding-top: 10px; border-top: 1px dashed var(--border-color);">
-                            <a href="https://drive.google.com/drive/folders/1IdOxJ2I9VcpoIAOdPTTJ7WL5i9CFADJi?usp=drive_link" target="_blank" class="drive-link" style="font-size: 0.85rem; padding: 8px;">
-                                <i class="fas fa-file-download"></i> Ver Material Adjunto
-                            </a>
-                        </div>
-                    </div>
-                `;
-            } else {
-                container.innerHTML = '<p class="no-task">¡Excelente! Estás al día con tus deberes.</p>';
+        function updateUI() {
+            // Estudiante
+            const sDisplay = document.getElementById('studentTaskDisplay');
+            if (tasks.length > 0) {
+                const t = tasks[tasks.length - 1];
+                sDisplay.innerHTML = `
+                    <div style="background: var(--bg-input); padding: 15px; border-radius: 10px; border-left: 4px solid var(--secondary);">
+                        <h4 style="color: var(--secondary);">${t.title}</h4>
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin: 5px 0;">Vence: ${t.deadline}</p>
+                        <p style="font-size: 0.9rem;">${t.desc}</p>
+                    </div>`;
+            }
+
+            // Docente (Tareas Recibidas)
+            const tBody = document.getElementById('receivedTasksTableBody');
+            if (submissions.length > 0) {
+                tBody.innerHTML = '';
+                submissions.slice().reverse().forEach(s => {
+                    tBody.innerHTML += `
+                        <tr>
+                            <td><strong>${s.taskName}</strong></td>
+                            <td>${s.date}</td>
+                            <td>
+                                <a href="${s.link}" target="_blank" class="action-btn blue">
+                                    <i class="fas fa-folder-open"></i> Ir a la Tarea
+                                </a>
+                            </td>
+                        </tr>`;
+                });
             }
         }
 
-        // --- UTILS ---
-        function showNotification(msg, type) {
-            notification.className = `notification ${type}`;
-            notificationText.textContent = msg;
-            notification.style.display = 'flex'; // Necesario para flexbox
-            
-            // Pequeño delay para permitir la transición CSS
-            setTimeout(() => notification.classList.add('show'), 10);
-            
-            setTimeout(() => {
-                notification.classList.remove('show');
-                setTimeout(() => notification.style.display = 'none', 400);
-            }, 4000);
+        function showNotify(text, type) {
+            const n = document.getElementById('notification');
+            n.textContent = text;
+            n.style.background = type === 'success' ? 'var(--secondary)' : 'var(--danger)';
+            n.style.display = 'block';
+            setTimeout(() => n.style.display = 'none', 3000);
         }
-
-        // Click outside modal
-        window.addEventListener('click', (e) => {
-            if (e.target === taskModal) closeModal();
-        });
-
-        // Add shake animation style dynamically
-        const styleSheet = document.createElement("style");
-        styleSheet.innerText = `
-            @keyframes shake {
-                0% { transform: translateX(0); }
-                25% { transform: translateX(-10px); }
-                50% { transform: translateX(10px); }
-                75% { transform: translateX(-10px); }
-                100% { transform: translateX(0); }
-            }
-        `;
-        document.head.appendChild(styleSheet);
-
-        // Run
-        document.addEventListener('DOMContentLoaded', initApp);
     </script>
 </body>
 </html>
