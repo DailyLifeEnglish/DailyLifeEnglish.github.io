@@ -122,7 +122,7 @@
             border: 1px dashed var(--primary);
             padding: 15px;
             border-radius: 10px;
-            margin: 15px 0;
+            margin: 8px 0;
             display: flex;
             align-items: center;
             gap: 12px;
@@ -130,8 +130,8 @@
             color: var(--text-main);
             transition: var(--transition);
         }
-        .pdf-box:hover { background: rgba(59, 130, 246, 0.2); }
-        .pdf-icon { font-size: 1.5rem; color: #2b579a; } /* Color Word */
+        .pdf-box:hover { background: rgba(59, 130, 246, 0.2); transform: scale(1.02); }
+        .pdf-icon { font-size: 1.5rem; }
 
         .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); z-index: 100; justify-content: center; align-items: center; }
         .modal-content { background: #1e293b; padding: 30px; border-radius: var(--radius); width: 90%; max-width: 500px; border: 1px solid var(--border-color); }
@@ -161,7 +161,7 @@
 
         <div class="login-container" id="loginScreen">
             <div class="login-box">
-                <h2>Bienvenido</h2>
+                <h2>Acceso al Sistema</h2>
                 <div class="user-type-selector">
                     <button class="user-type active" id="teacherBtn">Docente</button>
                     <button class="user-type" id="studentBtn">Estudiante</button>
@@ -169,7 +169,7 @@
                 <form id="loginForm">
                     <div class="form-group"><label>Usuario</label><input type="text" id="username" placeholder="Samanta" required></div>
                     <div class="form-group"><label>Contraseña</label><input type="password" id="password" placeholder="••••••••" required></div>
-                    <button type="submit" class="login-btn">Iniciar Sesión</button>
+                    <button type="submit" class="login-btn">Entrar</button>
                 </form>
             </div>
         </div>
@@ -178,20 +178,20 @@
             <div class="dashboard-header">
                 <div style="display: flex; align-items: center; gap: 15px;">
                     <div class="user-avatar">S</div>
-                    <div><h2>Lcda. Samanta</h2><p>Panel de Control Docente</p></div>
+                    <div><h2>Lcda. Samanta</h2><p>Gestión Académica</p></div>
                 </div>
                 <button class="logout-btn" onclick="logout()"><i class="fas fa-power-off"></i> Salir</button>
             </div>
             
             <div class="dashboard-content">
                 <div class="card" style="grid-column: span 2;">
-                    <div class="card-header"><i class="fas fa-inbox"></i><h3>Tareas Recibidas (Entregas de Gino)</h3></div>
+                    <div class="card-header"><i class="fas fa-bell"></i><h3>Entregas de Gino</h3></div>
                     <div style="overflow-x: auto;">
                         <table class="data-table">
                             <thead>
                                 <tr>
-                                    <th>Nombre de la Tarea</th>
-                                    <th>Fecha de Subida</th>
+                                    <th>Tema</th>
+                                    <th>Fecha</th>
                                     <th>Acción</th>
                                 </tr>
                             </thead>
@@ -202,16 +202,26 @@
                 </div>
 
                 <div class="card">
-                    <div class="card-header"><i class="fas fa-plus-circle"></i><h3>Asignar Nueva Tarea</h3></div>
-                    <p style="font-size: 0.9rem; margin-bottom: 10px;">Archivo actual para asignar:</p>
+                    <div class="card-header"><i class="fas fa-upload"></i><h3>Recursos Publicados</h3></div>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px;">Archivos disponibles para el alumno:</p>
+                    
                     <a href="https://dailylifeenglish.github.io/Paralelas.docx" target="_blank" class="pdf-box">
-                        <i class="fas fa-file-word pdf-icon"></i>
+                        <i class="fas fa-file-word pdf-icon" style="color: #2b579a;"></i>
                         <div>
-                            <span style="display:block; font-size: 0.8rem; font-weight: 600;">Paralelas.docx</span>
-                            <span style="font-size: 0.7rem; color: var(--text-muted);">Haga clic para descargar</span>
+                            <span style="display:block; font-size: 0.8rem; font-weight: 600;">Líneas Paralelas</span>
+                            <span style="font-size: 0.7rem;">Word</span>
                         </div>
                     </a>
-                    <button class="login-btn" onclick="openModal()" style="margin-top: 10px;"><i class="fas fa-pencil-alt"></i> Publicar y Notificar</button>
+
+                    <a href="https://dailylifeenglish.github.io//Ejercicios_razones_y_proporciones.pdf" target="_blank" class="pdf-box">
+                        <i class="fas fa-file-pdf pdf-icon" style="color: #e74c3c;"></i>
+                        <div>
+                            <span style="display:block; font-size: 0.8rem; font-weight: 600;">Razones y Proporciones</span>
+                            <span style="font-size: 0.7rem;">PDF</span>
+                        </div>
+                    </a>
+
+                    <button class="login-btn" onclick="openModal()" style="margin-top: 15px;"><i class="fas fa-plus"></i> Notificar Nueva Tarea</button>
                 </div>
             </div>
         </div>
@@ -220,38 +230,52 @@
             <div class="dashboard-header">
                 <div style="display: flex; align-items: center; gap: 15px;">
                     <div class="user-avatar" style="background: var(--accent);">G</div>
-                    <div><h2>Gino</h2><p>Panel del Estudiante</p></div>
+                    <div><h2>Gino</h2><p>Mis Actividades</p></div>
                 </div>
                 <button class="logout-btn" onclick="logout()"><i class="fas fa-power-off"></i> Salir</button>
             </div>
             
             <div class="dashboard-content">
                 <div class="card">
-                    <div class="card-header"><i class="fas fa-calendar-check"></i><h3>Tarea Asignada</h3></div>
+                    <div class="card-header"><i class="fas fa-tasks"></i><h3>Tareas Pendientes</h3></div>
                     <div id="studentTaskDisplay">
                         </div>
                 </div>
 
                 <div class="card">
-                    <div class="card-header"><i class="fas fa-book"></i><h3>Material de Clase</h3></div>
-                    <p style="font-size: 0.85rem; margin-bottom: 10px;">Descarga aquí el archivo de la lección actual:</p>
+                    <div class="card-header"><i class="fas fa-folder-open"></i><h3>Material de Clase</h3></div>
+                    <p style="font-size: 0.85rem; margin-bottom: 10px;">Descarga los archivos de la lección actual:</p>
+                    
                     <a href="https://dailylifeenglish.github.io/Paralelas.docx" target="_blank" class="pdf-box">
-                        <i class="fas fa-file-word pdf-icon"></i>
+                        <i class="fas fa-file-word pdf-icon" style="color: #2b579a;"></i>
                         <div>
                             <span style="display:block; font-size: 0.8rem; font-weight: 600;">Líneas Paralelas</span>
                             <span style="font-size: 0.7rem; color: var(--text-muted);">Documento Word</span>
                         </div>
                     </a>
-                    <a href="https://drive.google.com/drive/folders/1fB8KXQ8gPRFJiVYhFtME3J0e5Vvau8XS" target="_blank" class="drive-link" style="color: var(--primary); border-color: var(--primary); background: rgba(59, 130, 246, 0.1);">
-                        <i class="fab fa-google-drive"></i> Mi Carpeta de Entregas (Drive)
+
+                    <a href="https://dailylifeenglish.github.io//Ejercicios_razones_y_proporciones.pdf" target="_blank" class="pdf-box">
+                        <i class="fas fa-file-pdf pdf-icon" style="color: #e74c3c;"></i>
+                        <div>
+                            <span style="display:block; font-size: 0.8rem; font-weight: 600;">Ejercicios de Razones y Proporciones</span>
+                            <span style="font-size: 0.7rem; color: var(--text-muted);">Documento PDF</span>
+                        </div>
+                    </a>
+
+                    <a href="https://drive.google.com/drive/folders/1fB8KXQ8gPRFJiVYhFtME3J0e5Vvau8XS" target="_blank" class="drive-link">
+                        <i class="fab fa-google-drive"></i> Mi Carpeta de Entregas
                     </a>
                 </div>
 
                 <div class="card">
-                    <div class="card-header"><i class="fas fa-cloud-upload-alt"></i><h3>Entrega Rápida</h3></div>
-                    <p style="font-size: 0.85rem; margin-bottom: 15px;">Al terminar, sube el archivo a Drive y notifica aquí.</p>
+                    <div class="card-header"><i class="fas fa-paper-plane"></i><h3>Enviar Entrega</h3></div>
+                    <p style="font-size: 0.85rem; margin-bottom: 15px;">Selecciona qué tarea has terminado para notificar a la docente:</p>
+                    <select id="taskToNotify" class="form-group" style="padding: 10px; width: 100%; border-radius: 8px; margin-bottom: 15px; background: var(--bg-input); color: white;">
+                        <option value="Razones y Proporciones">Razones y Proporciones (PDF)</option>
+                        <option value="Líneas Paralelas">Líneas Paralelas (Word)</option>
+                    </select>
                     <button class="login-btn" style="background: var(--secondary);" onclick="submitTask()">
-                        <i class="fab fa-whatsapp"></i> Notificar Entrega a Samanta
+                        <i class="fab fa-whatsapp"></i> Notificar a Lcda. Samanta
                     </button>
                 </div>
             </div>
@@ -259,169 +283,118 @@
 
         <div class="modal" id="taskModal">
             <div class="modal-content">
-                <h3 style="margin-bottom: 20px; color: var(--primary);">Publicar Tarea</h3>
+                <h3 style="margin-bottom: 20px; color: var(--primary);">Asignar Tarea</h3>
                 <form id="taskForm">
-                    <div class="form-group"><label>Título del Tema</label><input type="text" id="taskTitle" value="Líneas Paralelas" required></div>
+                    <div class="form-group"><label>Título</label><input type="text" id="taskTitle" value="Razones y Proporciones" required></div>
                     <div class="form-group"><label>Fecha Límite</label><input type="date" id="taskDeadline" required></div>
-                    <div class="form-group"><label>Instrucciones</label><textarea id="taskDesc" rows="3" placeholder="Instrucciones para Gino..." required>Resolver los ejercicios propuestos en el documento sobre líneas paralelas.</textarea></div>
-                    <div style="display: flex; gap: 10px; margin-top: 20px;">
-                        <button type="button" class="login-btn" style="background: var(--bg-input); color: var(--text-main);" onclick="closeModal()">Cancelar</button>
-                        <button type="submit" class="login-btn">Asignar Tarea</button>
+                    <div class="form-group"><label>Instrucciones</label><textarea id="taskDesc" rows="3" required>Resolver los ejercicios del PDF adjunto.</textarea></div>
+                    <div style="display: flex; gap: 10px;">
+                        <button type="button" class="login-btn" style="background: #334155;" onclick="closeModal()">Cancelar</button>
+                        <button type="submit" class="login-btn">Asignar</button>
                     </div>
                 </form>
             </div>
         </div>
 
         <div class="notification" id="notification"></div>
-        <footer style="text-align: center; margin-top: 50px; color: var(--text-muted); font-size: 0.8rem; padding-bottom: 20px;">
-            EVA Matemática &copy; 2026 | Daily Life English
-        </footer>
     </div>
 
     <script>
-        // --- ESTADO ---
+        // --- DATA ---
         let tasks = [
             {
                 id: 1,
+                title: "Razones y Proporciones",
+                deadline: "2026-02-18",
+                desc: "Realizar los ejercicios del documento PDF sobre Razones y Proporciones.",
+                file: "https://dailylifeenglish.github.io//Ejercicios_razones_y_proporciones.pdf"
+            },
+            {
+                id: 2,
                 title: "Líneas Paralelas",
-                deadline: "2026-02-15",
-                desc: "Realizar los ejercicios de construcción de líneas paralelas.",
+                deadline: "2026-02-20",
+                desc: "Completar la construcción de líneas en el documento Word.",
                 file: "https://dailylifeenglish.github.io/Paralelas.docx"
             }
         ];
         let submissions = [];
         let userRole = 'teacher';
-        let isDarkMode = true;
 
         // --- THEME ---
         document.getElementById('themeToggle').addEventListener('click', () => {
-            isDarkMode = !isDarkMode;
             document.body.classList.toggle('light-mode');
-            document.getElementById('themeToggle').innerHTML = isDarkMode ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
         });
 
         // --- AUTH ---
-        document.getElementById('teacherBtn').addEventListener('click', () => {
-            userRole = 'teacher';
-            document.getElementById('teacherBtn').classList.add('active');
-            document.getElementById('studentBtn').classList.remove('active');
-            document.getElementById('username').placeholder = "Samanta";
-        });
-
-        document.getElementById('studentBtn').addEventListener('click', () => {
-            userRole = 'student';
-            document.getElementById('studentBtn').classList.add('active');
-            document.getElementById('teacherBtn').classList.remove('active');
-            document.getElementById('username').placeholder = "Gino";
-        });
+        document.getElementById('teacherBtn').addEventListener('click', () => { userRole = 'teacher'; document.getElementById('teacherBtn').classList.add('active'); document.getElementById('studentBtn').classList.remove('active'); });
+        document.getElementById('studentBtn').addEventListener('click', () => { userRole = 'student'; document.getElementById('studentBtn').classList.add('active'); document.getElementById('teacherBtn').classList.remove('active'); });
 
         document.getElementById('loginForm').addEventListener('submit', (e) => {
             e.preventDefault();
             const u = document.getElementById('username').value;
             const p = document.getElementById('password').value;
-
-            if (userRole === 'teacher' && u === "Samanta" && p === "Samanta2026") {
-                login('teacherDashboard');
-            } else if (userRole === 'student' && u === "Gino" && p === "Gino2026") {
-                login('studentDashboard');
-            } else {
-                showNotify("Acceso denegado", "danger");
-            }
+            if (userRole === 'teacher' && u === "Samanta" && p === "Samanta2026") login('teacherDashboard');
+            else if (userRole === 'student' && u === "Gino" && p === "Gino2026") login('studentDashboard');
+            else showNotify("Datos incorrectos", "danger");
         });
 
-        function login(dashboardId) {
-            document.getElementById('loginScreen').style.display = 'none';
-            document.getElementById(dashboardId).style.display = 'block';
-            updateUI();
-        }
-
+        function login(id) { document.getElementById('loginScreen').style.display='none'; document.getElementById(id).style.display='block'; updateUI(); }
         function logout() { location.reload(); }
 
-        // --- TAREAS ---
-        function openModal() { document.getElementById('taskModal').style.display = 'flex'; }
-        function closeModal() { document.getElementById('taskModal').style.display = 'none'; }
+        // --- CORE ---
+        function openModal() { document.getElementById('taskModal').style.display='flex'; }
+        function closeModal() { document.getElementById('taskModal').style.display='none'; }
 
         document.getElementById('taskForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            const newTask = {
-                id: Date.now(),
+            const t = {
                 title: document.getElementById('taskTitle').value,
                 deadline: document.getElementById('taskDeadline').value,
                 desc: document.getElementById('taskDesc').value,
-                file: "https://dailylifeenglish.github.io/Paralelas.docx"
+                file: "https://dailylifeenglish.github.io//Ejercicios_razones_y_proporciones.pdf"
             };
-            tasks.push(newTask);
-            
-            const msg = `📚 *NUEVA TAREA: ${newTask.title}*%0A📅 Entrega: ${newTask.deadline}%0A📝 Instrucciones: ${newTask.desc}%0A🔗 Archivo: ${newTask.file}`;
+            tasks.unshift(t);
+            const msg = `📚 *NUEVA TAREA:* ${t.title}%0A📅 Plazo: ${t.deadline}%0A🔗 Archivo: ${t.file}`;
             window.open(`https://wa.me/+593967879068?text=${msg}`, '_blank');
-            
-            closeModal();
-            updateUI();
-            showNotify("Tarea asignada y notificada", "success");
+            closeModal(); updateUI();
         });
 
         function submitTask() {
-            if (tasks.length === 0) {
-                showNotify("No hay tareas pendientes", "danger");
-                return;
-            }
-            const current = tasks[tasks.length - 1];
+            const selected = document.getElementById('taskToNotify').value;
             submissions.push({
-                taskName: current.title,
+                taskName: selected,
                 date: new Date().toLocaleString(),
                 link: "https://drive.google.com/drive/folders/1fB8KXQ8gPRFJiVYhFtME3J0e5Vvau8XS"
             });
-
-            const msg = `✅ *ENTREGA DE TAREA*%0A👤 Estudiante: Gino%0A📂 Tema: ${current.title}%0A📂 Link Drive: https://drive.google.com/drive/folders/1fB8KXQ8gPRFJiVYhFtME3J0e5Vvau8XS`;
+            const msg = `✅ *TAREA ENTREGADA:* ${selected}%0A👤 Estudiante: Gino%0A📂 Ver en Drive: https://drive.google.com/drive/folders/1fB8KXQ8gPRFJiVYhFtME3J0e5Vvau8XS`;
             window.open(`https://wa.me/+593967879068?text=${msg}`, '_blank');
-            
             updateUI();
-            showNotify("Entrega enviada por WhatsApp", "success");
         }
 
         function updateUI() {
-            // Actualizar vista de estudiante
             const sDisplay = document.getElementById('studentTaskDisplay');
-            if (tasks.length > 0) {
-                const t = tasks[tasks.length - 1];
-                sDisplay.innerHTML = `
-                    <div style="background: var(--bg-input); padding: 20px; border-radius: 12px; border-left: 5px solid var(--primary);">
-                        <h4 style="color: var(--primary); margin-bottom: 5px;">${t.title}</h4>
-                        <p style="font-size: 0.8rem; color: var(--warning); margin-bottom: 10px;"><i class="fas fa-clock"></i> Plazo: ${t.deadline}</p>
-                        <p style="font-size: 0.9rem; margin-bottom: 15px;">${t.desc}</p>
-                        <a href="${t.file}" target="_blank" class="action-btn" style="width: 100%; justify-content: center; background: var(--accent);">
-                            <i class="fas fa-file-download"></i> Descargar Documento
-                        </a>
-                    </div>`;
-            }
+            sDisplay.innerHTML = tasks.map(t => `
+                <div style="background: var(--bg-input); padding: 15px; border-radius: 12px; margin-bottom: 10px; border-left: 4px solid var(--primary);">
+                    <h4 style="font-size: 0.9rem;">${t.title}</h4>
+                    <p style="font-size: 0.75rem; color: var(--warning);"><i class="fas fa-clock"></i> ${t.deadline}</p>
+                    <a href="${t.file}" target="_blank" class="action-btn" style="margin-top: 10px; width: 100%; justify-content: center;">Descargar</a>
+                </div>
+            `).join('');
 
-            // Actualizar vista de docente (Notificaciones de recibidos)
             const tBody = document.getElementById('receivedTasksTableBody');
-            if (submissions.length > 0) {
-                tBody.innerHTML = '';
-                submissions.slice().reverse().forEach(s => {
-                    tBody.innerHTML += `
-                        <tr>
-                            <td><strong>${s.taskName}</strong></td>
-                            <td>${s.date}</td>
-                            <td>
-                                <a href="${s.link}" target="_blank" class="action-btn blue">
-                                    <i class="fas fa-folder-open"></i> Ver en Drive
-                                </a>
-                            </td>
-                        </tr>`;
-                });
-            } else {
-                 tBody.innerHTML = `<tr><td colspan="3" style="text-align: center; color: var(--text-muted); padding: 30px;">Sin entregas pendientes.</td></tr>`;
-            }
+            tBody.innerHTML = submissions.length ? submissions.slice().reverse().map(s => `
+                <tr>
+                    <td><strong>${s.taskName}</strong></td>
+                    <td>${s.date}</td>
+                    <td><a href="${s.link}" target="_blank" class="action-btn blue">Abrir Drive</a></td>
+                </tr>
+            `).join('') : '<tr><td colspan="3" style="text-align:center; padding: 20px;">Sin entregas aún</td></tr>';
         }
 
-        function showNotify(text, type) {
+        function showNotify(txt, type) {
             const n = document.getElementById('notification');
-            n.textContent = text;
-            n.style.background = type === 'success' ? 'var(--secondary)' : 'var(--danger)';
-            n.style.display = 'block';
-            setTimeout(() => n.style.display = 'none', 3000);
+            n.textContent = txt; n.style.background = type === 'success' ? 'var(--secondary)' : 'var(--danger)';
+            n.style.display = 'block'; setTimeout(() => n.style.display='none', 3000);
         }
     </script>
 </body>
