@@ -54,7 +54,6 @@
 
         .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
 
-        /* --- HEADER --- */
         header {
             display: flex; justify-content: space-between; align-items: center;
             padding: 20px 30px; background: var(--bg-card); backdrop-filter: var(--backdrop);
@@ -76,7 +75,6 @@
             color: var(--warning); display: flex; align-items: center; justify-content: center;
         }
 
-        /* --- LOGIN --- */
         .login-container { display: flex; justify-content: center; align-items: center; min-height: 70vh; }
         .login-box {
             background: var(--bg-card); backdrop-filter: var(--backdrop);
@@ -97,7 +95,6 @@
         .login-btn { width: 100%; padding: 15px; background: var(--primary); color: white; border: none; border-radius: 10px; cursor: pointer; font-weight: 600; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 10px; }
         .login-btn:hover { background: var(--primary-hover); transform: translateY(-2px); }
 
-        /* --- DASHBOARD --- */
         .dashboard { display: none; animation: fadeIn 0.5s ease; }
         .dashboard-header {
             display: flex; justify-content: space-between; align-items: center;
@@ -112,7 +109,6 @@
         .card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid var(--border-color); }
         .card-header i { color: var(--primary); }
 
-        /* --- TABLES --- */
         .data-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
         .data-table th { text-align: left; color: var(--text-muted); font-size: 0.75rem; padding: 10px; border-bottom: 1px solid var(--border-color); text-transform: uppercase; }
         .data-table td { padding: 12px 10px; font-size: 0.85rem; border-bottom: 1px solid var(--border-color); vertical-align: middle; }
@@ -121,7 +117,6 @@
         .action-btn:hover { opacity: 0.9; transform: scale(1.05); }
         .action-btn.blue { background: var(--primary); }
 
-        /* --- PDF LINK BOX --- */
         .pdf-box {
             background: rgba(59, 130, 246, 0.1);
             border: 1px dashed var(--primary);
@@ -136,14 +131,12 @@
             transition: var(--transition);
         }
         .pdf-box:hover { background: rgba(59, 130, 246, 0.2); }
-        .pdf-icon { font-size: 1.5rem; color: #ef4444; }
+        .pdf-icon { font-size: 1.5rem; color: #2b579a; } /* Color Word */
 
-        /* --- MODAL --- */
         .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); z-index: 100; justify-content: center; align-items: center; }
         .modal-content { background: #1e293b; padding: 30px; border-radius: var(--radius); width: 90%; max-width: 500px; border: 1px solid var(--border-color); }
         body.light-mode .modal-content { background: white; }
 
-        /* --- UTILS --- */
         .drive-link { display: flex; align-items: center; justify-content: center; gap: 10px; background: rgba(16, 185, 129, 0.1); color: var(--secondary); padding: 12px; border-radius: 10px; text-decoration: none; font-weight: 600; border: 1px solid var(--secondary); margin-top: 10px; }
         .notification { position: fixed; bottom: 20px; right: 20px; padding: 15px 25px; border-radius: 10px; color: white; display: none; z-index: 1000; animation: slideUp 0.3s ease; }
         
@@ -203,25 +196,19 @@
                                 </tr>
                             </thead>
                             <tbody id="receivedTasksTableBody">
-                                <tr>
-                                    <td colspan="3" style="text-align: center; color: var(--text-muted); padding: 30px;">
-                                        <i class="fas fa-folder-open" style="font-size: 2rem; display: block; margin-bottom: 10px;"></i>
-                                        Sin entregas pendientes por revisar.
-                                    </td>
-                                </tr>
-                            </tbody>
+                                </tbody>
                         </table>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-header"><i class="fas fa-plus-circle"></i><h3>Asignar Nueva Tarea</h3></div>
-                    <p style="font-size: 0.9rem; margin-bottom: 10px;">Enlace listo para enviar:</p>
-                    <a href="https://dailylifeenglish.github.io//Ejercicios_razones_y_proporciones.pdf" target="_blank" class="pdf-box">
-                        <i class="fas fa-file-pdf pdf-icon"></i>
+                    <p style="font-size: 0.9rem; margin-bottom: 10px;">Archivo actual para asignar:</p>
+                    <a href="https://dailylifeenglish.github.io/Paralelas.docx" target="_blank" class="pdf-box">
+                        <i class="fas fa-file-word pdf-icon"></i>
                         <div>
-                            <span style="display:block; font-size: 0.8rem; font-weight: 600;">Ejercicios Razones.pdf</span>
-                            <span style="font-size: 0.7rem; color: var(--text-muted);">Haga clic para previsualizar</span>
+                            <span style="display:block; font-size: 0.8rem; font-weight: 600;">Paralelas.docx</span>
+                            <span style="font-size: 0.7rem; color: var(--text-muted);">Haga clic para descargar</span>
                         </div>
                     </a>
                     <button class="login-btn" onclick="openModal()" style="margin-top: 10px;"><i class="fas fa-pencil-alt"></i> Publicar y Notificar</button>
@@ -242,22 +229,21 @@
                 <div class="card">
                     <div class="card-header"><i class="fas fa-calendar-check"></i><h3>Tarea Asignada</h3></div>
                     <div id="studentTaskDisplay">
-                        <p style="text-align: center; color: var(--text-muted); padding: 20px;">No hay tareas activas actualmente.</p>
-                    </div>
+                        </div>
                 </div>
 
                 <div class="card">
                     <div class="card-header"><i class="fas fa-book"></i><h3>Material de Clase</h3></div>
                     <p style="font-size: 0.85rem; margin-bottom: 10px;">Descarga aquí el archivo de la lección actual:</p>
-                    <a href="https://dailylifeenglish.github.io//Ejercicios_razones_y_proporciones.pdf" target="_blank" class="pdf-box">
-                        <i class="fas fa-file-pdf pdf-icon"></i>
+                    <a href="https://dailylifeenglish.github.io/Paralelas.docx" target="_blank" class="pdf-box">
+                        <i class="fas fa-file-word pdf-icon"></i>
                         <div>
-                            <span style="display:block; font-size: 0.8rem; font-weight: 600;">Ejercicios de Razones y Proporciones</span>
-                            <span style="font-size: 0.7rem; color: var(--text-muted);">Documento PDF</span>
+                            <span style="display:block; font-size: 0.8rem; font-weight: 600;">Líneas Paralelas</span>
+                            <span style="font-size: 0.7rem; color: var(--text-muted);">Documento Word</span>
                         </div>
                     </a>
                     <a href="https://drive.google.com/drive/folders/1fB8KXQ8gPRFJiVYhFtME3J0e5Vvau8XS" target="_blank" class="drive-link" style="color: var(--primary); border-color: var(--primary); background: rgba(59, 130, 246, 0.1);">
-                        <i class="fab fa-google-drive"></i> Mi Carpeta de Entregas
+                        <i class="fab fa-google-drive"></i> Mi Carpeta de Entregas (Drive)
                     </a>
                 </div>
 
@@ -275,9 +261,9 @@
             <div class="modal-content">
                 <h3 style="margin-bottom: 20px; color: var(--primary);">Publicar Tarea</h3>
                 <form id="taskForm">
-                    <div class="form-group"><label>Título del Tema</label><input type="text" id="taskTitle" placeholder="Ej. Razones y Proporciones" required></div>
+                    <div class="form-group"><label>Título del Tema</label><input type="text" id="taskTitle" value="Líneas Paralelas" required></div>
                     <div class="form-group"><label>Fecha Límite</label><input type="date" id="taskDeadline" required></div>
-                    <div class="form-group"><label>Instrucciones</label><textarea id="taskDesc" rows="3" placeholder="Instrucciones para Gino..." required></textarea></div>
+                    <div class="form-group"><label>Instrucciones</label><textarea id="taskDesc" rows="3" placeholder="Instrucciones para Gino..." required>Resolver los ejercicios propuestos en el documento sobre líneas paralelas.</textarea></div>
                     <div style="display: flex; gap: 10px; margin-top: 20px;">
                         <button type="button" class="login-btn" style="background: var(--bg-input); color: var(--text-main);" onclick="closeModal()">Cancelar</button>
                         <button type="submit" class="login-btn">Asignar Tarea</button>
@@ -294,11 +280,18 @@
 
     <script>
         // --- ESTADO ---
-        let tasks = [];
+        let tasks = [
+            {
+                id: 1,
+                title: "Líneas Paralelas",
+                deadline: "2026-02-15",
+                desc: "Realizar los ejercicios de construcción de líneas paralelas.",
+                file: "https://dailylifeenglish.github.io/Paralelas.docx"
+            }
+        ];
         let submissions = [];
         let userRole = 'teacher';
         let isDarkMode = true;
-        const PDF_URL = "https://dailylifeenglish.github.io//Ejercicios_razones_y_proporciones.pdf";
 
         // --- THEME ---
         document.getElementById('themeToggle').addEventListener('click', () => {
@@ -355,12 +348,11 @@
                 title: document.getElementById('taskTitle').value,
                 deadline: document.getElementById('taskDeadline').value,
                 desc: document.getElementById('taskDesc').value,
-                file: PDF_URL
+                file: "https://dailylifeenglish.github.io/Paralelas.docx"
             };
             tasks.push(newTask);
             
-            // Notificar por WhatsApp
-            const msg = `📚 *NUEVA TAREA: ${newTask.title}*%0A📅 Entrega: ${newTask.deadline}%0A📝 Instrucciones: ${newTask.desc}%0A🔗 Archivo: ${PDF_URL}`;
+            const msg = `📚 *NUEVA TAREA: ${newTask.title}*%0A📅 Entrega: ${newTask.deadline}%0A📝 Instrucciones: ${newTask.desc}%0A🔗 Archivo: ${newTask.file}`;
             window.open(`https://wa.me/+593967879068?text=${msg}`, '_blank');
             
             closeModal();
@@ -397,13 +389,13 @@
                         <h4 style="color: var(--primary); margin-bottom: 5px;">${t.title}</h4>
                         <p style="font-size: 0.8rem; color: var(--warning); margin-bottom: 10px;"><i class="fas fa-clock"></i> Plazo: ${t.deadline}</p>
                         <p style="font-size: 0.9rem; margin-bottom: 15px;">${t.desc}</p>
-                        <a href="${PDF_URL}" target="_blank" class="action-btn" style="width: 100%; justify-content: center; background: var(--accent);">
-                            <i class="fas fa-file-download"></i> Abrir PDF de la Tarea
+                        <a href="${t.file}" target="_blank" class="action-btn" style="width: 100%; justify-content: center; background: var(--accent);">
+                            <i class="fas fa-file-download"></i> Descargar Documento
                         </a>
                     </div>`;
             }
 
-            // Actualizar vista de docente
+            // Actualizar vista de docente (Notificaciones de recibidos)
             const tBody = document.getElementById('receivedTasksTableBody');
             if (submissions.length > 0) {
                 tBody.innerHTML = '';
@@ -419,6 +411,8 @@
                             </td>
                         </tr>`;
                 });
+            } else {
+                 tBody.innerHTML = `<tr><td colspan="3" style="text-align: center; color: var(--text-muted); padding: 30px;">Sin entregas pendientes.</td></tr>`;
             }
         }
 
