@@ -901,7 +901,7 @@
             width: 100%;
         }
         
-        /* Formulario de Contacto */
+        /* Formulario de Inscripción */
         .contact-form-section {
             background-color: var(--card-bg);
             padding-top: 2.5rem;
@@ -1363,7 +1363,7 @@
                 <li><a href="#about"><i class="fas fa-info-circle"></i>Nosotros</a></li>
                 <li><a href="#levels"><i class="fas fa-graduation-cap"></i>Niveles</a></li>
                 <li><a href="#services"><i class="fas fa-briefcase"></i>Servicios</a></li>
-                <li><a href="#contact-form"><i class="fas fa-envelope"></i>Enviar mensaje</a></li>
+                <li><a href="#contact-form"><i class="fas fa-pencil-alt"></i>Inscripción</a></li>
                 <li><a href="#contact"><i class="fas fa-phone-alt"></i>Contacto</a></li>
             </ul>
             <button class="theme-toggle" id="themeToggle">
@@ -1557,7 +1557,7 @@
                     <img src="curso extermo.jpeg" alt="Clases Online (Meet)" class="service-image">
                     <div class="service-info">
                         <h3>Clases Online (Meet)</h3>
-                        <span class="live-tag"> <marquee behavior="" direction=""> 🔵 CLASES EN VIVO - Sábado, 31 de enero</marquee></span>
+                        <span class="live-tag"> <marquee behavior="" direction=""> 🔵 CLASES EN VIVO</marquee></span>
                         <p>Horarios y enlaces de nuestras clases virtuales.</p>
                     </div>
                 </div>
@@ -1595,29 +1595,35 @@
         </div>
     </div>
 
+    <!-- ===== FORMULARIO DE INSCRIPCIÓN MODIFICADO ===== -->
     <section class="contact-form-section" id="contact-form">
         <div class="container">
-            <h2>Envíanos un Mensaje</h2>
+            <h2>Formulario de Inscripción</h2>
             <div class="form-container">
-                <form id="contactForm" action="https://formspree.io/f/xvgbbnvj" method="POST">
+                <form id="inscriptionForm">
                     <div class="form-group">
-                        <label for="name">Nombre</label>
-                        <input type="text" id="name" name="name" required>
+                        <label for="fullName">Nombres y Apellidos</label>
+                        <input type="text" id="fullName" name="fullName" placeholder="Nombres y Apellidos" required>
                     </div>
                     <div class="form-group">
-                        <label for="email">Correo Electrónico</label>
-                        <input type="email" id="email" name="email" required>
+                        <label for="age">Edad</label>
+                        <input type="number" id="age" name="age" placeholder="Edad" min="1" max="120" required>
                     </div>
                     <div class="form-group">
-                        <label for="message">Mensaje</label>
-                        <textarea id="message" name="message" required></textarea>
+                        <label for="phone">Teléfono</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Teléfono" required>
                     </div>
-                    <button type="submit" class="btn">Enviar Mensaje</button>
+                    <div class="form-group">
+                        <label for="address">Dirección Domiciliaria</label>
+                        <input type="text" id="address" name="address" placeholder="Ej: Calle Principal #123, Ciudad" required>
+                    </div>
+                    <button type="submit" class="btn">Enviar Inscripción por WhatsApp</button>
                 </form>
-                <p id="contact-form-status"></p>
+                <div id="contact-form-status" style="margin-top: 1rem; text-align: center; font-weight: 600;"></div>
             </div>
         </div>
     </section>
+    <!-- ===== FIN DEL FORMULARIO MODIFICADO ===== -->
 
     <section class="contact" id="contact">
         <div class="container">
@@ -1665,7 +1671,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="copyright">
-                    <p>&copy; 2025 Daily Life English. Todos los derechos reservados.</p>
+                    <p>&copy; 2026 Daily Life English. Todos los derechos reservados.</p>
                 </div>
                 <div class="social-icons">
                     <a href="#"><i class="fab fa-tiktok"></i></a>
@@ -1731,10 +1737,10 @@
                         </thead> 
                         <tbody> 
                             <tr> 
-                                <td>Sábado, 31 de enero - 2026</td> 
-                                <td>09:00 - 11:00</td> 
+                                <td>Sin datos de conexión</td> 
+                                <td></td> 
                                 <td>Daily Life English - Classes</td> 
-                                <td><a href="https://meet.google.com/pzz-rczd-mtg" target="_blank">Unirse a la Clase</a></td> 
+                                <td><a href="#" target="_blank">Unirse a la Clase</a></td> 
                             </tr> 
                            
                         </tbody> 
@@ -2072,94 +2078,51 @@
             observer.observe(section);
         });
 
-        // Lógica de Formulario de Contacto
-        const contactForm = document.getElementById('contactForm');
+        // ===== NUEVA LÓGICA PARA EL FORMULARIO DE INSCRIPCIÓN (WHATSAPP) =====
+        const inscriptionForm = document.getElementById('inscriptionForm');
         const formStatus = document.getElementById('contact-form-status');
 
-        async function handleFormSubmit(event) {
-            event.preventDefault();
-            const form = event.target;
-            const data = new FormData(form);
-            
-            try {
-                const response = await fetch(form.action, {
-                    method: form.method,
-                    body: data,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
+        inscriptionForm.addEventListener('submit', function(e) {
+            e.preventDefault();
 
-                if (response.ok) {
-                    formStatus.textContent = "¡Gracias por tu mensaje! Ha sido enviado con éxito.";
-                    formStatus.style.color = "var(--primary-color)";
-                    form.reset();
-                } else {
-                    const errorData = await response.json();
-                    if (errorData.errors) {
-                        formStatus.textContent = errorData.errors.map(error => error.message).join(", ");
-                    } else {
-                        formStatus.textContent = "¡Ups! Ocurrió un error al enviar el mensaje.";
-                    }
-                    formStatus.style.color = "#dc3545"; // Red
-                }
-            } catch (error) {
-                formStatus.textContent = "Error de red. Por favor, inténtalo de nuevo más tarde.";
-                formStatus.style.color = "#dc3545"; // Red
+            const fullName = document.getElementById('fullName').value.trim();
+            const age = document.getElementById('age').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const address = document.getElementById('address').value.trim();
+
+            // Validar que todos los campos estén llenos (el atributo required ya lo hace, pero por si acaso)
+            if (!fullName || !age || !phone || !address) {
+                formStatus.textContent = 'Por favor, completa todos los campos.';
+                formStatus.style.color = '#dc3545';
+                return;
             }
-        }
 
-        contactForm.addEventListener('submit', handleFormSubmit);
+            // Construir el mensaje para WhatsApp
+            const message = `*Nueva Inscripción - Daily Life English*%0A%0A` +
+                            `*Nombres y Apellidos:* ${encodeURIComponent(fullName)}%0A` +
+                            `*Edad:* ${encodeURIComponent(age)}%0A` +
+                            `*Teléfono:* ${encodeURIComponent(phone)}%0A` +
+                            `*Dirección:* ${encodeURIComponent(address)}%0A%0A` +
+                            `¡Gracias por tu interés!`;
 
-        // Lógica de Comentarios (Si se desea implementar)
-        /*
-        const commentForm = document.getElementById('commentForm');
-        const commentAuthorInput = document.getElementById('commentAuthor');
-        const commentTextInput = document.getElementById('commentText');
-        const commentsList = document.getElementById('commentsList');
-        const noComments = document.getElementById('no-comments');
+            // Número de WhatsApp (sin el signo +, solo código país y número)
+            const phoneNumber = '593988642647';
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 
-        if(commentForm) {
-            function loadComments() {
-                const comments = JSON.parse(localStorage.getItem('dailyLifeEnglishComments')) || [];
-                commentsList.innerHTML = ''; // Limpiar lista
-                if (comments.length === 0) {
-                    noComments.style.display = 'block';
-                } else {
-                    noComments.style.display = 'none';
-                }
+            // Abrir WhatsApp en una nueva pestaña/ventana
+            window.open(whatsappUrl, '_blank');
 
-                comments.forEach(comment => {
-                    const commentElement = document.createElement('div');
-                    commentElement.classList.add('comment-card');
-                    commentElement.innerHTML = `
-                        <div class="comment-header">
-                            <i class="fas fa-user-circle"></i>
-                            <span class="comment-author">${comment.author}</span>
-                        </div>
-                        <p class="comment-text">${comment.text}</p>
-                    `;
-                    commentsList.appendChild(commentElement);
-                });
-            }
-            
-            commentForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const author = commentAuthorInput.value.trim();
-                const text = commentTextInput.value.trim();
-                if(author && text) {
-                     const comments = JSON.parse(localStorage.getItem('dailyLifeEnglishComments')) || [];
-                     comments.unshift({ author, text });
-                     localStorage.setItem('dailyLifeEnglishComments', JSON.stringify(comments));
-                     loadComments();
-                     commentAuthorInput.value = '';
-                     commentTextInput.value = '';
-                }
-            });
-            
-            document.addEventListener('DOMContentLoaded', loadComments);
-        }
-        */
+            // Opcional: mostrar mensaje de éxito y resetear el formulario
+            formStatus.textContent = '✅ Datos enviados. Serás redirigido a WhatsApp.';
+            formStatus.style.color = 'var(--primary-color)';
+            inscriptionForm.reset();
+
+            // Limpiar el mensaje de estado después de unos segundos
+            setTimeout(() => {
+                formStatus.textContent = '';
+            }, 8000);
+        });
+        // ===== FIN DE NUEVA LÓGICA =====
 
     </script>
 </body>
