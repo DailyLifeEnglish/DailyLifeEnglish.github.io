@@ -1953,7 +1953,7 @@
                         const codeInput = document.getElementById('authCode');
                         const errorEl = document.getElementById('authError');
                         const codeValue = codeInput.value.trim().toUpperCase(); // Convertimos a mayúsculas para ser flexible
-                        const validCodes = ["DLE001", "DLE002", "DLE003", "DLE004", "DLE005", "DLE006"];
+                        const validCodes = ["Teacher01", "DLE01", "DLE02", "DLE03", "DLE04", "DLE05", "DLE06"];
 
                         if (validCodes.includes(codeValue)) {
                             // Código válido, redirigir
@@ -2025,7 +2025,7 @@
                 levelModal.classList.remove('visible');
                 document.body.style.overflow = 'auto';
             }
-        });
+        }); 
 
         // Lógica de Modales Legales
         const legalModal = document.getElementById('legalModal');
