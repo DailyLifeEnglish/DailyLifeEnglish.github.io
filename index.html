@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daily Life English - Aprende Inglés de Forma Natural</title>
+    
     <link rel="icon" type="image/x-icon" href="icono.jpeg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
@@ -200,7 +201,6 @@
             transform: translateY(-3px);
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
         }
-
 
         /* Header y navegación */
         header {
@@ -705,6 +705,7 @@
             border: 1px solid var(--input-border);
             padding: 10px;
             text-align: left;
+            vertical-align: middle;
         }
         
         .meet-table th {
@@ -1562,12 +1563,21 @@
                     </div>
                 </div>
                 <div class="service-card" data-service-id="4">
-                    <img src="Speaking Club.jpeg" alt="Speaking Club">
+                    <img src="Speaking Club.jpeg" alt="Speaking Club" class="service-image">
                     <div class="service-info">
                         <h3>Speaking Club</h3>
                         <p>Mejora tu fluidez oral y auditiva en nuestras sesiones de práctica.</p>
                     </div>
                 </div>
+                <!-- ===== NUEVA TARJETA: GESTOR DE TAREAS (CRUD) ===== -->
+                <div class="service-card" data-service-id="5">
+                    <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gestor de Tareas" class="service-image">
+                    <div class="service-info">
+                        <h3>Gestor de Tareas (CRUD)</h3>
+                        <p>Administra y accede a tus tareas y evaluaciones asignadas.</p>
+                    </div>
+                </div>
+                <!-- ===== FIN NUEVA TARJETA ===== -->
             </div>
         </div>
     </section>
@@ -1720,7 +1730,8 @@
                 image: "blog.jpeg",
                 link: "https://dailylifeenglishblog.blogspot.com/2025/09/1-1-1-1-microsoftinternetexplorer4-0-2.html",
                 buttonText: "Ir al Blog Educativo",
-                type: "link" },
+                type: "link" 
+            },
             3: { 
                 title: "Clases Online (Meet)", 
                 description: "Únete a nuestras sesiones de práctica y clases modelo. Aquí encontrarás los enlaces y horarios para conectarte directamente con nuestros profesores.", 
@@ -1748,13 +1759,23 @@
                 type: "table",
                 isLive: true 
             },
-            4: { title: "Speaking Club",
-            description: "Perfecciona tu pronunciación, entonación y comprensión auditiva en nuestro club semanal. ¡Únete a conversaciones dinámicas y mejora tu fluidez! El Speaking Club ofrece sesiones enfocadas:",
-            image: "https://images.pexels.com/photos/3862601/pexels-photo-3862601.jpeg?auto=compress&cs=tinysrgb&w=800",
-            linkSpeaking: "https://dailylifeenglish.github.io/#",
-            buttonTextSpeaking: "Unirme al Speaking Club",
-            type: "speakingClub"
-        }
+            4: { 
+                title: "Speaking Club",
+                description: "Perfecciona tu pronunciación, entonación y comprensión auditiva en nuestro club semanal. ¡Únete a conversaciones dinámicas y mejora tu fluidez! El Speaking Club ofrece sesiones enfocadas:",
+                image: "https://images.pexels.com/photos/3862601/pexels-photo-3862601.jpeg?auto=compress&cs=tinysrgb&w=800",
+                linkSpeaking: "https://dailylifeenglish.github.io/#",
+                buttonTextSpeaking: "Unirme al Speaking Club",
+                type: "speakingClub"
+            },
+            // ===== NUEVO SERVICIO PARA GESTOR DE TAREAS (MODIFICADO) =====
+            5: {
+                title: "Gestor de Tareas (CRUD)",
+                description: "Administra tus tareas pendientes. Accede a tu asignación y notifica al profesor una vez la hayas subido.",
+                image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                type: "crud",
+                taskUrl: "https://forms.gle/6j9egd8n31zkzPwM7"
+            }
+            // ===== FIN NUEVO SERVICIO =====
         };
         // ===== FIN DE OBJETO DE SERVICIOS =====
 
@@ -1903,7 +1924,6 @@
 
                 const imgClass = service.imageClass || ''; 
                 
-                // MARCA DE CLASES EN VIVO (MODAL)
                 const liveMark = (service.isLive) ? '<span class="live-tag">🔵 CLASES EN VIVO</span>' : '';
 
                 let modalContentHTML = `<img src="${service.image}" alt="${service.title}" class="modal-img ${imgClass}">
@@ -1913,7 +1933,6 @@
 
 
                 if (service.type === "link") {
-                    // LÓGICA MODIFICADA PARA EL BOTÓN DE YOUTUBE
                     modalContentHTML += `
                         <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 2rem;">
                             <a href="${service.link}" target="_blank" class="btn">${service.buttonText} <i class="fas fa-external-link-alt" style="margin-left: 10px;"></i></a>
@@ -1941,25 +1960,62 @@
                             <a href="${service.linkSpeaking}" target="_blank" class="btn">${service.buttonTextSpeaking}</a>
                         </div>
                         <p style="margin-top: 2rem;">¡No pierdas la oportunidad de practicar con hablantes de todo el mundo!</p>`;
+                } 
+                // ===== NUEVO BLOQUE LÓGICO PARA EL CRUD DE TAREAS (MODIFICADO) =====
+                else if (service.type === "crud") {
+                    modalContentHTML += `
+                        <div style="margin-top: 1.5rem; background: var(--bg-color); padding: 1rem; border-radius: var(--border-radius); overflow-x: auto;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 10px;">
+                                <h3 style="margin: 0; font-size: 1.2rem;">Panel de Asignaciones</h3>
+                            </div>
+                            <table class="meet-table" style="min-width: 500px;">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Descripción de la Tarea</th>
+                                        <th style="text-align: center;">Estado y Notificación</th>
+                                        <th style="text-align: center;">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>#001</td>
+                                        <td>Formulario de envió de tareas / Asignatura Principal</td>
+                                        <td style="text-align: center;">
+                                            <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+                                                <span style="color: #dc3545; font-weight: bold;"><i class="fas fa-clock"></i> Pendiente</span>
+                                                <a href="https://wa.me/593988642647?text=Hola%2C%20te%20notifico%20que%20ya%20he%20subido%20la%20tarea%20%23001%20-%20Formulario%20de%20envi%C3%B3%20de%20tareas%20%2F%20Asignatura%20Principal." target="_blank" class="btn" style="background-color: #25D366; padding: 5px 10px; font-size: 0.75rem; text-transform: none; display: flex; align-items: center; gap: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                                                    <i class="fab fa-whatsapp" style="font-size: 1rem;"></i> Notificar Subida
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <a href="${service.taskUrl}" target="_blank" class="btn" style="padding: 8px 12px; font-size: 0.8rem; width: 100%; display: flex; justify-content: center; align-items: center; gap: 5px;">
+                                                <i class="fas fa-external-link-alt"></i> Acceder a la Tarea
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    `;
                 }
+                // ===== FIN DE BLOQUE LÓGICO PARA CRUD =====
 
                 modalContentHTML += `</div>`;
                 serviceModalBody.innerHTML = modalContentHTML;
 
-                // Añadimos el listener para el botón de validación SI EXISTE
                 if (service.type === "authLink") {
                     const validateBtn = document.getElementById('validateAuthBtn');
                     validateBtn.addEventListener('click', () => {
                         const codeInput = document.getElementById('authCode');
                         const errorEl = document.getElementById('authError');
-                        const codeValue = codeInput.value.trim().toUpperCase(); // Convertimos a mayúsculas para ser flexible
+                        const codeValue = codeInput.value.trim().toUpperCase(); 
                         const validCodes = ["DLE01", "DLE02", "DLE03", "DLE04", "DLE05", "DLE06"];
 
                         if (validCodes.includes(codeValue)) {
-                            // Código válido, redirigir
                             window.open('https://www.dkefe.com/es', '_blank');
                         } else {
-                            // Código inválido, mostrar error
                             errorEl.textContent = 'Código incorrecto. Por favor, inténtalo de nuevo.';
                             errorEl.style.display = 'block';
                         }
@@ -2090,14 +2146,12 @@
             const phone = document.getElementById('phone').value.trim();
             const address = document.getElementById('address').value.trim();
 
-            // Validar que todos los campos estén llenos (el atributo required ya lo hace, pero por si acaso)
             if (!fullName || !age || !phone || !address) {
                 formStatus.textContent = 'Por favor, completa todos los campos.';
                 formStatus.style.color = '#dc3545';
                 return;
             }
 
-            // Construir el mensaje para WhatsApp
             const message = `*Nueva Inscripción - Daily Life English*%0A%0A` +
                             `*Nombres y Apellidos:* ${encodeURIComponent(fullName)}%0A` +
                             `*Edad:* ${encodeURIComponent(age)}%0A` +
@@ -2105,19 +2159,15 @@
                             `*Dirección:* ${encodeURIComponent(address)}%0A%0A` +
                             `¡Gracias por tu interés!`;
 
-            // Número de WhatsApp (sin el signo +, solo código país y número)
             const phoneNumber = '593988642647';
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 
-            // Abrir WhatsApp en una nueva pestaña/ventana
             window.open(whatsappUrl, '_blank');
 
-            // Opcional: mostrar mensaje de éxito y resetear el formulario
             formStatus.textContent = '✅ Datos enviados. Serás redirigido a WhatsApp.';
             formStatus.style.color = 'var(--primary-color)';
             inscriptionForm.reset();
 
-            // Limpiar el mensaje de estado después de unos segundos
             setTimeout(() => {
                 formStatus.textContent = '';
             }, 8000);
