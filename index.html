@@ -1729,6 +1729,7 @@
                 description: "Accede a contenido exclusivo, ejercicios interactivos, consejos de estudio y material de práctica para reforzar tu aprendizaje fuera del aula.",
                 image: "blog.jpeg",
                 link: "https://dailylifeenglishblog.blogspot.com/2025/09/1-1-1-1-microsoftinternetexplorer4-0-2.html",
+                recordedLink: "https://dailylifeenglish.github.io/video-clases.html", // <--- NUEVO ENLACE AGREGADO
                 buttonText: "Ir al Blog Educativo",
                 type: "link" 
             },
@@ -1941,8 +1942,15 @@
 
                 if (service.type === "link") {
                     modalContentHTML += `
-                        <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 2rem;">
+                        <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; margin-top: 2rem;">
                             <a href="${service.link}" target="_blank" class="btn">${service.buttonText} <i class="fas fa-external-link-alt" style="margin-left: 10px;"></i></a>
+                            
+                            <!-- ===== NUEVO BOTÓN: CLASES GRABADAS ===== -->
+                            <a href="${service.recordedLink}" target="_blank" class="btn" style="background-color: var(--level-secondary-color); color: #1f2937;">
+                                Ver Clases Grabadas <i class="fas fa-video" style="margin-left: 10px;"></i>
+                            </a>
+                            <!-- ===== FIN NUEVO BOTÓN ===== -->
+
                             <a href="https://www.youtube.com/channel/UC64r3px5iCyeBKi0O9zkxdQ" target="_blank" class="btn-secondary" style="margin-left: 0; display: flex; align-items: center;">
                                 <i class="fab fa-youtube" style="margin-right: 5px; font-size: 1rem;"></i> Canal de YouTube
                             </a>

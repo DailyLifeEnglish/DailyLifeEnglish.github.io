@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Daily Life English - Stream - Plataforma de Cursos</title>
+    <link rel="icon" type="image/x-icon" href="icono.jpeg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CV086J7sY25wF073kQ1J/oW7I0R+iM8f9g9S+i2dFwK4rE7+Jp6z1tW9/3/8a6P2t2B0q5+Lw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Variables de color con paleta más fresca */
+        :root {
+            --primary: #4A90E2; 
+            --secondary: #1976D2; 
+            --accent: #FF5722;
+            --light: #f5f7fa; 
+            --dark: #121212;
+            --text-light: #f8f9fa;
+            --text-dark: #333333;
+            --card-bg: #ffffff;
+            --sidebar-bg: #ffffff;
+            --shadow: 0 6px 15px rgba(0, 0, 0, 0.08); 
+            --radius: 12px; 
+        }
+
+        /* Modo oscuro mejorado */
+        .dark-mode {
+            --primary: #66b3ff;
+            --secondary: #2C3E50;
+            --light: #1e1e1e;
+            --dark: #f8f9fa;
+            --text-light: #202124;
+            --text-dark: #e0e0e0;
+            --card-bg: #2C2C2C;
+            --sidebar-bg: #2C2C2C;
+            --shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Configuración global y Anti-Copia */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+            -webkit-user-select: none; /* Evita la selección de texto */
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* Excepción para inputs */
+        input {
+            -webkit-user-select: auto;
+            -moz-user-select: auto;
+            -ms-user-select: auto;
+            user-select: auto;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* --- SISTEMA DE LOGIN --- */
+        #login-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .login-container {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .login-container h2 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .dark-mode .login-container h2 { color: var(--primary); }
+
+        .login-container p {
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        
+        .dark-mode .login-container input {
+            background-color: #444;
+            color: white;
+            border-color: #555;
+        }
+
+        .login-container input:focus {
+            border-color: var(--primary);
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .login-container button:hover {
+            background-color: var(--secondary);
+        }
+
+        .error-msg {
+            color: #e74c3c !important;
+            margin-top: 10px;
+            font-size: 0.85rem !important;
+            display: none;
+        }
+
+        /* Ocultar contenido de la app hasta que se valide el acceso */
+        #app-content {
+            display: none;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- Header --- */
+        header {
+            background: var(--secondary);
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .logo h1 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        .logo:hover h1 { color: white; }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            width: 55px;
+            height: 30px;
+            border-radius: 15px;
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 4px;
+            outline: none;
+        }
+
+        .theme-toggle::after {
+            content: '';
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: white;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .dark-mode .theme-toggle::after {
+            transform: translateX(25px);
+        }
+
+        .theme-toggle i {
+            font-size: 1rem;
+            color: white;
+            z-index: 1;
+        }
+
+        .search-container {
+            flex-grow: 1;
+            max-width: 450px;
+            margin: 0 30px;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 10px 20px;
+            border-radius: 30px;
+            border: none;
+            font-size: 1rem;
+            background-color: white;
+            color: var(--text-dark);
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dark-mode .search-box {
+            background-color: #444;
+            color: var(--text-dark);
+        }
+
+        .user-menu i {
+            font-size: 1.6rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .user-menu i:hover { color: var(--primary); }
+
+        /* --- Main Layout --- */
+        .container {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            flex: 1;
+            gap: 30px;
+            width: 100%;
+        }
+
+        /* --- Sidebar --- */
+        .sidebar {
+            width: 280px;
+            background-color: var(--sidebar-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 25px;
+            height: fit-content;
+            flex-shrink: 0;
+        }
+
+        .sidebar h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .categories { list-style: none; }
+
+        .category-item {
+            padding: 15px 18px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            transition: background-color 0.2s ease, transform 0.1s;
+        }
+
+        .category-item:hover {
+            background-color: rgba(74, 144, 226, 0.1);
+            transform: translateX(3px);
+        }
+        
+        .dark-mode .category-item:hover {
+            background-color: rgba(102, 179, 255, 0.1);
+        }
+
+        .category-item.active {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 8px rgba(74, 144, 226, 0.3);
+        }
+        
+        .category-item.active:hover {
+             background-color: var(--primary); 
+             transform: none;
+        }
+
+        .category-item i { font-size: 1.3rem; }
+
+        /* --- Main Content --- */
+        .main-content { flex-grow: 1; }
+
+        .category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .category-header h2 {
+            color: var(--secondary);
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+        
+        .dark-mode .category-header h2 { color: var(--primary); }
+
+        .course-count {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            opacity: 0.8;
+            font-weight: 600;
+        }
+
+        .courses-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .course-card {
+            background-color: var(--card-bg);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .dark-mode .course-card:hover { box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4); }
+
+        .course-thumbnail {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .course-thumbnail::after {
+            content: '\f144'; 
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3.5rem;
+            color: white;
+            opacity: 0.8;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 50%;
+            padding: 10px 15px;
+            transition: opacity 0.3s;
+        }
+        
+        .course-card:hover .course-thumbnail::after { opacity: 1; }
+
+        .course-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .course-card:hover .course-thumbnail img {
+            transform: scale(1.08);
+            filter: brightness(0.8);
+        }
+
+        .course-info {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .course-info p {
+            color: var(--text-dark);
+            opacity: 0.7;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .course-meta {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid var(--light);
+        }
+        
+        .dark-mode .course-meta { border-top: 1px solid #444; }
+
+        .course-meta span {
+            color: var(--text-dark);
+            opacity: 0.8;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .course-meta .fa-play-circle { color: var(--primary); }
+
+        /* --- Video Player Modal --- */
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .video-container {
+            width: 100%;
+            max-width: 1000px;
+            background-color: var(--card-bg); 
+            border-radius: var(--radius);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .dark-mode .video-container { background-color: #1e1e1e; }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; 
+            height: 0;
+            overflow: hidden;
+            background-color: #000; 
+            border-top-left-radius: var(--radius);
+            border-top-right-radius: var(--radius);
+        }
+
+        /* Capa superpuesta invisible para evitar clics derechos en el iframe */
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            pointer-events: none; /* Permite interacción estándar del player */
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 2010;
+            transition: background 0.3s, transform 0.2s;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        .close-modal:hover {
+            background: var(--accent);
+            transform: scale(1.05);
+        }
+
+        .video-player {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .video-info {
+            padding: 25px;
+            color: var(--text-dark);
+        }
+
+        .video-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .video-info p {
+            color: var(--text-dark);
+            opacity: 0.8;
+            font-size: 1.05rem;
+            margin-top: 15px;
+        }
+        
+        .video-source-container {
+            font-size: 0.95rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            padding: 40px 20px;
+            margin-top: auto;
+            width: 100%;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .footer-section p, .footer-section a {
+            color: #bbb;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .footer-section a:hover { color: white; }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid #444;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* --- Utilities --- */
+        .video-source {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 0;
+            vertical-align: middle;
+            text-transform: uppercase;
+        }
+        .source-googledrive { background-color: #34a853; color: white; }
+        .source-youtube { background-color: #ff0000; color: white; }
+        
+        .no-courses {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px;
+            color: var(--text-dark);
+            opacity: 0.6;
+            font-size: 1.2rem;
+        }
+        .no-courses i { margin-bottom: 20px; color: var(--primary); }
+
+        /* --- Responsive --- */
+        @media (max-width: 1024px) {
+            .container { flex-direction: column; padding: 20px; }
+            .sidebar { width: 100%; margin-right: 0; margin-bottom: 20px; }
+            .categories { display: flex; flex-wrap: wrap; gap: 10px; }
+            .category-item { flex: 1; min-width: 120px; justify-content: center; padding: 10px 15px; }
+            .category-item span { display: none; }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 1rem; }
+            .header-container { flex-wrap: wrap; gap: 15px; }
+            .search-container { order: 3; margin: 0; max-width: 100%; }
+            .logo { flex-grow: 1; }
+            .courses-container { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+            .category-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .category-header h2 { font-size: 1.8rem; }
+            .category-item span { display: block; }
+        }
+
+        @media (max-width: 480px) {
+            .logo h1 { font-size: 1.4rem; }
+            .categories { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 5px; }
+            .category-item { min-width: 100px; flex-shrink: 0; }
+            .category-item span { display: none; }
+            .courses-container { grid-template-columns: 1fr; }
+            .video-info h3 { font-size: 1.4rem; }
+            .footer-container { grid-template-columns: 1fr; gap: 20px; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in { animation: fadeIn 0.5s ease; }
+
+    </style>
+</head>
+<body>
+    <!-- Capa de Seguridad: Login Modal -->
+    <div id="login-modal">
+        <div class="login-container">
+            <h2>Acceso Estudiantil</h2>
+            <p>Ingresa tu código de acceso para visualizar las clases grabadas.</p>
+            <input type="TEXT" id="access-code" placeholder="Código de acceso">
+            <button id="btn-login">Verificar Código</button>
+            <p id="login-error" class="error-msg">Código incorrecto. Intenta nuevamente.</p>
+        </div>
+    </div>
+
+    <!-- Contenido Principal (Oculto por defecto) -->
+    <div id="app-content">
+        <header>
+            <div class="header-container">
+                <a href="#" class="logo">
+                    <img src="icono.jpeg" alt="Logo Daily Life English" onerror="this.src='https://via.placeholder.com/40'">
+                    <h1>Daily Life English</h1>
+                </a>
+                
+                <div class="search-container">
+                    <input type="text" class="search-box" placeholder="Buscar clases grabadas...">
+                </div>
+                
+                <div class="header-controls">
+                    <button class="theme-toggle" id="theme-toggle" title="Cambiar modo claro/oscuro">
+                        <i class="fas fa-sun"></i>
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    
+                    <div class="user-menu">
+                        <i class="fas fa-bell" title="Notificaciones"></i>
+                        <i class="fas fa-user-circle" title="Mi cuenta"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <aside class="sidebar">
+                <h3>Niveles</h3>
+                <ul class="categories">
+                    <li class="category-item active" data-category="all">
+                        <i class="fas fa-th-large"></i>
+                        <span>Todos los niveles</span>
+                    </li>
+                    <li class="category-item" data-category="ingles">
+                        <i class="fas fa-language"></i>
+                        <span>Clases de Inglés</span>
+                    </li>
+                </ul>
+            </aside>
+
+            <main class="main-content">
+                <div class="category-header">
+                    <h2 id="current-category">Todos los niveles</h2>
+                    <div class="course-count">
+                        <span id="course-count">0</span> clases disponibles
+                    </div>
+                </div>
+                <div class="courses-container" id="courses-container"></div>
+            </main>
+        </div>
+
+        <div class="video-modal" id="video-modal">
+            <div class="video-container">
+                <button class="close-modal" id="close-modal" title="Cerrar">
+                    <i class="fas fa-times"></i>
+                </button>
+                
+                <div class="video-wrapper">
+                    <!-- Overlay invisible para bloquear descargas via clic derecho directamente sobre el iframe -->
+                    <div class="video-overlay" oncontextmenu="return false;"></div>
+                    <iframe class="video-player" id="video-player" src="" allow="autoplay; encrypted-media" sandbox="allow-same-origin allow-scripts allow-presentation" frameborder="0" allowfullscreen></iframe>
+                </div>
+                
+                <div class="video-info">
+                    <h3 id="video-title">Título del video</h3>
+                    <div class="video-source-container">
+                        Fuente Protegida: <span id="video-source">Stream</span>
+                    </div>
+                    <p id="video-description">Descripción del video seleccionado.</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>Daily Life English</h3>
+                    <p>Plataforma educativa exclusiva. Material protegido bajo cifrado y derechos de autor.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Niveles de Inglés</h3>
+                    <a href="#" class="category-link" data-category="ingles">A1 Principiante</a>
+                    <a href="#" class="category-link" data-category="ingles">A2 Elemental</a>
+                    <a href="#" class="category-link" data-category="ingles">B1 Intermedio</a>
+                    <a href="#" class="category-link" data-category="ingles">B2 Intermedio Alto</a>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Daily Life English. Todos los derechos reservados.
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // -------------------------------------------------------------------
+        // SISTEMA DE SEGURIDAD Y ANTI-DESCARGA
+        // -------------------------------------------------------------------
+        
+        // Bloqueo de clic derecho en todo el documento
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+        // Bloqueo de atajos de teclado (F12, Ctrl+Shift+I, Ctrl+U, etc.)
+        document.addEventListener('keydown', function(e) {
+            if(e.keyCode == 123) { return false; } // F12
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { return false; }
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) { return false; }
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) { return false; }
+            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { return false; }
+            if(e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) { return false; } // Guardar página
+        });
+
+        // -------------------------------------------------------------------
+        // CONTROL DE ACCESO
+        // -------------------------------------------------------------------
+        const allowedCodes = ["DLE01", "DLE02", "DLE03", "DLE04", "DLE05", "DLE06"];
+        const btnLogin = document.getElementById('btn-login');
+        const inputCode = document.getElementById('access-code');
+        const errorMsg = document.getElementById('login-error');
+        const modalLogin = document.getElementById('login-modal');
+        const appContent = document.getElementById('app-content');
+
+        btnLogin.addEventListener('click', () => {
+            const code = inputCode.value.trim().toUpperCase();
+            if (allowedCodes.includes(code)) {
+                modalLogin.style.display = 'none';
+                appContent.style.display = 'flex';
+                init(); // Inicializar aplicación una vez autorizado
+            } else {
+                errorMsg.style.display = 'block';
+            }
+        });
+
+        inputCode.addEventListener('keypress', (e) => {
+            if(e.key === 'Enter') btnLogin.click();
+        });
+
+
+        // -------------------------------------------------------------------
+        // BASE DE DATOS DE CURSOS Y ENLACES DE VIDEO
+        // -------------------------------------------------------------------
+        const allCourses = [
+            {
+                id: 1,
+                title: "Nivel A1 - Inglés Principiante",
+                description: "Comienza tu viaje en el aprendizaje del inglés con nuestras clases básicas diseñadas para hispanohablantes[cite: 1].",
+                category: "ingles",
+                thumbnail: "principiante.jpeg",
+                video: {
+                    title: "Clase Grabada: Inglés Principiante (A1)",
+                    description: "Introducción al idioma, vocabulario esencial para la rutina diaria de forma natural[cite: 1].",
+                    source: "YouTube",
+                    url: "https://youtu.be/kAoDGJ-3kIU" 
+                }
+            }
+          
+        ];
+
+        const cursos = {
+            "all": allCourses,
+            "ingles": []
+        };
+
+        function organizeCourses() {
+            cursos["ingles"] = []; // Reset
+            cursos["all"].forEach(course => {
+                if(course.category === "ingles") {
+                    cursos["ingles"].push(course);
+                }
+            });
+        }
+
+        // Variables globales UI
+        const coursesContainer = document.getElementById('courses-container');
+        const categoryItems = document.querySelectorAll('.category-item');
+        const currentCategoryElement = document.getElementById('current-category');
+        const courseCountElement = document.getElementById('course-count');
+        const videoModal = document.getElementById('video-modal');
+        const closeModalBtn = document.getElementById('close-modal');
+        const videoPlayer = document.getElementById('video-player'); 
+        const videoTitle = document.getElementById('video-title');
+        const videoDescription = document.getElementById('video-description');
+        const videoSource = document.getElementById('video-source');
+        const searchBox = document.querySelector('.search-box');
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        function checkDarkMode() {
+            const darkMode = localStorage.getItem('darkMode') === 'true';
+            if (darkMode) { body.classList.add('dark-mode'); }
+        }
+
+        function toggleDarkMode() {
+            body.classList.toggle('dark-mode');
+            const isDarkMode = body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDarkMode);
+        }
+
+        function init() {
+            organizeCourses();
+            displayCourses(cursos["all"]);
+            setupEventListeners();
+            checkDarkMode();
+        }
+
+        function setupEventListeners() {
+            categoryItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    categoryItems.forEach(i => i.classList.remove('active'));
+                    item.classList.add('active');
+                    const category = item.getAttribute('data-category');
+                    currentCategoryElement.textContent = getCategoryName(category);
+                    displayCourses(cursos[category] || cursos["all"]);
+                    searchBox.value = ''; 
+                });
+            });
+
+            document.querySelectorAll('.category-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const category = link.getAttribute('data-category');
+                    categoryItems.forEach(i => i.classList.remove('active'));
+                    const activeItem = document.querySelector(`.category-item[data-category="${category}"]`);
+                    if (activeItem) { activeItem.classList.add('active'); }
+                    currentCategoryElement.textContent = getCategoryName(category);
+                    displayCourses(cursos[category] || cursos["all"]);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    searchBox.value = ''; 
+                });
+            });
+
+            closeModalBtn.addEventListener('click', closeVideoModal);
+
+            videoModal.addEventListener('click', (e) => {
+                if (e.target.id === 'video-modal') { closeVideoModal(); }
+            });
+
+            searchBox.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                filterCourses(searchTerm);
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && videoModal.style.display === 'flex') {
+                    closeVideoModal();
+                }
+            });
+
+            themeToggle.addEventListener('click', toggleDarkMode);
+        }
+
+        function getYoutubeVideoId(url) {
+            const regExp = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i;
+            const match = url.match(regExp);
+            return (match && match[1].length === 11) ? match[1] : null;
+        }
+
+        function closeVideoModal() {
+            videoPlayer.src = ''; 
+            videoModal.style.display = 'none';
+        }
+
+        function playVideo(videoData) {
+            videoTitle.textContent = videoData.title;
+            videoDescription.textContent = videoData.description;
+            
+            const sourceName = getSourceName(videoData.source);
+            videoSource.textContent = sourceName;
+            videoSource.className = `video-source ${getSourceClass(videoData.source)}`;
+            
+            let finalUrl = '';
+            const sourceLower = videoData.source.toLowerCase();
+
+            if (sourceLower.includes('youtube')) {
+                const videoId = getYoutubeVideoId(videoData.url);
+                if (videoId) {
+                    finalUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&controls=1`;
+                } else {
+                    alert("Error: URL de YouTube no válida.");
+                    return;
+                }
+            } else if (sourceLower.includes('googledrive')) {
+                finalUrl = videoData.url;
+            } else {
+                finalUrl = videoData.url;
+            }
+
+            videoPlayer.src = finalUrl;
+            videoModal.style.display = 'flex';
+        }
+        
+        function displayCourses(courses) {
+            coursesContainer.innerHTML = '';
+            
+            if (!courses || courses.length === 0) {
+                coursesContainer.innerHTML = '<div class="no-courses fade-in"><i class="fas fa-video-slash fa-3x"></i><h3>No hay clases disponibles en esta categoría</h3></div>';
+                courseCountElement.textContent = '0';
+                return;
+            }
+            
+            courseCountElement.textContent = courses.length;
+            
+            courses.forEach(course => {
+                const courseCard = document.createElement('div');
+                courseCard.className = 'course-card fade-in';
+                courseCard.setAttribute('data-category', course.category);
+                
+                const sourceClass = getSourceClass(course.video.source);
+                const sourceName = getSourceName(course.video.source);
+                
+                // Fallback para las imágenes si no cargan localmente (Usamos Unsplash como backup visual)
+                courseCard.innerHTML = `
+                    <div class="course-thumbnail">
+                        <img src="${course.thumbnail}" alt="${course.title}" onerror="this.src='https://images.unsplash.com/photo-1510519138101-570d1dca3d66?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
+                    </div>
+                    <div class="course-info">
+                        <h3>${course.title}</h3>
+                        <p>${course.description}</p>
+                        <div class="course-meta">
+                            <span><i class="fas fa-play-circle"></i> Ver Clase</span>
+                            <span class="video-source ${sourceClass}">${sourceName}</span>
+                        </div>
+                    </div>
+                `;
+                
+                courseCard.addEventListener('click', () => {
+                    playVideo(course.video);
+                });
+                
+                coursesContainer.appendChild(courseCard);
+            });
+        }
+
+        function filterCourses(searchTerm) {
+            const activeCategory = document.querySelector('.category-item.active').getAttribute('data-category');
+            let coursesToFilter = cursos[activeCategory] || cursos["all"];
+            
+            if (searchTerm.trim() === '') {
+                displayCourses(coursesToFilter);
+                return;
+            }
+            
+            const filteredCourses = coursesToFilter.filter(course => {
+                const term = searchTerm.toLowerCase();
+                return course.title.toLowerCase().includes(term) || 
+                       course.description.toLowerCase().includes(term) ||
+                       course.category.toLowerCase().includes(term); 
+            });
+            
+            displayCourses(filteredCourses);
+        }
+
+        function getCategoryName(categoryKey) {
+            const categoryNames = {
+                'all': 'Todos los niveles',
+                'ingles': 'Clases de Inglés'
+            };
+            return categoryNames[categoryKey] || categoryKey;
+        }
+
+        function getSourceClass(source) {
+            const sourceLower = source.toLowerCase();
+            if (sourceLower.includes('youtube')) return 'source-youtube';
+            if (sourceLower.includes('googledrive')) return 'source-googledrive';
+            return '';
+        }
+
+        function getSourceName(source) {
+            const sourceLower = source.toLowerCase();
+            if (sourceLower.includes('youtube')) return 'YouTube (Protegido)';
+            if (sourceLower.includes('googledrive')) return 'Google Drive (Protegido)';
+            return source;
+        }
+
+        // Ya no iniciamos la app en DOMContentLoaded automáticamente,
+        // dependemos de la autenticación por código del modal inicial.
+    </script>
+</body>
+</html>
