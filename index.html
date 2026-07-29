@@ -9,105 +9,46 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* ===== INICIO DE LA MODIFICACIÓN: AJUSTE DE COLORES ===== */
+        /* ===== VARIABLES Y COLORES ===== */
         :root {
             --primary-color: #2563eb;
             --secondary-color: #3b82f6;
             --accent-color: #60a5fa;
-            --text-color: #1f2937; /* Texto oscuro */
-            --bg-color: #f8fafc; /* Fondo general claro */
-            --card-bg: #ffffff; /* Fondo de tarjetas blanco */
+            --text-color: #1f2937;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
             --header-bg: #ffffff;
-            
-            /* Footer y sección legal con fondo blanco por defecto */
             --footer-bg: #ffffff; 
-            --footer-text: #1e293b; /* Texto oscuro para el footer */
-
+            --footer-text: #1e293b;
             --input-bg: #f3f4f6;
             --input-border: #d1d5db;
             --placeholder-text: #6b7280;
             --transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
             --shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             --border-radius: 12px;
-
             --level-primary-color: #fcd34d;
             --level-secondary-color: #f59e0b;
         }
 
         .dark-mode {
-            /* Colores invertidos para el modo oscuro */
             --primary-color: #3b82f6;
             --secondary-color: #60a5fa;
             --accent-color: #93c5fd;
-            --text-color: #e5e7eb; /* Texto claro */
-            --bg-color: #111827; /* Fondo general oscuro */
-            --card-bg: #1e293b; /* Fondo de tarjetas oscuro */
+            --text-color: #e5e7eb;
+            --bg-color: #111827;
+            --card-bg: #1e293b;
             --header-bg: #1a2332;
-
-            /* Footer y sección legal con fondo oscuro en modo oscuro */
             --footer-bg: #111827;
-            --footer-text: #cbd5e1; /* Texto claro para el footer */
-            
+            --footer-text: #cbd5e1;
             --input-bg: #374151;
             --input-border: #4b5563;
             --placeholder-text: #9ca3af;
             --shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-
             --level-primary-color: #fcd34d;
             --level-secondary-color: #f59e0b;
         }
-        /* ===== FIN DE LA MODIFICACIÓN ===== */
 
-        /* Estilos para la barra de carga */
-        #loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 3000;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
-
-        .loading-content {
-            text-align: center;
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            background-color: var(--card-bg);
-            box-shadow: var(--shadow);
-        }
-
-        .loading-logo {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            margin-bottom: 1rem;
-            object-fit: cover;
-        }
-
-        .loading-bar-container {
-            width: 200px;
-            height: 10px;
-            background-color: #e0e0e0;
-            border-radius: 5px;
-            overflow: hidden;
-            margin-top: 1rem;
-        }
-
-        .loading-bar {
-            width: 0%;
-            height: 100%;
-            background-color: var(--primary-color);
-            transition: width 0.3s linear;
-        }
-
-        /* Estilos generales */
+        /* ===== ESTILOS GENERALES ===== */
         * {
             margin: 0;
             padding: 0;
@@ -156,6 +97,7 @@
             transform: translateY(0);
         }
 
+        /* ===== BOTONES ===== */
         .btn {
             display: inline-block;
             background-color: var(--primary-color);
@@ -171,6 +113,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             font-size: 0.9rem;
+            text-align: center;
         }
 
         .btn:hover {
@@ -183,7 +126,7 @@
             display: inline-block;
             background-color: #6c757d;
             color: white;
-            padding: 8px 16px;
+            padding: 12px 24px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
@@ -194,6 +137,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             font-size: 0.8rem;
+            text-align: center;
         }
 
         .btn-secondary:hover {
@@ -202,7 +146,58 @@
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
         }
 
-        /* Header y navegación */
+        /* ===== PANTALLA DE CARGA ===== */
+        #loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 3000;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .loading-content {
+            text-align: center;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow);
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .loading-logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            object-fit: cover;
+        }
+
+        .loading-bar-container {
+            width: 100%;
+            height: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+
+        .loading-bar {
+            width: 0%;
+            height: 100%;
+            background-color: var(--primary-color);
+            transition: width 0.3s linear;
+        }
+
+        /* ===== HEADER Y NAVEGACIÓN ===== */
         header {
             background-color: var(--header-bg);
             box-shadow: var(--shadow);
@@ -252,11 +247,10 @@
             transition: var(--transition);
             padding: 0.5rem 0;
             position: relative;
-            display: flex; /* Para alinear el icono con el texto */
+            display: flex;
             align-items: center;
         }
         
-        /* Estilo para los iconos dentro del menú */
         .nav-menu a i {
             margin-right: 0.5rem;
             font-size: 1rem;
@@ -334,7 +328,7 @@
             transform: rotate(-45deg) translate(7px, -6px);
         }
 
-        /* Banner Carrusel */
+        /* ===== BANNER CARRUSEL ===== */
         .banner {
             height: 100vh;
             margin-top: 70px;
@@ -424,18 +418,9 @@
         }
 
         @keyframes pulse {
-            0% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7);
-            }
-            70% {
-                transform: scale(1.05);
-                box-shadow: 0 0 0 10px rgba(37, 99, 235, 0);
-            }
-            100% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
-            }
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(37, 99, 235, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
         }
 
         .carousel-dots {
@@ -481,23 +466,13 @@
             transition: var(--transition);
         }
 
-        .carousel-btn:hover {
-            background: rgba(255,255,255,0.3);
-        }
+        .carousel-btn:hover { background: rgba(255,255,255,0.3); }
+        .carousel-btn.prev { left: 20px; }
+        .carousel-btn.next { right: 20px; }
 
-        .carousel-btn.prev {
-            left: 20px;
-        }
-
-        .carousel-btn.next {
-            right: 20px;
-        }
-
-        /* Sección de información */
-        .info-section {
-            text-align: center;
-        }
-
+        /* ===== SECCIÓN DE INFORMACIÓN ===== */
+        .info-section { text-align: center; }
+        
         .info-content {
             display: flex;
             flex-wrap: wrap;
@@ -527,14 +502,9 @@
             margin-bottom: 1.5rem;
         }
 
-        /* Sección de niveles */
-        .levels {
-            background-color: var(--card-bg);
-        }
-        
-        .levels h2 {
-            color: var(--primary-color);
-        }
+        /* ===== SECCIÓN DE NIVELES ===== */
+        .levels { background-color: var(--card-bg); }
+        .levels h2 { color: var(--primary-color); }
 
         .levels-container {
             display: flex;
@@ -555,6 +525,8 @@
             transition: var(--transition);
             cursor: pointer;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
         
         .level-card-img {
@@ -564,39 +536,15 @@
             display: block;
         }
         
-        .level-card-content {
-            padding: 1.5rem;
-        }
+        .level-card-content { padding: 1.5rem; flex-grow: 1; }
+        .level-card:hover { transform: translateY(-10px) scale(1.03); box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2); }
+        .level-card h3 { font-size: 2.5rem; margin-bottom: 0.5rem; color: #1f2937; }
+        .level-card h4 { font-size: 1.5rem; margin-bottom: 1rem; color: #1f2937; }
+        .level-card p { margin-bottom: 0; font-weight: 600; font-size: 0.9rem; color: #1f2937; }
 
-        .level-card:hover {
-            transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .level-card h3 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            color: #1f2937; 
-        }
-
-        .level-card h4 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #1f2937;
-        }
-
-        .level-card p {
-             margin-bottom: 0;
-             font-weight: 600;
-             font-size: 0.9rem;
-             color: #1f2937;
-        }
-
-        /* Carrusel de cursos */
-        .courses {
-            padding: 5rem 0;
-        }
-
+        /* ===== CARRUSEL DE CURSOS ===== */
+        .courses { padding: 5rem 0; }
+        
         .carousel {
             position: relative;
             overflow: hidden;
@@ -606,16 +554,8 @@
             max-width: 1000px;
         }
 
-        .carousel-container {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-
-        .carousel-item {
-            min-width: 100%;
-            position: relative;
-        }
-        
+        .carousel-container { display: flex; transition: transform 0.5s ease; }
+        .carousel-item { min-width: 100%; position: relative; }
         .carousel-item img {
             width: 100%;
             height: 400px;
@@ -623,11 +563,8 @@
             display: block;
             transition: transform 0.5s ease; 
         }
-
-        .carousel-item:hover img {
-            transform: scale(1.02);
-        }
-
+        .carousel-item:hover img { transform: scale(1.02); }
+        
         .carousel-caption {
             position: absolute;
             bottom: 0;
@@ -638,12 +575,9 @@
             padding: 1.5rem;
         }
 
-        /* Sección de Servicios */
-        .services {
-            text-align: center;
-            background-color: var(--card-bg);
-        }
-
+        /* ===== SECCIÓN DE SERVICIOS ===== */
+        .services { text-align: center; background-color: var(--card-bg); }
+        
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -658,6 +592,8 @@
             box-shadow: var(--shadow);
             cursor: pointer;
             transition: var(--transition);
+            display: flex;
+            flex-direction: column;
         }
 
         .service-card:hover {
@@ -672,38 +608,37 @@
             transition: var(--transition);
         }
         
-        /* ===== IMAGEN DE LOGO RESPONSIVE (TARJETA) ===== */
         .service-card img.service-logo-image {
-            height: 250px; /* Mantiene la altura del grid para consistencia */
-            object-fit: contain; /* Asegura que el logo se vea completo */
-            padding: 1rem; /* Añade espacio alrededor del logo */
-            background-color: var(--card-bg); /* Fondo para que el logo resalte, especialmente en modo oscuro */
+            height: 250px; 
+            object-fit: contain; 
+            padding: 1rem; 
+            background-color: var(--card-bg); 
         }
         
-        .service-card:hover img.service-logo-image {
-            transform: scale(1.05); /* Ajusta el zoom del hover para que no sea tan agresivo */
-        }
-        /* ===== FIN DE LA MODIFICACIÓN ===== */
+        .service-card:hover img.service-logo-image { transform: scale(1.05); }
+        .service-card:hover img { transform: scale(1.1); }
+        .service-info { padding: 1.5rem; flex-grow: 1; }
 
-
-        .service-card:hover img {
-            transform: scale(1.1);
+        /* ===== TABLAS RESPONSIVAS ===== */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin-top: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
-        .service-info {
-            padding: 1.5rem;
-        }
-        
         .meet-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 1rem;
             font-size: 0.9rem;
+            min-width: 500px; /* Asegura que la tabla no colapse en pantallas pequeñas */
         }
         
         .meet-table th, .meet-table td {
             border: 1px solid var(--input-border);
-            padding: 10px;
+            padding: 12px 15px;
             text-align: left;
             vertical-align: middle;
         }
@@ -712,44 +647,13 @@
             background-color: var(--primary-color);
             color: white;
             font-weight: 700;
+            white-space: nowrap;
         }
         
-        .meet-table tr:nth-child(even) {
-            background-color: var(--bg-color);
-        }
-        
-        .meet-table a {
-            color: var(--secondary-color);
-            text-decoration: none;
-            font-weight: 600;
-        }
+        .meet-table tr:nth-child(even) { background-color: var(--bg-color); }
+        .meet-table a { color: var(--secondary-color); text-decoration: none; font-weight: 600; }
 
-        .modal-social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 1.5rem;
-        }
-        
-        .modal-social-icons a {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            transition: var(--transition);
-        }
-        
-        .modal-social-icons a:hover {
-            color: var(--level-secondary-color);
-            transform: scale(1.1);
-        }
-
-        .speaking-club-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        /* Modal */
+        /* ===== MODALES ===== */
         .modal {
             display: none;
             position: fixed;
@@ -766,15 +670,12 @@
             padding: 1rem;
         }
 
-        .modal.visible {
-            display: flex;
-            opacity: 1;
-        }
+        .modal.visible { display: flex; opacity: 1; }
 
         .modal-content {
             background-color: var(--card-bg);
             border-radius: var(--border-radius);
-            max-width: 700px;
+            max-width: 800px; /* Ensanchado un poco para tablas y contenido */
             width: 95%;
             padding: 2.5rem;
             position: relative;
@@ -785,26 +686,22 @@
             overflow-y: auto;
         }
 
-        .modal.visible .modal-content {
-            transform: translateY(0);
-        }
+        .modal.visible .modal-content { transform: translateY(0); }
 
         .close-modal {
             position: absolute;
             top: 1rem;
-            right: 1rem;
+            right: 1.5rem;
             background: none;
             border: none;
-            font-size: 1.8rem;
+            font-size: 2rem;
             cursor: pointer;
             color: var(--text-color);
             transition: var(--transition);
+            z-index: 10;
         }
 
-        .close-modal:hover {
-            color: var(--primary-color);
-            transform: rotate(90deg);
-        }
+        .close-modal:hover { color: var(--primary-color); transform: rotate(90deg); }
 
         .modal-body {
             display: flex;
@@ -812,33 +709,11 @@
             gap: 1.5rem;
         }
         
-        .modal-body h2 {
-            margin-top: 0;
-        }
-        
-        .modal-body p {
-            margin-bottom: 1rem;
-        }
-
-        .modal-body ul {
-            text-align: left;
-            margin-bottom: 2rem;
-            list-style-type: none;
-            padding-left: 0;
-        }
-
-        .modal-body li {
-            margin-bottom: 0.8rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .modal-body li:before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--level-secondary-color);
-        }
+        .modal-body h2 { margin-top: 0; word-break: break-word; }
+        .modal-body p { margin-bottom: 1rem; }
+        .modal-body ul { text-align: left; margin-bottom: 2rem; list-style-type: none; padding-left: 0; }
+        .modal-body li { margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; }
+        .modal-body li:before { content: '✓'; position: absolute; left: 0; color: var(--level-secondary-color); }
 
         .modal-img {
             width: 100%;
@@ -847,24 +722,28 @@
             border-radius: var(--border-radius);
         }
 
-        /* ===== IMAGEN DE LOGO RESPONSIVE (MODAL) ===== */
         .modal-img.modal-logo-image {
-            height: auto; /* Altura automática para mantener proporción */
-            max-height: 250px; /* Altura máxima para que no sea muy grande */
-            width: auto; /* Ancho automático */
-            max-width: 100%; /* Límite de ancho */
-            object-fit: contain; /* Asegura que se vea completo */
+            height: auto; 
+            max-height: 250px; 
+            width: auto; 
+            max-width: 100%; 
+            object-fit: contain; 
             display: block;
             margin-left: auto;
             margin-right: auto;
         }
-        /* ===== FIN DE LA MODIFICACIÓN ===== */
 
-        /* Sección de contacto */
-        .contact {
-            padding-bottom: 2.5rem;
+        .buttons-container-modal {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
         }
 
+        /* ===== CONTACTO Y FORMULARIO ===== */
+        .contact { padding-bottom: 2.5rem; }
+        
         .contact-container {
             display: flex;
             flex-wrap: wrap;
@@ -873,41 +752,13 @@
             align-items: center;
         }
 
-        .contact-info {
-            flex: 1 1 300px;
-            text-align: center;
-        }
-
-        .contact-info i {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .contact-qr {
-            flex: 1 1 300px;
-            text-align: center;
-        }
-
-        .qr-code {
-            max-width: 200px;
-            margin: 0 auto;
-            padding: 1rem;
-            background: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-        }
-
-        .qr-code img {
-            width: 100%;
-        }
+        .contact-info { flex: 1 1 300px; text-align: center; }
+        .contact-info i { font-size: 2rem; color: var(--primary-color); margin-bottom: 1rem; }
+        .contact-qr { flex: 1 1 300px; text-align: center; }
+        .qr-code { max-width: 200px; margin: 0 auto; padding: 1rem; background: white; border-radius: var(--border-radius); box-shadow: var(--shadow); }
+        .qr-code img { width: 100%; }
         
-        /* Formulario de Inscripción */
-        .contact-form-section {
-            background-color: var(--card-bg);
-            padding-top: 2.5rem;
-        }
-
+        .contact-form-section { background-color: var(--card-bg); padding-top: 2.5rem; }
         .form-container {
             max-width: 800px;
             margin: 2rem auto 0;
@@ -915,21 +766,12 @@
             padding: 2.5rem;
             border-radius: var(--border-radius);
             box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
+            width: 100%;
         }
 
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--text-color);
-        }
-
-        .form-group input,
-        .form-group textarea {
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-color); }
+        .form-group input, .form-group textarea {
             width: 100%;
             padding: 0.8rem 1rem;
             border-radius: 8px;
@@ -942,128 +784,36 @@
             transition: border-color 0.3s ease;
         }
 
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-        }
-        
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: var(--placeholder-text);
-            opacity: 1; 
-        }
-        
-        .form-group textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
-        
-        #contact-form-status {
-            text-align: center;
-            margin-top: 1rem;
-            font-weight: 600;
-        }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--primary-color); }
+        .form-group input::placeholder, .form-group textarea::placeholder { color: var(--placeholder-text); opacity: 1; }
+        #contact-form-status { text-align: center; margin-top: 1rem; font-weight: 600; }
 
-        .comments-section {
-            padding: 5rem 0;
-        }
-        
-        .comments-title-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .comments-container {
-            max-width: 800px;
-            margin: 2rem auto 0;
-        }
-
-        .comment-form-container {
-            background-color: var(--card-bg);
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
-            margin-bottom: 2rem;
-        }
-
-        .comments-list {
-            margin-top: 2rem;
-        }
-
-        .comment-card {
-            background-color: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            margin-bottom: 1.5rem;
-            border-left: 5px solid var(--primary-color);
-        }
-
-        .comment-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 0.5rem;
-        }
-        
-        .comment-header i {
-            margin-right: 0.8rem;
-            font-size: 1.5rem;
-            color: var(--secondary-color);
-        }
-
-        .comment-author {
-            font-weight: 700;
-            font-family: 'Montserrat', sans-serif;
-            color: var(--primary-color);
-        }
-        
-        .comment-text {
-            color: var(--text-color);
-        }
-        
-        #no-comments {
-            text-align: center;
-            font-style: italic;
-            padding: 2rem;
-            background: var(--card-bg);
-            border-radius: var(--border-radius);
-        }
-
-        /* ===== SECCIÓN LEGAL Y FOOTER CON NUEVOS FONDOS ===== */
+        /* ===== SECCIÓN LEGAL ===== */
         .legal {
             text-align: center;
             padding: 5rem 0;
-            background-color: var(--footer-bg); /* Fondo dinámico */
-            color: var(--footer-text); /* Texto dinámico */
-            border-top: 1px solid var(--input-border); /* Borde sutil para separar */
+            background-color: var(--footer-bg); 
+            color: var(--footer-text); 
+            border-top: 1px solid var(--input-border); 
         }
         
-        .legal h2 {
-            color: var(--primary-color); /* El título principal mantiene el color primario */
-        }
-        
-        .legal p {
-            color: var(--footer-text); /* El párrafo usa el color de texto del footer */
-        }
-
+        .legal h2 { color: var(--primary-color); }
+        .legal p { color: var(--footer-text); }
         .legal-card-container {
             max-width: 600px;
             margin: 2rem auto;
-            background-color: var(--card-bg); /* La "tarjeta" interna usa el fondo de tarjeta estándar */
+            background-color: var(--card-bg); 
             padding: 3rem;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
+            width: 100%;
         }
         
         .legal-links {
             display: flex;
-            flex-direction: row;
+            flex-wrap: wrap;
             justify-content: center;
-            gap: 2rem;
+            gap: 1.5rem;
             margin-top: 1rem;
         }
 
@@ -1079,23 +829,37 @@
             font-weight: 600;
             transition: var(--transition);
             cursor: pointer;
-            flex: 1;
-            max-width: 250px;
+            flex: 1 1 200px;
+            max-width: 300px;
         }
 
-        .legal-links a:hover {
-            background-color: var(--primary-color);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .legal-links a i {
-            margin-right: 10px;
-            font-size: 1.1rem;
+        .legal-links a:hover { background-color: var(--primary-color); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); }
+        .legal-links a i { margin-right: 10px; font-size: 1.1rem; color: white; }
+
+        /* ===== ANIMACIÓN CLASES EN VIVO ===== */
+        .live-tag {
+            display: inline-block;
+            background-color: #dc3545; 
             color: white;
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            animation: pulse-live 1.8s infinite alternate; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
         }
 
-        /* Botón flotante de WhatsApp */
+        @keyframes pulse-live {
+            0% { opacity: 0.8; transform: scale(1) translateX(-2px); box-shadow: 0 0 5px #dc3545; }
+            50% { opacity: 1; transform: scale(1.03) translateX(2px); box-shadow: 0 0 15px rgba(220, 53, 69, 0.8); }
+            100% { opacity: 0.8; transform: scale(1) translateX(-2px); box-shadow: 0 0 5px #dc3545; }
+        }
+
+        /* ===== BOTÓN FLOTANTE WHATSAPP ===== */
         .whatsapp-float {
             position: fixed;
             bottom: 2rem;
@@ -1117,54 +881,12 @@
         }
 
         @keyframes pulse-green {
-            0% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
-            }
-            70% {
-                box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-            }
-        }
-        
-        /* ===== INICIO DE LA MODIFICACIÓN: MARCA DE CLASES EN VIVO (ROJO) Y ANIMACIÓN DE MOVIMIENTO ===== */
-        .live-tag {
-            display: inline-block;
-            background-color: #dc3545; /* Rojo de Bootstrap */
-            color: white;
-            padding: 5px 15px;
-            border-radius: 5px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            animation: pulse-live 1.8s infinite alternate; /* Animación de movimiento y brillo */
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
 
-        @keyframes pulse-live {
-            0% {
-                opacity: 0.8;
-                transform: scale(1) translateX(-2px); /* Ligeramente a la izquierda */
-                box-shadow: 0 0 5px #dc3545;
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1.03) translateX(2px); /* Se agranda y va a la derecha */
-                box-shadow: 0 0 15px rgba(220, 53, 69, 0.8); /* Efecto de brillo más fuerte */
-            }
-            100% {
-                opacity: 0.8;
-                transform: scale(1) translateX(-2px); /* Vuelve y se encoje un poco */
-                box-shadow: 0 0 5px #dc3545;
-            }
-        }
-        /* ===== FIN DE LA MODIFICACIÓN: MARCA DE CLASES EN VIVO (ROJO) Y ANIMACIÓN DE MOVIMIENTO ===== */
-
-
-        /* Footer */
+        /* ===== FOOTER ===== */
         footer {
             background-color: var(--footer-bg);
             color: var(--footer-text);
@@ -1178,16 +900,13 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
+            gap: 1rem;
         }
 
-        .social-icons {
-            display: flex;
-            gap: 1.5rem;
-        }
-
+        .social-icons { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
         .social-icons a {
             color: var(--footer-text);
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             transition: var(--transition);
             width: 40px;
             height: 40px;
@@ -1199,77 +918,46 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
-        .social-icons a:hover {
-            transform: scale(1.1);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .social-icons .fa-tiktok {
-            color: #000;
-        }
-
-        .social-icons a:hover .fa-tiktok {
-            color: #000;
-            text-shadow: 0 0 8px #00f7ef, 0 0 10px #fe2c55;
-            background-color: #ffffff;
-        }
-
-        .social-icons .fa-youtube {
-            color: #FF0000;
-        }
-
-        .social-icons a:hover .fa-youtube {
-            color: #FF0000;
-            text-shadow: 0 0 10px #FF0000;
-        }
-
-        .social-icons .fa-facebook {
-            color: #1877F2;
-        }
-
-        .social-icons a:hover .fa-facebook {
-            color: #1877F2;
-            text-shadow: 0 0 10px #1877F2;
-        }
-
+        .social-icons a:hover { transform: scale(1.1); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); }
+        .social-icons .fa-tiktok { color: #000; }
+        .social-icons a:hover .fa-tiktok { color: #000; text-shadow: 0 0 8px #00f7ef, 0 0 10px #fe2c55; background-color: #ffffff; }
+        .social-icons .fa-youtube { color: #FF0000; }
+        .social-icons a:hover .fa-youtube { color: #FF0000; text-shadow: 0 0 10px #FF0000; }
+        .social-icons .fa-facebook { color: #1877F2; }
+        .social-icons a:hover .fa-facebook { color: #1877F2; text-shadow: 0 0 10px #1877F2; }
         .social-icons .fa-instagram {
             background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-fill-color: transparent;
-            font-size: 1.7rem;
             display: inline-block;
         }
+        .social-icons a:hover .fa-instagram { text-shadow: 0 0 5px #fdf497, 0 0 10px #d6249f; }
 
-        .social-icons a:hover .fa-instagram {
-            text-shadow: 0 0 5px #fdf497, 0 0 10px #d6249f;
-        }
 
-        /* Responsive */
+        /* =========================================
+           MEDIA QUERIES - DISEÑO RESPONSIVE TOTAL
+           ========================================= */
+        
+        /* TABLETS (Max 968px) */
         @media (max-width: 968px) {
-            .banner-slide h1 {
-                font-size: 2.8rem;
-            }
-            .banner-slide p {
-                font-size: 1.3rem;
-            }
-            .level-card {
-                width: 100%;
-                max-width: 400px;
-            }
+            .banner-slide h1 { font-size: 2.8rem; }
+            .banner-slide p { font-size: 1.3rem; }
+            .level-card { width: 45%; max-width: 400px; }
+            .contact-container { flex-direction: column; }
         }
 
+        /* MÓVILES GRANDES Y TABLETS PEQUEÑAS (Max 768px) */
         @media (max-width: 768px) {
-            .hamburger {
-                display: flex;
-            }
+            .hamburger { display: flex; }
             .nav-menu {
                 position: fixed;
                 top: 0;
                 right: -100%;
                 background-color: var(--header-bg);
-                width: 70%;
+                width: 75%;
+                max-width: 300px;
                 height: 100vh;
                 flex-direction: column;
                 align-items: center;
@@ -1277,66 +965,62 @@
                 transition: right 0.3s ease;
                 box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
             }
-            .nav-menu.active {
-                right: 0;
+            .nav-menu.active { right: 0; }
+            .nav-menu li { margin: 1.5rem 0; width: 100%; text-align: center; }
+            .nav-menu a { justify-content: center; font-size: 1.1rem; }
+            
+            .banner-slide h1 { font-size: 2.2rem; }
+            .banner-slide p { font-size: 1.1rem; }
+            
+            .carousel-item img { height: 300px; }
+            .carousel-btn { width: 40px; height: 40px; font-size: 1.2rem; }
+            
+            .level-card { width: 100%; }
+            
+            .form-container, .legal-card-container { padding: 1.5rem; }
+            
+            .footer-content { flex-direction: column; text-align: center; }
+            
+            /* Modales en móvil */
+            .modal-content {
+                width: 95%;
+                padding: 1.5rem;
+                margin: 10px;
             }
-            .nav-menu li {
-                margin: 1.5rem 0;
+            .close-modal { top: 0.5rem; right: 1rem; font-size: 1.8rem; }
+            .modal-img { height: 200px; }
+            
+            /* Botones en modales */
+            .buttons-container-modal a, 
+            .buttons-container-modal button {
+                width: 100%;
+                margin-left: 0;
             }
-            .banner-slide h1 {
-                font-size: 2.2rem;
-            }
-            .banner-slide p {
-                font-size: 1.1rem;
-            }
-            .carousel-item img {
-                height: 300px;
-            }
-            .carousel-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-            }
-            .legal-links {
-                flex-direction: column;
-            }
-            .legal-card-container {
-                padding: 2rem;
-            }
-            .footer-content {
-                flex-direction: column;
-            }
+            .buttons-container-modal { gap: 0.8rem; }
         }
 
+        /* MÓVILES PEQUEÑOS (Max 480px) */
         @media (max-width: 480px) {
-            .banner-slide h1 {
-                font-size: 1.8rem;
-            }
-            .banner-slide p {
-                font-size: 1rem;
-            }
-            .level-tag {
-                font-size: 1rem;
-                padding: 6px 15px;
-            }
-            .whatsapp-float {
-                width: 50px;
-                height: 50px;
-                font-size: 1.5rem;
-                bottom: 1rem;
-                right: 1rem;
-            }
-            .modal-content {
-                padding: 1.5rem;
-            }
-            .footer-content .copyright {
-                margin-bottom: 1rem;
-            }
+            .banner-slide h1 { font-size: 1.8rem; }
+            .banner-slide p { font-size: 1rem; }
+            .level-tag { font-size: 1rem; padding: 6px 15px; }
+            
+            .info-card { padding: 1.5rem; }
+            
+            .whatsapp-float { width: 50px; height: 50px; font-size: 1.5rem; bottom: 1rem; right: 1rem; }
+            
+            .footer-content .copyright { margin-bottom: 1rem; }
+            
+            .legal-links { flex-direction: column; width: 100%; }
+            .legal-links a { max-width: 100%; width: 100%; flex: 1 1 auto; }
+            
+            .modal-body h2 { font-size: 1.4rem; }
         }
     </style>
 </head>
 <body>
     
+    <!-- PANTALLA DE CARGA -->
     <div id="loading-overlay">
         <div class="loading-content">
             <img src="icono.jpeg" alt="Logo Daily Life English" class="loading-logo">
@@ -1348,6 +1032,7 @@
         </div>
     </div>
 
+    <!-- HEADER / NAVEGACIÓN -->
     <header>
         <div class="container nav-container">
             <a href="#home" class="logo">
@@ -1367,12 +1052,13 @@
                 <li><a href="#contact-form"><i class="fas fa-pencil-alt"></i>Inscripción</a></li>
                 <li><a href="#contact"><i class="fas fa-phone-alt"></i>Contacto</a></li>
             </ul>
-            <button class="theme-toggle" id="themeToggle">
+            <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema oscuro/claro">
                 <i class="fas fa-moon"></i>
             </button>
         </div>
     </header>
 
+    <!-- CARRUSEL PRINCIPAL -->
     <section class="banner" id="home">
         <div class="banner-carousel">
             <div class="banner-slide active" style="background-image: url('1.jpeg');">
@@ -1409,14 +1095,15 @@
             </div>
         </div>
         <div class="carousel-dots"></div>
-        <button class="carousel-btn prev">
+        <button class="carousel-btn prev" aria-label="Anterior slide">
             <i class="fas fa-chevron-left"></i>
         </button>
-        <button class="carousel-btn next">
+        <button class="carousel-btn next" aria-label="Siguiente slide">
             <i class="fas fa-chevron-right"></i>
         </button>
     </section>
 
+    <!-- SECCIÓN NOSOTROS -->
     <section class="info-section" id="about">
         <div class="container">
             <h2>¿Por qué elegirnos?</h2>
@@ -1440,6 +1127,7 @@
         </div>
     </section>
 
+    <!-- SECCIÓN NIVELES -->
     <section class="levels" id="levels">
         <div class="container">
             <h2>Nuestros Niveles de Inglés</h2>
@@ -1496,6 +1184,7 @@
         </div>
     </section>
 
+    <!-- CARRUSEL DE CURSOS -->
     <section class="courses" id="courses">
         <div class="container">
             <h2>Nuestros Cursos</h2>
@@ -1530,12 +1219,13 @@
                         </div>
                     </div>
                 </div>
-                <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
-                <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
+                <button class="carousel-btn prev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn next" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
     </section>
 
+    <!-- SECCIÓN SERVICIOS -->
     <section class="services" id="services">
         <div class="container">
             <h2>Nuestro Portafolio de Servicios</h2>
@@ -1558,7 +1248,7 @@
                     <img src="curso extermo.jpeg" alt="Clases Online (Meet)" class="service-image">
                     <div class="service-info">
                         <h3>Clases Online (Meet)</h3>
-                        <span class="live-tag"> <marquee behavior="" direction=""> 🔵 CLASES EN VIVO</marquee></span>
+                        <span class="live-tag"><marquee behavior="" direction=""> 🔵 CLASES EN VIVO</marquee></span>
                         <p>Horarios y enlaces de nuestras clases virtuales.</p>
                     </div>
                 </div>
@@ -1569,32 +1259,30 @@
                         <p>Mejora tu fluidez oral y auditiva en nuestras sesiones de práctica.</p>
                     </div>
                 </div>
-                <!-- ===== NUEVA TARJETA: GESTOR DE TAREAS ===== -->
-               <!--<div class="service-card" data-service-id="5">
+                <!-- SERVICIO 5: GESTOR DE TAREAS -->
+               <!-- <div class="service-card" data-service-id="5">
                     <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gestor de Tareas" class="service-image">
                     <div class="service-info">
                         <h3>Gestor de Tareas</h3>
                         <p>Administra y accede a tus tareas y evaluaciones asignadas.</p>
                     </div>
-                </div>--> 
-                <!-- ===== FIN NUEVA TARJETA ===== -->
+                </div>-->
             </div>
         </div>
     </section>
 
+    <!-- MODALES -->
     <div id="levelModal" class="modal">
         <div class="modal-content">
             <button class="close-modal" id="closeLevelModal">&times;</button>
-            <div class="modal-body" id="levelModalBody">
-                </div>
+            <div class="modal-body" id="levelModalBody"></div>
         </div>
     </div>
 
     <div id="serviceModal" class="modal">
         <div class="modal-content">
             <button class="close-modal" id="closeServiceModal">&times;</button>
-            <div class="modal-body" id="serviceModalBody">
-                </div>
+            <div class="modal-body" id="serviceModalBody"></div>
         </div>
     </div>
     
@@ -1605,7 +1293,7 @@
         </div>
     </div>
 
-    <!-- ===== FORMULARIO DE INSCRIPCIÓN MODIFICADO ===== -->
+    <!-- SECCIÓN DE INSCRIPCIÓN -->
     <section class="contact-form-section" id="contact-form">
         <div class="container">
             <h2>Formulario de Inscripción</h2>
@@ -1613,28 +1301,30 @@
                 <form id="inscriptionForm">
                     <div class="form-group">
                         <label for="fullName">Nombres y Apellidos</label>
-                        <input type="text" id="fullName" name="fullName" placeholder="Nombres y Apellidos" required>
+                        <input type="text" id="fullName" name="fullName" placeholder="Ej: Juan Pérez" required>
                     </div>
                     <div class="form-group">
                         <label for="age">Edad</label>
-                        <input type="number" id="age" name="age" placeholder="Edad" min="1" max="120" required>
+                        <input type="number" id="age" name="age" placeholder="Ej: 25" min="1" max="120" required>
                     </div>
                     <div class="form-group">
                         <label for="phone">Teléfono</label>
-                        <input type="tel" id="phone" name="phone" placeholder="Teléfono" required>
+                        <input type="tel" id="phone" name="phone" placeholder="Ej: +593900000000" required>
                     </div>
                     <div class="form-group">
                         <label for="address">Dirección Domiciliaria</label>
                         <input type="text" id="address" name="address" placeholder="Ej: Calle Principal #123, Ciudad" required>
                     </div>
-                    <button type="submit" class="btn">Enviar Inscripción por WhatsApp</button>
+                    <div class="buttons-container-modal" style="margin-top: 1.5rem;">
+                        <button type="submit" class="btn" style="width: 100%;">Enviar Inscripción por WhatsApp <i class="fab fa-whatsapp" style="margin-left: 8px;"></i></button>
+                    </div>
                 </form>
-                <div id="contact-form-status" style="margin-top: 1rem; text-align: center; font-weight: 600;"></div>
+                <div id="contact-form-status"></div>
             </div>
         </div>
     </section>
-    <!-- ===== FIN DEL FORMULARIO MODIFICADO ===== -->
 
+    <!-- SECCIÓN CONTACTO Y QR -->
     <section class="contact" id="contact">
         <div class="container">
             <h2>Contáctanos</h2>
@@ -1645,7 +1335,7 @@
                     <p><i class="fas fa-phone"></i> +593 98 864 2647</p>
                 </div>
                 <div class="contact-qr">
-                    <h3>Escanea para contactarnos por WhatsApp</h3>
+                    <h3>Escanea para contactarnos</h3>
                     <div class="qr-code">
                         <img src="QR_ingles.png" alt="QR de WhatsApp">
                     </div>
@@ -1654,6 +1344,7 @@
         </div>
     </section>
 
+    <!-- SECCIÓN LEGAL -->
     <section class="legal">
         <div class="container">
             <h2>Información Legal</h2>
@@ -1673,10 +1364,12 @@
         </div>
     </section>
 
-    <a href="https://wa.me/+593988642647" class="whatsapp-float" target="_blank">
+    <!-- BOTÓN FLOTANTE WHATSAPP -->
+    <a href="https://wa.me/593988642647" class="whatsapp-float" target="_blank" aria-label="Chat en WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
+    <!-- FOOTER -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -1684,16 +1377,17 @@
                     <p>&copy; 2026 Daily Life English. Todos los derechos reservados.</p>
                 </div>
                 <div class="social-icons">
-                    <a href="#"><i class="fab fa-tiktok"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#home"><i class="fas fa-home"></i></a>
+                    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#home" aria-label="Volver arriba"><i class="fas fa-home"></i></a>
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- ===== SCRIPTS LOGICA ===== -->
     <script>
         document.body.style.overflow = 'hidden';
         let loadProgress = 0;
@@ -1715,21 +1409,21 @@
             updateLoadingBar();
         });
 
-        // ===== OBJETO DE SERVICIOS =====
+        // ===== DATOS DE SERVICIOS =====
         const services = {
             1: { 
              title: "Audio de clases",
                 description: "Ingresa tu código de estudiante para acceder a las grabaciones de las clases.",
                 image: "dk-efe-logo-hi.png",
                 type: "authLink",
-                imageClass: "modal-logo-image" // Clase especial para la imagen del modal    
+                imageClass: "modal-logo-image"
             },
             2: {
                 title: "Acceso al Blog Educativo",
                 description: "Accede a contenido exclusivo, ejercicios interactivos, consejos de estudio y material de práctica para reforzar tu aprendizaje fuera del aula.",
                 image: "blog.jpeg",
                 link: "https://dailylifeenglishblog.blogspot.com/2025/09/1-1-1-1-microsoftinternetexplorer4-0-2.html",
-                recordedLink: "https://dailylifeenglish.github.io/video-clases.html", // <--- NUEVO ENLACE AGREGADO
+                recordedLink: "https://dailylifeenglish.github.io/video-clases.html",
                 buttonText: "Ir al Blog Educativo",
                 type: "link" 
             },
@@ -1738,32 +1432,32 @@
                 description: "Únete a nuestras sesiones de práctica y clases modelo. Aquí encontrarás los enlaces y horarios para conectarte directamente con nuestros profesores.", 
                 image: "curso extermo.jpeg", 
                 table: ` 
-                    <table class="meet-table"> 
-                        <thead> 
-                            <tr> 
-                                <th>Día - Fecha - Año</th> 
-                                <th>Hora (Zona Horaria Local)</th> 
-                                <th>Clase/Nivel</th> 
-                                <th>Enlace de Meet</th> 
-                            </tr> 
-                        </thead> 
-                        <tbody> 
-                            <tr> 
-                                <td>Sábado - 25 de Julio del 2026</td> 
-                                <td>15:00pm - 17:00pm</td> 
-                                <td>Daily Life English - Classes</td> 
-                                <td><a href="https://meet.google.com/ktk-bxom-siy" target="_blank">Unirse a la Clase</a></td> 
-                            </tr> 
-
-                             <tr> 
-                                <td>Sábado - 25 de Julio del 2026</td> 
-                                <td>09:00am - 11:00am</td> 
-                                <td>Daily Life English - Classes</td> 
-                                <td><a href="https://meet.google.com/hnj-rbcy-twc" target="_blank">Unirse a la Clase</a></td> 
-                            </tr> 
-                           
-                        </tbody> 
-                    </table> `, 
+                    <div class="table-responsive">
+                        <table class="meet-table"> 
+                            <thead> 
+                                <tr> 
+                                    <th>Día - Fecha - Año</th> 
+                                    <th>Hora (Zona Local)</th> 
+                                    <th>Clase/Nivel</th> 
+                                    <th>Enlace</th> 
+                                </tr> 
+                            </thead> 
+                            <tbody> 
+                                <tr> 
+                                    <td>Sábado - 25 de Julio del 2026</td> 
+                                    <td>15:00pm - 17:00pm</td> 
+                                    <td>Daily Life English - Classes</td> 
+                                    <td><a href="https://meet.google.com/ktk-bxom-siy" target="_blank" class="btn" style="padding: 5px 10px; font-size: 0.8rem;">Unirse</a></td> 
+                                </tr> 
+                                 <tr> 
+                                    <td>Sábado - 25 de Julio del 2026</td> 
+                                    <td>09:00am - 11:00am</td> 
+                                    <td>Daily Life English - Classes</td> 
+                                    <td><a href="https://meet.google.com/hnj-rbcy-twc" target="_blank" class="btn" style="padding: 5px 10px; font-size: 0.8rem;">Unirse</a></td> 
+                                </tr> 
+                            </tbody> 
+                        </table>
+                    </div>`, 
                 type: "table",
                 isLive: true 
             },
@@ -1771,11 +1465,8 @@
                 title: "Speaking Club",
                 description: "Perfecciona tu pronunciación, entonación y comprensión auditiva en nuestro club semanal. ¡Únete a conversaciones dinámicas y mejora tu fluidez! El Speaking Club ofrece sesiones enfocadas:",
                 image: "https://images.pexels.com/photos/3862601/pexels-photo-3862601.jpeg?auto=compress&cs=tinysrgb&w=800",
-                linkSpeaking: "https://dailylifeenglish.github.io/#",
-                buttonTextSpeaking: "Unirme al Speaking Club",
                 type: "speakingClub"
             },
-            // ===== NUEVO SERVICIO PARA GESTOR DE TAREAS (MODIFICADO) =====
             5: {
                 title: "Gestor de Tareas",
                 description: "Administra tus tareas pendientes. Accede a tu asignación y notifica al profesor una vez la hayas subido.",
@@ -1783,27 +1474,26 @@
                 type: "crud",
                 taskUrl: "https://forms.gle/6j9egd8n31zkzPwM7"
             }
-            // ===== FIN NUEVO SERVICIO =====
         };
-        // ===== FIN DE OBJETO DE SERVICIOS =====
 
         const legalContent = {
             terms: `
                 <h2>Términos y Condiciones</h2>
-                <p>Bienvenido a Daily Life English. Al inscribirte en nuestros cursos, aceptas los siguientes términos y condiciones. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Bienvenido a Daily Life English. Al inscribirte en nuestros cursos, aceptas los siguientes términos y condiciones.</p>
                 <p><strong>1. Inscripciones:</strong> Las inscripciones se realizan a través de nuestro formulario de contacto o WhatsApp. El pago debe completarse antes del inicio del curso.</p>
                 <p><strong>2. Cancelaciones:</strong> Las cancelaciones deben realizarse con al menos 72 horas de antelación para obtener un reembolso completo. Pasado este plazo, no se realizarán devoluciones.</p>
                 <p><strong>3. Propiedad Intelectual:</strong> Todo el material proporcionado durante los cursos es propiedad de Daily Life English y no puede ser distribuido sin autorización.</p>
             `,
             privacy: `
                 <h2>Política de Privacidad</h2>
-                <p>En Daily Life English, respetamos tu privacidad y nos comprometemos a proteger tus datos personales. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p>En Daily Life English, respetamos tu privacidad y nos comprometemos a proteger tus datos personales.</p>
                 <p><strong>1. Recopilación de datos:</strong> Recopilamos la información que nos proporcionas al inscribirte, como tu nombre, correo electrónico y número de teléfono.</p>
                 <p><strong>2. Uso de la información:</strong> Utilizamos tus datos para gestionar tu inscripción, comunicarnos contigo sobre los cursos y enviar información relevante. No compartimos tus datos con terceros.</p>
                 <p><strong>3. Seguridad:</strong> Implementamos medidas de seguridad para proteger tu información personal contra el acceso no autorizado.</p>
             `
         };
 
+        // Menú Hamburguesa
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('navMenu');
 
@@ -1819,6 +1509,7 @@
             });
         });
 
+        // Modo Oscuro / Claro
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = themeToggle.querySelector('i');
 
@@ -1841,6 +1532,7 @@
             themeIcon.classList.add('fa-sun');
         }
 
+        // Carrusel Banner Principal
         const bannerSlides = document.querySelectorAll('.banner-slide');
         const dotsContainer = document.querySelector('.carousel-dots');
         const prevBtn = document.querySelector('.banner .prev');
@@ -1869,31 +1561,19 @@
             dots[currentSlide].classList.add('active');
         }
 
-        function nextSlide() {
-            goToSlide(currentSlide + 1);
-        }
-
-        function prevSlide() {
-            goToSlide(currentSlide - 1);
-        }
+        function nextSlide() { goToSlide(currentSlide + 1); }
+        function prevSlide() { goToSlide(currentSlide - 1); }
 
         function resetInterval() {
             clearInterval(slideInterval);
             slideInterval = setInterval(nextSlide, 5000);
         }
 
-        nextBtn.addEventListener('click', () => {
-            nextSlide();
-            resetInterval();
-        });
-
-        prevBtn.addEventListener('click', () => {
-            prevSlide();
-            resetInterval();
-        });
-
+        nextBtn.addEventListener('click', () => { nextSlide(); resetInterval(); });
+        prevBtn.addEventListener('click', () => { prevSlide(); resetInterval(); });
         slideInterval = setInterval(nextSlide, 5000);
 
+        // Carrusel Cursos
         const carousel = document.querySelector('.courses .carousel-container');
         const items = document.querySelectorAll('.courses .carousel-item');
         const carouselPrevBtn = document.querySelector('.courses .prev');
@@ -1919,7 +1599,7 @@
             updateCarousel();
         }, 5000);
 
-
+        // Modales de Servicios
         const serviceCards = document.querySelectorAll('.service-card');
         const serviceModal = document.getElementById('serviceModal');
         const serviceModalBody = document.getElementById('serviceModalBody');
@@ -1931,28 +1611,22 @@
                 const service = services[serviceId];
 
                 const imgClass = service.imageClass || ''; 
-                
-                const liveMark = (service.isLive) ? '<span class="live-tag">🔵 CLASES EN VIVO</span>' : '';
+                const liveMark = (service.isLive) ? '<div style="text-align: center;"><span class="live-tag">🔵 CLASES EN VIVO</span></div>' : '';
 
                 let modalContentHTML = `<img src="${service.image}" alt="${service.title}" class="modal-img ${imgClass}">
-                <h2>${service.title}</h2>
+                <h2 style="margin-top:1rem;">${service.title}</h2>
                 ${liveMark}
                 <p>${service.description}</p>`;
 
-
                 if (service.type === "link") {
                     modalContentHTML += `
-                        <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; margin-top: 2rem;">
-                            <a href="${service.link}" target="_blank" class="btn">${service.buttonText} <i class="fas fa-external-link-alt" style="margin-left: 10px;"></i></a>
-                            
-                            <!-- ===== NUEVO BOTÓN: CLASES GRABADAS ===== -->
+                        <div class="buttons-container-modal">
+                            <a href="${service.link}" target="_blank" class="btn">${service.buttonText} <i class="fas fa-external-link-alt"></i></a>
                             <a href="${service.recordedLink}" target="_blank" class="btn" style="background-color: var(--level-secondary-color); color: #1f2937;">
-                                Ver Clases Grabadas <i class="fas fa-video" style="margin-left: 10px;"></i>
+                                Ver Clases Grabadas <i class="fas fa-video"></i>
                             </a>
-                            <!-- ===== FIN NUEVO BOTÓN ===== -->
-
-                            <a href="https://www.youtube.com/channel/UC64r3px5iCyeBKi0O9zkxdQ" target="_blank" class="btn-secondary" style="margin-left: 0; display: flex; align-items: center;">
-                                <i class="fab fa-youtube" style="margin-right: 5px; font-size: 1rem;"></i> Canal de YouTube
+                            <a href="https://www.youtube.com/channel/UC64r3px5iCyeBKi0O9zkxdQ" target="_blank" class="btn-secondary">
+                                <i class="fab fa-youtube"></i> Canal de YouTube
                             </a>
                         </div>
                     `;
@@ -1960,35 +1634,57 @@
                     modalContentHTML += `
                         <p style="text-align: left; margin-top: 1rem; border-top: 1px solid var(--input-border); padding-top: 1rem;">Si eres estudiante o egresado, introduce el código de verificación proporcionado para ver los detalles de validación.</p>
                         <div class="form-group" style="text-align: left;">
-                            <label for="authCode" style="text-align: left;">Código de Verificación</label>
-                            <input type="text" id="authCode" name="authCode" placeholder="Escribe tu código DLE..." style="width: 100%;" oninput="document.getElementById('authError').style.display = 'none';">
-                            <p id="authError" style="color: red; font-size: 0.9rem; margin-top: 0.5rem; display: none; text-align: left;"></p>
+                            <label for="authCode">Código de Verificación</label>
+                            <input type="text" id="authCode" name="authCode" placeholder="Escribe tu código DLE..." oninput="document.getElementById('authError').style.display = 'none';">
+                            <p id="authError" style="color: red; font-size: 0.9rem; margin-top: 0.5rem; display: none;"></p>
                         </div>
-                        <button id="validateAuthBtn" class="btn">Acceder</button>
+                        <div class="buttons-container-modal" style="justify-content: flex-start;">
+                            <button id="validateAuthBtn" class="btn">Acceder</button>
+                        </div>
                     `;
                 } else if (service.type === "table") {
                     modalContentHTML += service.table;
-                    modalContentHTML += `<p style="margin-top: 1rem;">Para más detalles, contáctanos por WhatsApp.</p><a href="#contact" class="btn">Más Información</a>`;
+                    modalContentHTML += `
+                        <p style="margin-top: 1.5rem; text-align:center;">Para más detalles, contáctanos por WhatsApp.</p>
+                        <div class="buttons-container-modal">
+                            <a href="#contact" class="btn" onclick="document.getElementById('closeServiceModal').click()">Más Información</a>
+                        </div>
+                    `;
                 } else if (service.type === "speakingClub") {
                     modalContentHTML += `
-                        <div class="speaking-club-buttons">
-                            <a href="${service.linkSpeaking}" target="_blank" class="btn">${service.buttonTextSpeaking}</a>
+                        <div class="table-responsive">
+                            <table class="meet-table"> 
+                                <thead> 
+                                    <tr> 
+                                        <th>Actividad</th> 
+                                        <th>Detalles de la sesión</th> 
+                                        <th>Acceso a Meet</th> 
+                                    </tr> 
+                                </thead> 
+                                <tbody> 
+                                    <tr> 
+                                        <td style="font-weight: bold;">Speaking Club</td> 
+                                        <td>Información para unirse con Google Meet</td> 
+                                        <td>
+                                            <a href="https://meet.google.com/zmy-fpzc-vnj" target="_blank" class="btn" style="padding: 8px 16px; font-size: 0.8rem; display: inline-block;">
+                                                <i class="fas fa-video"></i> Enlace videollamada
+                                            </a>
+                                        </td> 
+                                    </tr> 
+                                </tbody> 
+                            </table>
                         </div>
-                        <p style="margin-top: 2rem;">¡No pierdas la oportunidad de practicar con hablantes de todo el mundo!</p>`;
-                } 
-                // ===== NUEVO BLOQUE LÓGICO PARA EL CRUD DE TAREAS (MODIFICADO) =====
-                else if (service.type === "crud") {
+                        <p style="margin-top: 1.5rem; text-align:center; font-weight:600;">¡No pierdas la oportunidad de practicar con hablantes de todo el mundo!</p>`;
+                } else if (service.type === "crud") {
                     modalContentHTML += `
-                        <div style="margin-top: 1.5rem; background: var(--bg-color); padding: 1rem; border-radius: var(--border-radius); overflow-x: auto;">
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 10px;">
-                                <h3 style="margin: 0; font-size: 1.2rem;">Panel de Asignaciones</h3>
-                            </div>
-                            <table class="meet-table" style="min-width: 500px;">
+                        <div class="table-responsive" style="background: var(--bg-color); padding: 1rem;">
+                            <h3 style="margin-bottom: 1rem; font-size: 1.2rem;">Panel de Asignaciones</h3>
+                            <table class="meet-table">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
                                         <th>Descripción de la Tarea</th>
-                                        <th style="text-align: center;">Estado y Notificación</th>
+                                        <th style="text-align: center;">Estado</th>
                                         <th style="text-align: center;">Acciones</th>
                                     </tr>
                                 </thead>
@@ -1999,14 +1695,14 @@
                                         <td style="text-align: center;">
                                             <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
                                                 <span style="color: #dc3545; font-weight: bold;"><i class="fas fa-clock"></i> Pendiente</span>
-                                                <a href="https://wa.me/593988642647?text=Hola%2C%20te%20notifico%20que%20ya%20he%20subido%20la%20tarea%20%23001%20-%20Formulario%20de%20envi%C3%B3%20de%20tareas%20%2F%20Asignatura%20Principal." target="_blank" class="btn" style="background-color: #25D366; padding: 5px 10px; font-size: 0.75rem; text-transform: none; display: flex; align-items: center; gap: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                                                <a href="https://wa.me/593988642647?text=Hola%2C%20te%20notifico%20que%20ya%20he%20subido%20la%20tarea%20%23001%20-%20Formulario%20de%20envi%C3%B3%20de%20tareas." target="_blank" class="btn" style="background-color: #25D366; padding: 5px 10px; font-size: 0.75rem; text-transform: none; display: flex; align-items: center; justify-content: center; gap: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
                                                     <i class="fab fa-whatsapp" style="font-size: 1rem;"></i> Notificar Subida
                                                 </a>
                                             </div>
                                         </td>
                                         <td style="text-align: center; vertical-align: middle;">
                                             <a href="${service.taskUrl}" target="_blank" class="btn" style="padding: 8px 12px; font-size: 0.8rem; width: 100%; display: flex; justify-content: center; align-items: center; gap: 5px;">
-                                                <i class="fas fa-external-link-alt"></i> Acceder a la Tarea
+                                                <i class="fas fa-external-link-alt"></i> Abrir Tarea
                                             </a>
                                         </td>
                                     </tr>
@@ -2015,9 +1711,7 @@
                         </div>
                     `;
                 }
-                // ===== FIN DE BLOQUE LÓGICO PARA CRUD =====
 
-                modalContentHTML += `</div>`;
                 serviceModalBody.innerHTML = modalContentHTML;
 
                 if (service.type === "authLink") {
@@ -2054,7 +1748,7 @@
             }
         });
 
-
+        // Modales de Niveles
         const levelCards = document.querySelectorAll('.level-card');
         const levelModal = document.getElementById('levelModal');
         const levelModalBody = document.getElementById('levelModalBody');
@@ -2078,7 +1772,9 @@
                     <h2>Nivel ${level}: ${title}</h2>
                     <p>En este nivel, podrás:</p>
                     ${featuresHTML}
-                    <a href="#contact-form" class="btn">¡Inscríbete Ahora!</a>
+                    <div class="buttons-container-modal">
+                        <a href="#contact-form" class="btn" onclick="document.getElementById('closeLevelModal').click()">¡Inscríbete Ahora!</a>
+                    </div>
                 `;
 
                 levelModal.classList.add('visible');
@@ -2098,7 +1794,7 @@
             }
         }); 
 
-        // Lógica de Modales Legales
+        // Modales Legales
         const legalModal = document.getElementById('legalModal');
         const legalModalBody = document.getElementById('legalModalBody');
         const closeLegalModal = document.getElementById('closeLegalModal');
@@ -2133,10 +1829,8 @@
             }
         });
 
-
-        // Lógica de Animación de Scroll
+        // Animación Scroll
         const sections = document.querySelectorAll('section');
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -2145,11 +1839,9 @@
             });
         }, { threshold: 0.1 });
 
-        sections.forEach(section => {
-            observer.observe(section);
-        });
+        sections.forEach(section => { observer.observe(section); });
 
-        // ===== NUEVA LÓGICA PARA EL FORMULARIO DE INSCRIPCIÓN (WHATSAPP) =====
+        // Envío de Formulario
         const inscriptionForm = document.getElementById('inscriptionForm');
         const formStatus = document.getElementById('contact-form-status');
 
@@ -2183,12 +1875,8 @@
             formStatus.style.color = 'var(--primary-color)';
             inscriptionForm.reset();
 
-            setTimeout(() => {
-                formStatus.textContent = '';
-            }, 8000);
+            setTimeout(() => { formStatus.textContent = ''; }, 8000);
         });
-        // ===== FIN DE NUEVA LÓGICA =====
-
     </script>
 </body>
 </html>
